@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="320" viewBox="0 0 960 320" role="img" aria-labelledby="title desc">
+  <title id="title">Anthony Bluemel — System Administrator</title>
+  <desc id="desc">A navy terminal window with blue and cyan network paths. Infrastructure, automation, and self-hosting.</desc>
+  <defs>
+    <linearGradient id="background" x2="1" y2="1">
+      <stop stop-color="#08111f"/>
+      <stop offset="1" stop-color="#102c4b"/>
+    </linearGradient>
+    <linearGradient id="accent">
+      <stop stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#5ee7ed"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#70b8ea" stroke-opacity=".06"/>
+    </pattern>
+  </defs>
+  <style>
+    .packet { stroke-dasharray: 20 440; stroke-dashoffset: 460; animation: route 4s ease-in-out 1 forwards; }
+    .second { animation-delay: .4s; }
+    .third { animation-delay: .8s; }
+    .cursor { animation: blink 1s step-end 4; }
+    @keyframes route { to { stroke-dashoffset: 0; } }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .packet, .cursor { animation: none; } }
+  </style>
+  <rect x="1" y="1" width="958" height="318" rx="18" fill="url(#background)" stroke="#284463"/>
+  <rect x="2" y="2" width="956" height="316" rx="17" fill="url(#grid)"/>
+  <path d="M1 45H959" stroke="#284463"/>
+  <g fill="#5a7290">
+    <circle cx="27" cy="24" r="5"/>
+    <circle cx="45" cy="24" r="5"/>
+    <circle cx="63" cy="24" r="5"/>
+  </g>
+  <circle cx="63" cy="24" r="5" fill="#5ee7ed"/>
+  <text x="90" y="29" fill="#9bb3cb" font-family="monospace" font-size="12">antblu / infrastructure &amp; operations</text>
+  <g fill="none" stroke="#245078" stroke-width="2">
+    <path id="route-a" d="M712 82V120H776V160H870"/>
+    <path id="route-b" d="M656 251H712V204H776V160"/>
+    <path id="route-c" d="M870 251V214H824V160H776"/>
+  </g>
+  <g fill="none" stroke="#5ee7ed" stroke-width="3">
+    <path class="packet" d="M712 82V120H776V160H870"/>
+    <path class="packet second" d="M656 251H712V204H776V160"/>
+    <path class="packet third" d="M870 251V214H824V160H776"/>
+  </g>
+  <g fill="#10243b" stroke="#4277a4" stroke-width="2">
+    <rect x="692" y="66" width="40" height="30" rx="6"/>
+    <rect x="636" y="236" width="40" height="30" rx="6"/>
+    <rect x="850" y="236" width="40" height="30" rx="6"/>
+    <circle cx="870" cy="160" r="10"/>
+    <circle cx="776" cy="160" r="18" stroke="#5ee7ed"/>
+  </g>
+  <g fill="#5ee7ed">
+    <circle cx="776" cy="160" r="5"/>
+    <path d="M701 77h22v3h-22zm0 6h14v3h-14zm-56 164h22v3h-22zm0 6h14v3h-14zm214-6h22v3h-22zm0 6h14v3h-14z"/>
+  </g>
+  <g font-family="monospace">
+    <text x="44" y="96" fill="#5ee7ed" font-size="14" letter-spacing="2">SYSTEMS / NETWORKS / CODE</text>
+    <text x="44" y="162" fill="#f0f6ff" font-family="system-ui, sans-serif" font-weight="700" font-size="48">Anthony Bluemel</text>
+    <text x="46" y="199" fill="#b8cee4" font-size="22">System Administrator</text>
+    <text x="46" y="249" fill="#5ee7ed" font-size="16">$</text>
+    <text x="65" y="249" fill="#d7e7f7" font-size="16">build · automate · observe</text>
+    <path class="cursor" d="M342 237h9v16h-9z" fill="#5ee7ed"/>
+  </g>
+  <rect x="44" y="284" width="872" height="3" rx="1.5" fill="url(#accent)"/>
+</svg>
