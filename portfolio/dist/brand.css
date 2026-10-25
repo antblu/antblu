@@ -367,3 +367,49 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 .cloud-surface{position:relative;isolation:isolate}
 .cloud-surface:not(.hero)>.cloud-background{z-index:-1;opacity:.16}
 .intro>.cloud-background,.portfolio>.cloud-background,footer>.cloud-background{opacity:.3}
+
+/* Concentric background rings inspired by Magic UI's Ripple component. */
+.contact{position:relative;isolation:isolate;overflow:hidden}
+.contact>.section-ripple{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;mask-image:linear-gradient(#000,transparent 85%)}
+.contact>:not(.section-ripple):not(.cloud-background){position:relative;z-index:1}
+.section-ripple>span{--ring:0;position:absolute;left:50%;top:220px;width:calc(210px + var(--ring)*70px);aspect-ratio:1;border:1px solid currentColor;border-radius:50%;color:#2463a5;background:#2463a503;opacity:calc(.24 - var(--ring)*.025);transform:translate(-50%,-50%);animation:antblu-ripple 4s ease-in-out infinite;animation-delay:calc(var(--ring)*.16s)}
+.section-ripple>span:nth-child(2){--ring:1}.section-ripple>span:nth-child(3){--ring:2}.section-ripple>span:nth-child(4){--ring:3}.section-ripple>span:nth-child(5){--ring:4}.section-ripple>span:nth-child(6){--ring:5}.section-ripple>span:nth-child(7){--ring:6}.section-ripple>span:nth-child(8){--ring:7}
+[data-theme="dark"] .section-ripple>span{color:#8fc6ff;background:#8fc6ff03}
+@keyframes antblu-ripple{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(.9)}}
+@media(prefers-reduced-motion:reduce){.section-ripple>span{animation:none}}
+@media(forced-colors:active){.contact>.section-ripple{display:none}}
+
+/* Moving line shadow adapted from https://magicui.design/docs/components/line-shadow-text. */
+.line-shadow-text{position:relative;isolation:isolate;display:inline-block;font-style:italic;-webkit-text-fill-color:currentColor}
+.line-shadow{position:absolute;top:.04em;left:.04em;z-index:-1;pointer-events:none;user-select:none;white-space:nowrap;color:transparent;-webkit-text-fill-color:transparent;background-image:linear-gradient(45deg,transparent 45%,var(--line-shadow-color,#fff) 45%,var(--line-shadow-color,#fff) 55%,transparent 55%);background-size:.06em .06em;background-clip:text;-webkit-background-clip:text;animation:antblu-line-shadow 15s linear infinite}
+@keyframes antblu-line-shadow{to{background-position:.6em -.6em}}
+@media(prefers-reduced-motion:reduce){.line-shadow{animation:none}}
+@media(forced-colors:active){.line-shadow{display:none}}
+
+/* Perimeter shimmer inspired by https://magicui.design/docs/components/shimmer-button. */
+.shimmer-button{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;min-height:48px;max-width:100%;padding:16px 28px;border:1px solid #ffffff35;border-radius:100px;background:#070d16;color:#fff;font:600 13px/1.4 var(--heading);letter-spacing:1px;cursor:pointer;box-shadow:0 8px 24px #070d1633;transition:transform .2s,box-shadow .2s}
+.shimmer-button::before{content:"";position:absolute;z-index:-2;left:50%;top:50%;width:calc(100% + 48px);aspect-ratio:1;background:conic-gradient(from 0deg,transparent 0deg 285deg,#fff 330deg,transparent 360deg);animation:antblu-shimmer 3s linear infinite}
+.shimmer-button::after{content:"";position:absolute;inset:1px;z-index:-1;border-radius:inherit;background:linear-gradient(#172233,#070d16);box-shadow:inset 0 -6px 10px #ffffff12}
+.shimmer-button>span{position:relative}
+.shimmer-button:hover{transform:translateY(-1px);box-shadow:0 10px 28px #070d164d}
+.shimmer-button:active{transform:translateY(1px)}
+.shimmer-button:focus-visible{outline:3px solid var(--brand-link);outline-offset:4px}
+@keyframes antblu-shimmer{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.shimmer-button{transition:none}.shimmer-button::before{animation:none}.shimmer-button:hover,.shimmer-button:active{transform:none}}
+@media(forced-colors:active){.shimmer-button{border:2px solid ButtonText;background:ButtonFace;color:ButtonText;box-shadow:none}.shimmer-button::before,.shimmer-button::after{display:none}}
+
+/* Chromatic photos retain semantic images as static fallbacks. */
+.chromatic-gallery{position:absolute;left:53%;bottom:19%;width:41%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.chromatic-portrait{position:relative;aspect-ratio:4/5;min-width:0;border-radius:18px;overflow:hidden;isolation:isolate;outline:1px solid #ffffff26;outline-offset:-1px}
+.chromatic-portrait>img{width:100%;height:100%;object-fit:cover;object-position:center}
+.chromatic-portrait>canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none}
+.chromatic-portrait.chromatic-ready>canvas{opacity:1}
+@media(min-width:701px) and (max-width:1100px){.chromatic-gallery{left:54%;width:42%;bottom:20%;gap:12px}}
+@media(max-width:700px){.chromatic-gallery{left:50%;top:120px;bottom:auto;width:86%;max-width:420px;transform:translateX(-50%);gap:12px}.chromatic-portrait{border-radius:14px}}
+@media(prefers-reduced-motion:reduce){.chromatic-portrait>canvas{display:none}}
+
+/* Product marks replace the text-only skills badges. */
+.skill-logo{display:block;width:80px;height:80px;object-fit:contain}
+.project .project-brand{display:flex;align-items:center;justify-content:center;gap:12px}
+.project .project-logo{position:static;width:60px;height:40px;object-fit:contain;filter:none}
+@media(max-width:700px){.skill-logo{width:65px;height:65px}}
