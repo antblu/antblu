@@ -1,8 +1,18 @@
 /* Buildless procedural cloud background inspired by Aceternity Cloud Shader.
    https://ui.aceternity.com/components/cloud-shader */
 (() => {
-  const canvas = document.querySelector('.cloud-shader');
-  if (!canvas) return;
+  document.querySelectorAll('.hero, .intro, .paper, .portfolio, footer').forEach(surface => {
+    surface.classList.add('cloud-surface');
+    if (!surface.querySelector(':scope > .cloud-background')) {
+      const background = document.createElement('div');
+      background.className = 'cloud-background';
+      background.setAttribute('aria-hidden', 'true');
+      background.innerHTML = '<canvas class="cloud-shader"></canvas>';
+      surface.prepend(background);
+    }
+  });
+  document.querySelectorAll('.cloud-shader').forEach(canvas => {
+  const darkSurface = canvas.parentElement.parentElement.matches('.intro, .portfolio, footer');
   const gl = canvas.getContext('webgl', { alpha: false, antialias: false, depth: false });
   if (!gl) return; // The CSS cloud field remains visible without WebGL.
   const vertex = 'attribute vec2 position; void main(){gl_Position=vec4(position,0.0,1.0);}';
@@ -69,7 +79,7 @@
     last = now;
     gl.uniform2f(resolution, canvas.width, canvas.height);
     gl.uniform1f(time, elapsed / 1000);
-    gl.uniform1f(dark, document.documentElement.dataset.theme === 'dark' ? 1 : 0);
+    gl.uniform1f(dark, darkSurface || document.documentElement.dataset.theme === 'dark' ? 1 : 0);
     gl.drawArrays(gl.TRIANGLES, 0, 6);
     canvas.classList.add('is-ready');
     if (!motion.matches) frame = requestAnimationFrame(render);
@@ -77,7 +87,7 @@
   const refresh = () => { cancelAnimationFrame(frame); last = 0; frame = requestAnimationFrame(render); };
   const resize = () => {
     // Cap rendering resolution to keep the decorative effect inexpensive.
-    const scale = Math.min(1, 1000 / canvas.clientWidth);
+    const scale = Math.min(1, 1000 / canvas.clientWidth, 1000 / canvas.clientHeight);
     canvas.width = Math.max(1, Math.round(canvas.clientWidth * scale));
     canvas.height = Math.max(1, Math.round(canvas.clientHeight * scale));
     gl.viewport(0, 0, canvas.width, canvas.height);
@@ -91,4 +101,5 @@
   if ('IntersectionObserver' in window) new IntersectionObserver(entries => { visible = entries[0].isIntersecting; refresh(); }).observe(canvas.parentElement);
   canvas.addEventListener('webglcontextlost', event => { event.preventDefault(); lost = true; cancelAnimationFrame(frame); canvas.classList.remove('is-ready'); });
   resize();
+  });
 })();
