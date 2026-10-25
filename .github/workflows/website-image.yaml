@@ -1,0 +1,78 @@
+name: Build website image
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      runner:
+        description: Prefer self-hosted automatically, or choose a runner explicitly
+        type: choice
+        default: auto
+        options:
+          - auto
+          - ubuntu-latest
+          - self-hosted
+
+concurrency:
+  group: antblu-image-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  select-runner:
+    uses: ./.github/workflows/select-runner.yaml
+    permissions:
+      actions: write
+    with:
+      runner: ${{ inputs.runner || 'auto' }}
+  build:
+    needs: select-runner
+    runs-on: ${{ fromJSON(needs.select-runner.outputs.runner) }}
+    timeout-minutes: 45
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Check out website
+        uses: actions/checkout@v7
+        with:
+          path: website
+      - name: Check out deployment inputs
+        uses: actions/checkout@v7
+        with:
+          repository: antblu/antalos
+          ref: main
+          path: antalos
+      - name: Read shared build settings
+        id: settings
+        shell: bash
+        run: |
+          variables=antalos/apps/variables.yaml
+          for key in ANTBLU_NGINX_IMAGE_TAG ANTBLU_IMAGE_REPOSITORY; do
+            value="$(sed -n "s/^  $key: //p" "$variables")"
+            test -n "$value"
+            echo "$key=$value" >> "$GITHUB_OUTPUT"
+          done
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+      - name: Log in to GitHub Container Registry
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and publish website
+        uses: docker/build-push-action@v7
+        with:
+          context: website
+          push: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
+          tags: |
+            ${{ steps.settings.outputs.ANTBLU_IMAGE_REPOSITORY }}:main
+            ${{ steps.settings.outputs.ANTBLU_IMAGE_REPOSITORY }}:sha-${{ github.sha }}
+          build-args: |
+            NGINX_IMAGE_TAG=${{ steps.settings.outputs.ANTBLU_NGINX_IMAGE_TAG }}
+          cache-from: type=gha,scope=antblu
+          cache-to: type=gha,mode=max,scope=antblu,ignore-error=true

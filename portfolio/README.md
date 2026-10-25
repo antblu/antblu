@@ -1,0 +1,23 @@
+# Anthony Bluemel — Portfolio
+
+Responsive, buildless HTML/CSS/JavaScript portfolio adapted from the supplied Tomasz Gajda community Figma design. Source: https://www.figma.com/design/zzVHnk9ILrRuqvXXNmJ61O/?node-id=1-2
+
+Serve `dist/` using `python3 -m http.server 4173 --directory dist`.
+
+- Personal details: `dist/index.html`.
+- Project details and interactions: `dist/app.js`.
+- Responsive design: `dist/styles.css`.
+- Figma assets are downloaded locally to `dist/assets/`.
+- Portrait: Anthony’s supplied IMG_4275.HEIC (JPEG-encoded), stored as dist/assets/anthony-bluemel.jpg. The displayed portrait is a transparent cutout at dist/assets/anthony-bluemel-cutout.png; the original is retained separately.
+- Branding: Antalos blue/cyan/navy palette in dist/brand.css; user-supplied antblu logo in dist/assets/antblu-logo.png.
+- The contact form opens an email draft; it does not submit to a server.
+- GitHub project links were verified as public during implementation. Project artwork is decorative imagery from the reference, not project screenshots.
+- The Sites deployment starts owner-private. This does not publish changes to the existing GitHub repository.
+
+Button verification covers desktop/mobile navigation, all project filters, each modal and its close actions, GitHub destinations, native form validation, mailto drafts, and clipboard fallback. The contact form does not send email from a server.
+
+Dark mode follows the visitor’s system preference until the header’s Dark mode toggle is used. The choice is saved locally and synchronized across tabs. Theme colors are in `dist/brand.css`; the initial theme is applied in the document head to avoid a light flash.
+
+Blog: the `#blog` section contains a short example article, sticky desktop table of contents, collapsible mobile contents menu, and active-section tracking. Edit article content and anchor links in `dist/index.html`; styling lives in `dist/brand.css`.
+
+Antalos explorer (`#stack`): searchable, category-filtered inventory of 40 application directories, with draggable cards on desktop and a static mobile grid. Drag a handle or use arrow keys (Shift for larger steps); Home restores that card. Reset cards restores all positions. Data lives in `dist/index.html`; interaction lives in `dist/stack.js`. Inventory is a dated source snapshot, not live cluster status.

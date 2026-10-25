@@ -1,0 +1,40 @@
+# Verification — 2026-10-25
+
+Colourful text update: applied staggered per-letter colour, lift, scale, and subtle blur animation to “Bluemel” in the hero, inspired by Aceternity Colourful Text. Includes light/dark palettes, static reduced-motion colours, and forced-colors text. Original text remains in the HTML with no accessibility duplicate or JavaScript dependency. HTML text/letter structure and git diff whitespace checks passed; browser visual and 320px checks remain pending.
+
+Squiggly text update: added SVG turbulence/displacement to “Anthony” in the hero, cycling five frames every 70ms with alternating 6/9px displacement. CSS-only; reduced-motion and forced-colors disable distortion. Static HTML/filter-reference and whitespace checks passed. Browser visual and 320px checks remain pending for this update.
+
+Cloud background update: added an original buildless WebGL procedural cloud field behind the hero, inspired by Aceternity Cloud Shader. Includes light/dark colors, CSS fallback, reduced-motion still frame, hidden-tab/offscreen pause, and forced-colors hiding. HTML/local script checks and git diff --check passed. Headless Chrome loaded the page and rendered WebGL; a 1440px screenshot was reviewed. Chrome emitted environment/NSS and software GPU warnings. Mobile/320px, live theme switching, reduced motion, and interaction regression checks remain unverified for this update.
+
+Light rays update: added seven decorative CSS gradient rays behind the hero portrait and copy, inspired by https://magicui.design/docs/components/light-rays. Rays animate with staggered 12–17s cycles and 36px blur (24px on mobile); reduced-motion shows a static glow and forced-colors hides the effect. The clipped, isolated layer ignores pointer events and is hidden from assistive technology. HTML parsing confirmed seven rays and aria-hidden; git diff --check passed. Desktop/mobile/320px visual checks remain unverified: Chromium could not start because its Snap runtime directories are read-only in this sandbox. No JavaScript behavior changed.
+
+Flickering grid update: added decorative canvas backgrounds with 4px squares, 6px gaps, gray color, maximum opacity 0.5, and flicker probability 0.1 per second. Animation pauses for hidden tabs and offscreen surfaces; reduced-motion shows a static grid, and forced-colors hides it. Canvas layers ignore pointer events and are hidden from assistive technology. HTML/local asset references and `git diff --check` passed. Browser visual, mobile/320px, and interaction checks remain unverified: Chromium cannot start because its Snap runtime paths are outside the writable sandbox. JavaScript syntax verification via the Node tool was also unavailable due to its workspace URI error.
+
+Pulsating contact button update: adapted Magic UI’s default pulse in brand.css for the header CONTACT ME anchor (1.5s, 8px). Reduced-motion disables the pulse; forced-colors hides the decorative effect and adds a border. Static HTML checks confirmed the contact anchor still targets #contact; git diff --check passed. Desktop/mobile visual, animation, and keyboard checks remain unverified: Chromium could not start because its Snap runtime directories are outside the writable sandbox.
+
+Animated gradient text update: added a portfolio anchor in the hero with animated text and border, hover/focus chevron movement, reduced-motion and forced-colors overrides. HTML parsing, local image/script asset existence, and `git diff --check` passed. Browser layout, animation, keyboard, and 320px checks remain unverified for this update; the available Windows Node runtime failed to start from WSL (`UtilBindVsockAnyPort: socket failed`). The checks below describe earlier verification.
+
+Checked in headless Chrome with Playwright against the local static site:
+
+- Every section-navigation link, hero shortcut, logo/home link, and back-to-top link.
+- All three filters, visible project counts, pressed states, and accessible result announcements.
+- Every project dialog, repository destination, close button, Escape key, and backdrop dismissal.
+- Required-field and email-format validation; correctly encoded email draft with punctuation.
+- Copy-message success and clipboard-denied fallback with manual text selection.
+- Mobile navigation destinations, automatic closing, and Escape.
+- No horizontal overflow at 320, 390, 700, 768, 1024, 1440, and 1920 pixels.
+- All images load; no JavaScript runtime errors.
+- Desktop and mobile screenshots visually reviewed.
+- All five unique GitHub destinations returned HTTP 200.
+
+The email flow opens a local email client; no email was sent during verification. Clipboard behavior depends on browser permission, with a tested manual fallback.
+
+Dark-mode update: verified system preference and live system changes, manual toggling and reload persistence, unavailable local storage, dark project dialog colors, mobile menu behavior, and no header overlap or horizontal overflow at 320, 390, 700, 701, 768, 1024, 1440, and 1920 pixels. No JavaScript runtime errors; desktop and mobile dark screenshots visually reviewed.
+
+Progressive blur update: added eight masked backdrop-filter layers (0.5–64px) at the hero's bottom edge, covering 40% on desktop and a 160px portrait transition on mobile. Layers are decorative, ignore pointer events, sit below hero copy, and are hidden in forced-colors mode. Browsers without backdrop-filter retain the existing gradient transition. HTML structure and git diff whitespace checks passed; browser visual and mobile checks remain unverified for this update.
+
+Dia text reveal update: hero name, intro title, and boxed section headings receive a single 1.5s lavender/pink/peach sweep when entering the viewport, then return to their theme text color. Original heading text and line breaks are retained inside spans; no layout copies or accessibility duplicates are introduced. Reduced-motion, forced-colors, missing IntersectionObserver, unsupported text clipping, and disabled JavaScript leave readable text. git diff --check passed. JavaScript syntax execution through the Node tool was blocked by its sandboxCwd URI error; browser animation, dark-mode, and 320px layout verification remain pending.
+
+Blog update: added a header Blog link and original Aceternity-inspired article layout with three anchored headings, a responsive table of contents, active-section tracking, mobile link dismissal/Escape handling, and theme/reduced-motion styles. HTML parsing verified unique IDs and all internal anchor targets; `git diff --check` passed. Headless Chrome loaded the document and ran app.js (theme metadata updated and desktop/mobile TOC open state applied). Screenshot attempts at desktop and 320px produced blank frames, so visual layout, overflow, keyboard interaction, scroll tracking, and full regression checks remain unverified. No standalone Node runtime was available for a syntax-only check.
+
+Antalos draggable explorer update: verified all 40 cards match the 40 directories in the local Antalos apps tree; HTML IDs are unique and git diff --check passed. Headless Chrome loaded stack.js and verified search (Medusa: 1 result), category filtering (Identity & security: 6 results), keyboard movement (16px), and reset. No document horizontal overflow at 1440, 768, 390, or 320px. Desktop screenshot captured at /tmp/antblu-stack-desktop.png. Pointer dragging, touch interaction, full interaction regressions, and live cluster deployment/health remain unverified. Existing unrelated working-tree changes were preserved.
