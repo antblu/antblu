@@ -242,3 +242,127 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 @media(max-width:360px){.stack-cards{grid-template-columns:1fr}.stack-art{aspect-ratio:1.8}}
 @media(prefers-reduced-motion:reduce){.stack-card{transition:none}}
 @media(forced-colors:active){.stack-art{background:Canvas;color:CanvasText;border:1px solid CanvasText}.stack-art i{display:none}.stack-art small,.stack-card>a,.stack-category,.stack-handle{color:CanvasText}.stack-card{border:1px solid CanvasText;box-shadow:none}}
+
+/* Solid theme icons use one contrasting foreground color. */
+.theme-toggle{background:#fff;color:#000}
+.theme-toggle:hover{background:#e4ebf2}
+.theme-icon{display:block;width:22px;height:22px;flex-shrink:0}
+.theme-sun{display:none}
+[data-theme="dark"] .theme-toggle{background:#070d16;color:#fff}
+[data-theme="dark"] .theme-toggle:hover{background:#112a4a}
+[data-theme="dark"] .theme-sun{display:block}
+[data-theme="dark"] .theme-moon{display:none}
+
+/* Emiliany case study: a warm brand surface above the portfolio's blue platform. */
+.em-project>img{filter:brightness(.48)}
+.em-project .project-copy{background:linear-gradient(transparent,#16210be6)}
+.em-case{--em-bg:#f3f4f0;--em-ink:#354318;--em-muted:#516036;--em-line:#74824966;--em-panel:#fff;--em-soft:#e8ebdf;background:var(--em-bg);color:var(--em-ink);padding:78px 32px 55px}
+.em-shell{max-width:1200px;margin:auto}
+.em-heading{display:flex;justify-content:space-between;gap:16px;padding-bottom:24px;border-bottom:1px solid var(--em-line)}
+.em-kicker{font:700 11px/1.5 var(--heading);letter-spacing:2px}
+.em-index{font:500 12px/1.5 var(--body);color:var(--em-muted)}
+.em-intro{display:grid;grid-template-columns:1.7fr 1fr;gap:70px;align-items:end;padding:46px 0}
+.em-intro h2{font:500 clamp(38px,4.8vw,66px)/1.08 Georgia,serif;letter-spacing:-2px;margin-bottom:24px}
+.em-intro h2 em{font-weight:400;color:var(--em-muted)}
+.em-intro>div>p{max-width:580px;font-size:15px;line-height:1.8}
+.em-links{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:26px;font-size:12px;font-weight:700}
+.em-links a,.em-footnote a{border-bottom:1px solid var(--em-line);padding:4px 0}
+.em-case a:hover{text-decoration:underline;text-underline-offset:4px}
+.em-case a:focus-visible,.em-case button:focus-visible,.em-case summary:focus-visible{outline:3px solid var(--em-ink);outline-offset:5px}
+.em-summary{border-left:2px solid var(--em-line);padding:6px 0 6px 24px}
+.em-summary>span{font:700 10px var(--heading);letter-spacing:2px}
+.em-summary p{font-size:13px!important;margin:12px 0 20px}
+.em-tags{display:flex;flex-wrap:wrap;gap:7px}
+.em-tags span{font:600 10px/1.5 var(--body);padding:5px 9px;border:1px solid var(--em-line);border-radius:3px}
+.em-showcase{display:grid;grid-template-columns:2.2fr 1fr;gap:22px;align-items:start}
+.em-browser{min-width:0;border:1px solid var(--em-line);border-radius:12px;overflow:hidden;box-shadow:0 22px 45px #26351515;background:#f9f9f8;color:#48591c}
+.em-browser-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#e7eadf;padding:12px 16px;font:500 10px/1.5 var(--body);color:#48591c}
+.em-browser-bar>span:first-child{letter-spacing:3px;color:#748249}
+.em-browser-bar>span:last-child{font-size:8px;letter-spacing:1px}
+.em-store-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 22px}
+.em-store-header img{width:145px;height:48px;object-fit:contain}
+.em-store-header>span{font-size:9px;text-align:right}
+.em-store-hero{position:relative;isolation:isolate;min-height:360px;display:flex;align-items:center;padding:45px;color:#f9f9f8}
+.em-store-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.em-store-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#19220ee8,#19220e50 60%,#19220e10);z-index:-1}
+.em-store-hero>div>span{font:600 9px var(--heading);letter-spacing:2px}
+.em-store-hero p{font:400 clamp(36px,4.5vw,62px)/1.02 Georgia,serif;margin:20px 0 28px}
+.em-store-hero a{display:inline-block;padding:10px 15px;border:1px solid #f3f4f0aa;font-size:10px;font-weight:600}
+.em-browser figcaption{font-size:10px;padding:12px 18px;line-height:1.6;color:#516036}
+.em-detail-card{border:1px solid var(--em-line);border-radius:12px;overflow:hidden;background:var(--em-panel)}
+.em-detail-card>img{width:100%;height:175px;object-fit:cover}
+.em-detail-card>div{padding:24px}
+.em-detail-card .em-kicker{font-size:9px}
+.em-detail-card h3{font:400 28px/1.1 Georgia,serif;margin:12px 0}
+.em-detail-card p{font-size:12px;line-height:1.8}
+.em-language{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 14px}
+.em-language a{font:600 10px/1.5 var(--body);background:var(--em-soft);border:1px solid var(--em-line);border-radius:4px;padding:5px 9px}
+.em-detail-card .em-catalog-note{font-size:10px;color:var(--em-muted)}
+.em-underneath{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:60px 0 24px}
+.em-underneath h3{font:400 clamp(28px,3vw,38px)/1.2 Georgia,serif;margin-top:10px}
+.em-underneath>p{font-size:12px;color:var(--em-muted)}
+.em-story-controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.em-story-controls[hidden],.em-story[hidden]{display:none}
+.em-story-controls button{background:transparent;color:var(--em-ink);border:1px solid var(--em-line);border-radius:999px;padding:12px 20px;font:600 11px/1.5 var(--body)}
+.em-story-controls button[aria-pressed=true]{background:var(--em-ink);color:var(--em-bg);border-color:var(--em-ink)}
+.em-story-controls button:hover{box-shadow:inset 0 0 0 1px var(--em-ink)}
+.em-story{border:1px solid var(--em-line);border-radius:12px;background:var(--em-panel);padding:30px;margin-bottom:16px}
+.em-story-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:28px}
+.em-story-heading h4{font:400 25px/1.3 Georgia,serif;margin:0}
+.em-story-heading>span{font:600 9px/1.5 var(--body);letter-spacing:1px;color:var(--em-muted);text-align:right}
+.em-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;padding:0;margin:0;gap:26px}
+.em-flow li{position:relative;border-top:2px solid var(--em-line);padding-top:15px}
+.em-flow li:not(:last-child)::after{content:'→';position:absolute;right:-20px;top:-16px;font-size:20px;background:var(--em-panel);color:var(--em-muted)}
+.em-flow li>span{font:700 9px/1.5 var(--body);letter-spacing:1px;color:var(--em-muted)}
+.em-flow h5{font:700 16px/1.4 var(--heading);margin:14px 0 9px}
+.em-flow p{font-size:12px;line-height:1.8}
+.em-engineering{border-top:1px solid var(--em-line);margin-top:30px;padding-top:18px;font-size:12px}
+.em-engineering summary{cursor:pointer;font-weight:600;padding:5px 0}
+.em-engineering p{color:var(--em-muted);max-width:880px;margin-top:15px;line-height:1.9}
+.em-foundation{display:flex;align-items:center;gap:20px;border:1px solid #3488ff55;border-radius:10px;background:#e1ecfa;color:#163759;padding:24px 28px;margin-top:24px}
+.em-foundation>span{display:grid;place-items:center;flex-shrink:0;width:38px;height:38px;border:1px solid #3488ff55;border-radius:50%;font-size:22px}
+.em-foundation p{font-size:12px;max-width:650px}
+.em-foundation a{font-size:11px;font-weight:700;margin-left:auto;flex-shrink:0}
+.em-footnote{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;margin-top:24px;font-size:10px;color:var(--em-muted)}
+.em-footnote p{margin-right:auto}
+[data-theme="dark"] .em-case{--em-bg:#171e17;--em-ink:#e1e8d1;--em-muted:#b5c19e;--em-line:#9dab7766;--em-panel:#20291e;--em-soft:#303e2a}
+[data-theme="dark"] .em-foundation{background:#132b43;color:#c9e2ff}
+@media(min-width:701px){.projects{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.em-intro{gap:30px;grid-template-columns:1.6fr 1fr}.em-showcase{grid-template-columns:1fr}.em-detail-card{display:grid;grid-template-columns:1fr 1.5fr}.em-detail-card>img{height:100%;max-height:310px}.em-flow{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}.em-flow li:nth-child(2)::after{display:none}.em-foundation{flex-wrap:wrap}.em-foundation p{flex:1}.em-foundation a{margin-left:58px}}
+@media(max-width:600px){.em-case{padding:50px 20px 35px}.em-heading{display:block}.em-index{margin-top:10px;font-size:10px}.em-intro{grid-template-columns:1fr;padding:30px 0;gap:28px}.em-intro h2{letter-spacing:-1px}.em-intro>div>p{font-size:13px}.em-summary{padding-left:16px}.em-showcase{gap:16px}.em-browser-bar{padding:10px;font-size:8px}.em-browser-bar>span:last-child{display:none}.em-store-header{padding:10px 14px}.em-store-header img{width:118px;height:42px}.em-store-header>span{font-size:8px;max-width:130px}.em-store-hero{min-height:300px;padding:26px}.em-store-hero p{font-size:45px}.em-browser figcaption{font-size:9px}.em-detail-card{grid-template-columns:1fr}.em-detail-card>img{height:180px;object-position:center 46%}.em-detail-card>div{padding:22px}.em-underneath{display:block;margin-top:40px}.em-underneath>p{margin-top:12px}.em-story-controls{display:grid;grid-template-columns:1fr}.em-story-controls button{text-align:left;padding:11px 16px}.em-story{padding:22px 18px}.em-story-heading{display:block}.em-story-heading>span{display:block;text-align:left;margin-top:10px}.em-flow{grid-template-columns:1fr;gap:24px}.em-flow li:not(:last-child)::after{display:none}.em-flow h5{margin:8px 0}.em-foundation{padding:20px;gap:12px}.em-foundation>span{display:none}.em-foundation p{flex:auto}.em-foundation a{margin:0}.em-footnote{font-size:9px;gap:10px 18px}}
+@media(forced-colors:active){.em-store-hero::before{background:Canvas;opacity:.9}.em-story-controls button[aria-pressed=true]{outline:2px solid Highlight}.em-browser,.em-story,.em-detail-card,.em-foundation{border:1px solid CanvasText}}
+
+/* Preserve original logo colours; size marks consistently within card artwork. */
+.stack-art>img{position:relative;z-index:1;display:block;width:clamp(64px,8vw,112px);height:clamp(64px,8vw,112px);object-fit:contain;pointer-events:none;user-select:none;filter:drop-shadow(0 3px 8px #070d1640)}
+@media(max-width:700px){.stack-art>img{width:72px;height:72px}}
+@media(forced-colors:active){.stack-art>img{forced-color-adjust:none;filter:none}}
+
+/* Resume and career milestones use the shared palette in both themes. */
+.about-shortcuts,.career-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:18px}
+.resume>.section-lead,.career-goals>.section-lead{margin:32px auto 24px}
+.resume-layout{max-width:1120px;margin:44px auto 0;display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:24px;text-align:left}
+.resume-main,.resume-aside{display:flex;flex-direction:column;gap:24px;min-width:0}
+.career-panel{border:1px solid var(--muted);border-radius:16px;padding:28px;background:var(--paper);overflow-wrap:anywhere}
+.career-panel h3{font:700 20px/1.5 var(--heading);margin-bottom:14px}
+.career-panel p,.career-panel li,.resume-skills{font-size:14px;line-height:1.85}
+.career-panel .career-eyebrow{font:700 11px/1.6 var(--heading);letter-spacing:1.5px;text-transform:uppercase;color:var(--brand-link);margin-bottom:12px}
+.career-meta{display:block;color:var(--muted);font-size:13px;margin-top:8px}
+.career-panel ul{padding-left:20px;margin:14px 0 0}.career-panel li+li{margin-top:10px}
+.career-text-link{display:inline-flex;align-items:center;min-height:44px;color:var(--brand-link);font-weight:700;text-decoration:underline;text-underline-offset:4px;margin-top:12px}
+.career-panel .resume-subheading{margin-top:26px}
+.resume-skills{margin:0}.resume-skills dt{font-weight:700;margin-top:18px}.resume-skills dd{margin:4px 0 0;color:var(--muted)}
+.career-goals{padding-top:30px}.career-plan-note{max-width:660px;margin:0 auto;color:var(--muted);font-size:12px}
+.goals-layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px;max-width:1050px;margin:48px auto;text-align:left}
+.career-column-title{font:700 20px/1.5 var(--heading);margin-bottom:28px}
+.milestone-list{list-style:none;padding:0 0 0 24px;margin:0;border-left:2px solid var(--brand-link)}
+.milestone-list li{position:relative;margin-bottom:30px}.milestone-list li:last-child{margin-bottom:0}
+.milestone-list li::before{content:'';position:absolute;top:6px;left:-31px;width:12px;height:12px;background:var(--brand-link);border:3px solid var(--paper);border-radius:50%;box-shadow:0 0 0 1px var(--brand-link)}
+.milestone-list time{color:var(--brand-link);font:700 12px/1.6 var(--heading)}
+.milestone-list h4{font:700 17px/1.6 var(--heading);margin:8px 0}.milestone-list p{font-size:14px;color:var(--muted);line-height:1.85}
+.career-commitments{max-width:1050px;margin:0 auto;text-align:left}.career-commitments summary{cursor:pointer;font-weight:700;min-height:44px;padding:8px 0}.career-commitments summary:focus-visible{outline:3px solid var(--brand-link);outline-offset:5px}
+@media(min-width:1001px){.header nav{gap:20px}.header{padding-left:5%;padding-right:5%}.wordmark img{width:160px}}
+/* Give all seven destinations room before switching to the mobile menu. */
+@media(min-width:701px) and (max-width:1000px){.header{height:70px;padding:0 25px;background:#070d16}.wordmark img{width:140px}.theme-toggle{margin-right:16px}.menu-toggle{display:flex;flex-direction:column;gap:6px;background:none;border:0;padding:12px 0 12px 12px}.menu-toggle span{display:block;width:27px;height:2px;background:white}.menu-toggle[aria-expanded=true] span:nth-child(1){transform:translateY(8px) rotate(45deg)}.menu-toggle[aria-expanded=true] span:nth-child(2){opacity:0}.menu-toggle[aria-expanded=true] span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}.header nav{position:absolute;top:70px;left:0;right:0;background:#070d16fa;display:none;flex-direction:column;gap:0;padding:12px 25px 20px}.header nav.open{display:flex}.header nav a{padding:12px;text-align:center;width:100%}.header nav .contact-link{margin-top:8px;width:auto}}
+@media(max-width:700px){.resume-layout,.goals-layout{grid-template-columns:minmax(0,1fr);gap:24px}.career-panel{padding:22px}.goals-layout{gap:36px;margin:36px auto}.resume .boxed-title,.career-goals .boxed-title{font-size:18px;letter-spacing:3px;text-indent:3px;padding:20px}.career-actions .bracket-link{min-height:44px;padding:10px 14px}.about-shortcuts{gap:14px}.career-goals{padding-top:15px}}
+@media(max-height:650px) and (max-width:1000px){.header nav{max-height:calc(100dvh - 70px);overflow-y:auto}}
+@media(forced-colors:active){.milestone-list li::before{background:CanvasText;border-color:Canvas;box-shadow:0 0 0 1px CanvasText}}

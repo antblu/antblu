@@ -1,0 +1,41 @@
+Anthony Bluemel
+System Engineer | Systems Administration & Infrastructure Operations
+antblu.net | github.com/antblu | antblu@antblu.net | +1 (314) 874-7670
+
+PROFESSIONAL SUMMARY
+System Engineer with hands-on experience supporting infrastructure, virtualization, Windows and Linux environments, networking, automation, and cloud-connected systems. Experience with OpenTofu/Terraform, Ansible, Bash, virtual machine infrastructure, Grafana monitoring, and Git-based infrastructure workflows. Currently pursuing a Bachelor of Applied Science in Information Technology - System Administration at Ensign College.
+
+TECHNICAL SKILLS
+Operating Systems & Infrastructure: Windows Server, Linux/Debian, Proxmox VE, TrueNAS, NFS
+Automation & Scripting: OpenTofu/Terraform, Ansible, Bash, YAML
+Virtualization & Containers: Proxmox VE, Kubernetes/Talos, Docker
+Cloud: Microsoft Azure, AWS, cloud networking and services
+Monitoring & Observability: Grafana, VictoriaMetrics
+Git & Infrastructure Workflows: Git, GitLab, Argo CD, GitOps
+Networking: OPNsense, Juniper switching, TCP/IP, VLANs, DNS, DHCP, VPNs, TLS
+
+PROFESSIONAL EXPERIENCE
+Principal System Engineer - Emiliany | Part time | October 2026 - Present
+
+System Engineer - Managed Service Provider | Present
+- Support and troubleshoot Windows and Linux systems, networking, virtualization, DNS, VPNs, and cloud-connected infrastructure in an MSP environment.
+- Diagnose infrastructure and service issues across operating systems, networks, virtualized environments, and hosted services.
+- Create technical documentation and use scripting and automation to make recurring administration and troubleshooting tasks more consistent and repeatable.
+
+SELECTED INFRASTRUCTURE PROJECTS
+Homelab Infrastructure & Automation
+- Built and operate a three-node Proxmox VE environment and a five-node Talos Kubernetes cluster supporting virtualized and containerized services.
+- Manage virtual machine and infrastructure resources, storage, networking, service availability, and troubleshooting across the environment.
+- Use OpenTofu/Terraform and GitOps workflows with Argo CD to create repeatable infrastructure and application deployments.
+- Monitor infrastructure and services with Grafana and VictoriaMetrics, troubleshoot availability and performance issues, and manage segmented networking with OPNsense, Juniper switching, VLANs, DNS/DHCP, VPN connectivity, reverse proxies, and TLS.
+
+Windows Server 2025 Administration Labs
+- Created and managed Active Directory organizational units, users, and groups while practicing Windows Server administration in coursework labs.
+- Configured folder structures and NTFS permissions to apply least-privilege access for users and departments.
+
+EDUCATION
+Ensign College - Bachelor of Applied Science in Information Technology - System Administration | Expected 2027
+
+CERTIFICATES & CERTIFICATIONS
+Technical Support Engineer Certificate - Ensign College
+Giving and Receiving Feedback - LinkedIn Learning, 2026

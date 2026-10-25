@@ -7,7 +7,6 @@ function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
   const dark = theme === 'dark';
   themeButton.setAttribute('aria-pressed', String(dark));
-  themeButton.querySelector('.theme-icon').textContent = dark ? '☀' : '☾';
   document.querySelector('meta[name="theme-color"]').content = dark ? '#070d16' : '#dcecff';
 }
 applyTheme(document.documentElement.dataset.theme);

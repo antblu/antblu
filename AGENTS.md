@@ -2,15 +2,15 @@
 
 ## Project Structure & Module Organization
 
-This repository contains Anthony Bluemel’s buildless portfolio website. The editable website lives directly in `portfolio/dist/`; despite its name, this directory is the source served to browsers.
+This repository hosts Anthony Bluemel’s buildless portfolio. Edit `portfolio/dist/` directly: it contains the website source, despite the directory name.
 
-- `index.html`: page structure, personal details, project cards, and contact form.
-- `app.js`: navigation, project filters, dialogs, and email/clipboard interactions.
-- `styles.css`: base layout and responsive styling.
-- `brand.css`: branding overrides, loaded after the base stylesheet.
-- `assets/`: local images, portraits, logos, and SVGs.
+- `index.html`: page content, project cards, blog, and architecture stories.
+- `app.js`: theme, navigation, filters, dialogs, and contact interactions.
+- `stack.js`, `emiliany.js`, `clouds.js`: explorer, case-study enhancements, and WebGL background.
+- `styles.css`: base layout; `brand.css`: branding, theme, and feature overrides.
+- `assets/`: local images, logos, and asset licenses.
 
-Read `portfolio/README.md` for behavior, `portfolio/BRANDING.md` for asset provenance, and `portfolio/VERIFICATION.md` for the existing browser verification checklist. There is no separate source tree or automated test suite.
+Supporting documentation lives in `portfolio/README.md`, `BRANDING.md`, and `VERIFICATION.md`. Root `Dockerfile` and `nginx.conf` serve the site; `.github/workflows/` handles container builds and runner selection. There is no separate application source or test directory.
 
 ## Build, Test, and Development Commands
 
@@ -18,22 +18,29 @@ Run from the repository root:
 
 ```sh
 python3 -m http.server 4173 --directory portfolio/dist
+node --check portfolio/dist/app.js
+git diff --check
 ```
 
-Open `http://localhost:4173` to preview the site. No dependency installation, compilation, or package scripts are required. If Node.js is available, `node --check portfolio/dist/app.js` checks JavaScript syntax; it does not test browser behavior.
+Preview at `http://localhost:4173`. Syntax-check each changed JavaScript file using `node --check`; check whitespace using `git diff --check`. No package installation or compilation is required.
+
+For container verification, supply the Nginx tag configured as `ANTBLU_NGINX_IMAGE_TAG` in `antblu/antalos`’s `apps/variables.yaml`:
+
+```sh
+docker build --build-arg NGINX_IMAGE_TAG=<configured-tag> -t antblu:local .
+docker run --rm -p 8080:8080 antblu:local
+```
+
+The container exposes `/healthz`. CI builds pull requests and publishes images from `main`.
 
 ## Coding Style & Naming Conventions
 
-Use plain HTML, CSS, and browser JavaScript. Follow the existing compact formatting, two-space indentation in expanded HTML/JavaScript blocks, single-quoted JavaScript strings, and semicolons. Use `const` by default, camelCase for JavaScript identifiers, and lowercase hyphenated CSS classes and asset names.
-
-Keep branding changes in `brand.css` where practical. Preserve semantic HTML, accessible labels, keyboard controls, reduced-motion support, and relative asset URLs. Avoid introducing a framework or build pipeline for routine edits.
+Use plain HTML, CSS, and browser JavaScript. Match existing compact CSS and two-space indentation in expanded JavaScript. Use single-quoted JavaScript strings, semicolons, `const` by default, camelCase identifiers, and lowercase hyphenated classes and asset filenames. No formatter or linter is configured. Preserve semantic HTML, keyboard access, reduced-motion support, relative asset paths, and progressive enhancement.
 
 ## Testing Guidelines
 
-No test framework or coverage threshold is configured. Follow `portfolio/VERIFICATION.md`: check navigation, filters, dialog dismissal, form validation, email draft encoding, and clipboard fallback. Review desktop and mobile layouts, including 320px width, and check for overflow, missing assets, and console errors. Playwright was used for previous verification; no runnable harness is included. Record relevant checks and results when behavior changes.
+No automated test harness or coverage threshold is configured. Follow `portfolio/VERIFICATION.md`: check navigation, filters, dialogs, contact validation, email drafts, clipboard fallback, and changed feature interactions. Review both themes and desktop/mobile layouts, including 320px width. Check overflow, missing assets, and console errors. Record results and unverified behavior; previous Playwright checks are documentation, not an included runnable suite.
 
 ## Commit & Pull Request Guidelines
 
-Git history currently contains only `Initial commit`, so no established commit convention exists. Use concise imperative subjects, such as `Fix mobile navigation focus`. Keep changes focused.
-
-Pull requests should explain the change, list verification performed, link relevant issues, and include desktop/mobile screenshots for visual edits. Preserve original portrait assets and design attribution. The contact form opens a local email draft; describe any proposed change to that behavior explicitly.
+History uses concise imperative subjects, such as `Publish portfolio as a containerized static website`; follow that style. Keep commits focused. PRs should explain behavior changes, link relevant issues, list verification, and include screenshots for visual edits. Preserve asset attribution and original portraits. Keep credentials out of browser assets; the contact form opens an email draft locally.
