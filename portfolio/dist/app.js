@@ -89,27 +89,61 @@ document.querySelector('#copy-message').addEventListener('click', async () => {
   }
 });
 
-// Dia-style color sweep, played once when each heading enters the viewport.
+// Cult UI-inspired text entrances, preserving the original semantic text and markup.
 (() => {
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const forcedColors = matchMedia('(forced-colors: active)');
   if (reducedMotion.matches || forcedColors.matches || !('IntersectionObserver' in window)) return;
+  const presets = ['roll', 'whip', 'fade', 'pop', 'fade-up', 'shift-up', 'whip-up', 'calm-up'];
+  const active = new Set();
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      const text = entry.target;
-      text.classList.add('dia-revealing');
-      observer.unobserve(text);
-      text.addEventListener('animationend', () => text.classList.remove('dia-revealing'), { once: true });
+      const element = entry.target;
+      observer.unobserve(element);
+      active.add(element);
+      element.classList.add('text-entering');
+      // Remove animation styles after the longest stagger, including when a tab is backgrounded.
+      setTimeout(() => {
+        element.classList.remove('text-entering');
+        active.delete(element);
+      }, 1500);
     });
-  }, { threshold: 0.25 });
-  document.querySelectorAll('#hero-title, #intro-title, .boxed-title').forEach(heading => {
-    const text = document.createElement('span');
-    text.className = 'dia-text';
-    text.append(...heading.childNodes);
-    heading.append(text);
-    observer.observe(text);
+  }, { threshold: 0.2 });
+  document.querySelectorAll('#hero-title, #intro-title, .boxed-title, .greeting, .role, .section-lead, .em-intro h2').forEach((element, index) => {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        return node.parentElement.closest('[aria-hidden="true"]') || !node.textContent.trim()
+          ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    let wordIndex = 0;
+    nodes.forEach(node => {
+      const fragment = document.createDocumentFragment();
+      node.textContent.split(/(\s+)/).forEach(part => {
+        if (!part.trim()) { fragment.append(document.createTextNode(part)); return; }
+        const word = document.createElement('span');
+        word.className = 'text-enter-word';
+        word.dataset.entrance = presets[(index + wordIndex) % presets.length];
+        word.style.setProperty('--enter-delay', `${Math.min(wordIndex * 45, 450)}ms`);
+        word.textContent = part;
+        fragment.append(word);
+        wordIndex++;
+      });
+      node.replaceWith(fragment);
+    });
+    observer.observe(element);
   });
+  function stopMotion() {
+    if (!reducedMotion.matches && !forcedColors.matches) return;
+    observer.disconnect();
+    active.forEach(element => element.classList.remove('text-entering'));
+    active.clear();
+  }
+  reducedMotion.addEventListener('change', stopMotion);
+  forcedColors.addEventListener('change', stopMotion);
 })();
 
 // Article navigation works as ordinary anchor links without JavaScript.

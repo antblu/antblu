@@ -1,7 +1,7 @@
 /* Buildless procedural cloud background inspired by Aceternity Cloud Shader.
    https://ui.aceternity.com/components/cloud-shader */
 (() => {
-  document.querySelectorAll('.hero, .intro, .paper, .portfolio, footer').forEach(surface => {
+  document.querySelectorAll('.hero, .intro, footer').forEach(surface => {
     surface.classList.add('cloud-surface');
     if (!surface.querySelector(':scope > .cloud-background')) {
       const background = document.createElement('div');

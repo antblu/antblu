@@ -2,6 +2,7 @@
    The semantic image remains the fallback when WebGL or motion is unavailable. */
 document.querySelectorAll('[data-chromatic]').forEach(frame => {
   const photo = frame.querySelector('img');
+  const surface = frame.closest('.photo-surface') || frame;
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const canvas = document.createElement('canvas');
   canvas.setAttribute('aria-hidden', 'true');
@@ -53,13 +54,13 @@ document.querySelectorAll('[data-chromatic]').forEach(frame => {
       gl.uniform2f(uniforms.pointer, x, y);
       gl.uniform1f(uniforms.strength, amount);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
-      canvas.style.transform = `perspective(900px) rotateX(${-y * amount * 4}deg) rotateY(${x * amount * 4}deg)`;
+      // Full-bleed backgrounds stay flush with the section edges.
       if (Math.abs(targetX-x) + Math.abs(targetY-y) + Math.abs(targetAmount-amount) > .001) raf = requestAnimationFrame(draw);
     };
     const schedule = () => { if (!raf) raf = requestAnimationFrame(draw); };
     const resize = () => {
       const rect = frame.getBoundingClientRect();
-      const ratio = Math.min(devicePixelRatio || 1, 2);
+      const ratio = Math.min(devicePixelRatio || 1, 2, 1600 / Math.max(rect.width, rect.height));
       canvas.width = Math.max(1, Math.round(rect.width * ratio));
       canvas.height = Math.max(1, Math.round(rect.height * ratio));
       gl.viewport(0, 0, canvas.width, canvas.height);
@@ -86,7 +87,7 @@ document.querySelectorAll('[data-chromatic]').forEach(frame => {
       resize();
       applyMotion();
     };
-    frame.addEventListener('pointermove', event => {
+    surface.addEventListener('pointermove', event => {
       if (motion.matches || event.pointerType === 'touch') return;
       const rect = frame.getBoundingClientRect();
       targetX = (event.clientX - rect.left) / rect.width * 2 - 1;
@@ -94,8 +95,8 @@ document.querySelectorAll('[data-chromatic]').forEach(frame => {
       targetAmount = 1;
       schedule();
     });
-    frame.addEventListener('pointerleave', reset);
-    frame.addEventListener('pointercancel', reset);
+    surface.addEventListener('pointerleave', reset);
+    surface.addEventListener('pointercancel', reset);
     canvas.addEventListener('webglcontextlost', event => {
       event.preventDefault();
       ready = false;

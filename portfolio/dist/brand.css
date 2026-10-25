@@ -113,11 +113,19 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 @media(prefers-reduced-motion:reduce){.light-rays>span{animation:none;opacity:.35}}
 @media(forced-colors:active){.light-rays{display:none}}
 
-@supports ((background-clip:text) or (-webkit-background-clip:text)){
-  .dia-text.dia-revealing{background-image:linear-gradient(90deg,currentColor 0%,currentColor 33%,#A97CF8 42%,#F38CB8 50%,#FDCC92 58%,transparent 67%);background-size:300% 100%;background-repeat:no-repeat;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:antblu-dia-reveal 1.5s ease-in-out}
-}
-@keyframes antblu-dia-reveal{from{background-position:100% 0}to{background-position:0% 0}}
-@media(prefers-reduced-motion:reduce),(forced-colors:active){.dia-text.dia-revealing{animation:none;background:none;-webkit-text-fill-color:currentColor}}
+/* Word entrances inspired by Cult UI Text Animate; no runtime dependencies. */
+.text-enter-word{display:inline-block;max-width:100%;vertical-align:baseline}
+.text-entering .text-enter-word{animation:antblu-text-enter 780ms cubic-bezier(.22,1,.36,1) both;animation-delay:var(--enter-delay,0ms);transform-origin:50% 80%}
+.text-enter-word[data-entrance="roll"]{--enter-transform:translateY(.65em) rotate(-16deg);--enter-blur:3px}
+.text-enter-word[data-entrance="whip"]{--enter-transform:translateX(-.5em) skewX(-18deg);--enter-blur:6px}
+.text-enter-word[data-entrance="fade"]{--enter-transform:translateY(0);--enter-blur:0px}
+.text-enter-word[data-entrance="pop"]{--enter-transform:scale(.65);--enter-blur:2px}
+.text-enter-word[data-entrance="fade-up"]{--enter-transform:translateY(.55em);--enter-blur:0px}
+.text-enter-word[data-entrance="shift-up"]{--enter-transform:translate(-.2em,.7em);--enter-blur:0px}
+.text-enter-word[data-entrance="whip-up"]{--enter-transform:translateY(.85em) skewY(8deg) scale(.95);--enter-blur:5px}
+.text-enter-word[data-entrance="calm-up"]{--enter-transform:translateY(.25em);--enter-blur:3px}
+@keyframes antblu-text-enter{from{opacity:0;transform:var(--enter-transform);filter:blur(var(--enter-blur))}to{opacity:1;transform:none;filter:blur(0)}}
+@media(prefers-reduced-motion:reduce),(forced-colors:active){.text-entering .text-enter-word{animation:none}}
 
 /* Procedural clouds inspired by https://ui.aceternity.com/components/cloud-shader.
    Radial clouds provide a static fallback when WebGL is unavailable. */
@@ -398,18 +406,64 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 @media(prefers-reduced-motion:reduce){.shimmer-button{transition:none}.shimmer-button::before{animation:none}.shimmer-button:hover,.shimmer-button:active{transform:none}}
 @media(forced-colors:active){.shimmer-button{border:2px solid ButtonText;background:ButtonFace;color:ButtonText;box-shadow:none}.shimmer-button::before,.shimmer-button::after{display:none}}
 
-/* Chromatic photos retain semantic images as static fallbacks. */
-.chromatic-gallery{position:absolute;left:53%;bottom:19%;width:41%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.chromatic-portrait{position:relative;aspect-ratio:4/5;min-width:0;border-radius:18px;overflow:hidden;isolation:isolate;outline:1px solid #ffffff26;outline-offset:-1px}
-.chromatic-portrait>img{width:100%;height:100%;object-fit:cover;object-position:center}
-.chromatic-portrait>canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none}
-.chromatic-portrait.chromatic-ready>canvas{opacity:1}
-@media(min-width:701px) and (max-width:1100px){.chromatic-gallery{left:54%;width:42%;bottom:20%;gap:12px}}
-@media(max-width:700px){.chromatic-gallery{left:50%;top:120px;bottom:auto;width:86%;max-width:420px;transform:translateX(-50%);gap:12px}.chromatic-portrait{border-radius:14px}}
-@media(prefers-reduced-motion:reduce){.chromatic-portrait>canvas{display:none}}
+/* Landscape photos sit behind section content, with theme-aware contrast. */
+.photo-surface{position:relative;isolation:isolate}
+.photo-surface>.photo-background.photo-background{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.photo-background>img,.photo-background>canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none}
+.photo-background>canvas{opacity:0}
+.photo-background.chromatic-ready>canvas{opacity:1}
+.photo-background::after{content:'';position:absolute;inset:0;background:linear-gradient(#edf3f8dc,#edf3f8c9 50%,#edf3f8e8);pointer-events:none}
+[data-theme="dark"] .photo-background::after{background:linear-gradient(#0a1420e6,#0a1420c9 50%,#0a1420ed)}
+.portfolio>.photo-background::after{background:linear-gradient(#070d16ed,#070d16cc,#070d16ed)}
+.photo-surface>.cloud-background{display:none}
+.photo-surface .portfolio-heading{background:transparent}
+@media(prefers-reduced-motion:reduce){.photo-background>canvas{display:none}}
+@media(forced-colors:active){.photo-background{display:none}}
 
 /* Product marks replace the text-only skills badges. */
 .skill-logo{display:block;width:80px;height:80px;object-fit:contain}
 .project .project-brand{display:flex;align-items:center;justify-content:center;gap:12px}
 .project .project-logo{position:static;width:60px;height:40px;object-fit:contain;filter:none}
 @media(max-width:700px){.skill-logo{width:65px;height:65px}}
+
+/* Electric logo: decorative silhouette lightning leaves the original mark readable. */
+.wordmark,.footer-brand{position:relative;isolation:isolate}
+.electric-logo{position:absolute;inset:-15px;width:calc(100% + 30px);height:calc(100% + 30px);pointer-events:none;z-index:1}
+@media(prefers-reduced-motion:reduce),(forced-colors:active){.electric-logo{display:none}}
+
+/* React Bits Flip Card inspired interaction, adapted for the buildless site. */
+.skills .skill-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;max-width:1100px;margin:32px auto 60px}
+.program-card{position:relative;min-width:0;text-align:left;color:#162c46;perspective:1100px}
+.program-tilt{height:100%;transition:transform .25s ease;transform:rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));transform-style:preserve-3d}
+.program-turn{display:grid;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.22,.8,.25,1.12)}
+.program-face{position:relative;padding:26px 22px;border:1px solid #829bb950;border-radius:22px;background:#f3f7fc;box-shadow:0 14px 32px #0002;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.program-front{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;min-height:310px;text-align:center}
+.program-front .skill-logo{width:80px;height:80px;object-fit:contain}
+.program-face h4{font:700 18px/1.35 var(--heading);margin:0}
+.program-hint{font-size:11px;color:#536782}
+.program-back{margin-top:12px}
+.program-back h4{margin:18px 0 14px;font-size:19px}
+.program-back p{font-size:13px;line-height:1.75}
+.program-eyebrow{font:700 10px/1.5 var(--heading);letter-spacing:1px;text-transform:uppercase;color:#526887}
+.program-toggle{position:absolute;inset:0;z-index:3;width:100%;height:100%;border:0;border-radius:22px;background:transparent;touch-action:pan-y}
+.program-toggle span{position:absolute;right:16px;bottom:12px;font-size:22px;color:inherit}
+.program-toggle:focus-visible{outline:3px solid #9868ef;outline-offset:5px}
+.flip-ready .program-face{grid-area:1/1;min-height:340px;padding-bottom:44px}
+.flip-ready .program-back{margin:0;transform:rotateY(180deg)}
+.flip-ready.is-flipped .program-turn{transform:rotateY(180deg)}
+.flip-ready .program-face::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--glare-x,50%) var(--glare-y,0%),#fff 0,transparent 65%);opacity:0;transition:opacity .25s}
+@media(hover:hover){.flip-ready:hover .program-face::after{opacity:.22}.flip-ready:hover .program-tilt{transform:rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) scale(1.03)}}
+[data-theme="dark"] .program-card{color:#edf4ff}
+[data-theme="dark"] .program-face{background:#182537;border-color:#829bb94d;box-shadow:0 14px 32px #0007}
+[data-theme="dark"] .program-hint,[data-theme="dark"] .program-eyebrow{color:#b1c7e2}
+@media(max-width:1000px){.skills .skill-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:650px}}
+@media(max-width:480px){.skills .skill-grid{grid-template-columns:minmax(0,1fr);max-width:340px}.flip-ready .program-face{min-height:310px}}
+@media(prefers-reduced-motion:reduce){.program-tilt,.program-turn{transition:none!important;transform:none!important}.flip-ready .program-face::after{display:none}.flip-ready .program-back{transform:none;visibility:hidden}.flip-ready.is-flipped .program-back{visibility:visible}.flip-ready.is-flipped .program-front{visibility:hidden}}
+@media(forced-colors:active){.program-face{border:1px solid CanvasText;background:Canvas;color:CanvasText}.program-face::after{display:none}.program-hint,.program-eyebrow{color:CanvasText}}
+.skills .skill-content{max-width:1100px}
+
+/* Lightning and particle layers sit above the clouds, behind the content. */
+.cloud-surface>.lightning-background,.cloud-surface>.particles-background{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.cloud-surface>.lightning-background{opacity:.65}
+.cloud-surface>.particles-background{opacity:.8}
+@media(forced-colors:active){.lightning-background,.particles-background{display:none}}
