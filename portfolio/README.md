@@ -10,11 +10,11 @@ Serve `dist/` using `python3 -m http.server 4173 --directory dist`.
 - Figma assets are downloaded locally to `dist/assets/`.
 - Portrait: Anthony’s supplied IMG_4275.HEIC (JPEG-encoded), stored as dist/assets/anthony-bluemel.jpg. The displayed portrait is a transparent cutout at dist/assets/anthony-bluemel-cutout.png; the original is retained separately.
 - Branding: Antalos blue/cyan/navy palette in dist/brand.css; user-supplied antblu logo in dist/assets/antblu-logo.png.
-- The contact form opens an email draft; it does not submit to a server.
+- The contact form submits to the built-in Zammad form channel at https://support.antblu.net and displays the returned ticket number. Name, email, message, and optional phone are included. No API credentials are shipped to the browser. The form channel must be enabled; keep its honeypot and rate limits enabled. A configured CAPTCHA requires adding its challenge UI before submissions can resume. Email and clipboard remain fallback options.
 - Original GitHub project links were verified as public during implementation. The original cards use decorative artwork from the reference; the Emiliany feature uses assets from its source project and links to its storefront, source, documentation, and deployment configuration.
 - The Sites deployment starts owner-private. This does not publish changes to the existing GitHub repository.
 
-Button verification covers desktop/mobile navigation, all project filters, each modal and its close actions, GitHub destinations, native form validation, mailto drafts, and clipboard fallback. The contact form does not send email from a server.
+Button verification covers desktop/mobile navigation, all project filters, each modal and its close actions, GitHub destinations, native form validation, mailto drafts, and clipboard fallback. Ticket creation does not confirm outbound email delivery.
 
 Dark mode follows the visitor’s system preference until the header’s Dark mode toggle is used. The choice is saved locally and synchronized across tabs. Theme colors are in `dist/brand.css`; the initial theme is applied in the document head to avoid a light flash.
 

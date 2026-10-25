@@ -78,14 +78,56 @@ document.querySelectorAll('[data-project]').forEach(button => button.addEventLis
 }));
 document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', event => { if (event.target === dialog) { const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); } });
-document.querySelector('#contact-form').addEventListener('submit', event => {
+document.querySelector('#contact-form').addEventListener('submit', async event => {
   event.preventDefault();
   const form = event.currentTarget;
+  if (form.dataset.sending) return;
   for (const name of ['name', 'message']) { const field = form.elements.namedItem(name); field.setCustomValidity(field.value.trim() ? '' : 'Please fill out this field.'); if (!field.reportValidity()) return; }
   const data = new FormData(form);
-  const body = `Hi Anthony,\n\n${data.get('message').trim()}\n\nFrom: ${data.get('name').trim()}\nEmail: ${data.get('email')}${data.get('phone').trim() ? `\nPhone: ${data.get('phone').trim()}` : ''}`;
-  window.location.href = `mailto:antblu@antblu.net?subject=${encodeURIComponent(`Portfolio inquiry from ${data.get('name').trim()}`)}&body=${encodeURIComponent(body)}`;
-  document.querySelector('#form-status').textContent = 'Your email draft is ready to open. If no email app opens, email antblu@antblu.net directly.';
+  const status = document.querySelector('#form-status');
+  const button = form.querySelector('[type="submit"]');
+  const supportUrl = form.dataset.supportUrl;
+  form.dataset.sending = 'true';
+  button.disabled = true;
+  form.setAttribute('aria-busy', 'true');
+  status.textContent = 'Sending your message…';
+  let submitted = false;
+  try {
+    const fingerprint = crypto.randomUUID();
+    const configResponse = await fetch(`${supportUrl}/api/v1/form_config?fingerprint=${encodeURIComponent(fingerprint)}`, { credentials: 'omit', signal: AbortSignal.timeout(15000) });
+    if (!configResponse.ok) throw new Error('unavailable');
+    const config = await configResponse.json();
+    if (!config.enabled || !config.token || config.spam_protection?.captcha) throw new Error('unavailable');
+    const payload = new FormData();
+    payload.set('fingerprint', fingerprint);
+    payload.set('token', config.token);
+    payload.set('name', data.get('name').trim());
+    payload.set('email', data.get('email').trim());
+    payload.set('title', `antblu.net inquiry from ${data.get('name').trim()}`);
+    payload.set('body', `${data.get('message').trim()}\n\nFrom: ${data.get('name').trim()}\nEmail: ${data.get('email').trim()}${data.get('phone').trim() ? `\nPhone: ${data.get('phone').trim()}` : ''}\nSource: antblu.net contact form`);
+    if (config.spam_protection?.honeypot?.field) payload.set(config.spam_protection.honeypot.field, data.get('zammad_form_url') || '');
+    submitted = true;
+    const response = await fetch(`${supportUrl}/api/v1/form_submit`, { method: 'POST', body: payload, credentials: 'omit', signal: AbortSignal.timeout(30000) });
+    if (!response.ok) throw new Error('unavailable');
+    const result = await response.json();
+    if (!result.ticket?.number) {
+      if (result.errors?.email) {
+        status.textContent = 'Please enter a valid email address that can receive replies.';
+        return;
+      }
+      throw new Error('unavailable');
+    }
+    status.textContent = `Message sent. Your ticket number is #${result.ticket.number}. I’ll reply to your email address.`;
+    form.reset();
+  } catch {
+    status.textContent = submitted
+      ? 'Delivery could not be confirmed. Please avoid resending immediately; your ticket may have been created. You can email antblu@antblu.net for help.'
+      : 'The contact service is unavailable. Your message is still here. Please try later or email antblu@antblu.net.';
+  } finally {
+    delete form.dataset.sending;
+    button.disabled = false;
+    form.removeAttribute('aria-busy');
+  }
 });
 document.querySelectorAll('#contact-form input, #contact-form textarea').forEach(field => field.addEventListener('input', () => field.setCustomValidity('')));
 
