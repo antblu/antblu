@@ -14,7 +14,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="brand.css"><script src="app.js" defer></script><script src="clouds.js" defer></script><script src="lightning.js" defer></script><script src="particles.js" defer></script><script src="stack.js" defer></script><script src="emiliany.js" defer></script><script src="chromatic.js" defer></script><script src="electric-logo.js" defer></script><script src="flip-cards.js" defer></script>
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="brand.css"><link rel="stylesheet" href="homelab.css"><script src="app.js" defer></script><script src="glow-cursor.js" defer></script><script src="clouds.js" defer></script><script src="lightning.js" defer></script><script src="particles.js" defer></script><script src="stack.js" defer></script><script src="emiliany.js" defer></script><script src="chromatic.js" defer></script><script src="electric-logo.js" defer></script><script src="flip-cards.js" defer></script><script src="circular-text.js" defer></script><script src="circular-carousel.js" defer></script>
 </head>
 <body>
 <svg class="squiggly-filters" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false">
@@ -28,10 +28,21 @@
 </svg>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="header">
-  <a class="wordmark" href="#home" aria-label="antblu — Anthony Bluemel, home"><img src="assets/antblu-logo.png" alt="antblu"></a>
   <button class="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false"><svg class="theme-icon theme-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="5"/><path d="M11 1h2v3h-2zm0 19h2v3h-2zM1 11h3v2H1zm19 0h3v2h-3zM3.51 4.93l1.42-1.42 2.12 2.13-1.41 1.41zm13.44 13.43 1.41-1.41 2.13 2.12-1.42 1.42zM3.51 19.07l2.13-2.12 1.41 1.41-2.12 2.13zM16.95 5.64l2.12-2.13 1.42 1.42-2.13 2.12z"/></svg><svg class="theme-icon theme-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.9 13.4A9 9 0 0 1 10.6 3.1a.8.8 0 0 0-1.1-.9A10.2 10.2 0 1 0 21.8 14.5a.8.8 0 0 0-.9-1.1Z"/></svg></button>
-  <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" aria-label="Open navigation"><span></span><span></span><span></span></button>
-  <nav id="navigation" aria-label="Main navigation"><a href="#about">About me</a><a href="#resume">Resume</a><a href="#goals">Goals</a><a href="#portfolio">Portfolio</a><a href="#stack">Stack</a><a href="#blog">Blog</a><a class="contact-link" href="#contact">CONTACT ME</a></nav>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="Open navigation"><span></span><span></span></button>
+  <nav id="navigation" class="bubble-navigation" aria-label="Main navigation">
+    <div class="bubble-list">
+      <a class="wordmark" href="#home" aria-label="antblu — Anthony Bluemel, home"><img src="assets/antblu-logo.png" alt="antblu"></a>
+      <a class="bubble-link" href="#about" style="--bubble-index:1;--bubble-rotation:-8deg;--bubble-hover:#2563eb"><span>About me</span></a>
+      <a class="bubble-link" href="#resume" style="--bubble-index:2;--bubble-rotation:8deg;--bubble-hover:#047857"><span>Resume</span></a>
+      <a class="bubble-link" href="#goals" style="--bubble-index:3;--bubble-rotation:8deg;--bubble-hover:#b45309"><span>Goals</span></a>
+      <a class="bubble-link" href="#portfolio" style="--bubble-index:4;--bubble-rotation:-8deg;--bubble-hover:#b91c1c"><span>Portfolio</span></a>
+      <a class="bubble-link" href="#stack" style="--bubble-index:5;--bubble-rotation:8deg;--bubble-hover:#7c3aed"><span>Stack</span></a>
+      <a class="bubble-link" href="#homelab" style="--bubble-index:6;--bubble-rotation:-8deg;--bubble-hover:#0e7490"><span>Homelab</span></a>
+      <a class="bubble-link" href="#blog" style="--bubble-index:7;--bubble-rotation:8deg;--bubble-hover:#0e7490"><span>Blog</span></a>
+      <a class="bubble-link" href="#contact" style="--bubble-index:8;--bubble-rotation:-8deg;--bubble-hover:#8b3fb0"><span>Contact me</span></a>
+    </div>
+  </nav>
 </header>
 <main id="main">
   <section class="hero" id="home" aria-labelledby="hero-title">
@@ -49,7 +60,7 @@
     <figure class="portrait"><img src="assets/anthony-bluemel-retouched.png" alt="Anthony Bluemel smiling" fetchpriority="high"></figure>
     <div class="progressive-blur" aria-hidden="true"><span style="--blur:0.5px;--start:0%"></span><span style="--blur:1px;--start:10%"></span><span style="--blur:2px;--start:20%"></span><span style="--blur:4px;--start:30%"></span><span style="--blur:8px;--start:40%"></span><span style="--blur:16px;--start:50%"></span><span style="--blur:32px;--start:60%"></span><span style="--blur:64px;--start:70%"></span></div>
   </section>
-  <section class="intro" aria-labelledby="intro-title"><div class="intro-mark" aria-hidden="true">IT</div><div class="intro-inner"><h2 id="intro-title">SYSTEMS. SERVICES. <span class="line-shadow-text">POSSIBILITIES<span class="line-shadow" aria-hidden="true">POSSIBILITIES</span></span>.</h2><p>Infrastructure is where my work begins. I’m Anthony, a System Administrator exploring self-hosted services, repeatable deployments, and automation. This is a home for my public projects and the systems behind them.</p><a class="bracket-link light" href="#about">READ MORE</a></div></section>
+  <section class="intro" aria-labelledby="intro-title"><div class="circular-text" aria-hidden="true"><div class="circular-text-tilt"><svg class="circular-text-ring" viewBox="0 0 200 200"><defs><path id="intro-text-circle" d="M100,100 m0,-78 a78,78 0 1,1 0,156 a78,78 0 1,1 0,-156"/></defs><text textLength="490" lengthAdjust="spacing"><textPath href="#intro-text-circle">SYSTEMS • SERVICES • AUTOMATION • </textPath></text></svg><span class="circular-text-center"><span>ANTBLU</span></span></div></div><div class="intro-inner"><h2 id="intro-title">SYSTEMS. SERVICES. <span class="line-shadow-text">POSSIBILITIES<span class="line-shadow" aria-hidden="true">POSSIBILITIES</span></span>.</h2><p>Infrastructure is where my work begins. I’m Anthony, a System Administrator exploring self-hosted services, repeatable deployments, and automation. This is a home for my public projects and the systems behind them.</p><a class="bracket-link light" href="#about">READ MORE</a></div></section>
   <div class="paper">
   <section class="photo-surface about section" id="about" aria-labelledby="about-title"><div class="photo-background" aria-hidden="true" data-chromatic><img src="assets/mountain-lake.webp" alt="" loading="lazy" decoding="async"></div><h2 class="boxed-title" id="about-title">ABOUT ME</h2><p class="section-lead">I work at the intersection of infrastructure and applications. My public repositories explore how to provision systems, connect services, and make everyday operations more repeatable.</p><div class="about-shortcuts"><a class="bracket-link" href="#resume">VIEW RESUME</a><a class="bracket-link" href="#goals">GOALS &amp; MILESTONES</a><a class="bracket-link" href="#skills">EXPLORE SKILLS</a></div><img class="separator" src="assets/40514.png" alt="">
     <div class="services"><article><img src="assets/ef627.png" alt=""><h3>INFRASTRUCTURE</h3><p>Virtual machines, Kubernetes, and the configuration that connects them. My Antalos project brings these pieces into one documented stack.</p></article><article><img src="assets/0ed91.png" alt=""><h3>AUTOMATION</h3><p>Infrastructure as code and GitOps workflows, with OpenTofu, Ansible, and Argo CD supporting repeatable changes.</p></article><article><img src="assets/779ab.png" alt=""><h3>OPERATIONS</h3><p>Self-hosted applications, identity integration, and clear operating documentation—from deployment to troubleshooting and recovery.</p></article></div><img class="separator" src="assets/40514.png" alt="">
@@ -104,18 +115,18 @@
   </section>
   </div>
   <section class="photo-surface portfolio" id="portfolio" aria-labelledby="portfolio-title"><div class="photo-background" aria-hidden="true"><img src="assets/mountain-lake.webp" alt="" loading="lazy" decoding="async"></div><div class="portfolio-heading"><h2 class="boxed-title" id="portfolio-title">PORTFOLIO</h2></div><div class="filters" role="group" aria-label="Filter projects"><button class="active" data-filter="all" aria-pressed="true">ALL</button><button data-filter="infrastructure" aria-pressed="false">INFRASTRUCTURE</button><button data-filter="applications" aria-pressed="false">APPLICATIONS</button></div>
-    <div class="projects">
+    <div class="projects" id="project-carousel">
       <article class="project em-project" data-category="applications"><img src="assets/emiliany/collection.png" alt="Emiliany jewelry collection artwork" loading="lazy"><div class="project-copy"><span class="eyebrow">featured case study · commerce + infrastructure</span><h3>emiliany.</h3><p>A jewelry storefront. A whole system behind it.</p><div class="project-actions"><a class="bracket-link light" href="#emiliany">EXPLORE THE BUILD ↓</a></div></div></article>
-      <article class="project" data-category="infrastructure"><img src="assets/75480.png" alt="Abstract purple geometric artwork"><div class="project-copy"><span class="eyebrow">infrastructure, self-hosting</span><h3 class="project-brand"><img class="project-logo" src="assets/antalos.svg" alt="" width="60" height="40" loading="lazy">antalos.</h3><p>Talos Kubernetes, Proxmox & GitOps.</p><div class="project-actions"><a class="bracket-link light" href="https://github.com/antblu/antalos" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><button class="bracket-link light" data-project="antalos">MORE</button></div></div></article>
-      <article class="project" data-category="applications"><img src="assets/d6654.png" alt="Neon-lit futuristic landscape"><div class="project-copy"><span class="eyebrow">self-hosted applications</span><h3>cal.diy-OIDC.</h3><p>A public repository for self-hosted scheduling.</p><div class="project-actions"><a class="bracket-link light" href="https://github.com/antblu/cal.diy-OIDC" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><button class="bracket-link light" data-project="cal">MORE</button></div></div></article>
-      <article class="project" data-category="applications"><img src="assets/a1936.png" alt="Moody forest landscape"><div class="project-copy"><span class="eyebrow">browser agents, automation</span><h3>jev-ultrafast.</h3><p>Exploring a dynamic browser-agent action space.</p><div class="project-actions"><a class="bracket-link light" href="https://github.com/antblu/jev-ultrafast" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><button class="bracket-link light" data-project="jev">MORE</button></div></div></article>
-    </div><p id="filter-status" class="sr-only" role="status" aria-live="polite"></p><p class="portfolio-footer"><a href="https://github.com/antblu?tab=repositories" target="_blank" rel="noopener noreferrer">More on GitHub <span aria-hidden="true">↗</span></a></p>
+      <article class="project" data-category="infrastructure"><img src="assets/75480.png" alt="Abstract purple geometric artwork"><div class="project-copy"><span class="eyebrow">infrastructure, self-hosting</span><h3 class="project-brand"><img class="project-logo" src="assets/antalos.svg" alt="" width="60" height="40" loading="lazy">antalos.</h3><p>Talos Kubernetes, Proxmox & GitOps.</p><div class="project-actions"><a class="bracket-link light" href="https://github.com/antblu/antalos" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><a class="bracket-link light" href="https://docs.antblu.net" target="_blank" rel="noopener noreferrer">DOCS ↗</a><button class="bracket-link light" data-project="antalos">MORE</button></div></div></article>
+      <article class="project" data-category="applications"><img class="project-art-logo" src="assets/dashboard-icons/cal-com-light.svg" alt="Cal.com logo — upstream scheduling project"><div class="project-copy"><span class="eyebrow">self-hosted applications</span><h3>cal.diy-OIDC.</h3><p>A public repository for self-hosted scheduling.</p><div class="project-actions"><a class="bracket-link light" href="https://github.com/antblu/cal.diy-OIDC" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><button class="bracket-link light" data-project="cal">MORE</button></div></div></article>
+      <article class="project" data-category="applications"><img class="project-art-logo" src="assets/jev-ultrafast.svg" alt="Jev Ultrafast project wordmark"><div class="project-copy"><span class="eyebrow">browser agents, automation</span><h3>jev-ultrafast.</h3><p>Exploring a dynamic browser-agent action space.</p><div class="project-actions"><a class="bracket-link light" href="https://github.com/antblu/jev-ultrafast" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><button class="bracket-link light" data-project="jev">MORE</button></div></div></article>
+    </div><div class="carousel-controls" hidden><button type="button" data-carousel="prev" aria-label="Previous project">←</button><span class="carousel-position" aria-live="off"></span><button type="button" data-carousel="next" aria-label="Next project">→</button><button type="button" data-carousel="pause" aria-pressed="false">Pause rotation</button></div><p id="filter-status" class="sr-only" role="status" aria-live="polite"></p><p class="portfolio-footer"><a href="https://github.com/antblu?tab=repositories" target="_blank" rel="noopener noreferrer">More on GitHub <span aria-hidden="true">↗</span></a></p>
   </section>
   <section class="photo-surface em-case" id="emiliany" aria-labelledby="em-title"><div class="photo-background" aria-hidden="true"><img src="assets/river-falls.webp" alt="" loading="lazy" decoding="async"></div>
     <div class="em-shell">
       <div class="em-heading"><p class="em-kicker">FEATURED BUILD / EMILIANY</p><p class="em-index">01 — From interface to infrastructure</p></div>
       <div class="em-intro">
-        <div><h2 id="em-title">Fine details.<br><em>Deep infrastructure.</em></h2><p>A jewelry brand on the surface. An interconnected platform underneath. Emiliany brings my application and infrastructure work into the same frame.</p><div class="em-links"><a href="https://emiliany.com" target="_blank" rel="noopener noreferrer">Visit Emiliany ↗</a><a href="https://github.com/antblu/emiliany" target="_blank" rel="noopener noreferrer">Explore the source ↗</a></div></div>
+        <div><h2 id="em-title">Fine details.<br><em>Deep infrastructure.</em></h2><p>A jewelry brand on the surface. An interconnected platform underneath. Emiliany brings my application and infrastructure work into the same frame.</p><div class="em-links"><a href="https://emiliany.com" target="_blank" rel="noopener noreferrer">Visit Emiliany ↗</a></div></div>
         <div class="em-summary"><span>MY WORK</span><p>Storefront implementation, service integration, and infrastructure configuration.</p><div class="em-tags"><span>Next.js</span><span>Medusa</span><span>Kubernetes</span><span>GitOps</span></div></div>
       </div>
       <div class="em-showcase">
@@ -399,6 +410,55 @@
       </article>
     </div>
     <p class="stack-source">Inventory from Antalos application definitions · October 25, 2026. Includes platform services; this is not a live health monitor. <a href="https://github.com/antblu/antalos/tree/main/apps" target="_blank" rel="noopener noreferrer">Browse the stack ↗</a></p>
+  </section>
+  <section class="homelab section" id="homelab" aria-labelledby="homelab-title">
+    <p class="lab-kicker">THE HARDWARE BEHIND ANTALOS</p>
+    <h2 class="boxed-title" id="homelab-title">MY HOMELAB</h2>
+    <p class="section-lead">A compact rack. A place to build, break, and learn.<br>Repurposed hardware connects virtualization, storage, and a segmented network.</p>
+    <div class="lab-content">
+      <div class="lab-overview">
+        <figure class="lab-rack"><a href="assets/homelab/rack-front.webp" aria-label="View the full homelab rack photo"><img src="assets/homelab/rack-front.webp" alt="Front of my rack with patched network cables, NAS, HP Omen, and two Lenovo servers" width="1125" height="1500" loading="lazy" decoding="async"></a><figcaption>12U / 600 mm · Networking above, compute below.</figcaption></figure>
+        <div class="lab-intro">
+          <p class="lab-kicker">SMALL FOOTPRINT, MANY ROLES</p>
+          <h3>A physical home for the virtual stack.</h3>
+          <p>My NavePoint rack brings a dedicated firewall, managed switching, shared storage, and three Proxmox hosts together. Two compact Lenovo edge servers sit side by side, while a repurposed HP Omen adds GPU compute.</p>
+          <p>Buying used, repairing hardware, and reusing parts make the lab an exercise in resourcefulness as much as system administration. A Cat6 patch panel keeps the wiring organized; an APC UPS and rack PDU handle power.</p>
+          <dl class="lab-stats"><div><dt>3</dt><dd>Proxmox hosts</dd></div><div><dt>112 GB</dt><dd>combined host RAM</dd></div><div><dt>10 GbE</dt><dd>SFP+ service links</dd></div></dl>
+          <a class="bracket-link" href="https://homelab.antblu.net" target="_blank" rel="noopener noreferrer">HOMELAB DASHBOARD ↗</a>
+          <p class="lab-note">Private Homelable map · Sign-in required.</p>
+        </div>
+      </div>
+      <div class="lab-heading"><p class="lab-kicker">01 / HARDWARE</p><h3>Each machine has a job.</h3></div>
+      <div class="lab-hardware">
+        <article><span class="lab-label">ROUTING + SWITCHING</span><h4>The network foundation</h4><p>OPNsense runs on a Beikong H31F with an Intel N150, 8 GB RAM, three 2.5 GbE ports, and two SFP+ ports. A Juniper EX3300-24T provides 24 gigabit copper ports and four 10 GbE SFP+ ports.</p><p class="lab-detail">Dedicated firewall · Managed switching</p></article>
+        <article><span class="lab-label">VIRTUALIZATION</span><h4>2 × ThinkSystem SE350</h4><p>Each Lenovo node has a Xeon D-2143IT with 8 cores / 16 threads and 48 GB ECC RAM. Proxmox divides these machines into Talos Kubernetes nodes, Debian workloads, and HAProxy VMs.</p><p class="lab-detail">96 GB ECC RAM across the pair</p></article>
+        <article><span class="lab-label">GPU COMPUTE</span><h4>Repurposed HP Omen</h4><p>An Intel Core i7-9700KF and 16 GB RAM give this host a second life. The VM plan assigns an RTX 3060 with 12 GB VRAM to Debian for LLM inference, alongside Talos control and worker VMs.</p><p class="lab-detail">GPU passthrough · Dedicated inference VM</p></article>
+        <article><span class="lab-label">STORAGE + POWER</span><h4>A dedicated TrueNAS server</h4><p>A Ryzen 3 2200G powers the 2U, four-bay NAS with separate gigabit management and SFP+ connectivity. An APC SUA1500 UPS, AP9630 network card, and 12-outlet PDU round out the supporting hardware.</p><p class="lab-detail">Shared storage · Networked UPS management</p></article>
+      </div>
+      <div class="lab-heading"><p class="lab-kicker">02 / NETWORK DESIGN</p><h3>Separate the traffic by purpose.</h3><p>Management uses dedicated gigabit access links on VLAN 20. The Proxmox hosts carry internal and DMZ service traffic over 10 GbE trunks on VLANs 30 and 40.</p></div>
+      <div class="lab-network" aria-labelledby="lab-network-title">
+        <h4 id="lab-network-title">From the internet to the rack</h4>
+        <ol class="lab-path"><li><span>UPLINK</span><strong>AT&amp;T gateway</strong><small>Internet connection</small></li><li><span>ROUTE + FILTER</span><strong>OPNsense</strong><small>VLAN routing and firewall</small></li><li><span>DISTRIBUTE</span><strong>Juniper EX3300</strong><small>Access ports and tagged trunks</small></li></ol>
+        <div class="lab-branches"><div><span class="lab-label">1 GbE / VLAN 20</span><h5>Management plane</h5><p>Proxmox, Lenovo XCC, TrueNAS, and UPS management interfaces.</p></div><div><span class="lab-label">10 GbE / VLANs 30 + 40</span><h5>Service plane</h5><p>Proxmox VM networks use SFP+ trunks. TrueNAS also connects over SFP+ for storage traffic.</p></div></div>
+        <p class="lab-note">Simplified topology · VLAN roles describe the network plan; firewall policy determines access between segments.</p>
+      </div>
+      <div class="lab-vlans" aria-label="Documented VLAN roles">
+        <article><span>VLAN 10</span><h4>Clients</h4><p>General client internet access.</p></article>
+        <article><span>VLAN 20</span><h4>Management</h4><p>Device administration; outbound internet.</p></article>
+        <article><span>VLAN 30</span><h4>Internal</h4><p>Inward-facing services and connected IoT.</p></article>
+        <article><span>VLAN 40</span><h4>DMZ</h4><p>Outward-facing services in a separate zone.</p></article>
+        <article><span>VLAN 50</span><h4>Offline IoT</h4><p>Internal access with no internet access.</p></article>
+        <article><span>VLAN 60</span><h4>Test</h4><p>Isolated experiments with no network access beyond the segment.</p></article>
+        <article><span>VLAN 100</span><h4>Work apps</h4><p>A separate network for work applications.</p></article>
+      </div>
+      <div class="lab-workloads"><div><p class="lab-kicker">03 / FROM MACHINES TO SERVICES</p><h3>Proxmox → Talos → Antalos</h3><p>The VM worksheet places one Talos control VM and one worker VM on each of the three hosts. The Lenovo nodes also host two HAProxy DMZ VMs and Debian workloads for testing, Jellyfin, and Immich machine learning, with an Intel Arc A310 assigned to the media VM.</p><p>This is where physical networking meets the application stack: Proxmox supplies the virtual machines, Talos runs Kubernetes, and Antalos defines the services above it.</p><a class="bracket-link" href="#stack">EXPLORE THE APPLICATION STACK ↑</a></div></div>
+      <div class="lab-gallery" aria-label="Inside the homelab">
+        <figure><a href="assets/homelab/rack-and-ups.webp"><img src="assets/homelab/rack-and-ups.webp" alt="Open rack cabinet with the APC UPS beside it" width="1125" height="1500" loading="lazy" decoding="async"></a><figcaption>The rack and its power backup.</figcaption></figure>
+        <figure><a href="assets/homelab/nas-interior.webp"><img src="assets/homelab/nas-interior.webp" alt="Open NAS chassis showing the AMD cooler, power supply, and drive bays" width="1125" height="1500" loading="lazy" decoding="async"></a><figcaption>Inside the custom 2U NAS.</figcaption></figure>
+        <figure><a href="assets/homelab/se350-nodes.webp"><img src="assets/homelab/se350-nodes.webp" alt="Two Lenovo ThinkSystem SE350 servers with their covers removed" width="1500" height="1125" loading="lazy" decoding="async"></a><figcaption>Two edge servers, side by side.</figcaption></figure>
+      </div>
+      <p class="lab-source">Based on my hardware inventory, rack layout, network plan, and VM allocation workbook · Reviewed October 2026. Photos show stages of the build. Inventory and planned allocations may differ from the running setup.</p>
+    </div>
   </section>
   <section class="photo-surface blog section" id="blog" aria-labelledby="blog-title"><div class="photo-background" aria-hidden="true"><img src="assets/river-falls.webp" alt="" loading="lazy" decoding="async"></div>
     <h2 class="boxed-title" id="blog-title">BLOG</h2>

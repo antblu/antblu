@@ -1,0 +1,57 @@
+/* Homelab: static hardware and network story, readable without JavaScript. */
+.homelab{background:var(--paper);color:var(--ink)}
+.lab-content{max-width:1120px;margin:56px auto 0;text-align:left}
+.lab-kicker{color:var(--brand-link);font:700 11px/1.6 var(--heading);letter-spacing:2px;margin:0 0 18px}
+.lab-content p{line-height:1.8}
+.lab-content h3{font:700 clamp(24px,3vw,38px)/1.25 var(--heading);letter-spacing:-.6px;margin:0 0 24px}
+.lab-overview{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:54px;align-items:center}
+.lab-content figure{margin:0;min-width:0}
+.lab-content figure a{display:block;border-radius:16px;overflow:hidden;background:#070d16}
+.lab-content figure a:focus-visible{outline:3px solid var(--brand-link);outline-offset:5px}
+.lab-rack img{width:100%;height:auto;display:block}
+.lab-content figcaption{font-size:12px;color:var(--muted);padding:12px 0;line-height:1.6}
+.lab-intro>p:not(.lab-kicker){color:var(--muted);font-size:14px}
+.lab-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:30px 0}
+.lab-stats div{border-top:2px solid var(--brand-link);padding-top:16px}
+.lab-stats dt{font:700 clamp(20px,2.5vw,30px)/1.2 var(--heading);white-space:nowrap}
+.lab-stats dd{margin:8px 0 0;font-size:11px;line-height:1.5;color:var(--muted)}
+.lab-content .bracket-link{display:inline-block;line-height:1.6;font-size:11px;text-align:center}
+.lab-content .lab-note{font-size:12px;color:var(--muted);line-height:1.6;margin:14px 0 0}
+.lab-heading{margin:70px 0 28px;max-width:760px}
+.lab-heading .lab-kicker{margin-bottom:12px}
+.lab-heading h3{margin-bottom:16px}
+.lab-heading>p:last-child:not(.lab-kicker){color:var(--muted);font-size:14px}
+.lab-hardware{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.lab-hardware article,.lab-network,.lab-vlans article{border:1px solid #a9bbce;border-radius:16px;background:#f5f9ff;padding:28px}
+.lab-label,.lab-vlans article>span{font:700 10px/1.6 var(--heading);letter-spacing:1.3px;color:var(--brand-link)}
+.lab-hardware h4{font:700 20px/1.4 var(--heading);margin:12px 0}
+.lab-hardware p{font-size:13px;color:var(--muted);margin:0}
+.lab-hardware .lab-detail{margin-top:20px;padding-top:16px;border-top:1px solid #a9bbce;font-size:11px;color:var(--brand-link)}
+.lab-network h4{font:700 18px/1.4 var(--heading);margin:0 0 24px}
+.lab-path{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.lab-path li{position:relative;padding:20px;border:1px solid #a9bbce;border-radius:10px;background:var(--paper)}
+.lab-path li+li::before{content:'→';position:absolute;left:-24px;top:50%;transform:translateY(-50%);color:var(--brand-link)}
+.lab-path span,.lab-path strong,.lab-path small{display:block}
+.lab-path span{font:700 9px/1.6 var(--heading);letter-spacing:1px;color:var(--brand-link)}
+.lab-path strong{font:700 16px/1.5 var(--heading);margin:9px 0 5px}
+.lab-path small{font-size:12px;line-height:1.6;color:var(--muted)}
+.lab-branches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:24px;padding-top:24px;border-top:2px solid var(--brand-link)}
+.lab-branches>div{padding:0 12px;border-left:2px solid var(--brand-link)}
+.lab-branches h5{font:700 16px/1.5 var(--heading);margin:8px 0}
+.lab-branches p{font-size:13px;margin:0;color:var(--muted)}
+.lab-vlans{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px}
+.lab-vlans article{padding:20px;border-top:3px solid var(--brand-link)}
+.lab-vlans h4{font:700 15px/1.5 var(--heading);margin:10px 0 8px}
+.lab-vlans p{font-size:12px;margin:0;color:var(--muted)}
+.lab-workloads{margin:54px 0;padding:32px;border-left:3px solid var(--brand-link);background:#3488ff0c;border-radius:0 16px 16px 0}
+.lab-workloads p:not(.lab-kicker){font-size:14px;color:var(--muted);max-width:850px}
+.lab-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.lab-gallery img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.lab-gallery figure:first-child img{object-position:center 58%}
+.lab-content .lab-source{margin:28px 0 0;padding-top:24px;border-top:1px solid #a9bbce;color:var(--muted);font-size:11px;line-height:1.8}
+[data-theme="dark"] .lab-hardware article,[data-theme="dark"] .lab-network,[data-theme="dark"] .lab-vlans article{background:#132338;border-color:#435a71}
+[data-theme="dark"] .lab-path li,[data-theme="dark"] .lab-hardware .lab-detail,[data-theme="dark"] .lab-source{border-color:#435a71}
+@media(max-width:1000px){.lab-overview{gap:28px}.lab-vlans{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.lab-content{margin-top:36px}.lab-overview,.lab-hardware,.lab-branches{grid-template-columns:1fr}.lab-rack{max-width:430px;width:100%;justify-self:center}.lab-heading{margin-top:48px}.lab-hardware article,.lab-network{padding:22px}.lab-path{grid-template-columns:1fr;gap:28px}.lab-path li+li::before{content:'↓';left:50%;top:-26px;transform:translateX(-50%)}.lab-gallery{grid-template-columns:1fr;gap:24px}.lab-gallery img{aspect-ratio:4/3}.lab-workloads{padding:24px}.lab-content h3{font-size:26px}}
+@media(max-width:380px){.lab-vlans{grid-template-columns:1fr}.lab-stats{gap:8px}.lab-stats dt{font-size:20px}.lab-content .bracket-link{padding-left:12px;padding-right:12px}}
+@media(forced-colors:active){.lab-hardware article,.lab-network,.lab-path li,.lab-vlans article{border-color:CanvasText}.lab-branches,.lab-branches>div,.lab-workloads,.lab-stats div{border-color:CanvasText}.lab-kicker,.lab-label,.lab-vlans article>span,.lab-path span{color:CanvasText}}

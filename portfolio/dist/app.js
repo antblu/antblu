@@ -27,11 +27,34 @@ window.addEventListener('storage', event => {
 
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#navigation');
-function closeMenu() { navigation.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false'); menuButton.setAttribute('aria-label', 'Open navigation'); }
-menuButton.addEventListener('click', () => { const open = menuButton.getAttribute('aria-expanded') !== 'true'; navigation.classList.toggle('open', open); menuButton.setAttribute('aria-expanded', String(open)); menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation'); });
+// React Bits Bubble Menu adaptation: local CSS provides the spring and stagger.
+const siteHeader = document.querySelector('.header');
+siteHeader.classList.add('bubble-ready');
+navigation.inert = true;
+navigation.setAttribute('aria-hidden', 'true');
+function setMenu(open) {
+  navigation.classList.toggle('open', open);
+  navigation.inert = !open;
+  navigation.setAttribute('aria-hidden', String(!open));
+  menuButton.setAttribute('aria-expanded', String(open));
+  menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+}
+function closeMenu() {
+  const restoreFocus = navigation.contains(document.activeElement);
+  setMenu(false);
+  if (restoreFocus) menuButton.focus();
+}
+menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
 navigation.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-document.addEventListener('keydown', event => { if (event.key === 'Escape' && navigation.classList.contains('open')) { closeMenu(); menuButton.focus(); } });
-matchMedia('(min-width:701px)').addEventListener('change', closeMenu);
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && navigation.classList.contains('open')) {
+    closeMenu();
+    menuButton.focus();
+  }
+});
+siteHeader.addEventListener('focusout', event => {
+  if (event.relatedTarget && !siteHeader.contains(event.relatedTarget)) closeMenu();
+});
 document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
   document.querySelectorAll('[data-filter]').forEach(item => { const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-pressed', String(active)); });
   document.querySelectorAll('.project').forEach(project => { project.hidden = button.dataset.filter !== 'all' && project.dataset.category !== button.dataset.filter; });
@@ -180,4 +203,53 @@ document.querySelector('#copy-message').addEventListener('click', async () => {
     });
   }, { rootMargin: '-15% 0px -45% 0px' });
   links.forEach(link => observer.observe(document.querySelector(link.hash)));
+})();
+
+// Buildless ClickSpark-inspired feedback for deliberate control activations.
+(() => {
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const forcedColors = matchMedia('(forced-colors: active)');
+  const bursts = new Set();
+  const clearBursts = () => {
+    bursts.forEach(burst => burst.remove());
+    bursts.clear();
+  };
+  reducedMotion.addEventListener('change', clearBursts);
+  forcedColors.addEventListener('change', clearBursts);
+  document.addEventListener('visibilitychange', clearBursts);
+  window.addEventListener('scroll', clearBursts, { passive: true });
+
+  document.addEventListener('click', event => {
+    if (reducedMotion.matches || forcedColors.matches || event.button !== 0) return;
+    if (!(event.target instanceof Element)) return;
+    const control = event.target.closest('a[href], button, summary, [role="button"]');
+    if (!control || control.matches(':disabled, [aria-disabled="true"], .stack-handle') ||
+        control.closest('[inert], [data-click-spark="off"]')) return;
+
+    const rect = control.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    const burst = document.createElement('span');
+    burst.className = 'click-spark';
+    burst.setAttribute('aria-hidden', 'true');
+    // Keyboard and assistive activation use the control's center.
+    burst.style.setProperty('--spark-x', `${event.detail === 0 ? rect.left + rect.width / 2 : event.clientX}px`);
+    burst.style.setProperty('--spark-y', `${event.detail === 0 ? rect.top + rect.height / 2 : event.clientY}px`);
+    for (let index = 0; index < 8; index++) {
+      const ray = document.createElement('span');
+      ray.style.setProperty('--spark-angle', `${index * 45}deg`);
+      burst.append(ray);
+    }
+    // Modal controls need their decoration inside the browser's top layer.
+    (control.closest('dialog[open]') || document.body).append(burst);
+    bursts.add(burst);
+    if (bursts.size > 16) {
+      const oldest = bursts.values().next().value;
+      oldest.remove();
+      bursts.delete(oldest);
+    }
+    setTimeout(() => {
+      burst.remove();
+      bursts.delete(burst);
+    }, 500);
+  }, { capture: true });
 })();

@@ -467,3 +467,80 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 .cloud-surface>.lightning-background{opacity:.65}
 .cloud-surface>.particles-background{opacity:.8}
 @media(forced-colors:active){.lightning-background,.particles-background{display:none}}
+
+/* ClickSpark: eight 14px line sparks travel 30px in 500ms. */
+.click-spark{position:fixed;inset:0;overflow:hidden;z-index:2147483647;pointer-events:none;user-select:none;color:#185fae}
+[data-theme="dark"] .click-spark{color:#fff}
+.click-spark>span{position:absolute;left:var(--spark-x);top:calc(var(--spark-y) - 1px);width:14px;height:2px;border-radius:2px;background:currentColor;transform-origin:0 50%;animation:click-spark-ray 500ms cubic-bezier(.16,1,.3,1) both;pointer-events:none}
+@keyframes click-spark-ray{from{opacity:1;transform:rotate(var(--spark-angle)) translateX(0) scaleX(1)}to{opacity:0;transform:rotate(var(--spark-angle)) translateX(30px) scaleX(0)}}
+@media(prefers-reduced-motion:reduce),(forced-colors:active){.click-spark{display:none}}
+
+/* React Bits fluid glow cursor, above the page without intercepting controls. */
+.glow-cursor-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:2147483646;pointer-events:none;mix-blend-mode:screen}
+[data-theme="light"] .glow-cursor-canvas{mix-blend-mode:normal}
+@media(prefers-reduced-motion:reduce),(forced-colors:active){.glow-cursor-canvas{display:none}}
+
+/* Circular text: an original buildless adaptation of the React Bits interaction. */
+.intro .circular-text{position:relative;flex:0 0 200px;width:200px;height:200px;color:#8bbdff;user-select:none;touch-action:pan-y;cursor:grab;perspective:600px}
+.circular-text-tilt{position:relative;width:100%;height:100%;transition:transform .35s}
+.circular-text-ring{display:block;width:100%;height:100%;overflow:visible;fill:currentColor;font:900 24px var(--heading);letter-spacing:0;animation:circular-text-spin 20s linear infinite}
+.circular-text-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font:900 58px/1 var(--heading);pointer-events:none;color:#fff}
+.circular-text-center>span{font:700 10px/2 var(--heading);letter-spacing:3px;color:#8bbdff}
+.circular-text.is-dragging{cursor:grabbing}
+@keyframes circular-text-spin{to{transform:rotate(360deg)}}
+@media(hover:hover){.circular-text:hover .circular-text-tilt{transform:rotateX(20deg)}}
+@media(max-width:700px){.intro .circular-text{flex-basis:150px;width:150px;height:150px;margin:0 auto 26px}.circular-text-center{font-size:44px}}
+@media(prefers-reduced-motion:reduce){.circular-text-ring{animation:none!important}.circular-text-tilt{transition:none;transform:none!important}.intro .circular-text{cursor:default}}
+@media(forced-colors:active){.intro .circular-text,.circular-text-center,.circular-text-center>span{color:CanvasText}}
+.intro{display:flex;align-items:center;gap:clamp(28px,5vw,80px)}
+.intro-inner{min-width:0;flex:1}
+@media(max-width:700px){.intro{flex-direction:column;gap:0}.intro .circular-text{flex-basis:auto}}
+
+/* Circular project carousel: semantic cards remain a grid without JavaScript. */
+.projects .project-art-logo{object-fit:contain;background:#f5f5ed;padding:24px 24px 200px;transform:none}
+.projects .project:has(.project-art-logo):after{background:linear-gradient(transparent 12%,#070d16 48%)}
+.projects .project:has(.project-art-logo) .project-copy{align-self:flex-end}
+.projects.circular-carousel{display:block;position:relative;height:560px;overflow:hidden;perspective:2500px;touch-action:pan-y;cursor:grab;isolation:isolate}
+.circular-carousel .project{position:absolute;left:50%;top:48%;width:min(340px,78vw);height:370px;aspect-ratio:auto;border-radius:12px;background:#070d16;box-shadow:0 18px 50px #0005;backface-visibility:hidden;will-change:transform;animation:carousel-rise 1.4s both}
+.circular-carousel .project-copy{width:100%;padding:24px 16px}
+.circular-carousel .project h3{font-size:23px;letter-spacing:1px}
+.circular-carousel .project-actions{flex-wrap:wrap;gap:10px}
+.circular-carousel .project-actions .bracket-link{padding:5px 10px}
+.circular-carousel .project>img.project-art-logo{padding:24px 24px 200px}
+.carousel-controls{display:flex;align-items:center;justify-content:center;gap:16px;padding:0 16px 32px;color:#d4e8ff;flex-wrap:wrap}
+.carousel-controls[hidden]{display:none}
+.carousel-controls button{min-height:44px;min-width:44px;border:1px solid currentColor;border-radius:24px;background:transparent;color:inherit;padding:8px 16px;font:600 12px var(--heading)}
+.carousel-controls button:disabled{opacity:.4;cursor:default}
+.carousel-position{font-variant-numeric:tabular-nums;min-width:40px;text-align:center}
+@keyframes carousel-rise{from{margin-top:70px;opacity:0}to{margin-top:0}}
+@media(prefers-reduced-motion:reduce){.circular-carousel .project{animation:none}}
+
+/* Bubble Menu adapted from React Bits (MIT); assets/react-bits-LICENSE.md.
+   Preserve the buildless site with CSS spring easing and a 120ms item stagger. */
+.header{justify-content:flex-end;gap:12px;z-index:100}
+.header .theme-toggle{margin:0;width:52px;height:52px;display:flex;align-items:center;justify-content:center;border-radius:50%;padding:0;flex-shrink:0;position:relative;z-index:2}
+.header .menu-toggle{display:none}
+.header.bubble-ready .menu-toggle{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:52px;height:52px;flex-shrink:0;padding:0;border:0;border-radius:50%;background:#fff;color:#111;box-shadow:0 4px 16px #0002}
+.header .menu-toggle span{display:block;width:26px;height:2px;background:currentColor;transition:transform .3s,opacity .3s}
+.header .menu-toggle[aria-expanded=true] span:first-child{transform:translateY(4px) rotate(45deg)}
+.header .menu-toggle[aria-expanded=true] span:last-child{transform:translateY(-4px) rotate(-45deg)}
+.header .bubble-navigation{position:fixed;inset:0;display:flex;align-items:safe center;justify-content:center;max-height:none;padding:110px 5% 48px;background:#dcecffed;overflow-y:auto;overscroll-behavior:contain;gap:0;z-index:1}
+.bubble-list{width:100%;max-width:1200px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 12px;margin:auto}
+.header .bubble-list>a{--bubble-index:0;--bubble-rotation:-8deg;--bubble-hover:#2563eb;min-width:0;width:100%;min-height:120px;display:flex;align-items:center;justify-content:center;padding:22px 14px;border-radius:999px;background:#fff;color:#111;box-shadow:0 4px 14px #0002;font:500 clamp(22px,3.2vw,46px)/1.2 var(--heading);transform:rotate(var(--bubble-rotation));transition:background .3s,color .3s,transform .2s;text-align:center}
+.header .bubble-list>.wordmark{letter-spacing:normal}
+.header .bubble-list>.wordmark img{width:160px;max-width:80%;height:auto}
+.header .bubble-list>a:hover,.header .bubble-list>a:focus-visible{opacity:1;background:var(--bubble-hover);color:#fff;transform:rotate(var(--bubble-rotation)) scale(1.04)}
+.header.bubble-ready .bubble-navigation{visibility:hidden;opacity:0;pointer-events:none;transition:opacity .2s,visibility 0s .2s}
+.header.bubble-ready .bubble-navigation.open{visibility:visible;opacity:1;pointer-events:auto;transition:opacity .2s}
+.header.bubble-ready .bubble-list>a{scale:0;transition:scale .2s,background .3s,color .3s,transform .2s}
+.header.bubble-ready .bubble-navigation.open .bubble-list>a{scale:1;transition:scale .5s cubic-bezier(.175,.885,.32,1.275) calc(var(--bubble-index)*.12s),background .3s,color .3s,transform .2s}
+.header .bubble-link span{opacity:0;translate:0 24px;transition:opacity .15s,translate .15s}
+.header .open .bubble-link span,.header:not(.bubble-ready) .bubble-link span{opacity:1;translate:0;transition:opacity .5s calc(var(--bubble-index)*.12s + .05s),translate .5s calc(var(--bubble-index)*.12s + .05s)}
+[data-theme="dark"] .header .bubble-navigation{background:#070d16f5}
+@media(max-width:700px){.header{padding:0 20px;background:transparent}.header .theme-toggle,.header.bubble-ready .menu-toggle{width:46px;height:46px}.header .bubble-navigation{padding:90px 24px 32px}.bubble-list{grid-template-columns:1fr;gap:12px;max-width:440px}.header .bubble-list>a{min-height:64px;padding:16px;font-size:24px;--bubble-rotation:0deg!important}.header .bubble-list>.wordmark img{width:130px}}
+@media(prefers-reduced-motion:reduce){.header .bubble-navigation,.header .bubble-list>a,.header.bubble-ready .bubble-navigation.open .bubble-list>a,.header .bubble-link span,.header .open .bubble-link span,.header .menu-toggle span{transition:none}}
+@media(forced-colors:active){.header .bubble-list>a,.header.bubble-ready .menu-toggle{border:1px solid ButtonText}.header .bubble-navigation{background:Canvas}}
+/* Keep dismiss/theme controls reachable while the full-screen menu scrolls. */
+.header:has(.bubble-navigation.open) .menu-toggle{position:fixed;top:20px;right:5%}
+.header:has(.bubble-navigation.open) .theme-toggle{position:fixed;top:20px;right:calc(5% + 64px)}
+@media(max-width:700px){.header:has(.bubble-navigation.open) .menu-toggle{top:12px;right:20px}.header:has(.bubble-navigation.open) .theme-toggle{top:12px;right:78px}}
