@@ -44,7 +44,22 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 .portrait{left:48%;width:44%;height:86%;border-radius:0;box-shadow:none}
 .portrait>img{object-fit:contain;object-position:center bottom;transform:none}
 @media(max-width:1100px) and (min-width:701px){.portrait{left:49%;width:49%;height:84%}}
-@media(max-width:700px){.portrait{left:0;bottom:70px;width:100%;height:650px}.portrait>img{object-fit:contain;object-position:center bottom;transform:none}}
+/* Keep the portrait near the top and let the mobile hero grow with its copy. */
+@media(max-width:700px){
+  .hero{height:auto;min-height:0;padding-top:clamp(330px,84vw,440px)}
+  .portrait{top:68px;bottom:auto;left:50%;width:min(100%,480px);height:clamp(410px,128vw,600px);transform:translateX(-50%);-webkit-mask-image:linear-gradient(#000 58%,transparent 96%);mask-image:linear-gradient(#000 58%,transparent 96%)}
+  .portrait>img{object-fit:contain;object-position:center top;transform:none}
+  .hero-copy{position:relative;inset:auto;max-width:none;padding:32px 24px 28px;background:linear-gradient(to bottom,#070d1600,#070d16eb 64px,#070d16 130px)}
+  .greeting{font-size:18px;margin-bottom:8px}
+  .hero h1{font-size:clamp(38px,10.6vw,56px);line-height:1.08;letter-spacing:-1px}
+  .hero h1 br{display:block}
+  .hero .role{font-size:15px;line-height:1.6;margin-top:12px;color:#b7d8ff}
+  .hero .role>span:not(.text-enter-word){display:none}
+  .hero-copy .gradient-pill{min-height:44px;margin-top:20px}
+  .hero-copy .gradient-pill + .socials{margin-top:20px}
+  .socials{gap:12px}
+  .socials a{width:46px;height:46px;border-radius:12px}
+}
 
 /* Trim the lower foreground hand in the hero portrait. */
 .portrait>img{clip-path:inset(0 0 18% 0)}
@@ -93,7 +108,7 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 .progressive-blur>span{position:absolute;inset:0;-webkit-backdrop-filter:blur(var(--blur));backdrop-filter:blur(var(--blur));-webkit-mask-image:linear-gradient(to bottom,transparent var(--start),#000 100%);mask-image:linear-gradient(to bottom,transparent var(--start),#000 100%)}
 /* Keep hero links and copy sharp and interactive above the decorative effect. */
 .hero .hero-copy{z-index:3}
-@media(max-width:700px){.hero>.progressive-blur{bottom:145px;height:160px}}
+@media(max-width:700px){.hero>.progressive-blur{bottom:0;height:120px}}
 @media(forced-colors:active){.hero>.progressive-blur{display:none}}
 
 /* Dia Text Reveal adaptation: lavender, pink, and peach sweep into the theme color. */
@@ -575,3 +590,18 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 .header:has(.bubble-navigation.open) .menu-toggle{position:fixed;top:20px;right:5%}
 .header:has(.bubble-navigation.open) .theme-toggle{position:fixed;top:20px;right:calc(5% + 64px)}
 @media(max-width:700px){.header:has(.bubble-navigation.open) .menu-toggle{top:12px;right:20px}.header:has(.bubble-navigation.open) .theme-toggle{top:12px;right:78px}}
+
+/* More readable copy and comfortable controls on narrow touch screens. */
+@media(max-width:700px){
+  .intro{padding:32px 24px}
+  .intro .circular-text{width:120px;height:120px;margin-bottom:20px}
+  .intro h2{max-width:none;font-size:18px;letter-spacing:1.5px}
+  .intro p,.services p{font-size:14px}
+  .section-lead{font-size:15px}
+  .skill-note,.form-note{font-size:13px}
+  .section .boxed-title{max-width:100%;padding:18px 20px;font-size:clamp(17px,4.6vw,21px);letter-spacing:3px;text-indent:3px;border-width:4px}
+  .about-shortcuts .bracket-link,.intro .bracket-link,.footer-links a{min-height:44px}
+  .footer-links{flex-wrap:wrap;gap:8px 24px}
+  .footer-links a{display:inline-flex;align-items:center}
+  input,textarea,select{font-size:16px}
+}

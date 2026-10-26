@@ -136,6 +136,7 @@ document.addEventListener('click', event => {
 });
 // Cult UI-inspired text entrances, preserving the original semantic text and markup.
 (() => {
+  if (document.body.classList.contains('editorial')) return;
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const forcedColors = matchMedia('(forced-colors: active)');
   if (reducedMotion.matches || forcedColors.matches || !('IntersectionObserver' in window)) return;
