@@ -1,9 +1,9 @@
 Anthony Bluemel
-System Engineer | Systems Administration & Infrastructure Operations
+Principal System Engineer | Systems Administration & Infrastructure Operations
 antblu.net | github.com/antblu | antblu@antblu.net | +1 (314) 874-7670
 
 PROFESSIONAL SUMMARY
-System Engineer with hands-on experience supporting infrastructure, virtualization, Windows and Linux environments, networking, automation, and cloud-connected systems. Experience with OpenTofu/Terraform, Ansible, Bash, virtual machine infrastructure, Grafana monitoring, and Git-based infrastructure workflows. Currently pursuing a Bachelor of Applied Science in Information Technology - System Administration at Ensign College.
+Principal System Engineer with hands-on experience supporting infrastructure, virtualization, Windows and Linux environments, networking, automation, and cloud-connected systems. Experience with OpenTofu/Terraform, Ansible, Bash, virtual machine infrastructure, Grafana monitoring, and Git-based infrastructure workflows. Currently pursuing a Bachelor of Applied Science in Information Technology - System Administration at Ensign College.
 
 TECHNICAL SKILLS
 Operating Systems & Infrastructure: Windows Server, Linux/Debian, Proxmox VE, TrueNAS, NFS
@@ -17,7 +17,7 @@ Networking: OPNsense, Juniper switching, TCP/IP, VLANs, DNS, DHCP, VPNs, TLS
 PROFESSIONAL EXPERIENCE
 Principal System Engineer - Emiliany | Part time | October 2026 - Present
 
-System Engineer - Managed Service Provider | Present
+Principal System Engineer - Vector Digital | July 2025 - Present
 - Support and troubleshoot Windows and Linux systems, networking, virtualization, DNS, VPNs, and cloud-connected infrastructure in an MSP environment.
 - Diagnose infrastructure and service issues across operating systems, networks, virtualized environments, and hosted services.
 - Create technical documentation and use scripting and automation to make recurring administration and troubleshooting tasks more consistent and repeatable.
@@ -38,4 +38,3 @@ Ensign College - Bachelor of Applied Science in Information Technology - System 
 
 CERTIFICATES & CERTIFICATIONS
 Technical Support Engineer Certificate - Ensign College
-Giving and Receiving Feedback - LinkedIn Learning, 2026

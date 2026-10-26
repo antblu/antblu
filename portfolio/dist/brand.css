@@ -344,8 +344,41 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 /* Resume and career milestones use the shared palette in both themes. */
 .about-shortcuts,.career-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:18px}
 .resume>.section-lead,.career-goals>.section-lead{margin:32px auto 24px}
-.resume-layout{max-width:1120px;margin:44px auto 0;display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:24px;text-align:left}
-.resume-main,.resume-aside{display:flex;flex-direction:column;gap:24px;min-width:0}
+/* Original timeline styling inspired by the resume at https://imiles.me/. */
+.resume{--resume-line:#435a7138;--resume-work:var(--brand-link);--resume-education:#087443;--resume-certificate:#8a5908;--resume-project:#6250ab}
+[data-theme="dark"] .resume{--resume-line:#a9bbce38;--resume-education:#66d9a1;--resume-certificate:#edc473;--resume-project:#beadff}
+.resume-summary,.resume-timeline,.resume-toolkit{max-width:1120px;margin:48px auto 0;text-align:left}
+.resume-summary{padding-bottom:32px;border-bottom:1px solid var(--resume-line)}
+.resume-summary h3,.resume-toolkit h3{font:700 20px/1.5 var(--heading);margin-bottom:14px}
+.resume-summary p,.resume-entry-body p,.resume-entry-body li,.resume-skills{font-size:14px;line-height:1.85;color:var(--muted)}
+.resume .career-eyebrow{font:700 11px/1.6 var(--heading);letter-spacing:1.5px;text-transform:uppercase;color:var(--brand-link);margin-bottom:12px}
+.resume-timeline{list-style:none;padding:0}
+.resume-entry{--resume-accent:var(--resume-work);display:grid;grid-template-columns:192px minmax(0,1fr)}
+.resume-entry--education{--resume-accent:var(--resume-education)}
+.resume-entry--certificate{--resume-accent:var(--resume-certificate)}
+.resume-entry--project{--resume-accent:var(--resume-project)}
+.resume-when{padding:0 24px 48px 0}
+.resume-when-inner{position:sticky;top:32px;display:flex;align-items:flex-start;flex-direction:column;gap:12px}
+.resume-period{font-size:13px;line-height:1.5;color:var(--muted)}
+.resume-badge{display:inline-flex;max-width:100%;border:1px solid currentColor;border-radius:6px;padding:4px 8px;color:var(--resume-accent);background:color-mix(in srgb,var(--resume-accent) 8%,transparent);font:700 10px/1.4 var(--heading);letter-spacing:.8px;text-transform:uppercase}
+.resume-entry-body{position:relative;min-width:0;border-left:1px solid var(--resume-line);padding:0 0 48px 32px;overflow-wrap:anywhere}
+.resume-entry-body::before{content:'';position:absolute;top:7px;left:0;transform:translateX(-50%);width:12px;height:12px;border-radius:50%;background:var(--resume-accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--resume-accent) 16%,var(--paper))}
+.resume-entry-body h3{font:700 24px/1.35 var(--heading);letter-spacing:-.6px;margin-bottom:8px}
+.resume-entry-body .career-meta{margin:0 0 12px}
+.resume-entry-body>ul:not(.resume-tags){padding-left:20px;margin:20px 0 0}
+.resume-entry-body>ul:not(.resume-tags) li+li{margin-top:10px}
+.resume-entry-body .resume-tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:14px 0 24px}
+.resume-entry-body .resume-tags li{border:1px solid var(--resume-line);border-radius:999px;background:var(--paper);color:var(--muted);padding:3px 10px;font-size:11px;line-height:1.5;max-width:100%}
+.resume-entry:last-child .resume-entry-body{padding-bottom:12px;border-image:linear-gradient(var(--resume-line),transparent) 1}
+.resume-entry:last-child .resume-when{padding-bottom:0}
+.resume-toolkit{padding-top:32px;border-top:1px solid var(--resume-line)}
+.resume-skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 32px;margin:24px 0 0}
+.resume-skills>div{min-width:0;overflow-wrap:anywhere}
+.resume-skills dt{font-weight:700;color:var(--ink)}
+.resume-skills dd{margin:6px 0 0}
+@media(max-width:767px){.resume-entry{grid-template-columns:minmax(0,1fr);gap:20px}.resume-when{padding:0}.resume-when-inner{position:static;flex-direction:row;align-items:center;flex-wrap:wrap;gap:10px 14px}.resume-entry-body{padding-left:20px;padding-bottom:36px}.resume-entry-body::before{width:8px;height:8px;top:9px;box-shadow:none}.resume-entry-body h3{font-size:21px}.resume-skills{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:450px){.resume-summary,.resume-timeline,.resume-toolkit{margin-top:36px}.resume-skills{grid-template-columns:minmax(0,1fr);gap:20px}.resume-entry-body .resume-tags{gap:6px}.resume-entry-body .resume-tags li{padding:3px 8px}}
+@media(forced-colors:active){.resume{--resume-line:CanvasText;--resume-work:CanvasText;--resume-education:CanvasText;--resume-certificate:CanvasText;--resume-project:CanvasText}.resume-entry-body::before{background:CanvasText;box-shadow:none}.resume-entry:last-child .resume-entry-body{border-image:none}}
 .career-panel{border:1px solid var(--muted);border-radius:16px;padding:28px;background:var(--paper);overflow-wrap:anywhere}
 .career-panel h3{font:700 20px/1.5 var(--heading);margin-bottom:14px}
 .career-panel p,.career-panel li,.resume-skills{font-size:14px;line-height:1.85}
@@ -353,8 +386,6 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 .career-meta{display:block;color:var(--muted);font-size:13px;margin-top:8px}
 .career-panel ul{padding-left:20px;margin:14px 0 0}.career-panel li+li{margin-top:10px}
 .career-text-link{display:inline-flex;align-items:center;min-height:44px;color:var(--brand-link);font-weight:700;text-decoration:underline;text-underline-offset:4px;margin-top:12px}
-.career-panel .resume-subheading{margin-top:26px}
-.resume-skills{margin:0}.resume-skills dt{font-weight:700;margin-top:18px}.resume-skills dd{margin:4px 0 0;color:var(--muted)}
 .career-goals{padding-top:30px}.career-plan-note{max-width:660px;margin:0 auto;color:var(--muted);font-size:12px}
 .goals-layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px;max-width:1050px;margin:48px auto;text-align:left}
 .career-column-title{font:700 20px/1.5 var(--heading);margin-bottom:28px}
@@ -367,7 +398,7 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 @media(min-width:1001px){.header nav{gap:20px}.header{padding-left:5%;padding-right:5%}.wordmark img{width:160px}}
 /* Give all seven destinations room before switching to the mobile menu. */
 @media(min-width:701px) and (max-width:1000px){.header{height:70px;padding:0 25px;background:#070d16}.wordmark img{width:140px}.theme-toggle{margin-right:16px}.menu-toggle{display:flex;flex-direction:column;gap:6px;background:none;border:0;padding:12px 0 12px 12px}.menu-toggle span{display:block;width:27px;height:2px;background:white}.menu-toggle[aria-expanded=true] span:nth-child(1){transform:translateY(8px) rotate(45deg)}.menu-toggle[aria-expanded=true] span:nth-child(2){opacity:0}.menu-toggle[aria-expanded=true] span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}.header nav{position:absolute;top:70px;left:0;right:0;background:#070d16fa;display:none;flex-direction:column;gap:0;padding:12px 25px 20px}.header nav.open{display:flex}.header nav a{padding:12px;text-align:center;width:100%}.header nav .contact-link{margin-top:8px;width:auto}}
-@media(max-width:700px){.resume-layout,.goals-layout{grid-template-columns:minmax(0,1fr);gap:24px}.career-panel{padding:22px}.goals-layout{gap:36px;margin:36px auto}.resume .boxed-title,.career-goals .boxed-title{font-size:18px;letter-spacing:3px;text-indent:3px;padding:20px}.career-actions .bracket-link{min-height:44px;padding:10px 14px}.about-shortcuts{gap:14px}.career-goals{padding-top:15px}}
+@media(max-width:700px){.goals-layout{grid-template-columns:minmax(0,1fr);gap:36px;margin:36px auto}.career-panel{padding:22px}.resume .boxed-title,.career-goals .boxed-title{font-size:18px;letter-spacing:3px;text-indent:3px;padding:20px}.career-actions .bracket-link{min-height:44px;padding:10px 14px}.about-shortcuts{gap:14px}.career-goals{padding-top:15px}}
 @media(max-height:650px) and (max-width:1000px){.header nav{max-height:calc(100dvh - 70px);overflow-y:auto}}
 @media(forced-colors:active){.milestone-list li::before{background:CanvasText;border-color:Canvas;box-shadow:0 0 0 1px CanvasText}}
 
