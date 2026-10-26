@@ -571,3 +571,19 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
   .header .bubble-list>.wordmark img{width:130px}
 }
 @media(forced-colors:active){.portfolio .portfolio-heading .boxed-title{color:CanvasText;border-color:CanvasText;background:Canvas}}
+
+/* React Bits Curved Input: a curved preview with native editing on focus. */
+#contact-form label[hidden]{display:none}
+#contact-form .curved-input{position:relative;min-height:100px;text-align:left}
+.curved-input-art{display:block;width:100%;height:100px;overflow:visible;pointer-events:none}
+.curved-input-band{fill:var(--paper);stroke:var(--brand-link);stroke-width:1.5}
+.curved-input-text{fill:var(--ink);font:500 16px var(--body);white-space:pre}
+.curved-input-art.is-placeholder .curved-input-text{fill:#435a71;font:700 11px var(--heading);letter-spacing:1px}
+[data-theme="dark"] .curved-input-art.is-placeholder .curved-input-text{fill:#a9bbce}
+#contact-form .curved-input input{position:absolute;inset:14px 0 auto;width:100%;height:58px;border:1.5px solid var(--brand-link);border-radius:18px;background:var(--paper);font-size:16px;opacity:0}
+#contact-form .curved-input:focus-within input{opacity:1;outline:3px solid var(--brand-link);outline-offset:4px}
+#contact-form .curved-input:focus-within .curved-input-art{visibility:hidden}
+@media(forced-colors:active){.curved-input-art{display:none}#contact-form .curved-input input{opacity:1;border-color:CanvasText;background:Canvas;color:CanvasText}}
+
+/* The text-only mobile hero no longer reserves space for a portrait. */
+@media(max-width:700px){.hero{padding-top:100px}}

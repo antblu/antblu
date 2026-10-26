@@ -98,3 +98,96 @@
   .lab-intro>p:not(.lab-kicker),.lab-hardware p{font-size:14px}
   .lab-tabs button{overflow-wrap:anywhere}
 }
+
+/* React Bits Accordion Gallery interaction, adapted for the existing hardware content. */
+.lab-hardware .machine-panel{isolation:isolate}
+.lab-hardware .machine-panel::before{display:none}
+.machine-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.lab-hardware .machine-panel::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#06001033,#060010b8 35%,#060010f2)}
+.lab-hardware .machine-copy h4,.lab-hardware .machine-copy p{color:#fff}
+.lab-hardware .machine-copy .lab-label{color:#c9daff}
+.lab-hardware .machine-copy .lab-detail{color:#fff;border-color:#ffffff59}
+.machine-copy[hidden]{display:none}
+.lab-hardware.is-accordion{display:flex;gap:10px;height:460px;perspective:1200px}
+.lab-hardware.is-accordion .machine-panel{flex:1 1 0;min-width:0;padding:0;border-radius:16px;border-color:#ffffff40;transform:rotateY(var(--machine-tilt));transition:flex-grow .6s cubic-bezier(.215,.61,.355,1),transform .6s cubic-bezier(.215,.61,.355,1),border-color .3s}
+.lab-hardware.is-accordion .machine-panel.is-active{flex-grow:3.25;border-color:#fff}
+.is-accordion .machine-photo{width:calc(100% + 70px);max-width:none;left:-35px;filter:grayscale(1) brightness(.65);transform:translateX(var(--machine-drift));transition:filter .6s,transform .6s}
+.is-accordion .is-active .machine-photo{filter:grayscale(0) brightness(1);transform:translateX(0)}
+.is-accordion .machine-copy{position:absolute;bottom:26px;left:26px;right:26px;pointer-events:none;animation:machine-reveal .6s .06s both}
+.is-accordion .machine-copy::before{content:'';display:block;width:36px;height:3px;background:#fff;margin-bottom:18px}
+.is-accordion .machine-copy h4{font-size:clamp(19px,2vw,25px)}
+.is-accordion .machine-copy p{font-size:14px;line-height:1.6}
+.is-accordion .machine-copy .lab-detail{margin-top:16px;padding-top:12px;font-size:12px}
+.machine-toggle{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;border-radius:inherit;background:none;color:#fff;cursor:pointer;text-align:left;font-family:var(--heading);-webkit-tap-highlight-color:transparent}
+.machine-toggle:focus-visible{outline:3px solid #fff;outline-offset:-6px;background:#ffffff0a}
+.machine-title{position:absolute;left:22px;bottom:26px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:18px;font-weight:700;white-space:nowrap;transition:opacity .2s}
+.is-active .machine-title{opacity:0}
+.machine-number{position:absolute;top:22px;left:22px;font-size:12px;letter-spacing:.12em;border-top:2px solid #fff;padding-top:8px}
+@keyframes machine-reveal{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:translateX(0)}}
+@media(max-width:700px){
+  .lab-hardware.is-accordion{flex-direction:column;height:708px;perspective:none}
+  .lab-hardware.is-accordion .machine-panel{flex:0 0 76px;transform:none}
+  .lab-hardware.is-accordion .machine-panel.is-active{flex:1 1 0}
+  .is-accordion .machine-copy{bottom:22px;left:22px;right:22px}
+  .is-accordion .machine-copy h4{font-size:22px}
+  .machine-title{left:52px;right:12px;bottom:auto;top:50%;writing-mode:horizontal-tb;transform:translateY(-50%);font-size:15px;white-space:normal}
+  .machine-number{top:24px;left:18px}
+  .is-accordion .machine-photo{transition:filter .6s,transform .6s}
+}
+@media(prefers-reduced-motion:reduce){
+  .lab-hardware.is-accordion .machine-panel,.is-accordion .machine-photo,.machine-title{transition:none}
+  .lab-hardware.is-accordion .machine-panel{transform:none}
+  .is-accordion .machine-copy{animation:none}
+}
+@media(forced-colors:active){
+  .machine-photo,.lab-hardware .machine-panel::after{display:none}
+  .lab-hardware .machine-copy h4,.lab-hardware .machine-copy p,.lab-hardware .machine-copy .lab-label,.lab-hardware .machine-copy .lab-detail,.machine-toggle{color:CanvasText}
+  .lab-hardware.is-accordion .machine-panel.is-active,.machine-number{border-color:Highlight}
+  .machine-toggle:focus-visible{outline-color:Highlight}
+}
+
+/* React Bits Depth Carousel: a perspective rail for the original homelab photos. */
+.lab-gallery.is-depth{display:block;position:relative;padding:16px 0 24px;overflow:hidden;border:1px solid #435a7140;border-radius:24px;background:radial-gradient(ellipse at 50% 35%,#3488ff16,transparent 70%),var(--paper)}
+.lab-depth-stage{position:relative;height:clamp(300px,42vw,540px);perspective:1400px;transform-style:preserve-3d;touch-action:pan-y;cursor:grab;user-select:none}
+.lab-depth-stage:active{cursor:grabbing}
+.lab-gallery.is-depth figure{position:absolute;top:50%;left:50%;width:330px;height:440px;padding:0;border:1px solid #ffffff40;border-radius:18px;overflow:hidden;background:#070d16;box-shadow:0 30px 60px -20px #070d1699;transform-origin:center;will-change:transform,opacity,filter}
+.lab-gallery.is-depth figure a{height:100%;border-radius:inherit}
+.lab-gallery.is-depth img{width:100%;height:100%;aspect-ratio:auto;object-fit:contain}
+.lab-gallery.is-depth figcaption{position:absolute;bottom:0;left:0;right:0;padding:48px 20px 18px;background:linear-gradient(transparent,#070d16e8);color:#fff;font-size:13px;pointer-events:none}
+.lab-depth-controls{position:relative;display:flex;align-items:center;justify-content:center;gap:18px;margin:8px 16px 0}
+.lab-depth-controls button{display:grid;place-items:center;min-width:44px;min-height:44px;padding:8px;border:1px solid #435a7155;border-radius:50%;background:var(--paper);color:var(--ink);font:600 12px/1 var(--heading);cursor:pointer}
+.lab-depth-controls>button{font-size:22px}
+.lab-depth-dots{display:flex;gap:4px}
+.lab-depth-dots button{border-color:transparent;background:transparent}
+.lab-depth-dots button[aria-pressed="true"]{border-color:var(--brand-link);background:var(--ink);color:var(--paper)}
+.lab-depth-controls button:hover{border-color:var(--brand-link)}
+.lab-depth-controls button:focus-visible,.lab-depth-stage:focus-visible{outline:3px solid var(--brand-link);outline-offset:-3px}
+.lab-content .lab-depth-status{margin:16px 20px 0;text-align:center;color:var(--muted);font-size:12px;line-height:1.6;min-height:3.2em}
+@media(max-width:380px){.lab-depth-controls{gap:0;margin-left:0;margin-right:0}.lab-depth-dots{gap:0}}
+@media(prefers-reduced-motion:reduce){.lab-gallery.is-depth figure{will-change:auto}}
+@media(forced-colors:active){.lab-gallery.is-depth,.lab-depth-controls button{border-color:CanvasText}.lab-depth-dots button[aria-pressed="true"]{outline:2px solid Highlight}.lab-gallery.is-depth figcaption{background:Canvas;color:CanvasText}}
+
+/* React Bits Chroma Grid adaptation; license: assets/react-bits-LICENSE.md. */
+.lab-vlans.chroma-grid{--chroma-x:-9999px;--chroma-y:-9999px;--chroma-power:0;--chroma-r:260px;position:relative;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(180px,calc((100% - 24px)/3))),1fr));gap:12px;margin-top:24px}
+.lab-vlans.chroma-grid .chroma-card{position:relative;isolation:isolate;overflow:hidden;min-width:0;padding:8px;border:1px solid #a9bbce;border-radius:22px;background:linear-gradient(180deg,#fff,#f1f5fb);box-shadow:0 4px 10px -5px #18242f30}
+[data-theme="dark"] .lab-vlans.chroma-grid .chroma-card{border-color:#435a71;background:linear-gradient(180deg,#1a2a40,#101c2d)}
+.chroma-media{position:relative;z-index:1;aspect-ratio:3/2;border-radius:14px;overflow:hidden;background:#0a1221}
+.chroma-media img{display:block;width:100%;height:100%;object-fit:cover;user-select:none}
+.chroma-media .chroma-color{position:absolute;inset:0;opacity:0}
+.lab-vlans .chroma-info{position:relative;z-index:1;padding:16px 12px 18px}
+.lab-vlans .chroma-info h4{font-size:18px;line-height:1.4;margin:8px 0}
+.lab-vlans .chroma-info p{font-size:13px;line-height:1.7}
+.chroma-wash,.chroma-card-glow{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0}
+.chroma-wash{background:radial-gradient(130% 70% at 50% 100%,var(--chroma-accent),transparent 72%)}
+.chroma-card-glow{z-index:2;box-shadow:inset 0 0 0 1px var(--chroma-accent),inset 0 0 16px -8px var(--chroma-accent)}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .chroma-grid.is-chroma .chroma-mono{filter:grayscale(1) brightness(.88)}
+  .chroma-grid.is-chroma .chroma-color,.chroma-grid.is-chroma .chroma-wash,.chroma-grid.is-chroma .chroma-card-glow{-webkit-mask-image:radial-gradient(circle var(--chroma-r) at calc(var(--chroma-x) - var(--chroma-ox,0px)) calc(var(--chroma-y) - var(--chroma-oy,0px)),var(--chroma-stops));mask-image:radial-gradient(circle var(--chroma-r) at calc(var(--chroma-x) - var(--chroma-ox,0px)) calc(var(--chroma-y) - var(--chroma-oy,0px)),var(--chroma-stops))}
+  .chroma-grid.is-chroma .chroma-color,.chroma-grid.is-chroma .chroma-card-glow{opacity:var(--chroma-power)}
+  .chroma-grid.is-chroma .chroma-wash{opacity:calc(.5 * var(--chroma-power) * .45)}
+}
+@media(forced-colors:active){
+  .lab-vlans.chroma-grid .chroma-card{border:1px solid CanvasText;background:Canvas}
+  .chroma-grid .chroma-wash,.chroma-grid .chroma-card-glow,.chroma-grid .chroma-color{display:none}
+  .chroma-grid.is-chroma .chroma-mono{filter:none}
+}

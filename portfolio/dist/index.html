@@ -15,7 +15,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="brand.css"><link rel="stylesheet" href="homelab.css"><link rel="stylesheet" href="emiliany.css"><script src="homelab.js" defer></script><script src="app.js" defer></script><script src="glow-cursor.js" defer></script><script src="clouds.js" defer></script><script src="lightning.js" defer></script><script src="particles.js" defer></script><script src="stack.js" defer></script><script src="emiliany.js" type="module"></script><script src="chromatic.js" defer></script><script src="electric-logo.js" defer></script><script src="flip-cards.js" defer></script><script src="circular-text.js" defer></script><script src="circular-carousel.js" defer></script>
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="brand.css"><link rel="stylesheet" href="homelab.css"><link rel="stylesheet" href="emiliany.css"><script src="homelab.js" defer></script><script src="app.js" defer></script><script src="curved-input.js" defer></script><script src="glow-cursor.js" defer></script><script src="clouds.js" defer></script><script src="lightning.js" defer></script><script src="particles.js" defer></script><script src="stack.js" defer></script><script src="emiliany.js" type="module"></script><script src="chromatic.js" defer></script><script src="electric-logo.js" defer></script><script src="flip-cards.js" defer></script><script src="circular-text.js" defer></script><script src="circular-carousel.js" defer></script>
 </head>
 <body>
 <svg class="squiggly-filters" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false">
@@ -40,7 +40,7 @@
       <a class="bubble-link" href="#portfolio" style="--bubble-index:4;--bubble-rotation:-8deg;--bubble-hover:#b91c1c"><span>Portfolio</span></a>
       <a class="bubble-link" href="#stack" style="--bubble-index:5;--bubble-rotation:8deg;--bubble-hover:#7c3aed"><span>Stack</span></a>
       <a class="bubble-link" href="#homelab" style="--bubble-index:6;--bubble-rotation:-8deg;--bubble-hover:#0e7490"><span>Homelab</span></a>
-      <a class="bubble-link" href="blog.html" style="--bubble-index:7;--bubble-rotation:8deg;--bubble-hover:#0e7490"><span>Blog</span></a>
+      <a class="bubble-link" href="/blog" style="--bubble-index:7;--bubble-rotation:8deg;--bubble-hover:#0e7490"><span>Blog</span></a>
       <a class="bubble-link" href="#contact" style="--bubble-index:8;--bubble-rotation:-8deg;--bubble-hover:#8b3fb0"><span>Contact me</span></a>
     </div>
   </nav>
@@ -58,7 +58,6 @@
       </a>
       <div class="socials"><a href="mailto:antblu@antblu.net" aria-label="Email Anthony"><img src="assets/75c23.svg" alt=""></a><a href="https://github.com/antblu" target="_blank" rel="noopener noreferrer" aria-label="Anthony on GitHub"><img src="assets/87572.svg" alt=""></a><a class="work-shortcut" href="#portfolio" aria-label="Explore my projects">↗</a></div>
     </div>
-    <figure class="portrait"><img src="assets/anthony-bluemel-retouched.png" alt="Anthony Bluemel smiling" fetchpriority="high"></figure>
     <div class="progressive-blur" aria-hidden="true"><span style="--blur:0.5px;--start:0%"></span><span style="--blur:1px;--start:10%"></span><span style="--blur:2px;--start:20%"></span><span style="--blur:4px;--start:30%"></span><span style="--blur:8px;--start:40%"></span><span style="--blur:16px;--start:50%"></span><span style="--blur:32px;--start:60%"></span><span style="--blur:64px;--start:70%"></span></div>
   </section>
   <section class="intro" aria-labelledby="intro-title"><div class="circular-text" aria-hidden="true"><div class="circular-text-tilt"><svg class="circular-text-ring" viewBox="0 0 200 200"><defs><path id="intro-text-circle" d="M100,100 m0,-78 a78,78 0 1,1 0,156 a78,78 0 1,1 0,-156"/></defs><text textLength="490" lengthAdjust="spacing"><textPath href="#intro-text-circle">SYSTEMS • SERVICES • AUTOMATION • </textPath></text></svg><span class="circular-text-center"><span>ANTBLU</span></span></div></div><div class="intro-inner"><h2 id="intro-title">SYSTEMS. SERVICES. <span class="line-shadow-text">POSSIBILITIES<span class="line-shadow" aria-hidden="true">POSSIBILITIES</span></span>.</h2><p>Infrastructure is where my work begins. I’m Anthony, a System Administrator exploring self-hosted services, repeatable deployments, and automation. This is a home for my public projects and the systems behind them.</p><a class="bracket-link light" href="#about">READ MORE</a></div></section>
@@ -430,11 +429,11 @@
         </div>
       </div>
 <div class="lab-tabs" aria-label="Explore the homelab" hidden><button type="button" id="lab-tab-hardware" aria-controls="lab-panel-hardware">Hardware</button><button type="button" id="lab-tab-network" aria-controls="lab-panel-network">Network</button><button type="button" id="lab-tab-workloads" aria-controls="lab-panel-workloads">Workloads</button><button type="button" id="lab-tab-gallery" aria-controls="lab-panel-gallery">Gallery</button></div><div class="lab-panel" id="lab-panel-hardware" data-lab-panel="hardware">      <div class="lab-heading"><p class="lab-kicker">01 / HARDWARE</p><h3>Each machine has a job.</h3></div>
-      <div class="lab-hardware">
-        <article><span class="lab-label">ROUTING + SWITCHING</span><h4>The network foundation</h4><p>OPNsense runs on a Beikong H31F with an Intel N150, 8 GB RAM, three 2.5 GbE ports, and two SFP+ ports. A Juniper EX3300-24T provides 24 gigabit copper ports and four 10 GbE SFP+ ports.</p><p class="lab-detail">Dedicated firewall · Managed switching</p></article>
-        <article><span class="lab-label">VIRTUALIZATION</span><h4>2 × ThinkSystem SE350</h4><p>Each Lenovo node has a Xeon D-2143IT with 8 cores / 16 threads and 48 GB ECC RAM. Proxmox divides these machines into Talos Kubernetes nodes, Debian workloads, and HAProxy VMs.</p><p class="lab-detail">96 GB ECC RAM across the pair</p></article>
-        <article><span class="lab-label">GPU COMPUTE</span><h4>Repurposed HP Omen</h4><p>An Intel Core i7-9700KF and 16 GB RAM give this host a second life. The VM plan assigns an RTX 3060 with 12 GB VRAM to Debian for LLM inference, alongside Talos control and worker VMs.</p><p class="lab-detail">GPU passthrough · Dedicated inference VM</p></article>
-        <article><span class="lab-label">STORAGE + POWER</span><h4>A dedicated TrueNAS server</h4><p>A Ryzen 3 2200G powers the 2U, four-bay NAS with separate gigabit management and SFP+ connectivity. An APC SUA1500 UPS, AP9630 network card, and 12-outlet PDU round out the supporting hardware.</p><p class="lab-detail">Shared storage · Networked UPS management</p></article>
+      <div class="lab-hardware" aria-label="Machine gallery">
+        <article class="machine-panel"><img class="machine-photo" src="assets/homelab/rack-front.webp" alt="" loading="lazy" decoding="async"><div class="machine-copy" id="machine-copy-0"><span class="lab-label">ROUTING + SWITCHING</span><h4>The network foundation</h4><p>OPNsense runs on a Beikong H31F with an Intel N150, 8 GB RAM, three 2.5 GbE ports, and two SFP+ ports. A Juniper EX3300-24T provides 24 gigabit copper ports and four 10 GbE SFP+ ports.</p><p class="lab-detail">Dedicated firewall · Managed switching</p></div></article>
+        <article class="machine-panel"><img class="machine-photo" src="assets/homelab/se350-nodes.webp" alt="" loading="lazy" decoding="async"><div class="machine-copy" id="machine-copy-1"><span class="lab-label">VIRTUALIZATION</span><h4>2 × ThinkSystem SE350</h4><p>Each Lenovo node has a Xeon D-2143IT with 8 cores / 16 threads and 48 GB ECC RAM. Proxmox divides these machines into Talos Kubernetes nodes, Debian workloads, and HAProxy VMs.</p><p class="lab-detail">96 GB ECC RAM across the pair</p></div></article>
+        <article class="machine-panel"><img class="machine-photo" src="assets/homelab/rack-and-ups.webp" alt="" loading="lazy" decoding="async"><div class="machine-copy" id="machine-copy-2"><span class="lab-label">GPU COMPUTE</span><h4>Repurposed HP Omen</h4><p>An Intel Core i7-9700KF and 16 GB RAM give this host a second life. The VM plan assigns an RTX 3060 with 12 GB VRAM to Debian for LLM inference, alongside Talos control and worker VMs.</p><p class="lab-detail">GPU passthrough · Dedicated inference VM</p></div></article>
+        <article class="machine-panel"><img class="machine-photo" src="assets/homelab/nas-interior.webp" alt="" loading="lazy" decoding="async"><div class="machine-copy" id="machine-copy-3"><span class="lab-label">STORAGE + POWER</span><h4>A dedicated TrueNAS server</h4><p>A Ryzen 3 2200G powers the 2U, four-bay NAS with separate gigabit management and SFP+ connectivity. An APC SUA1500 UPS, AP9630 network card, and 12-outlet PDU round out the supporting hardware.</p><p class="lab-detail">Shared storage · Networked UPS management</p></div></article>
       </div>
 </div><div class="lab-panel" id="lab-panel-network" data-lab-panel="network">      <div class="lab-heading"><p class="lab-kicker">02 / NETWORK DESIGN</p><h3>Separate the traffic by purpose.</h3><p>Management uses dedicated gigabit access links on VLAN 20. The Proxmox hosts carry internal and DMZ service traffic over 10 GbE trunks on VLANs 30 and 40.</p></div>
       <div class="lab-network" aria-labelledby="lab-network-title">
@@ -443,17 +442,55 @@
         <div class="lab-branches"><div><span class="lab-label">1 GbE / VLAN 20</span><h5>Management plane</h5><p>Proxmox, Lenovo XCC, TrueNAS, and UPS management interfaces.</p></div><div><span class="lab-label">10 GbE / VLANs 30 + 40</span><h5>Service plane</h5><p>Proxmox VM networks use SFP+ trunks. TrueNAS also connects over SFP+ for storage traffic.</p></div></div>
         <p class="lab-note">Simplified topology · VLAN roles describe the network plan; firewall policy determines access between segments.</p>
       </div>
-      <div class="lab-vlans" aria-label="Documented VLAN roles">
-        <article><span>VLAN 10</span><h4>Clients</h4><p>General client internet access.</p></article>
-        <article><span>VLAN 20</span><h4>Management</h4><p>Device administration; outbound internet.</p></article>
-        <article><span>VLAN 30</span><h4>Internal</h4><p>Inward-facing services and connected IoT.</p></article>
-        <article><span>VLAN 40</span><h4>DMZ</h4><p>Outward-facing services in a separate zone.</p></article>
-        <article><span>VLAN 50</span><h4>Offline IoT</h4><p>Internal access with no internet access.</p></article>
-        <article><span>VLAN 60</span><h4>Test</h4><p>Isolated experiments with no network access beyond the segment.</p></article>
-        <article><span>VLAN 100</span><h4>Work apps</h4><p>A separate network for work applications.</p></article>
+      <div class="lab-vlans chroma-grid" aria-label="Documented VLAN roles">
+        <article class="chroma-card" style="--chroma-accent:#60a5fa" data-chroma-area>
+          <span class="chroma-wash" aria-hidden="true"></span>
+          <div class="chroma-media" data-chroma-area aria-hidden="true"><img class="chroma-mono" src="assets/network/clients.svg" alt="" width="600" height="400" loading="lazy"><img class="chroma-color" src="assets/network/clients.svg" alt="" width="600" height="400" loading="lazy"></div>
+          <div class="chroma-info"><span class="lab-label">VLAN 10</span><h4>Clients</h4><p>General client internet access.</p></div>
+          <span class="chroma-card-glow" aria-hidden="true"></span>
+        </article>
+        <article class="chroma-card" style="--chroma-accent:#a78bfa" data-chroma-area>
+          <span class="chroma-wash" aria-hidden="true"></span>
+          <div class="chroma-media" data-chroma-area aria-hidden="true"><img class="chroma-mono" src="assets/network/management.svg" alt="" width="600" height="400" loading="lazy"><img class="chroma-color" src="assets/network/management.svg" alt="" width="600" height="400" loading="lazy"></div>
+          <div class="chroma-info"><span class="lab-label">VLAN 20</span><h4>Management</h4><p>Device administration; outbound internet.</p></div>
+          <span class="chroma-card-glow" aria-hidden="true"></span>
+        </article>
+        <article class="chroma-card" style="--chroma-accent:#2dd4bf" data-chroma-area>
+          <span class="chroma-wash" aria-hidden="true"></span>
+          <div class="chroma-media" data-chroma-area aria-hidden="true"><img class="chroma-mono" src="assets/network/internal.svg" alt="" width="600" height="400" loading="lazy"><img class="chroma-color" src="assets/network/internal.svg" alt="" width="600" height="400" loading="lazy"></div>
+          <div class="chroma-info"><span class="lab-label">VLAN 30</span><h4>Internal</h4><p>Inward-facing services and connected IoT.</p></div>
+          <span class="chroma-card-glow" aria-hidden="true"></span>
+        </article>
+        <article class="chroma-card" style="--chroma-accent:#fb923c" data-chroma-area>
+          <span class="chroma-wash" aria-hidden="true"></span>
+          <div class="chroma-media" data-chroma-area aria-hidden="true"><img class="chroma-mono" src="assets/network/dmz.svg" alt="" width="600" height="400" loading="lazy"><img class="chroma-color" src="assets/network/dmz.svg" alt="" width="600" height="400" loading="lazy"></div>
+          <div class="chroma-info"><span class="lab-label">VLAN 40</span><h4>DMZ</h4><p>Outward-facing services in a separate zone.</p></div>
+          <span class="chroma-card-glow" aria-hidden="true"></span>
+        </article>
+        <article class="chroma-card" style="--chroma-accent:#f472b6" data-chroma-area>
+          <span class="chroma-wash" aria-hidden="true"></span>
+          <div class="chroma-media" data-chroma-area aria-hidden="true"><img class="chroma-mono" src="assets/network/offline-iot.svg" alt="" width="600" height="400" loading="lazy"><img class="chroma-color" src="assets/network/offline-iot.svg" alt="" width="600" height="400" loading="lazy"></div>
+          <div class="chroma-info"><span class="lab-label">VLAN 50</span><h4>Offline IoT</h4><p>Internal access with no internet access.</p></div>
+          <span class="chroma-card-glow" aria-hidden="true"></span>
+        </article>
+        <article class="chroma-card" style="--chroma-accent:#facc15" data-chroma-area>
+          <span class="chroma-wash" aria-hidden="true"></span>
+          <div class="chroma-media" data-chroma-area aria-hidden="true"><img class="chroma-mono" src="assets/network/test.svg" alt="" width="600" height="400" loading="lazy"><img class="chroma-color" src="assets/network/test.svg" alt="" width="600" height="400" loading="lazy"></div>
+          <div class="chroma-info"><span class="lab-label">VLAN 60</span><h4>Test</h4><p>Isolated experiments with no network access beyond the segment.</p></div>
+          <span class="chroma-card-glow" aria-hidden="true"></span>
+        </article>
+        <article class="chroma-card" style="--chroma-accent:#38bdf8" data-chroma-area>
+          <span class="chroma-wash" aria-hidden="true"></span>
+          <div class="chroma-media" data-chroma-area aria-hidden="true"><img class="chroma-mono" src="assets/network/work-apps.svg" alt="" width="600" height="400" loading="lazy"><img class="chroma-color" src="assets/network/work-apps.svg" alt="" width="600" height="400" loading="lazy"></div>
+          <div class="chroma-info"><span class="lab-label">VLAN 100</span><h4>Work apps</h4><p>A separate network for work applications.</p></div>
+          <span class="chroma-card-glow" aria-hidden="true"></span>
+        </article>
       </div>
 </div><div class="lab-panel" id="lab-panel-workloads" data-lab-panel="workloads">      <div class="lab-workloads"><div><p class="lab-kicker">03 / FROM MACHINES TO SERVICES</p><h3>Proxmox → Talos → Antalos</h3><p>The VM worksheet places one Talos control VM and one worker VM on each of the three hosts. The Lenovo nodes also host two HAProxy DMZ VMs and Debian workloads for testing, Jellyfin, and Immich machine learning, with an Intel Arc A310 assigned to the media VM.</p><p>This is where physical networking meets the application stack: Proxmox supplies the virtual machines, Talos runs Kubernetes, and Antalos defines the services above it.</p><a class="bracket-link" href="#stack">EXPLORE THE APPLICATION STACK ↑</a></div></div>
-</div><div class="lab-panel" id="lab-panel-gallery" data-lab-panel="gallery">      <div class="lab-gallery" aria-label="Inside the homelab">
+</div><div class="lab-panel" id="lab-panel-gallery" data-lab-panel="gallery">
+      <div class="lab-heading"><p class="lab-kicker">04 / INSIDE THE HOMELAB</p><h3>A closer look at the build.</h3><p>From the rack to the machines inside. Select the front photo to open it full size.</p></div>
+      <div class="lab-gallery" aria-label="Inside the homelab">
+        <figure><a href="assets/homelab/rack-front.webp"><img src="assets/homelab/rack-front.webp" alt="Front of the rack with patched network cables, NAS, HP Omen, and Lenovo servers" width="1125" height="1500" loading="lazy" decoding="async"></a><figcaption>Networking above, compute below.</figcaption></figure>
         <figure><a href="assets/homelab/rack-and-ups.webp"><img src="assets/homelab/rack-and-ups.webp" alt="Open rack cabinet with the APC UPS beside it" width="1125" height="1500" loading="lazy" decoding="async"></a><figcaption>The rack and its power backup.</figcaption></figure>
         <figure><a href="assets/homelab/nas-interior.webp"><img src="assets/homelab/nas-interior.webp" alt="Open NAS chassis showing the AMD cooler, power supply, and drive bays" width="1125" height="1500" loading="lazy" decoding="async"></a><figcaption>Inside the custom 2U NAS.</figcaption></figure>
         <figure><a href="assets/homelab/se350-nodes.webp"><img src="assets/homelab/se350-nodes.webp" alt="Two Lenovo ThinkSystem SE350 servers with their covers removed" width="1500" height="1125" loading="lazy" decoding="async"></a><figcaption>Two edge servers, side by side.</figcaption></figure>
