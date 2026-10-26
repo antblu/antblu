@@ -1,0 +1,7 @@
+/* Separate decorative layer preserves existing card artwork, foil and flip faces. */
+.has-border-glow{position:relative}
+.card-border-glow{position:absolute;inset:0;z-index:4;pointer-events:none;border-radius:inherit;padding:2px;background:conic-gradient(from var(--border-glow-angle,0deg),#c084fc,#f472b6 12%,#38bdf8 25%,transparent 35% 85%,#c084fc);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;opacity:var(--border-glow-strength,0);filter:drop-shadow(0 0 5px #f472b6);transition:opacity .2s ease}
+.has-border-glow:focus-within>.card-border-glow{opacity:1;background:linear-gradient(125deg,#c084fc,#f472b6,#38bdf8)}
+[data-theme="dark"] .card-border-glow{filter:drop-shadow(0 0 8px #f472b6)}
+@media(prefers-reduced-motion:reduce){.card-border-glow{transition:none;opacity:0}.has-border-glow:hover>.card-border-glow{opacity:.65;background:linear-gradient(125deg,#c084fc,#f472b6,#38bdf8)}}
+@media(forced-colors:active){.card-border-glow{display:none}}

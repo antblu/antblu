@@ -398,6 +398,19 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 .project .project-logo{position:static;width:60px;height:40px;object-fit:contain;filter:none}
 @media(max-width:700px){.skill-logo{width:65px;height:65px}}
 
+/* Original technical artwork gives each skill its own quiet visual identity. */
+.program-card[aria-label="Kubernetes"]{--skill-art:url("assets/skills/kubernetes.svg")}
+.program-card[aria-label="Proxmox"]{--skill-art:url("assets/skills/proxmox.svg")}
+.program-card[aria-label="Talos Linux"]{--skill-art:url("assets/skills/talos.svg")}
+.program-card[aria-label="Debian"]{--skill-art:url("assets/skills/debian.svg")}
+.program-card[aria-label="OpenTofu"]{--skill-art:url("assets/skills/opentofu.svg")}
+.program-card[aria-label="Ansible"]{--skill-art:url("assets/skills/ansible.svg")}
+.program-card[aria-label="Argo CD"]{--skill-art:url("assets/skills/argo-cd.svg")}
+.program-card[aria-label="Git"]{--skill-art:url("assets/skills/git.svg")}
+ .program-card .program-front{background-image:linear-gradient(0deg,#f3f7fc 0%,#f3f7fce8 28%,#f3f7fc35 100%),var(--skill-art);background-size:cover;background-position:center}
+[data-theme="dark"] .program-card .program-front{background-image:linear-gradient(0deg,#182537 0%,#182537e8 28%,#18253735 100%),var(--skill-art)}
+@media(forced-colors:active){.program-card .program-front{background-image:none}}
+
 /* Electric logo: decorative silhouette lightning leaves the original mark readable. */
 .wordmark,.footer-brand{position:relative;isolation:isolate}
 .electric-logo{position:absolute;inset:-15px;width:calc(100% + 30px);height:calc(100% + 30px);pointer-events:none;z-index:1}
@@ -584,3 +597,20 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 #contact-form .curved-input:focus-within input{opacity:1;outline:3px solid var(--brand-link);outline-offset:4px}
 #contact-form .curved-input:focus-within .curved-input-art{visibility:hidden}
 @media(forced-colors:active){.curved-input-art{display:none}#contact-form .curved-input input{opacity:1;border-color:CanvasText;background:Canvas;color:CanvasText}}
+
+/* Holo Card-inspired service editions: original CSS foil, no per-card WebGL canvas. */
+.stack-card{--foil-x:50%;--foil-y:35%;--foil-rx:0deg;--foil-ry:0deg;border:1px solid transparent;border-radius:14px;background:linear-gradient(#f4f6fb,#e8edf5) padding-box,linear-gradient(135deg,#b6d1e8,#ebc8ef 28%,#92cccd 54%,#eee2b7 75%,#b5bcdf) border-box;box-shadow:0 12px 26px #070d1626,inset 0 0 0 3px #ffffff80}
+[data-theme="dark"] .stack-card{background:linear-gradient(#172638,#111e30) padding-box,linear-gradient(135deg,#6595ae,#a982b1 28%,#569993 54%,#a79d70 75%,#747fba) border-box;border-color:transparent;box-shadow:0 12px 26px #0005,inset 0 0 0 3px #ffffff0b}
+.stack-card .stack-art{border-radius:9px;border:1px solid #dcecff75;background:radial-gradient(ellipse at 50% 40%,hsl(var(--card-hue) 50% 35% / .35),transparent 62%),repeating-conic-gradient(from 22deg at 50% 45%,#ffffff09 0deg 12deg,#0000000a 12deg 24deg),linear-gradient(135deg,#122941,#17233e 50%,#0c2630);box-shadow:inset 0 0 0 3px #dcecff22,inset 0 0 40px #0005;transform:perspective(800px) rotateX(var(--foil-rx)) rotateY(var(--foil-ry));transition:transform .25s ease}
+.stack-art::before,.stack-art::after{content:'';position:absolute;inset:0;pointer-events:none}
+.stack-art::before{background-image:url('assets/stack-foil.svg'),linear-gradient(115deg,#6ae6f5,#abb0fa 20%,#f3a7da 38%,#f7e8ac 53%,#9cf2d2 70%,#87baff 90%);background-size:160px 160px,250% 250%;background-position:center,var(--foil-x) var(--foil-y);background-blend-mode:overlay;mix-blend-mode:screen;opacity:.32;transition:opacity .25s}
+.stack-art::after{z-index:2;background:radial-gradient(ellipse at var(--foil-x) var(--foil-y),#fff8,transparent 55%);opacity:.18;transition:opacity .25s}
+.stack-art i{width:116px;height:116px;border-radius:50%;border:1px solid #dcecff60;transform:none;background:radial-gradient(circle,#10243fe8 45%,#10243f80 70%,transparent 71%);box-shadow:0 0 0 7px #ffffff0a,0 0 0 8px #ffffff25,0 0 28px #0a142077}
+.stack-art>img{filter:drop-shadow(0 4px 6px #0008);width:clamp(64px,7vw,92px);height:clamp(64px,7vw,92px)}
+.stack-art small{z-index:3;left:12px;bottom:10px;color:#eff7ff;font-size:8px;letter-spacing:1.5px;text-shadow:0 1px 3px #000}
+.stack-card .stack-category{border-top:1px solid #899dbb44;padding-top:12px;margin-top:14px;letter-spacing:1.3px}
+.stack-card:focus-within .stack-art::before{opacity:.6}
+@media(hover:hover) and (pointer:fine){.stack-card:hover .stack-art::before{opacity:.68}.stack-card:hover .stack-art::after{opacity:.5}}
+@media(max-width:700px){.stack-art i{width:94px;height:94px}.stack-art>img{width:64px;height:64px}.stack-art small{font-size:7px;letter-spacing:1px;left:8px}}
+@media(prefers-reduced-motion:reduce){.stack-card .stack-art{transform:none;transition:none}.stack-art::before,.stack-art::after{transition:none}}
+@media(forced-colors:active){.stack-card,[data-theme="dark"] .stack-card{background:Canvas;border-color:CanvasText;box-shadow:none}.stack-card .stack-art{background:Canvas;border-color:CanvasText;box-shadow:none;transform:none}.stack-art::before,.stack-art::after{display:none}}

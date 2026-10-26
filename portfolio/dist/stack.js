@@ -1,11 +1,17 @@
 // Original dependency-free interaction inspired by Aceternity Draggable Card.
 (() => {
   const container = document.querySelector('#stack-cards');
+  if (!container) return;
   const cards = [...container.querySelectorAll('.stack-card')];
   const search = document.querySelector('#stack-search');
   const category = document.querySelector('#stack-category');
   const count = document.querySelector('#stack-count');
   const desktop = matchMedia('(min-width: 701px)');
+  const foilMotion = matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+  function clearFoil(card) {
+    ['--foil-x', '--foil-y', '--foil-rx', '--foil-ry'].forEach(name => card.style.removeProperty(name));
+  }
+  foilMotion.addEventListener('change', () => cards.forEach(clearFoil));
   const positions = new Map();
   let layer = 0;
   let drag = null;
@@ -28,6 +34,7 @@
       card.style.removeProperty('--card-y');
       card.style.removeProperty('z-index');
       card.classList.remove('is-dragging');
+      clearFoil(card);
     });
     layer = 0;
   }
@@ -42,6 +49,17 @@
     count.textContent = visible ? `${visible} of ${cards.length} services` : 'No services found. Try another search or category.';
   }
   cards.forEach(card => {
+    card.addEventListener('pointermove', event => {
+      if (!foilMotion.matches || event.pointerType === 'touch' || drag) return;
+      const rect = card.getBoundingClientRect();
+      const x = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
+      const y = Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height));
+      card.style.setProperty('--foil-x', `${x * 100}%`);
+      card.style.setProperty('--foil-y', `${y * 100}%`);
+      card.style.setProperty('--foil-rx', `${(0.5 - y) * 14}deg`);
+      card.style.setProperty('--foil-ry', `${(x - 0.5) * 14}deg`);
+    });
+    card.addEventListener('pointerleave', () => clearFoil(card));
     const handle = card.querySelector('.stack-handle');
     handle.addEventListener('pointerdown', event => {
       if (!desktop.matches || event.button !== 0 || drag) return;
