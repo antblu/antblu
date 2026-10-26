@@ -94,7 +94,7 @@ document.querySelector('#contact-form').addEventListener('submit', async event =
   let submitted = false;
   try {
     const fingerprint = crypto.randomUUID();
-    const configResponse = await fetch(`${supportUrl}/api/v1/form_config?fingerprint=${encodeURIComponent(fingerprint)}`, { credentials: 'omit', signal: AbortSignal.timeout(15000) });
+    const configResponse = await fetch(`${supportUrl}/api/v1/form_config`, { method: 'POST', body: new URLSearchParams({ fingerprint }), credentials: 'omit', signal: AbortSignal.timeout(15000) });
     if (!configResponse.ok) throw new Error('unavailable');
     const config = await configResponse.json();
     if (!config.enabled || !config.token || config.spam_protection?.captcha) throw new Error('unavailable');
@@ -134,26 +134,6 @@ document.querySelectorAll('#contact-form input, #contact-form textarea').forEach
 document.addEventListener('click', event => {
   if (navigation.classList.contains('open') && !navigation.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
 });
-document.querySelector('#copy-message').addEventListener('click', async () => {
-  const form = document.querySelector('#contact-form');
-  for (const name of ['name', 'message']) {
-    const field = form.elements.namedItem(name);
-    field.setCustomValidity(field.value.trim() ? '' : 'Please fill out this field.');
-  }
-  if (!form.reportValidity()) return;
-  const data = new FormData(form);
-  const message = `To: antblu@antblu.net\nSubject: Portfolio inquiry from ${data.get('name').trim()}\n\nHi Anthony,\n\n${data.get('message').trim()}\n\nFrom: ${data.get('name').trim()}\nEmail: ${data.get('email')}${data.get('phone').trim() ? `\nPhone: ${data.get('phone').trim()}` : ''}`;
-  const status = document.querySelector('#form-status');
-  try {
-    await navigator.clipboard.writeText(message);
-    status.textContent = 'Message copied. Paste it into your email service and send it to antblu@antblu.net.';
-  } catch {
-    status.textContent = 'Clipboard access is unavailable. Select and copy your message below, then email antblu@antblu.net.';
-    const field = form.elements.namedItem('message');
-    field.focus(); field.select();
-  }
-});
-
 // Cult UI-inspired text entrances, preserving the original semantic text and markup.
 (() => {
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
