@@ -608,6 +608,20 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 .stack-art i{width:116px;height:116px;border-radius:50%;border:1px solid #dcecff60;transform:none;background:radial-gradient(circle,#10243fe8 45%,#10243f80 70%,transparent 71%);box-shadow:0 0 0 7px #ffffff0a,0 0 0 8px #ffffff25,0 0 28px #0a142077}
 .stack-art>img{filter:drop-shadow(0 4px 6px #0008);width:clamp(64px,7vw,92px);height:clamp(64px,7vw,92px)}
 .stack-art small{z-index:3;left:12px;bottom:10px;color:#eff7ff;font-size:8px;letter-spacing:1.5px;text-shadow:0 1px 3px #000}
+
+/* Keep the longer explanations comfortable to read. */
+body{font-size:16px}
+.intro p{font-size:17px;line-height:1.7}
+.section-lead{font-size:17px;line-height:1.7}
+.services p,.program-back p,.resume-summary p,.resume-entry-body p,.resume-entry-body li,.resume-skills,.milestone-list p{font-size:16px}
+.skill-note,.career-plan-note,.resume-period,.career-meta,.blog-prose,.blog-toc nav,.blog-author p{font-size:15px}
+.resume-entry-body .resume-tags li,.blog-kicker,.blog-cover>span,.stack-help,.stack-source{font-size:13px}
+.stack-description,.stack-category{font-size:13px}
+.filters button{font-size:13px}
+@media(max-width:700px){
+  .intro p,.services p,.section-lead,.program-back p{font-size:16px}
+  .filters button{font-size:12px}
+}
 .stack-card .stack-category{border-top:1px solid #899dbb44;padding-top:12px;margin-top:14px;letter-spacing:1.3px}
 .stack-card:focus-within .stack-art::before{opacity:.6}
 @media(hover:hover) and (pointer:fine){.stack-card:hover .stack-art::before{opacity:.68}.stack-card:hover .stack-art::after{opacity:.5}}

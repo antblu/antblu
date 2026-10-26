@@ -45,3 +45,8 @@
 @media(max-width:700px){.em-bounce-cards{gap:18px;padding:12px 4px;margin:18px 0 24px}.em-bounce-cards li{margin:0;padding:22px;transform:none}.em-bounce-cards li[data-bounce-active]{transform:none}}
 @media(prefers-reduced-motion:reduce){.em-bounce-cards li,.em-bounce-cards li[data-bounce-active]{transform:none;animation:none;transition:none}}
 @media(forced-colors:active){.em-bounce-cards li{border:2px solid CanvasText;box-shadow:none}}
+
+/* Reading copy should remain legible beside the detailed service diagrams. */
+.em-intro>p:not(.em-overline),.em-system-heading>p,.em-service p,.em-journey-heading>p:last-child,.em-journey-intro p,.em-steps p,.em-accordion-panel p,.em-explanation>p,.em-foundation p{font-size:15px}
+.em-kicker,.em-index,.em-overline,.em-role>span,.em-service-label,.em-role p,.em-footnote,.em-visual figcaption,.em-visual-caption>span{font-size:12px}
+.em-accordion-trigger,.em-explanation summary,.em-foundation a{font-size:14px}

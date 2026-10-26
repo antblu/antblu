@@ -99,6 +99,7 @@
   .lab-tabs button{overflow-wrap:anywhere}
 }
 
+
 /* React Bits Accordion Gallery interaction, adapted for the existing hardware content. */
 .lab-hardware .machine-panel{isolation:isolate}
 .lab-hardware .machine-panel::before{display:none}
@@ -191,3 +192,10 @@
   .chroma-grid .chroma-wash,.chroma-grid .chroma-card-glow,.chroma-grid .chroma-color{display:none}
   .chroma-grid.is-chroma .chroma-mono{filter:none}
 }
+
+/* Body copy and captions across the hardware story. */
+.lab-intro>p:not(.lab-kicker),.lab-heading>p:last-child:not(.lab-kicker),.lab-hardware p,.lab-branches p,.lab-vlans p,.lab-workloads p:not(.lab-kicker){font-size:15px}
+.lab-content figcaption,.lab-content .lab-source,.lab-content .lab-note,.lab-hardware .lab-detail,.lab-stats dd,.lab-path small{font-size:13px}
+.lab-kicker,.lab-label,.lab-vlans article>span,.lab-path span{font-size:12px}
+.lab-tabs button,.lab-content .bracket-link{font-size:13px}
+.lab-vlans .chroma-info p{font-size:15px}
