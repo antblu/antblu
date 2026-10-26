@@ -1,0 +1,10 @@
+{
+  "name": "antblu-emiliany-components",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild vendor.js --bundle --minify --format=esm --target=es2020 --define:process.env.NODE_ENV=\"\\\"production\\\"\" --legal-comments=external --outfile=../dist/assets/vendor/emiliany-vendor.js"
+  },
+  "dependencies": { "@base-ui/react": "1.9.0", "react": "19.2.0", "react-dom": "19.2.0" },
+  "devDependencies": { "esbuild": "0.25.11", "playwright": "1.56.1" }
+}

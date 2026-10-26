@@ -27,3 +27,10 @@ Emiliany case study (`#emiliany`): a featured application card leads to a brand 
 Resume (`#resume`) and career milestones (`#goals`): the web resume covers professional experience, projects, education, earned certificates, and technical skills. A plain-text resume is retained at `dist/assets/documents/anthony-bluemel-resume.txt`; the page does not show a download button. The Emiliany role is Principal System Engineer, part time, October 2026–Present. Eight planned milestones retain the dates supplied in the career development plan, and the native disclosure lists ongoing commitments. Future certification and role targets are separate from earned credentials. Source worksheet prompts and job-posting requirements are not portfolio content. The main navigation switches to a collapsible menu at 1000px to accommodate Resume and Goals links.
 
 Homelab (`#homelab`): physical hardware, a static network topology, seven documented VLAN roles, VM placement, and four supplied build photos. Content lives in `dist/index.html`, styles in `dist/homelab.css`, and optimized photos plus source notes in `dist/assets/homelab/`. Native image links open larger photos without JavaScript. The section uses the owner's inventory workbook as a documented snapshot; it does not poll the private Homelable dashboard. Hardware worksheet discrepancies and photo attribution are recorded in the asset README.
+
+### Featured Emiliany components
+
+The featured build uses a small React island with locally bundled Base UI Tabs and
+Accordion. Edit its content in `dist/index.html`, behavior in `dist/emiliany.js`
+and styles in `dist/emiliany.css`. Serving remains buildless; only library upgrades
+need the optional bundle workflow in [components/README.md](components/README.md).

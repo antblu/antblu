@@ -76,9 +76,9 @@ document.querySelectorAll('[data-project]').forEach(button => button.addEventLis
   document.querySelector('#dialog-tags').replaceChildren(...project.tags.map(tag => { const item = document.createElement('span'); item.textContent = tag; return item; }));
   dialog.showModal();
 }));
-document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-dialog.addEventListener('click', event => { if (event.target === dialog) { const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); } });
-document.querySelector('#contact-form').addEventListener('submit', async event => {
+document.querySelector('.dialog-close')?.addEventListener('click', () => dialog.close());
+dialog?.addEventListener('click', event => { if (event.target === dialog) { const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); } });
+document.querySelector('#contact-form')?.addEventListener('submit', async event => {
   event.preventDefault();
   const form = event.currentTarget;
   if (form.dataset.sending) return;
@@ -194,6 +194,7 @@ document.addEventListener('click', event => {
 // Article navigation works as ordinary anchor links without JavaScript.
 (() => {
   const toc = document.querySelector('.blog-toc');
+  if (!toc) return;
   const links = [...toc.querySelectorAll('a')];
   const mobile = matchMedia('(max-width:700px)');
   function updateToc() { toc.open = !mobile.matches; }

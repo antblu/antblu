@@ -55,3 +55,46 @@
 @media(max-width:700px){.lab-content{margin-top:36px}.lab-overview,.lab-hardware,.lab-branches{grid-template-columns:1fr}.lab-rack{max-width:430px;width:100%;justify-self:center}.lab-heading{margin-top:48px}.lab-hardware article,.lab-network{padding:22px}.lab-path{grid-template-columns:1fr;gap:28px}.lab-path li+li::before{content:'↓';left:50%;top:-26px;transform:translateX(-50%)}.lab-gallery{grid-template-columns:1fr;gap:24px}.lab-gallery img{aspect-ratio:4/3}.lab-workloads{padding:24px}.lab-content h3{font-size:26px}}
 @media(max-width:380px){.lab-vlans{grid-template-columns:1fr}.lab-stats{gap:8px}.lab-stats dt{font-size:20px}.lab-content .bracket-link{padding-left:12px;padding-right:12px}}
 @media(forced-colors:active){.lab-hardware article,.lab-network,.lab-path li,.lab-vlans article{border-color:CanvasText}.lab-branches,.lab-branches>div,.lab-workloads,.lab-stats div{border-color:CanvasText}.lab-kicker,.lab-label,.lab-vlans article>span,.lab-path span{color:CanvasText}}
+
+/* Original buildless treatments informed by Magic UI Bento Grid and shadcn Tabs. */
+.homelab{background:radial-gradient(ellipse at 0 15%,#3488ff12,transparent 55%),var(--paper)}
+.lab-overview{gap:20px;align-items:stretch;grid-template-columns:minmax(0,2fr) minmax(0,3fr)}
+.lab-rack{position:relative;border-radius:24px;overflow:hidden;background:#070d16}
+.lab-rack a{height:100%;border-radius:24px!important}
+.lab-rack img{height:100%;max-height:590px;object-fit:cover}
+.lab-rack figcaption{position:absolute;bottom:0;left:0;right:0;padding:36px 24px 20px;color:#fff;background:linear-gradient(transparent,#070d16)}
+.lab-intro{padding:clamp(22px,3vw,42px);border:1px solid #435a7140;border-radius:24px;background:linear-gradient(135deg,#3488ff10,transparent)}
+.lab-stats{gap:10px;margin-bottom:0}
+.lab-stats div{border:1px solid #435a7140;border-radius:12px;padding:18px 12px;background:var(--paper)}
+.lab-tabs{display:flex;gap:5px;padding:6px;margin:36px 0 24px;border:1px solid #435a7140;border-radius:16px;background:#3488ff0c;width:fit-content;max-width:100%}
+.lab-tabs[hidden],.lab-panel[hidden]{display:none}
+.lab-tabs button{border:0;background:none;color:var(--muted);font:600 12px/1.4 var(--heading);padding:14px 22px;border-radius:10px;cursor:pointer;min-height:44px}
+.lab-tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper);box-shadow:0 3px 12px #070d1620}
+.lab-tabs button:focus-visible,.lab-panel:focus-visible{outline:3px solid var(--brand-link);outline-offset:4px}
+.lab-tabs:not([hidden])~.lab-panel .lab-heading{margin-top:0}
+.lab-tabs:not([hidden])~.lab-panel .lab-workloads{margin-top:0}
+.lab-hardware{grid-template-columns:minmax(0,3fr) minmax(0,2fr)}
+.lab-hardware article{position:relative;padding:32px;border-radius:22px;overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.lab-hardware article::before{content:'';display:block;width:38px;height:5px;border-radius:8px;background:var(--brand-link);margin-bottom:24px}
+.lab-hardware article:nth-child(2)::before{width:64px;background:#8b5cf6}
+.lab-hardware article:nth-child(3)::before{background:#0891b2}
+.lab-hardware article:hover{border-color:var(--brand-link);box-shadow:0 8px 28px #3488ff15}
+.lab-network{background:radial-gradient(ellipse at top,#3488ff18,transparent),var(--paper);border-radius:22px}
+.lab-vlans article{border-radius:14px}
+.lab-workloads{border:1px solid #435a7155;border-radius:22px;padding:36px;background:linear-gradient(120deg,#3488ff16,#8b5cf60b)}
+.lab-gallery figure{padding:10px;border:1px solid #435a7140;border-radius:22px;background:var(--paper)}
+.lab-gallery figcaption{padding:14px 8px 6px}
+@media(max-width:700px){.lab-overview,.lab-hardware{grid-template-columns:1fr}.lab-rack{max-width:none}.lab-rack img{max-height:390px;object-position:center 45%}.lab-tabs{width:100%;gap:2px;padding:4px}.lab-tabs button{flex:1;padding:12px 5px;font-size:11px}.lab-stats div{padding:14px 8px}.lab-hardware article{padding:24px}}
+@media(prefers-reduced-motion:reduce){.lab-hardware article{transition:none}}
+@media(forced-colors:active){.lab-tabs button[aria-selected="true"]{border:2px solid Highlight}.lab-rack figcaption{background:Canvas;color:CanvasText}}
+
+/* Keep narrow-screen statistics inside their cards instead of squeezing units. */
+@media(max-width:380px){
+  .lab-stats{grid-template-columns:1fr;gap:8px;margin-top:24px}
+  .lab-stats div{display:grid;grid-template-columns:80px minmax(0,1fr);align-items:center;gap:12px;padding:12px}
+  .lab-stats dd{margin:0;font-size:12px}
+}
+@media(max-width:700px){
+  .lab-intro>p:not(.lab-kicker),.lab-hardware p{font-size:14px}
+  .lab-tabs button{overflow-wrap:anywhere}
+}

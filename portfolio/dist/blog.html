@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Blog | Anthony Bluemel</title>
+  <meta name="description" content="Field notes on self-hosting and repeatable deployments by Anthony Bluemel.">
+  <meta name="theme-color" content="#070d16">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script>
+    (() => {
+      let theme;
+      try { theme = localStorage.getItem('antblu-theme'); } catch {}
+      document.documentElement.dataset.theme = theme === 'light' || theme === 'dark' ? theme : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="brand.css"><link rel="stylesheet" href="homelab.css"><script src="app.js" defer></script>
+</head>
+<body>
+<svg class="squiggly-filters" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="squiggly-0" x="-20%" y="-30%" width="140%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="1" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="squiggly-1" x="-20%" y="-30%" width="140%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="2" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="9" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="squiggly-2" x="-20%" y="-30%" width="140%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="3" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="squiggly-3" x="-20%" y="-30%" width="140%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="4" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="9" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="squiggly-4" x="-20%" y="-30%" width="140%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="5" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/></filter>
+  </defs>
+</svg>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="header">
+  <button class="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false"><svg class="theme-icon theme-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="5"/><path d="M11 1h2v3h-2zm0 19h2v3h-2zM1 11h3v2H1zm19 0h3v2h-3zM3.51 4.93l1.42-1.42 2.12 2.13-1.41 1.41zm13.44 13.43 1.41-1.41 2.13 2.12-1.42 1.42zM3.51 19.07l2.13-2.12 1.41 1.41-2.12 2.13zM16.95 5.64l2.12-2.13 1.42 1.42-2.13 2.12z"/></svg><svg class="theme-icon theme-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.9 13.4A9 9 0 0 1 10.6 3.1a.8.8 0 0 0-1.1-.9A10.2 10.2 0 1 0 21.8 14.5a.8.8 0 0 0-.9-1.1Z"/></svg></button>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="Open navigation"><span></span><span></span></button>
+  <nav id="navigation" class="bubble-navigation" aria-label="Main navigation">
+    <div class="bubble-list">
+      <a class="wordmark" href="index.html#home" aria-label="antblu — Anthony Bluemel, home"><img src="assets/antblu-logo.png" alt="antblu"></a>
+      <a class="bubble-link" href="index.html#about" style="--bubble-index:1;--bubble-rotation:-8deg;--bubble-hover:#2563eb"><span>About me</span></a>
+      <a class="bubble-link" href="index.html#resume" style="--bubble-index:2;--bubble-rotation:8deg;--bubble-hover:#047857"><span>Resume</span></a>
+      <a class="bubble-link" href="index.html#goals" style="--bubble-index:3;--bubble-rotation:8deg;--bubble-hover:#b45309"><span>Goals</span></a>
+      <a class="bubble-link" href="index.html#portfolio" style="--bubble-index:4;--bubble-rotation:-8deg;--bubble-hover:#b91c1c"><span>Portfolio</span></a>
+      <a class="bubble-link" href="index.html#stack" style="--bubble-index:5;--bubble-rotation:8deg;--bubble-hover:#7c3aed"><span>Stack</span></a>
+      <a class="bubble-link" href="index.html#homelab" style="--bubble-index:6;--bubble-rotation:-8deg;--bubble-hover:#0e7490"><span>Homelab</span></a>
+      <a class="bubble-link" href="blog.html" style="--bubble-index:7;--bubble-rotation:8deg;--bubble-hover:#0e7490"><span>Blog</span></a>
+      <a class="bubble-link" href="index.html#contact" style="--bubble-index:8;--bubble-rotation:-8deg;--bubble-hover:#8b3fb0"><span>Contact me</span></a>
+    </div>
+  </nav>
+</header>
+<main id="main" class="blog-page"><a class="blog-home" href="index.html">← Back to portfolio</a>
+  <section class="photo-surface blog section" id="blog" aria-labelledby="blog-title"><div class="photo-background" aria-hidden="true"><img src="assets/river-falls.webp" alt="" loading="lazy" decoding="async"></div>
+    <h1 class="boxed-title" id="blog-title">BLOG</h1>
+    <p class="section-lead">Small notes from the systems behind the projects.</p>
+    <div class="blog-layout">
+      <aside class="blog-sidebar" aria-label="Article table of contents">
+        <details class="blog-toc" open>
+          <summary>On this page <span aria-hidden="true">↕</span></summary>
+          <nav aria-label="Article sections">
+            <a href="#blog-start-small" aria-current="location">Start small</a>
+            <a href="#blog-make-repeatable">Make it repeatable</a>
+          </nav>
+        </details>
+      </aside>
+      <article class="blog-article" aria-labelledby="blog-article-title">
+        <div class="blog-cover" aria-hidden="true"><span>FIELD NOTES / 001</span><div>configure<span>→</span>deploy<span>→</span>repeat</div><span>INFRASTRUCTURE, ONE STEP AT A TIME.</span></div>
+        <header class="blog-article-header"><p class="blog-kicker">SELF-HOSTING · 1 MIN READ</p><h3 id="blog-article-title">A small start to repeatable deployments</h3><p class="blog-deck">One service, a clear configuration, and a little documentation go a long way.</p></header>
+        <div class="blog-prose">
+          <h4 id="blog-start-small">Start small</h4>
+          <p>A home lab does not need to begin with a dozen services. Pick one useful application, give it a home, and learn how it starts, stores data, and recovers after a restart.</p>
+          <h4 id="blog-make-repeatable">Make it repeatable</h4>
+          <p>Keep the configuration in Git and write down the deployment steps. The goal is simple: rebuilding the service should feel familiar instead of becoming a new investigation.</p>
+          <blockquote>A working service is useful. A service you can rebuild is even better.</blockquote>
+        </div>
+        <footer class="blog-author"><div><strong>Anthony Bluemel</strong><p><time datetime="2026-10-25">October 25, 2026</time> · Example article</p></div><a href="#blog">Back to article ↑</a></footer>
+      </article>
+    </div>
+  </section>
+</main>
+</body></html>
