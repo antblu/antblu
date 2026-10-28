@@ -692,6 +692,9 @@ body{font-size:16px}
 @media(max-width:700px){.intro{padding-top:20px;padding-bottom:12px}.about{padding-top:16px}}
 
 /* About tiles: Star Border and Animated List inspired, dependency-free. */
+#about .services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;max-width:1120px;align-items:stretch}
+#about .services article:last-child{grid-column:auto;width:auto;justify-self:stretch}
+@media(max-width:700px){#about .services{grid-template-columns:minmax(0,1fr);max-width:400px}}
 #about .services article{padding:26px 28px;border:1px solid #ffffff40;border-radius:12px;background:radial-gradient(ellipse at 12% 0%,#fff 0,transparent 65%),linear-gradient(145deg,#edf5ff,#c4d5eb);box-shadow:inset 0 1px 0 #fff,inset 0 -18px 30px #52749b18,0 18px 32px -18px #07182e90;isolation:isolate;min-width:0;overflow:hidden}
 #about .services h3{letter-spacing:2px;overflow-wrap:anywhere}
 #about .services article>h3,#about .services article>p{position:relative;z-index:1}
