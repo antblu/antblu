@@ -4,7 +4,7 @@ Responsive, buildless HTML/CSS/JavaScript portfolio adapted from the supplied To
 
 Serve `dist/` using `python3 -m http.server 4173 --directory dist`.
 
-The homepage is organized for prospective employers: role and evidence summary → professional experience → selected projects → technical skills, education, and coursework → Emiliany case study → infrastructure lab → service inventory → about → career goals → contact. The hero links directly to experience, projects, and contact. Project cards stay visible together in a responsive grid, with Antalos and Emiliany first; category filters and project dialogs remain available. The blog shares the same navigation order.
+The homepage is organized for prospective employers: role and evidence summary → about → professional experience → selected projects → technical skills, education, and coursework → Emiliany case study → infrastructure lab → service inventory → career goals → contact. The hero links directly to experience, projects, and contact. Projects use the interactive carousel, with Antalos and Emiliany first; category filters and project dialogs remain available. The blog shares the same navigation order.
 
 - Personal details: `dist/index.html`.
 - Project details and interactions: `dist/app.js`.

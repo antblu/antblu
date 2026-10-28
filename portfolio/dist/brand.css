@@ -678,3 +678,8 @@ body{font-size:16px}
 .selected-work .project:has(.project-art-logo){padding-top:150px}
 .selected-work .project-art-logo{top:0;height:170px;object-position:center;padding:20px 32px}
 .selected-work .project:has(.project-art-logo)::after{background:linear-gradient(transparent,#070d16ee 165px,#070d16 230px)}
+
+/* Fit the expanded project summaries in the restored carousel. */
+.circular-carousel .project p{font-size:15px;line-height:1.6}
+.circular-carousel .project-actions{flex-wrap:wrap;gap:10px}
+.circular-carousel .project-actions .bracket-link{padding:8px 10px}
