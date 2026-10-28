@@ -1,0 +1,9 @@
+.text-flip-word{display:inline-block;white-space:nowrap}
+.text-flip-letter{position:relative;display:inline-block;perspective:500px}
+.text-flip-front,.text-flip-top{display:inline-block;backface-visibility:hidden;transform-origin:50% 50% -.55em}
+.text-flip-top{position:absolute;inset:0;transform:rotateX(-90deg)}
+.text-flip-playing .text-flip-front{animation:text-flip-front .75s both;animation-delay:var(--flip-delay)}
+.text-flip-playing .text-flip-top{animation:text-flip-top .75s both;animation-delay:var(--flip-delay)}
+@keyframes text-flip-front{0%{transform:rotateX(0)}70%{transform:rotateX(93deg)}100%{transform:rotateX(90deg)}}
+@keyframes text-flip-top{0%{transform:rotateX(-90deg)}70%{transform:rotateX(3deg)}100%{transform:rotateX(0)}}
+@media(prefers-reduced-motion:reduce){.text-flip-playing .text-flip-front,.text-flip-playing .text-flip-top{animation:none}.text-flip-top{display:none}}

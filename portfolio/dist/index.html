@@ -17,6 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="brand.css"><link rel="stylesheet" href="homelab.css"><link rel="stylesheet" href="emiliany.css"><script src="homelab.js" defer></script><script src="app.js" defer></script><script src="curved-input.js" defer></script><script src="glow-cursor.js" defer></script><script src="clouds.js" defer></script><script src="lightning.js" defer></script><script src="particles.js" defer></script><script src="stack.js" defer></script><script src="emiliany.js" type="module"></script><script src="chromatic.js" defer></script><script src="electric-logo.js" defer></script><script src="flip-cards.js" defer></script><script src="circular-text.js" defer></script><script src="circular-carousel.js" defer></script>
   <link rel="stylesheet" href="border-glow.css"><script src="border-glow.js" defer></script>
+  <link rel="stylesheet" href="text-3d-flip.css"><script src="text-3d-flip.js" defer></script>
 </head>
 <body>
 <svg class="squiggly-filters" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false">
@@ -51,8 +52,8 @@
     <div class="hero-dark"></div>
     <div class="cloud-background" aria-hidden="true"><canvas class="cloud-shader"></canvas></div>
     <div class="light-rays" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-    <div class="hero-copy"><p class="greeting">Hi, I’m</p><h1 id="hero-title"><span class="squiggly-text">Anthony</span><br> <span class="colourful-text"><span style="--letter:0">B</span><span style="--letter:1">l</span><span style="--letter:2">u</span><span style="--letter:3">e</span><span style="--letter:4">m</span><span style="--letter:5">e</span><span style="--letter:6">l</span></span></h1><p class="role">System Administrator</p>
-      <p class="hero-summary">I support Windows and Linux systems, troubleshoot networks, and automate infrastructure—from client environments to my own Kubernetes platform.</p>
+    <div class="hero-copy"><p class="greeting">Hi, I’m</p><h1 id="hero-title"><span class="squiggly-text">Anthony</span><br> <span class="colourful-text"><span style="--letter:0">B</span><span style="--letter:1">l</span><span style="--letter:2">u</span><span style="--letter:3">e</span><span style="--letter:4">m</span><span style="--letter:5">e</span><span style="--letter:6">l</span></span></h1><p class="role" data-text-3d-flip>System Administrator</p>
+      <p class="hero-summary">I support Windows and Linux systems, troubleshoot networks, and automate infrastructure both in client environments and my own Kubernetes platform.</p>
       <div class="hero-actions"><a class="gradient-pill" href="#resume">
         <span aria-hidden="true">↗</span><span class="gradient-pill-divider" aria-hidden="true"></span>
         <span class="animated-gradient-text">View my experience</span>
@@ -147,7 +148,7 @@
   <section class="homelab section" id="homelab" aria-labelledby="homelab-title">
     <p class="lab-kicker">THE HARDWARE BEHIND ANTALOS</p>
     <h2 class="boxed-title" id="homelab-title">INFRASTRUCTURE LAB</h2>
-    <p class="section-lead">I built and operate the physical foundation for Antalos: compute, storage, and a segmented network. This lab gives me hands-on practice with virtualization, networking, deployment, and troubleshooting—from the hardware up.</p>
+    <p class="section-lead">I built and operate the physical foundation for Antalos: compute, storage, and a segmented network. This lab gives me hands-on practice with virtualization, networking, deployment, and troubleshooting from the hardware up.</p>
     <div class="lab-content">
       <div class="lab-overview">
         <figure class="lab-rack"><a href="assets/homelab/rack-front.webp" aria-label="View the full homelab rack photo"><img src="assets/homelab/rack-front.webp" alt="Front of my rack with patched network cables, NAS, HP Omen, and two Lenovo servers" width="1125" height="1500" loading="lazy" decoding="async"></a><figcaption>12U / 600 mm · Networking above, compute below.</figcaption></figure>

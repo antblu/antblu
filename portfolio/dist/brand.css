@@ -466,7 +466,7 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 @media(prefers-reduced-motion:reduce),(forced-colors:active){.glow-cursor-canvas{display:none}}
 
 /* Circular text: an original buildless adaptation of the React Bits interaction. */
-.intro .circular-text{position:relative;flex:0 0 200px;width:200px;height:200px;color:#8bbdff;user-select:none;touch-action:pan-y;cursor:grab;perspective:600px}
+.intro .circular-text{position:relative;flex:0 0 188px;width:188px;height:188px;color:#8bbdff;user-select:none;touch-action:pan-y;cursor:grab;perspective:600px}
 .circular-text-tilt{position:relative;width:100%;height:100%;transition:transform .35s}
 .circular-text-ring{display:block;width:100%;height:100%;overflow:visible;fill:currentColor;font:900 24px var(--heading);letter-spacing:0;animation:circular-text-spin 20s linear infinite}
 .circular-text-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font:900 58px/1 var(--heading);pointer-events:none;color:#fff}
@@ -474,10 +474,10 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 .circular-text.is-dragging{cursor:grabbing}
 @keyframes circular-text-spin{to{transform:rotate(360deg)}}
 @media(hover:hover){.circular-text:hover .circular-text-tilt{transform:rotateX(20deg)}}
-@media(max-width:700px){.intro .circular-text{flex-basis:150px;width:150px;height:150px;margin:0 auto 26px}.circular-text-center{font-size:44px}}
+@media(max-width:700px){.intro .circular-text{flex-basis:140px;width:140px;height:140px;margin:0 auto 12px}.circular-text-center{font-size:44px}}
 @media(prefers-reduced-motion:reduce){.circular-text-ring{animation:none!important}.circular-text-tilt{transition:none;transform:none!important}.intro .circular-text{cursor:default}}
 @media(forced-colors:active){.intro .circular-text,.circular-text-center,.circular-text-center>span{color:CanvasText}}
-.intro{display:flex;align-items:center;gap:clamp(28px,5vw,80px)}
+.intro{display:flex;align-items:center;gap:clamp(16px,3vw,44px)}
 .intro-inner{min-width:0;flex:1}
 @media(max-width:700px){.intro{flex-direction:column;gap:0}.intro .circular-text{flex-basis:auto}}
 
@@ -533,7 +533,7 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 /* More readable copy and comfortable controls on narrow touch screens. */
 @media(max-width:700px){
   .intro{padding:32px 24px}
-  .intro .circular-text{width:120px;height:120px;margin-bottom:20px}
+  .intro .circular-text{width:112px;height:112px;margin-bottom:10px}
   .intro h2{max-width:none;font-size:18px;letter-spacing:1.5px}
   .intro p,.services p{font-size:14px}
   .section-lead{font-size:15px}
@@ -685,10 +685,11 @@ body{font-size:16px}
 .circular-carousel .project-actions .bracket-link{padding:8px 10px}
 
 /* Keep the About content close to the support and systems headline. */
-.intro{padding-bottom:20px}
-.about{padding-top:24px}
+.intro{padding-top:24px;padding-bottom:12px}
+.intro p{margin-bottom:0}
+.about{padding-top:16px}
 .about>.section-lead{margin-top:18px;margin-bottom:12px}
-@media(max-width:700px){.about{padding-top:22px}}
+@media(max-width:700px){.intro{padding-top:20px;padding-bottom:12px}.about{padding-top:16px}}
 
 /* About tiles: Star Border and Animated List inspired, dependency-free. */
 #about .services article{padding:26px 28px;border:1px solid #ffffff40;border-radius:12px;background:linear-gradient(135deg,#ffffffb8,#e5efff80);isolation:isolate;min-width:0}
