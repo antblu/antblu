@@ -385,7 +385,7 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 #resume{--photo-position:44% center}
 #contact{--photo-position:57% center}
 #portfolio{--photo-position:64% center}
-#stack{--photo-position:50% center}
+#homelab{--photo-position:50% center}
 #goals{--photo-position:58% center}
 @media(max-width:700px){#resume{--photo-position:38% center}#contact{--photo-position:64% center}}
 .photo-background>canvas{opacity:0}
@@ -733,3 +733,11 @@ body{font-size:16px}
 .is-typing .typing-cursor{visibility:visible;animation:typing-caret 1s ease-in-out infinite alternate}
 @keyframes typing-caret{from{opacity:.2}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){.typing-cursor{display:none}}
+
+/* Solid chroma blue inventory, with readable controls in both themes. */
+#stack{background:#0000ff;color:#fff}
+#stack .boxed-title{color:#fff;border-color:#fff}
+#stack .stack-kicker,#stack .stack-count,#stack .stack-help,#stack .stack-source{color:#fff}
+#stack .stack-toolbar>button{color:#fff;border-color:#fff}
+#stack .stack-toolbar>button:hover{background:#ffffff26}
+@media(forced-colors:active){#stack{background:Canvas;color:CanvasText}#stack .boxed-title,#stack .stack-toolbar>button{color:CanvasText;border-color:CanvasText}#stack .stack-kicker,#stack .stack-count,#stack .stack-help,#stack .stack-source{color:CanvasText}}
