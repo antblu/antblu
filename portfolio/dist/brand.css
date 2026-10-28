@@ -683,3 +683,9 @@ body{font-size:16px}
 .circular-carousel .project p{font-size:15px;line-height:1.6}
 .circular-carousel .project-actions{flex-wrap:wrap;gap:10px}
 .circular-carousel .project-actions .bracket-link{padding:8px 10px}
+
+/* Keep the About content close to the support and systems headline. */
+.intro{padding-bottom:20px}
+.about{padding-top:24px}
+.about>.section-lead{margin-top:18px;margin-bottom:12px}
+@media(max-width:700px){.about{padding-top:22px}}
