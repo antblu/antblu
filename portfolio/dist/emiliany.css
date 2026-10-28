@@ -52,3 +52,8 @@
 .em-intro>p:not(.em-overline),.em-system-heading>p,.em-service p,.em-journey-heading>p:last-child,.em-journey-intro p,.em-steps p,.em-accordion-panel p,.em-explanation>p,.em-foundation p{font-size:15px}
 .em-kicker,.em-index,.em-overline,.em-role>span,.em-service-label,.em-role p,.em-footnote,.em-visual figcaption,.em-visual-caption>span{font-size:12px}
 .em-accordion-trigger,.em-explanation summary,.em-foundation a{font-size:14px}
+
+/* Keep the infrastructure link readable alongside the longer explanation. */
+.em-foundation{flex-wrap:wrap}
+.em-foundation>div{flex:1 1 420px}
+.em-foundation a{flex:0 1 auto;white-space:normal}
