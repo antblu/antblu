@@ -155,7 +155,7 @@ document.addEventListener('click', event => {
       }, 1500);
     });
   }, { threshold: 0.2 });
-  document.querySelectorAll('#hero-title, #intro-title, .boxed-title, .greeting, .role, .section-lead, .em-intro h2').forEach((element, index) => {
+  document.querySelectorAll('#hero-title, #intro-title, .boxed-title, .greeting:not([data-typing-text]), .role, .section-lead, .em-intro h2').forEach((element, index) => {
     const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, {
       acceptNode(node) {
         return node.parentElement.closest('[aria-hidden="true"]') || !node.textContent.trim()
@@ -302,6 +302,16 @@ document.addEventListener('click', event => {
       border.append(path);
     });
     tile.append(border);
+    tile.addEventListener('pointermove', event => {
+      if (reducedMotion.matches || event.pointerType === 'touch') return;
+      const bounds = tile.getBoundingClientRect();
+      tile.style.setProperty('--about-x', `${(event.clientX - bounds.left) / bounds.width * 100}%`);
+      tile.style.setProperty('--about-y', `${(event.clientY - bounds.top) / bounds.height * 100}%`);
+    });
+    tile.addEventListener('pointerleave', () => {
+      tile.style.removeProperty('--about-x');
+      tile.style.removeProperty('--about-y');
+    });
     tile.addEventListener('pointerenter', () => {
       if (reducedMotion.matches) return;
       border.querySelectorAll('rect').forEach(path => {
@@ -334,4 +344,46 @@ document.addEventListener('click', event => {
     observer.disconnect();
     list.classList.remove('is-waiting', 'is-revealing');
   });
+})();
+
+// TypingAnimatedText adaptation: https://www.reactcomponents.com/block/1059
+(() => {
+  const greeting = document.querySelector('[data-typing-text]');
+  if (!greeting) return;
+  const value = greeting.querySelector('.typing-value');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const words = ['Hi, I’m', 'Hello, I’m', 'Welcome, I’m'];
+  let wordIndex = 0;
+  let deleting = false;
+  let timer;
+  function tick() {
+    const word = words[wordIndex];
+    if (deleting) {
+      value.textContent = value.textContent.slice(0, -1);
+      if (!value.textContent) {
+        deleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+      }
+    } else {
+      value.textContent = word.slice(0, value.textContent.length + 1);
+      if (value.textContent === word) {
+        deleting = true;
+        timer = setTimeout(tick, 2200);
+        return;
+      }
+    }
+    timer = setTimeout(tick, deleting ? 100 : 150);
+  }
+  function reset() {
+    clearTimeout(timer);
+    wordIndex = 0;
+    deleting = true;
+    value.textContent = words[0];
+    const active = !reducedMotion.matches && !document.hidden;
+    greeting.classList.toggle('is-typing', active);
+    if (active) timer = setTimeout(tick, 2200);
+  }
+  reducedMotion.addEventListener('change', reset);
+  document.addEventListener('visibilitychange', reset);
+  reset();
 })();
