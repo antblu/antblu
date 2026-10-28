@@ -276,3 +276,62 @@ document.addEventListener('click', event => {
     }, 500);
   }, { capture: true });
 })();
+
+
+// Progressive enhancement of the three About tiles; content stays visible without JS.
+(() => {
+  const list = document.querySelector('#about .services');
+  if (!list) return;
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const svgNamespace = 'http://www.w3.org/2000/svg';
+  list.querySelectorAll('article').forEach((tile, index) => {
+    tile.style.setProperty('--about-index', index);
+    const border = document.createElementNS(svgNamespace, 'svg');
+    border.classList.add('about-star-border');
+    border.setAttribute('aria-hidden', 'true');
+    border.setAttribute('focusable', 'false');
+    ['about-star-trail', 'about-star-head'].forEach(className => {
+      const path = document.createElementNS(svgNamespace, 'rect');
+      path.setAttribute('x', '.5');
+      path.setAttribute('y', '.5');
+      path.setAttribute('width', 'calc(100% - 1px)');
+      path.setAttribute('height', 'calc(100% - 1px)');
+      path.setAttribute('rx', '12');
+      path.setAttribute('pathLength', '100');
+      path.classList.add(className);
+      border.append(path);
+    });
+    tile.append(border);
+    tile.addEventListener('pointerenter', () => {
+      if (reducedMotion.matches) return;
+      border.querySelectorAll('rect').forEach(path => {
+        path.animate([{ strokeDashoffset: '0' }, { strokeDashoffset: '-100' }], {
+          duration: 1000, easing: 'linear'
+        });
+      });
+    });
+    tile.addEventListener('click', () => {
+      if (reducedMotion.matches) return;
+      tile.classList.remove('is-pulsing');
+      void tile.offsetWidth;
+      tile.classList.add('is-pulsing');
+    });
+    tile.addEventListener('animationend', event => {
+      if (event.animationName === 'about-star-pulse') tile.classList.remove('is-pulsing');
+    });
+  });
+  if (reducedMotion.matches || !('IntersectionObserver' in window)) return;
+  const observer = new IntersectionObserver(entries => {
+    if (!entries.some(entry => entry.isIntersecting)) return;
+    list.classList.remove('is-waiting');
+    list.classList.add('is-revealing');
+    observer.disconnect();
+  }, { threshold: .15 });
+  list.classList.add('is-waiting');
+  observer.observe(list);
+  reducedMotion.addEventListener('change', event => {
+    if (!event.matches) return;
+    observer.disconnect();
+    list.classList.remove('is-waiting', 'is-revealing');
+  });
+})();
