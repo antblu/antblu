@@ -381,7 +381,13 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 /* Landscape photos sit behind section content, with theme-aware contrast. */
 .photo-surface{position:relative;isolation:isolate}
 .photo-surface>.photo-background.photo-background{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
-.photo-background>img,.photo-background>canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none}
+.photo-background>img,.photo-background>canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--photo-position,center);pointer-events:none}
+#resume{--photo-position:44% center}
+#contact{--photo-position:57% center}
+#portfolio{--photo-position:64% center}
+#stack{--photo-position:50% center}
+#goals{--photo-position:58% center}
+@media(max-width:700px){#resume{--photo-position:38% center}#contact{--photo-position:64% center}}
 .photo-background>canvas{opacity:0}
 .photo-background.chromatic-ready>canvas{opacity:1}
 .photo-background::after{content:'';position:absolute;inset:0;background:linear-gradient(#edf3f8dc,#edf3f8c9 50%,#edf3f8e8);pointer-events:none}
