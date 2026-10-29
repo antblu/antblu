@@ -734,8 +734,8 @@ body{font-size:16px}
 @keyframes typing-caret{from{opacity:.2}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){.typing-cursor{display:none}}
 
-/* Solid chroma blue inventory, with readable controls in both themes. */
-#stack{background:#0000ff;color:#fff}
+/* User-supplied lake photo, with readable controls in both themes. */
+#stack{background:linear-gradient(#07111c80,#07111ca6),url('assets/service-inventory.webp') center/cover no-repeat #07111c;color:#fff}
 #stack .boxed-title{color:#fff;border-color:#fff}
 #stack .stack-kicker,#stack .stack-count,#stack .stack-help,#stack .stack-source{color:#fff}
 #stack .stack-toolbar>button{color:#fff;border-color:#fff}
