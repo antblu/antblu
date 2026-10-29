@@ -734,10 +734,13 @@ body{font-size:16px}
 @keyframes typing-caret{from{opacity:.2}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){.typing-cursor{display:none}}
 
-/* User-supplied lake photo, with readable controls in both themes. */
-#stack{background:linear-gradient(#07111c80,#07111ca6),url('assets/service-inventory-lake.webp') center/cover no-repeat #07111c;color:#fff}
+/* Two stacked lake photos preserve proportions and reduce cover cropping. */
+#stack{position:relative;isolation:isolate;background:#07111c;color:#fff}
+#stack::before,#stack::after{content:'';position:absolute;left:0;right:0;height:50%;z-index:-1;pointer-events:none;background:linear-gradient(#07111c80,#07111ca6),url('assets/service-inventory-lake.webp') center/cover no-repeat}
+#stack::before{top:0}
+#stack::after{bottom:0}
 #stack .boxed-title{color:#fff;border-color:#fff}
 #stack .stack-kicker,#stack .stack-count,#stack .stack-help,#stack .stack-source{color:#fff}
 #stack .stack-toolbar>button{color:#fff;border-color:#fff}
 #stack .stack-toolbar>button:hover{background:#ffffff26}
-@media(forced-colors:active){#stack{background:Canvas;color:CanvasText}#stack .boxed-title,#stack .stack-toolbar>button{color:CanvasText;border-color:CanvasText}#stack .stack-kicker,#stack .stack-count,#stack .stack-help,#stack .stack-source{color:CanvasText}}
+@media(forced-colors:active){#stack::before,#stack::after{display:none}#stack{background:Canvas;color:CanvasText}#stack .boxed-title,#stack .stack-toolbar>button{color:CanvasText;border-color:CanvasText}#stack .stack-kicker,#stack .stack-count,#stack .stack-help,#stack .stack-source{color:CanvasText}}
