@@ -191,43 +191,6 @@ document.addEventListener('click', event => {
   forcedColors.addEventListener('change', stopMotion);
 })();
 
-// Article navigation works as ordinary anchor links without JavaScript.
-(() => {
-  const toc = document.querySelector('.blog-toc');
-  if (!toc) return;
-  const links = [...toc.querySelectorAll('a')];
-  const mobile = matchMedia('(max-width:700px)');
-  function updateToc() { toc.open = !mobile.matches; }
-  updateToc();
-  mobile.addEventListener('change', updateToc);
-  links.forEach(link => link.addEventListener('click', () => {
-    links.forEach(item => item.removeAttribute('aria-current'));
-    link.setAttribute('aria-current', 'location');
-    if (mobile.matches) {
-      toc.open = false;
-      const heading = document.querySelector(link.hash);
-      heading.setAttribute('tabindex', '-1');
-      heading.focus({ preventScroll: true });
-    }
-  }));
-  toc.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && mobile.matches && toc.open) {
-      toc.open = false;
-      toc.querySelector('summary').focus();
-    }
-  });
-  if (!('IntersectionObserver' in window)) return;
-  const observer = new IntersectionObserver(entries => {
-    const entry = entries.filter(item => item.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-    if (!entry) return;
-    links.forEach(link => {
-      if (link.hash === '#' + entry.target.id) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
-    });
-  }, { rootMargin: '-15% 0px -45% 0px' });
-  links.forEach(link => observer.observe(document.querySelector(link.hash)));
-})();
-
 // Buildless ClickSpark-inspired feedback for deliberate control activations.
 (() => {
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');

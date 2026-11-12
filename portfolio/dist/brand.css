@@ -192,38 +192,8 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 }
 @media(forced-colors:active){.colourful-text>span,[data-theme="dark"] .colourful-text>span{animation:none;color:CanvasText;filter:none}}
 
-/* Original buildless layout inspired by Aceternity's Blog Content With TOC preview. */
-.blog{background:var(--paper);text-align:left}
-.blog>.section-lead{text-align:center;margin-top:32px;margin-bottom:64px}
-.blog-layout{display:grid;grid-template-columns:210px minmax(0,680px);gap:64px;max-width:954px;margin:auto;align-items:start}
-.blog-sidebar{position:sticky;top:32px}
-.blog-toc summary{font:700 13px var(--heading);padding:12px 0;cursor:pointer;list-style:none}
-.blog-toc summary::-webkit-details-marker{display:none}
-.blog-toc summary span{float:right}
-.blog-toc nav{display:flex;align-items:stretch;flex-direction:column;gap:4px;color:var(--muted);font:400 13px/1.5 var(--body);border-left:1px solid var(--muted);margin-top:12px}
-.blog-toc nav>a{position:relative;padding:12px 16px;transition:transform .2s,color .2s}
-.blog-toc nav>a:hover,.blog-toc nav>a[aria-current]{color:var(--brand-link);opacity:1;transform:translateX(3px)}
-.blog-toc nav>a[aria-current]::before{content:'';position:absolute;left:-2px;top:12px;bottom:12px;width:3px;background:currentColor;border-radius:3px}
-.blog-article{min-width:0}
-.blog-cover{min-height:220px;padding:28px;border:1px solid #435a7155;border-radius:16px;background:radial-gradient(ellipse at top right,#3488ff66,transparent 65%),#070d16;color:#a9bbce;display:flex;flex-direction:column;justify-content:space-between;gap:28px;overflow:hidden}
-.blog-cover>span{font:600 10px/1.5 var(--heading);letter-spacing:2px}
-.blog-cover>div{display:flex;flex-wrap:wrap;align-items:center;gap:12px;color:#d4e8ff;font:600 clamp(16px,2.5vw,28px)/1.5 monospace}
-.blog-cover>div>span{color:#57d8ff}
-.blog-article-header{padding:32px 0 28px;border-bottom:1px solid #435a7155}
-.blog-kicker{font:700 11px/1.6 var(--heading);letter-spacing:2px;color:var(--brand-link);margin-bottom:14px}
-.blog-article h3{font:700 clamp(26px,3vw,38px)/1.25 var(--heading);letter-spacing:-1px}
-.blog-deck{margin-top:16px;color:var(--muted);font-size:16px}
-.blog-prose{font-size:15px;line-height:1.9}
-.blog-prose h4{font:700 20px/1.4 var(--heading);margin:32px 0 12px;scroll-margin-top:100px}
-.blog-prose blockquote{margin:24px 0;padding:14px 22px;border-left:3px solid var(--brand-link);color:var(--muted);font-style:italic;background:#3488ff0a}
-.blog-article>.blog-author{display:flex;align-items:center;flex-wrap:wrap;gap:14px;margin-top:36px;padding:24px 0 0;border-top:1px solid #435a7155;background:none;color:var(--ink);text-align:left}
-.blog-author img{border-radius:50%;object-fit:cover}
-.blog-author strong{font-size:13px}.blog-author p{font-size:12px;color:var(--muted)}
-.blog-author a{margin-left:auto;font-size:12px;color:var(--brand-link);padding:12px 0}
-@media(max-width:900px){.blog-layout{grid-template-columns:175px minmax(0,1fr);gap:32px}.header nav{gap:16px}}
-@media(max-width:700px){.blog-layout{display:flex;flex-direction:column;gap:24px}.blog-sidebar{width:100%;top:12px;z-index:5}.blog-toc{background:var(--paper);border:1px solid var(--muted);border-radius:12px;padding:0 16px;box-shadow:0 6px 20px #070d1615}.blog-toc summary{min-height:48px;display:flex;justify-content:space-between;align-items:center}.blog-toc nav{margin:0 0 12px}.blog-cover{padding:22px;min-height:200px}.blog>.section-lead{margin-bottom:32px}.header nav{gap:0}.blog-article{width:100%}}
-@media(prefers-reduced-motion:reduce){.blog-toc nav>a{transition:none}.blog-toc nav>a:hover,.blog-toc nav>a[aria-current]{transform:none}}
-@media(forced-colors:active){.blog-cover{background:Canvas;color:CanvasText}.blog-cover>div,.blog-cover>div>span{color:CanvasText}}
+@media(max-width:900px){.header nav{gap:16px}}
+@media(max-width:700px){.header nav{gap:0}}
 
 /* Buildless draggable collection inspired by Aceternity Draggable Card. */
 .stack-explorer{background:var(--paper);padding-left:6%;padding-right:6%;text-align:center;overflow:hidden}
@@ -551,11 +521,6 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
   input,textarea,select{font-size:16px}
 }
 
-/* Dedicated article page; no author avatar or feedback controls. */
-.blog-page{padding-top:110px;min-height:100vh;background:var(--paper)}
-.blog-home{display:block;width:fit-content;margin:0 auto;padding:14px 20px;color:var(--brand-link);font:600 13px/1.5 var(--heading)}
-.blog-page .blog{padding-top:40px}
-
 /* Phone layouts retain the desktop treatments with room for copy and touch. */
 .portfolio .portfolio-heading .boxed-title{color:#d4e8ff;border-color:#8bbdff;background:#070d1666}
 .header .bubble-navigation{justify-content:flex-start}
@@ -571,8 +536,6 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
   .circular-carousel .project h3{font-size:22px;overflow-wrap:anywhere}
   .carousel-controls{gap:12px;padding-bottom:20px}
   .stack-toolbar input,.stack-toolbar select{font-size:16px}
-  .blog-page{padding-top:80px}
-  .blog-page .blog{padding-top:28px}
   dialog{max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contain}
 }
 @media(max-width:480px){
@@ -620,8 +583,8 @@ body{font-size:16px}
 .intro p{font-size:17px;line-height:1.7}
 .section-lead{font-size:17px;line-height:1.7}
 .services p,.program-back p,.resume-summary p,.resume-entry-body p,.resume-entry-body li,.resume-skills,.milestone-list p{font-size:16px}
-.skill-note,.career-plan-note,.resume-period,.career-meta,.blog-prose,.blog-toc nav,.blog-author p{font-size:15px}
-.resume-entry-body .resume-tags li,.blog-kicker,.blog-cover>span,.stack-help,.stack-source{font-size:13px}
+.skill-note,.career-plan-note,.resume-period,.career-meta{font-size:15px}
+.resume-entry-body .resume-tags li,.stack-help,.stack-source{font-size:13px}
 .stack-description,.stack-category{font-size:13px}
 .filters button{font-size:13px}
 @media(max-width:700px){

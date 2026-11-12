@@ -4,7 +4,7 @@ Responsive, buildless HTML/CSS/JavaScript portfolio adapted from the supplied To
 
 Serve `dist/` using `python3 -m http.server 4173 --directory dist`.
 
-The homepage is organized for prospective employers: role and evidence summary → about → professional experience → selected projects → technical skills, education, and coursework → Emiliany case study → infrastructure lab → service inventory → career goals → contact. The hero links directly to experience, projects, and contact. Projects use the interactive carousel, with Antalos and Emiliany first; category filters and project dialogs remain available. The blog shares the same navigation order.
+The homepage is organized for prospective employers: role and evidence summary → about → professional experience → selected projects → technical skills, education, and coursework → Emiliany case study → infrastructure lab → service inventory → career goals → contact. The hero links directly to experience, projects, and contact. Projects use the interactive carousel, with Antalos and Emiliany first; category filters and project dialogs remain available. The Blog menu item opens the Drupal journal at https://blog.antblu.net.
 
 - Personal details: `dist/index.html`.
 - Project details and interactions: `dist/app.js`.
@@ -20,7 +20,7 @@ Button verification covers desktop/mobile navigation, all project filters, each 
 
 Dark mode follows the visitor’s system preference until the header’s Dark mode toggle is used. The choice is saved locally and synchronized across tabs. Theme colors are in `dist/brand.css`; the initial theme is applied in the document head to avoid a light flash.
 
-Blog: the `#blog` section contains a short example article, sticky desktop table of contents, collapsible mobile contents menu, and active-section tracking. Edit article content and anchor links in `dist/index.html`; styling lives in `dist/brand.css`.
+Blog: the main menu links directly to [blog.antblu.net](https://blog.antblu.net). The former example article and its dedicated styles and interactions have been removed. Nginx redirects `/blog`, `/blog/`, `/blog/index.html`, and `/blog.html` to the Drupal site. `dist/blog/index.html` is only a redirect fallback for static hosts. Maintain blog content in Drupal and its theme in the Antalos repository under `apps/drupal/image/antalos_journal/`.
 
 Antalos explorer (`#stack`): searchable, category-filtered inventory of 40 application directories, with draggable cards on desktop and a static mobile grid. Drag a handle or use arrow keys (Shift for larger steps); Home restores that card. Reset cards restores all positions. Data lives in `dist/index.html`; interaction lives in `dist/stack.js`. Inventory is a dated source snapshot, not live cluster status.
 

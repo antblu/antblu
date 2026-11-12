@@ -4,7 +4,7 @@
 
 This repository hosts Anthony Bluemel’s buildless portfolio. Edit `portfolio/dist/` directly: it contains the website source, despite the directory name.
 
-- `index.html`: page content, project cards, blog, and architecture stories.
+- `index.html`: page content, project cards, external blog link, and architecture stories.
 - `app.js`: theme, navigation, filters, dialogs, and contact interactions.
 - `stack.js`, `emiliany.js`, `clouds.js`: explorer, case-study enhancements, and WebGL background.
 - `styles.css`: base layout; `brand.css`: branding, theme, and feature overrides.
