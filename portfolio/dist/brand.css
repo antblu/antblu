@@ -259,7 +259,7 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 
 /* Resume and career milestones use the shared palette in both themes. */
 .about-shortcuts,.career-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:18px}
-.resume>.section-lead,.career-goals>.section-lead{margin:32px auto 24px}
+.resume>.section-lead{margin:32px auto 24px}
 /* Original timeline styling inspired by the resume at https://imiles.me/. */
 .resume,.skills{--resume-line:#435a7138;--resume-work:var(--brand-link);--resume-education:#087443;--resume-certificate:#8a5908;--resume-project:#6250ab}
 [data-theme="dark"] .resume,[data-theme="dark"] .skills{--resume-line:#a9bbce38;--resume-education:#66d9a1;--resume-certificate:#edc473;--resume-project:#beadff}
@@ -302,21 +302,12 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 .career-meta{display:block;color:var(--muted);font-size:13px;margin-top:8px}
 .career-panel ul{padding-left:20px;margin:14px 0 0}.career-panel li+li{margin-top:10px}
 .career-text-link{display:inline-flex;align-items:center;min-height:44px;color:var(--brand-link);font-weight:700;text-decoration:underline;text-underline-offset:4px;margin-top:12px}
-.career-goals{padding-top:30px}.career-plan-note{max-width:660px;margin:0 auto;color:var(--muted);font-size:12px}
-.goals-layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px;max-width:1050px;margin:48px auto;text-align:left}
-.career-column-title{font:700 20px/1.5 var(--heading);margin-bottom:28px}
-.milestone-list{list-style:none;padding:0 0 0 24px;margin:0;border-left:2px solid var(--brand-link)}
-.milestone-list li{position:relative;margin-bottom:30px}.milestone-list li:last-child{margin-bottom:0}
-.milestone-list li::before{content:'';position:absolute;top:6px;left:-31px;width:12px;height:12px;background:var(--brand-link);border:3px solid var(--paper);border-radius:50%;box-shadow:0 0 0 1px var(--brand-link)}
-.milestone-list time{color:var(--brand-link);font:700 12px/1.6 var(--heading)}
-.milestone-list h4{font:700 17px/1.6 var(--heading);margin:8px 0}.milestone-list p{font-size:14px;color:var(--muted);line-height:1.85}
 .career-commitments{max-width:1050px;margin:0 auto;text-align:left}.career-commitments summary{cursor:pointer;font-weight:700;min-height:44px;padding:8px 0}.career-commitments summary:focus-visible{outline:3px solid var(--brand-link);outline-offset:5px}
 @media(min-width:1001px){.header nav{gap:20px}.header{padding-left:5%;padding-right:5%}.wordmark img{width:160px}}
 /* Give all seven destinations room before switching to the mobile menu. */
 @media(min-width:701px) and (max-width:1000px){.header{height:70px;padding:0 25px;background:#070d16}.wordmark img{width:140px}.theme-toggle{margin-right:16px}.menu-toggle{display:flex;flex-direction:column;gap:6px;background:none;border:0;padding:12px 0 12px 12px}.menu-toggle span{display:block;width:27px;height:2px;background:white}.menu-toggle[aria-expanded=true] span:nth-child(1){transform:translateY(8px) rotate(45deg)}.menu-toggle[aria-expanded=true] span:nth-child(2){opacity:0}.menu-toggle[aria-expanded=true] span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}.header nav{position:absolute;top:70px;left:0;right:0;background:#070d16fa;display:none;flex-direction:column;gap:0;padding:12px 25px 20px}.header nav.open{display:flex}.header nav a{padding:12px;text-align:center;width:100%}.header nav .contact-link{margin-top:8px;width:auto}}
-@media(max-width:700px){.goals-layout{grid-template-columns:minmax(0,1fr);gap:36px;margin:36px auto}.career-panel{padding:22px}.resume .boxed-title,.career-goals .boxed-title{font-size:18px;letter-spacing:3px;text-indent:3px;padding:20px}.career-actions .bracket-link{min-height:44px;padding:10px 14px}.about-shortcuts{gap:14px}.career-goals{padding-top:15px}}
+@media(max-width:700px){.career-panel{padding:22px}.resume .boxed-title{font-size:18px;letter-spacing:3px;text-indent:3px;padding:20px}.career-actions .bracket-link{min-height:44px;padding:10px 14px}.about-shortcuts{gap:14px}}
 @media(max-height:650px) and (max-width:1000px){.header nav{max-height:calc(100dvh - 70px);overflow-y:auto}}
-@media(forced-colors:active){.milestone-list li::before{background:CanvasText;border-color:Canvas;box-shadow:0 0 0 1px CanvasText}}
 
 /* Clouds replace the former dotted backgrounds on every decorated surface. */
 .cloud-surface{position:relative;isolation:isolate}
@@ -361,7 +352,7 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 #contact{--photo-position:57% center}
 #portfolio{--photo-position:64% center}
 #homelab{--photo-position:50% center}
-#goals{--photo-position:58% center}
+#emiliany{--photo-position:58% center}
 @media(max-width:700px){#resume{--photo-position:38% center}#contact{--photo-position:64% center}}
 .photo-background>canvas{opacity:0}
 .photo-background.chromatic-ready>canvas{opacity:1}
@@ -578,8 +569,8 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 body{font-size:16px}
 .intro p{font-size:17px;line-height:1.7}
 .section-lead{font-size:17px;line-height:1.7}
-.services p,.program-back p,.resume-summary p,.resume-entry-body p,.resume-entry-body li,.resume-skills,.milestone-list p{font-size:16px}
-.skill-note,.career-plan-note,.resume-period,.career-meta{font-size:15px}
+.services p,.program-back p,.resume-summary p,.resume-entry-body p,.resume-entry-body li,.resume-skills{font-size:16px}
+.skill-note,.resume-period,.career-meta{font-size:15px}
 .resume-entry-body .resume-tags li,.stack-help,.stack-source{font-size:13px}
 .stack-description,.stack-category{font-size:13px}
 .filters button{font-size:13px}

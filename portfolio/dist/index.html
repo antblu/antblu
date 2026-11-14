@@ -70,7 +70,7 @@
     <div class="light-rays" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
     <div class="circular-text" aria-hidden="true"><div class="circular-text-tilt"><svg class="circular-text-ring" viewBox="0 0 200 200"><defs><path id="intro-text-circle" d="M100,100 m0,-78 a78,78 0 1,1 0,156 a78,78 0 1,1 0,-156"/></defs><text textLength="490" lengthAdjust="spacing"><textPath href="#intro-text-circle">SYSTEMS • SERVICES • AUTOMATION • </textPath></text></svg><span class="circular-text-center"><span>ANTBLU</span></span></div></div><div class="intro-inner"><h2 id="intro-title">SUPPORT. SYSTEMS. <span class="line-shadow-text">AUTOMATION<span class="line-shadow" aria-hidden="true">AUTOMATION</span></span>.</h2><p>My work combines day-to-day IT support with building and operating infrastructure. See the systems I’ve built and how I work.</p></div>
   </section>
-  <section class="photo-surface about section" id="about" aria-labelledby="about-title"><div class="photo-background" aria-hidden="true" data-chromatic><img src="assets/mountain-lake.webp" alt="" loading="lazy" decoding="async"></div><h2 class="boxed-title" id="about-title">ABOUT ME</h2><p class="section-lead">I enjoy solving problems across the full system: the server, the network, and the application people depend on. I learn by building, documenting what works, and tracing issues back to their cause.</p><div class="about-shortcuts"><a class="bracket-link" href="#resume">VIEW RESUME</a><a class="bracket-link" href="#goals">GOALS &amp; MILESTONES</a><a class="bracket-link" href="#skills">EXPLORE SKILLS</a></div><img class="separator" src="assets/40514.png" alt="">
+  <section class="photo-surface about section" id="about" aria-labelledby="about-title"><div class="photo-background" aria-hidden="true" data-chromatic><img src="assets/mountain-lake.webp" alt="" loading="lazy" decoding="async"></div><h2 class="boxed-title" id="about-title">ABOUT ME</h2><p class="section-lead">I enjoy solving problems across the full system: the server, the network, and the application people depend on. I learn by building, documenting what works, and tracing issues back to their cause.</p><div class="about-shortcuts"><a class="bracket-link" href="#resume">VIEW RESUME</a><a class="bracket-link" href="#skills">EXPLORE SKILLS</a></div><img class="separator" src="assets/40514.png" alt="">
     <div class="services"><article><h3>PROFESSIONAL EXPERIENCE</h3><p>Vector Digital · Since July 2025</p></article><article><h3>Homelab</h3><p>3 Proxmox hosts · 5 k8ss nodes · NAS · OPNsense router</p></article><article><h3>EDUCATION IN PROGRESS</h3><p>BAS in IT – System Administration</p></article></div><img class="separator" src="assets/40514.png" alt="">
   </section>
   <section class="photo-surface resume section" id="resume" aria-labelledby="resume-title"><div class="photo-background" aria-hidden="true" data-chromatic><img src="assets/forest.webp" alt="" loading="lazy" decoding="async"></div>
@@ -148,7 +148,8 @@
       </li>
     </ol></div>
   </section>
-  <section class="em-case" id="emiliany" aria-labelledby="em-title">
+  <section class="photo-surface em-case" id="emiliany" aria-labelledby="em-title">
+    <div class="photo-background" aria-hidden="true"><img src="assets/woodland-stream.webp" alt="" loading="lazy" decoding="async"></div>
     <div class="em-shell">
       <div class="em-heading"><p class="em-kicker">FEATURED BUILD / EMILIANY</p><span class="em-index">COMMERCE, CONNECTED.</span></div>
       <div class="em-hero-grid">
@@ -262,9 +263,9 @@
   </section>
   <section class="stack-explorer section" id="stack" aria-labelledby="stack-title">
     <p class="stack-kicker">INSIDE ANTALOS</p><h2 class="boxed-title" id="stack-title">SERVICE INVENTORY</h2>
-    <p class="section-lead">A closer look at the applications configured in Antalos, grouped by purpose. Each card links to its deployment configuration. This is a documented inventory, not a live status dashboard.</p>
-    <div class="stack-toolbar"><label>Find a service<input id="stack-search" type="search" placeholder="Search applications…" aria-controls="stack-cards"></label><label>Explore by category<select id="stack-category" aria-controls="stack-cards"><option value="all">All services</option><option>Work &amp; collaboration</option><option>Business &amp; commerce</option><option>AI &amp; automation</option><option>Identity &amp; security</option><option>Platform &amp; observability</option></select></label><button id="stack-reset" type="button">Reset cards ↺</button></div>
-    <p id="stack-count" class="stack-count" role="status">40 services</p>
+    <p class="section-lead">Applications and infrastructure defined across Antalos, grouped by purpose. Cards link to their configuration; archived templates are labeled separately. This source inventory does not show live status.</p>
+    <div class="stack-toolbar"><label>Find a service<input id="stack-search" type="search" placeholder="Search applications…" aria-controls="stack-cards"></label><label>Explore by category<select id="stack-category" aria-controls="stack-cards"><option value="all">All services</option><option>Work &amp; collaboration</option><option>Business &amp; commerce</option><option>AI &amp; automation</option><option>Identity &amp; security</option><option>Platform &amp; observability</option><option>Media &amp; entertainment</option></select></label><button id="stack-reset" type="button">Reset cards ↺</button></div>
+    <p id="stack-count" class="stack-count" role="status">76 services</p>
     <p class="stack-help" id="stack-help">Drag the card handles, or focus a handle and use arrow keys. Home returns a card. On mobile, scroll to browse.</p>
     <div class="stack-cards" id="stack-cards" aria-describedby="stack-help">
       <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:-5deg;--card-hue:195">
@@ -468,7 +469,7 @@
       <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:6deg;--card-hue:195">
         <button class="stack-handle" type="button" aria-label="Move GitLab card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
         <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/gitlab.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 34</small></div>
-        <p class="stack-category">Work &amp; collaboration</p><h3>GitLab</h3><p class="stack-description">Git hosting, CI/CD, and container registry</p>
+        <p class="stack-category">Work &amp; collaboration</p><h3>GitLab</h3><p class="stack-description">Archived template · Git hosting, CI/CD, and container registry</p>
         <a href="https://github.com/antblu/antalos/tree/main/templates/gitlab" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for GitLab</span></a>
       </article>
       <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:-2deg;--card-hue:291">
@@ -507,27 +508,224 @@
         <p class="stack-category">Platform &amp; observability</p><h3>NFS CSI Driver</h3><p class="stack-description">Shared filesystem storage</p>
         <a href="https://github.com/antblu/antalos/tree/main/apps/nfs-driver" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for NFS CSI Driver</span></a>
       </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:-5deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move antblu.net card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/docs-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 41</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>antblu.net</h3><p class="stack-description">Portfolio website</p>
+        <a href="https://github.com/antblu/antalos/tree/main/apps/antblu" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for antblu.net</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:4deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move LittleLink card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/docs-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 42</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>LittleLink</h3><p class="stack-description">Personal links page</p>
+        <a href="https://github.com/antblu/antalos/tree/main/apps/littlelink" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for LittleLink</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:-3deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move WriteFreely card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/docs-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 43</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>WriteFreely</h3><p class="stack-description">Publishing and blogging</p>
+        <a href="https://github.com/antblu/antalos/tree/main/apps/writefreely" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for WriteFreely</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:6deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move Drupal card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/docs-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 44</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>Drupal</h3><p class="stack-description">Archived template · Content management and publishing</p>
+        <a href="https://github.com/antblu/antalos/tree/main/templates/drupal" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Drupal</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:-2deg;--card-hue:220">
+        <button class="stack-handle" type="button" aria-label="Move llama-swap card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/ai-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 45</small></div>
+        <p class="stack-category">AI &amp; automation</p><h3>llama-swap</h3><p class="stack-description">On-demand local model serving</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/rtxansible/compose" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for llama-swap</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:-5deg;--card-hue:220">
+        <button class="stack-handle" type="button" aria-label="Move Speaches card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/ai-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 46</small></div>
+        <p class="stack-category">AI &amp; automation</p><h3>Speaches</h3><p class="stack-description">Speech transcription and synthesis</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/rtxansible/compose" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Speaches</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:4deg;--card-hue:220">
+        <button class="stack-handle" type="button" aria-label="Move Docling card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/ai-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 47</small></div>
+        <p class="stack-category">AI &amp; automation</p><h3>Docling</h3><p class="stack-description">Document conversion and processing</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/arcansible/compose" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Docling</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:-3deg;--card-hue:220">
+        <button class="stack-handle" type="button" aria-label="Move Immich Machine Learning card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/ai-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 48</small></div>
+        <p class="stack-category">AI &amp; automation</p><h3>Immich Machine Learning</h3><p class="stack-description">Machine learning for photo management</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/arcansible/compose" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Immich Machine Learning</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:6deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move Nextcloud Talk Recording card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/nextcloud.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 49</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>Nextcloud Talk Recording</h3><p class="stack-description">Recording service for Nextcloud Talk</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/arcansible/compose" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Nextcloud Talk Recording</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:-2deg;--card-hue:291">
+        <button class="stack-handle" type="button" aria-label="Move Homelable card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 50</small></div>
+        <p class="stack-category">Platform &amp; observability</p><h3>Homelable</h3><p class="stack-description">Homelab inventory and dashboard</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/arcansible/homelable" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Homelable</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:-5deg;--card-hue:291">
+        <button class="stack-handle" type="button" aria-label="Move Caddy card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 51</small></div>
+        <p class="stack-category">Platform &amp; observability</p><h3>Caddy</h3><p class="stack-description">Web server template copied to the Debian host</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/caddy" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Caddy</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:4deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Jellyfin card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 52</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Jellyfin</h3><p class="stack-description">Media streaming server</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/arcansible/compose" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Jellyfin</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-3deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Trailarr card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 53</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Trailarr</h3><p class="stack-description">Movie and TV trailers</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/arcansible/compose" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Trailarr</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:6deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Tdarr card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 54</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Tdarr</h3><p class="stack-description">Media transcoding automation</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/arcansible/compose" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Tdarr</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-2deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move LazyLibrarian card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 55</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>LazyLibrarian</h3><p class="stack-description">Book and audiobook management</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/arcansible/compose" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for LazyLibrarian</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-5deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Storyteller card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 56</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Storyteller</h3><p class="stack-description">Reading and audiobook library</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/arcansible/compose" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Storyteller</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:4deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Seerr card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 57</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Seerr</h3><p class="stack-description">Media discovery and requests</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Seerr</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-3deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Sonarr card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 58</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Sonarr</h3><p class="stack-description">TV library automation</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Sonarr</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:6deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Radarr card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 59</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Radarr</h3><p class="stack-description">Movie library automation</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Radarr</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-2deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Prowlarr card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 60</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Prowlarr</h3><p class="stack-description">Indexer management</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Prowlarr</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-5deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move FlareSolverr card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 61</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>FlareSolverr</h3><p class="stack-description">Indexer challenge proxy</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for FlareSolverr</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:4deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move qBittorrent card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 62</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>qBittorrent</h3><p class="stack-description">Torrent client</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for qBittorrent</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-3deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Gluetun card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 63</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Gluetun</h3><p class="stack-description">VPN gateway for media workloads</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Gluetun</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:6deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Recyclarr card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 64</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Recyclarr</h3><p class="stack-description">Media quality configuration sync</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Recyclarr</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-2deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Bazarr card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 65</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Bazarr</h3><p class="stack-description">Subtitle management</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Bazarr</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-5deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Subgen card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 66</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Subgen</h3><p class="stack-description">Automated subtitle generation</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Subgen</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:4deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Autopulse card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 67</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Autopulse</h3><p class="stack-description">Media library update automation</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Autopulse</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-3deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Maintainerr card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 68</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Maintainerr</h3><p class="stack-description">Media library maintenance</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Maintainerr</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:6deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Jellyfin Auto Collections card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 69</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Jellyfin Auto Collections</h3><p class="stack-description">Automated Jellyfin collections</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Jellyfin Auto Collections</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-2deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Pixelfin card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 70</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Pixelfin</h3><p class="stack-description">Jellyfin artwork management</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Pixelfin</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-5deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Streamystats card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 71</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Streamystats</h3><p class="stack-description">Jellyfin viewing statistics</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Streamystats</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:4deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Lidarr card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 72</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Lidarr</h3><p class="stack-description">Music library automation</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Lidarr</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-3deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move AudioMuse-AI card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 73</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>AudioMuse-AI</h3><p class="stack-description">Music analysis and discovery</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for AudioMuse-AI</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:6deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Multi Scrobbler card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 74</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Multi Scrobbler</h3><p class="stack-description">Music listening history sync</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Multi Scrobbler</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-2deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Explo card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 75</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Explo</h3><p class="stack-description">Music discovery</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Explo</span></a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-5deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Cliparr card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/platform-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 76</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Cliparr</h3><p class="stack-description">Media clip management</p>
+        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/media" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Cliparr</span></a>
+      </article>
     </div>
-    <p class="stack-source">Inventory from Antalos application definitions · October 25, 2026. Includes platform services; this is not a live health monitor. <a href="https://github.com/antblu/antalos/tree/main/apps" target="_blank" rel="noopener noreferrer">Browse the stack ↗</a></p>
-  </section>
-  <section class="photo-surface career-goals section" id="goals" aria-labelledby="goals-title"><div class="photo-background" aria-hidden="true"><img src="assets/woodland-stream.webp" alt="" loading="lazy" decoding="async"></div>
-    <h2 class="boxed-title" id="goals-title">WHAT’S NEXT</h2>
-    <p class="section-lead">I want to take on more responsibility for the systems I build and support. I’m working toward that through hands-on projects, my degree, and certifications.</p>
-    <p class="career-plan-note">These are planned goals and target dates, not completed credentials.</p>
-    <div class="goals-layout">
-      <div><h3 class="career-column-title">Building the foundation</h3><ol class="milestone-list">
-        <li><time datetime="2026-11">November 2026</time><h4>Make my work visible</h4><p>Update my resume, portfolio, and homelab documentation to show what I’ve built.</p></li>
-        <li><time datetime="2027-03">March 2027</time><h4>Validate my networking skills</h4><p>Earn CompTIA Network+ or a similar professional networking certification.</p></li>
-        <li><time datetime="2027-08">August 2027</time><h4>Develop my Azure expertise</h4><p>Earn the Microsoft Azure Administrator Associate (AZ-104) certification.</p></li>
-        <li><time datetime="2027-12">December 2027</time><h4>Complete my degree</h4><p>Complete my Bachelor of Applied Science in Information Technology – System Administration.</p></li>
-      </ol></div>
-      <div><h3 class="career-column-title">Growing my impact</h3><ol class="milestone-list" start="5">
-        <li><time datetime="2027-12">December 2027</time><h4>Take the next professional step</h4><p>Move into a systems administration or infrastructure engineering role with more responsibility.</p></li>
-        <li><time datetime="2028-12">December 2028</time><h4>Deepen my infrastructure experience</h4><p>Gain more experience with cloud infrastructure, automation, and infrastructure as code.</p></li>
-        <li><time datetime="2029-12">December 2029</time><h4>Advance into a senior role</h4><p>Progress into a senior systems, cloud, or infrastructure engineering position.</p></li>
-        <li><time datetime="2031-12">December 2031</time><h4>Mentor and lead</h4><p>Mentor other IT professionals and help make infrastructure design decisions.</p></li>
-      </ol></div>
-    </div>
+    <p class="stack-source">Inventory from Antalos Kubernetes, Debian workload, and template sources · November 14, 2026. Configuration does not establish current deployment or health. <a href="https://github.com/antblu/antalos/tree/main/apps" target="_blank" rel="noopener noreferrer">Browse the stack ↗</a></p>
   </section>
   <section class="photo-surface contact section paper" id="contact" aria-labelledby="contact-title"><div class="photo-background" aria-hidden="true"><img src="assets/bogota.webp" alt="" loading="lazy" decoding="async"></div><div class="section-ripple" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><h2 class="boxed-title" id="contact-title">CONTACT</h2><p class="section-lead">Hiring for systems administration or infrastructure work? I’d be glad to discuss my experience and learn about your team.</p><a class="email-address" href="mailto:antblu@antblu.net">antblu@antblu.net</a><img class="separator" src="assets/40514.png" alt="">
     <form id="contact-form" data-support-url=""><label hidden aria-hidden="true">Leave this empty<input name="zammad_form_url" tabindex="-1" autocomplete="off"></label><label><span class="sr-only">Your name (required)</span><input name="name" autocomplete="name" placeholder="ENTER YOUR NAME*" required maxlength="120"></label><label><span class="sr-only">Your email (required)</span><input type="email" name="email" autocomplete="email" placeholder="ENTER YOUR EMAIL*" required maxlength="254"></label><label><span class="sr-only">Phone number</span><input type="tel" name="phone" autocomplete="tel" placeholder="PHONE NUMBER" maxlength="50"></label><label><span class="sr-only">Your message (required)</span><textarea name="message" placeholder="YOUR MESSAGE*" required maxlength="5000" rows="5"></textarea></label><button class="shimmer-button" type="submit"><span>SEND MESSAGE ↗</span></button><p class="form-note">Your message will create a support ticket. I’ll reply by email.</p><noscript><p>Please email antblu@antblu.net to get in touch. Sending this form requires JavaScript.</p></noscript><p id="form-status" role="status" aria-live="polite"></p></form>
