@@ -474,7 +474,7 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 
 /* Floating navigation inspired by Magic UI's Dock. */
 :root{--dock-clearance:calc(88px + env(safe-area-inset-top));scroll-padding-top:var(--dock-clearance)}
-.site-dock{--dock-border:#a9bed5;--dock-surface:#f4f9ffed;--dock-label-bg:#17283d;--dock-label-ink:#fff;--dock-hover:#dcecff;position:fixed;z-index:90;inset:calc(14px + env(safe-area-inset-top)) auto auto 50%;width:max-content;transform:translateX(-50%);display:grid;grid-template-columns:repeat(9,44px) 52px;gap:5px;align-items:center;padding:6px;border:1px solid var(--dock-border);border-radius:22px;background:var(--dock-surface);color:var(--ink);box-shadow:0 8px 32px #070d1638;backdrop-filter:blur(16px)}
+.site-dock{--dock-border:#a9bed5;--dock-surface:#f4f9ffed;--dock-label-bg:#17283d;--dock-label-ink:#fff;--dock-hover:#dcecff;position:fixed;z-index:90;inset:calc(14px + env(safe-area-inset-top)) auto auto 50%;width:max-content;transform:translateX(-50%);display:grid;grid-template-columns:repeat(10,44px) 52px;gap:5px;align-items:center;padding:6px;border:1px solid var(--dock-border);border-radius:22px;background:var(--dock-surface);color:var(--ink);box-shadow:0 8px 32px #070d1638;backdrop-filter:blur(16px)}
 [data-theme="dark"] .site-dock{--dock-border:#435a71;--dock-surface:#101c2bf2;--dock-label-bg:#dbe6f2;--dock-label-ink:#070d16;--dock-hover:#253d57}
 .site-dock>.dock-item{position:relative;display:grid;place-items:center;width:100%;height:44px;margin:0;padding:0;border:0;border-radius:14px;background:transparent;color:inherit;opacity:1}
 .site-dock>.dock-item:hover,.site-dock>.dock-item:focus-visible{background:var(--dock-hover);opacity:1}
@@ -486,7 +486,7 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 @media(hover:hover){.site-dock>.dock-item:hover .dock-label{visibility:visible}}
 @media(max-width:559px){
   :root{--dock-clearance:calc(128px + env(safe-area-inset-top))}
-  .site-dock{top:calc(8px + env(safe-area-inset-top));grid-template-columns:repeat(5,44px);gap:3px 5px;border-radius:19px}
+  .site-dock{top:calc(8px + env(safe-area-inset-top));grid-template-columns:repeat(6,minmax(40px,44px));gap:3px 4px;border-radius:19px}
   .site-dock>.dock-item{position:static}
   .dock-label{top:calc(100% + 7px)}
 }

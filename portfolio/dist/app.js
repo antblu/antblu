@@ -131,38 +131,24 @@ document.querySelector('#contact-form')?.addEventListener('submit', async event 
   button.disabled = true;
   form.setAttribute('aria-busy', 'true');
   status.textContent = 'Sending your message…';
-  let submitted = false;
   try {
-    const fingerprint = crypto.randomUUID();
-    const configResponse = await fetch(`${supportUrl}/api/v1/form_config`, { method: 'POST', body: new URLSearchParams({ fingerprint }), credentials: 'omit', signal: AbortSignal.timeout(15000) });
-    if (!configResponse.ok) throw new Error('unavailable');
-    const config = await configResponse.json();
-    if (!config.enabled || !config.token || config.spam_protection?.captcha) throw new Error('unavailable');
-    const payload = new FormData();
-    payload.set('fingerprint', fingerprint);
-    payload.set('token', config.token);
-    payload.set('name', data.get('name').trim());
-    payload.set('email', data.get('email').trim());
-    payload.set('title', `antblu.net inquiry from ${data.get('name').trim()}`);
-    payload.set('body', `${data.get('message').trim()}\n\nFrom: ${data.get('name').trim()}\nEmail: ${data.get('email').trim()}${data.get('phone').trim() ? `\nPhone: ${data.get('phone').trim()}` : ''}\nSource: antblu.net contact form`);
-    if (config.spam_protection?.honeypot?.field) payload.set(config.spam_protection.honeypot.field, data.get('zammad_form_url') || '');
-    submitted = true;
-    const response = await fetch(`${supportUrl}/api/v1/form_submit`, { method: 'POST', body: payload, credentials: 'omit', signal: AbortSignal.timeout(30000) });
-    if (!response.ok) throw new Error('unavailable');
-    const result = await response.json();
-    if (!result.ticket?.number) {
-      if (result.errors?.email) {
-        status.textContent = 'Please enter a valid email address that can receive replies.';
-        return;
-      }
-      throw new Error('unavailable');
+    const { submitContactTicket, ticketMessages } = await import('./services/contact-api.mjs');
+    const name = data.get('name').trim();
+    const email = data.get('email').trim();
+    const phone = data.get('phone').trim();
+    const result = await submitContactTicket({
+      supportUrl, name, email, honeypot: data.get('zammad_form_url'),
+      title: `antblu.net inquiry from ${name}`,
+      body: `${data.get('message').trim()}\n\nFrom: ${name}\nEmail: ${email}${phone ? `\nPhone: ${phone}` : ''}\nSource: antblu.net contact form`
+    });
+    if (result.state === 'sent') {
+      status.textContent = `Message sent. Your ticket number is #${result.number}. I’ll reply to your email address.`;
+      form.reset();
+    } else {
+      status.textContent = ticketMessages[result.state];
     }
-    status.textContent = `Message sent. Your ticket number is #${result.ticket.number}. I’ll reply to your email address.`;
-    form.reset();
   } catch {
-    status.textContent = submitted
-      ? 'Delivery could not be confirmed. Please avoid resending immediately; your ticket may have been created. You can email antblu@antblu.net for help.'
-      : 'The contact service is unavailable. Your message is still here. Please try later or email antblu@antblu.net.';
+    status.textContent = 'The contact service is unavailable. Your message is still here. Please try later or email antblu@antblu.net.';
   } finally {
     delete form.dataset.sending;
     button.disabled = false;

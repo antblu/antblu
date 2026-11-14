@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Interactive Infrastructure Demo | Anthony Bluemel</title>
+  <meta name="description" content="Explore a synthetic business workspace, follow an alert through diagnosis, and approve a simulated GitOps change as an administrator.">
+  <meta name="theme-color" content="#eef5fc">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Anthony Bluemel">
+  <meta property="og:title" content="Interactive Infrastructure Demo | Anthony Bluemel">
+  <meta property="og:description" content="Explore a synthetic business workspace, follow an alert through diagnosis, and approve a simulated GitOps change as an administrator.">
+  <meta property="og:url" content="https://antblu.net/demo">
+  <meta property="og:image" content="https://antblu.net/assets/antblu-logo.png">
+  <link rel="canonical" href="https://antblu.net/demo">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script>
+    (() => {
+      let theme;
+      try { theme = localStorage.getItem('antblu-theme'); } catch {}
+      document.documentElement.dataset.theme = theme === 'dark' || (theme !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600..800&amp;family=Open+Sans:wght@400..750&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/services/services.css">
+  <script type="module" src="/services/common.mjs"></script>
+  <script type="module" src="/services/demo.mjs"></script>
+</head>
+<body class="svc-body">
+  <a class="svc-skip" href="#main">Skip to content</a>
+  <header class="svc-header"><div class="svc-wrap">
+    <a class="svc-brand" href="/"><img src="/assets/antblu-logo.png" width="36" height="36" alt="">Anthony Bluemel</a>
+    <nav class="svc-nav" aria-label="Main navigation"><details><summary>Services</summary><div class="svc-nav-menu"><a href="/services">Services overview</a><a href="/services/infrastructure">Infrastructure</a><a href="/services/web-development">Web development</a><a href="/services/ecommerce">E-commerce</a><a href="/services/applications">Applications</a><a href="/services/compare">Software comparisons</a><a href="/services/calculator">TCO calculator</a></div></details><a href="/#portfolio">Portfolio</a><a href="https://blog.antblu.net">Blog</a><a href="/demo" aria-current="page">Demo</a><a href="/contact">Contact</a><button type="button" class="svc-btn" data-svc-theme aria-pressed="false">Dark mode</button></nav>
+  </div></header>
+  <main id="main">
+    <section class="svc-hero svc-hero--compact">
+      <div class="svc-wrap"><div><h1>Walk through an infrastructure incident.</h1><p class="svc-lead">Explore a synthetic business workspace, follow an alert through diagnosis, and approve a simulated GitOps change as an administrator.</p><div class="svc-cta"><a class="svc-btn" href="/services/applications">Browse Applications</a><a class="svc-btn" href="/contact?service=infrastructure">Discuss Your Setup</a></div></div></div>
+    </section>
+    <div class="svc-wrap">
+      <section class="svc-section" aria-label="Demo workspace"><p class="svc-note">Simulation · All metrics and events on this page are fictional. The workflow uses scripted example AI output and sends no production commands.</p><div id="service-demo"><p>Loading the demo…</p></div><noscript><p>The simulation requires JavaScript.</p></noscript></section>
+    </div>
+  </main>
+  <footer class="svc-footer"><div class="svc-wrap">
+    <p>© 2026 Anthony Bluemel · Independent infrastructure and web development</p>
+    <nav aria-label="Footer"><a href="/services">Services</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav>
+  </div></footer>
+</body>
+</html>

@@ -159,3 +159,81 @@ Kinetic Text (2026-11-14). The Experience heading uses variable Montserrat weigh
 Floating navigation dock (2026-11-14). Headless Chrome verified that the dock stays fixed during anchor navigation in both themes at 320, 390, 560, 768, and 1440 px. All nine links fit within the dock at each width. Keyboard focus and labels, theme switching, pointer magnification and reset, reduced motion, and touch navigation with JavaScript disabled passed. Node syntax and Git whitespace checks passed. Physical devices and production deployment were outside this check.
 
 Top dock placement (2026-11-14). Headless Chrome verified fixed placement during navigation and clearance from the scroll progress indicator in both themes at 320, 560, 640, 641, and 1440 px. Keyboard labels, theme switching, pointer magnification, reduced motion, and touch navigation with JavaScript disabled passed. Git whitespace check passed. Production was not checked.
+
+## Consulting pages (2026-11-14)
+
+- Rebuilt the Nginx image with Antalos's configured `1.31.7-alpine` tag. Verified
+  `/healthz`, legacy blog redirect, all 12 canonical sitemap URLs, fragment
+  targets, and 108 local linked files. Confirmed Nginx serves browser modules
+  with a JavaScript MIME type.
+- Node syntax and whitespace checks passed. Eight TCO tests passed, including
+  mixed billing periods, cost inputs, renewals, crossover, and invalid inputs.
+- Chrome/Playwright exercised catalog, filters, detail dialog, selection
+  transfer, published and custom billing, infrastructure presets, quote copy
+  and print controls, approval simulation, and contact validation. Checked all
+  12 pages at 320, 768, and 1440 CSS pixels in both themes. Existing portfolio
+  filter, project dialog, stack search, and portfolio contact flow passed.
+  Reviewed service and calculator captures. Static pricing and email contact
+  remained accessible with JavaScript disabled.
+- axe-core found no WCAG A/AA rule violations on the 11 new pages in either
+  theme. Keyboard navigation and Escape dismissal were exercised in the browser.
+- The public Zammad configuration returned an enabled token and honeypot
+  configuration. Ticket success/failure and payloads were tested with local
+  responses. No production ticket or appointment was submitted. The existing
+  30-minute Cal.diy event and public blog returned HTTP 200.
+- Live sandbox URLs are optional. The demo is a simulation. Privacy and terms
+  copy is pending review. Site changes were built locally and remain unpublished.
+
+### Services landing page redesign
+
+Compared the reference homepage at desktop and mobile widths. Reworked
+`/services` around a full-width hero, ownership benefits, linked comparison
+previews, and the two infrastructure packages. The pricing cards reuse the
+central ranges, and replacement preview links prefill the comparison search.
+Checked both themes at 320, 390, 768, 1000, 1001, 1280, and 1440 CSS pixels.
+Verified keyboard menu operation, comparison deep links, quote and calculator
+links, static navigation without JavaScript, and automated accessibility.
+
+### Services audit and React FAQ (2026-11-14)
+
+- Public `/services` and `/services/` returned HTTP 404; the existing homepage
+  returned 200. The local services pages contain real content and work at 4173.
+  This audit changes local source only; production publication is outstanding.
+- Checked all 11 consulting HTML pages: 36 unique local destinations/assets and
+  all referenced fragment IDs resolve. Checked 70 external URLs in the pages,
+  application catalog, comparison data, and scheduling configuration. 65 returned
+  HTTP 200 directly; Microsoft, NetSuite, Matomo (two URLs), and Mautic blocked
+  or refused direct requests but resolved through the web lookup. Updated Slack
+  to its actual pricing page and Mautic to its canonical hostname. HTTP responses
+  do not establish that bookings or message delivery work; none were submitted.
+- Clarified package scope, simulation wording, and infrastructure ownership;
+  added a progressively enhanced React/Base UI FAQ using the homepage's existing
+  local vendor bundle. Native disclosures remain available with JavaScript
+  disabled or the bundle blocked. No dependency update or CDN dependency added.
+- Twelve Node tests pass for TCO arithmetic and billing: mixed periods, seat
+  minimums/bands, full-year prices, setup and operating costs, renewals, zero
+  costs, sustained crossover, rounding, and invalid inputs. Browser assertions
+  independently confirm the default three-year totals ($14,760 commercial and
+  $13,644 self-hosted). These totals are sample inputs, not matched workloads.
+  No arithmetic defect was found in the TCO engine. Added explicit scope and
+  monthly-equivalent explanations and safe handling of malformed stored
+  application selections in both the catalog and calculator.
+- Chrome/Playwright passed the catalog, comparison filters, calculator presets,
+  add/remove/custom billing, copy/print, quote transfer, simulated demo, and
+  mocked contact success/failure checks. Existing homepage interactions passed.
+  All 12 site routes passed 72 theme/viewport checks (320/768/1440). The landing
+  page separately passed seven widths in both themes, six comparison deep links,
+  keyboard menu checks, and no-JavaScript fallback. Axe reported zero automated
+  WCAG A/AA violations on the 11 consulting pages in both themes.
+- The broad test exposed comparison-card text overflow at 768px with web fonts
+  blocked. Fixed product-name wrapping and verified the fallback-font layout.
+  The retained `portfolio/tests/services-browser.mjs` covers that regression,
+  React keyboard interaction, native/vendor-failure fallbacks, stored-state
+  recovery, default totals, and invalid calculator input.
+- Physical phones, production deployment, and live contact/booking delivery
+  remain unverified. Existing uncommitted changes were preserved.
+- Additional emulated-touch checks passed at 320/390px in light and dark themes:
+  menu open/close and anchor navigation, FAQ taps, calculator horizon changes,
+  jump-to-results, and no horizontal document overflow. Tightened the mobile
+  result table so headings and currency amounts do not break mid-word. Reviewed
+  FAQ desktop/mobile and calculator light/dark screenshots under `/tmp/`.

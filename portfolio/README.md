@@ -36,3 +36,66 @@ The featured build uses a small React island with locally bundled Base UI Tabs a
 Accordion. Edit its content in `dist/index.html`, behavior in `dist/emiliany.js`
 and styles in `dist/emiliany.css`. Serving remains buildless; only library upgrades
 need the optional bundle workflow in [components/README.md](components/README.md).
+
+## Consulting pages
+
+The portfolio now links to a buildless consulting area. Service pages, the demo,
+and the consultation form are directory indexes under `dist/`. Nginx serves
+their canonical URLs directly and supplies the JavaScript MIME type for modules.
+The Python preview redirects directory URLs to their trailing-slash equivalents.
+
+- `dist/services/pricing.mjs` owns implementation ranges, hosting cost examples,
+  and editable provider allowances. Use the matching static price fallback in
+  any affected HTML page when updating a range.
+- `dist/services/applications.mjs` lists catalog modules, deployment requirements,
+  edition qualifications, and upstream license links.
+- `dist/services/comparisons.mjs` lists US commercial plans, sources, verification
+  dates, actual billing periods, and seat rules. Annual amounts are full annual
+  charges. Use an empty price list for a plan that requires a quote or cannot be
+  represented by a flat rate.
+- `dist/services/tco.mjs` projects ownership costs and sustained break-even.
+  It normalizes annual expenses to monthly accrual and records replacements at
+  anniversaries inside the selected term. Run `node --test portfolio/tests/tco.test.mjs`
+  from the repository root.
+- `dist/services/site-config.mjs` sets the public scheduling URL and optional
+  public sandbox URLs. The incident walkthrough works with synthetic data and
+  scripted AI output. There is no live model or production cluster connection.
+- `CONTACT_UPSTREAM` points Nginx at Zammad's built-in public form channel.
+  Keep server-side honeypot and rate limits enabled. The clients support the
+  deployed token/honeypot configuration. If CAPTCHA is enabled, add the
+  provider's supported challenge flow before using the ticket form. Without
+  an upstream the static preview supports email drafts and the direct email link.
+- `dist/privacy/index.html` and `dist/terms/index.html` contain initial site
+  notices. Review the privacy notice against actual retention and third-party
+  practices, and have the privacy and terms copy reviewed before commercial use.
+
+From the repository root:
+
+```sh
+python3 -m http.server 4173 --directory portfolio/dist
+node --test portfolio/tests/tco.test.mjs
+git diff --check
+```
+
+Use the configured Nginx tag in Antalos for a production-shaped local preview:
+
+```sh
+docker build --build-arg NGINX_IMAGE_TAG=<configured-tag> -t antblu:local .
+docker run --rm -p 8080:8080 antblu:local
+```
+
+The existing website image workflow builds pull requests and publishes from
+`main`. The Antalos deployment supplies the upstream address independently
+of browser assets.
+
+Services regression checks (optional component-development dependencies):
+
+```sh
+node --test portfolio/tests/*.test.mjs
+node portfolio/tests/services-browser.mjs
+```
+
+Start the static preview on port 4173 before the browser check. Override
+`ANTBLU_PREVIEW` for another URL and `CHROME_PATH` for another Chromium executable.
+The browser check uses the pinned Playwright in `portfolio/components/` and does
+not submit a contact request. Screenshots are written under `/tmp/`.
