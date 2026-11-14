@@ -14,10 +14,6 @@
 @media(prefers-reduced-motion:reduce){.animated-gradient-text,.gradient-pill::before{animation:none}.gradient-pill,.gradient-pill-chevron{transition:none}.gradient-pill:hover .gradient-pill-chevron,.gradient-pill:focus-visible .gradient-pill-chevron{transform:none}}
 @media(forced-colors:active){.animated-gradient-text{background:none;color:LinkText}.gradient-pill::before{display:none}.gradient-pill{border-color:LinkText}.gradient-pill-divider{background:LinkText}}
 
-::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
-::view-transition-old(root){z-index:0}
-::view-transition-new(root){z-index:1}
-
 .text-highlighter{
   color:inherit;
   background:linear-gradient(178deg,transparent 22%,var(--text-highlight,#3999ee3d) 25%,var(--text-highlight,#3999ee3d) 85%,transparent 89%) left center / 100% 100% no-repeat;

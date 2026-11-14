@@ -250,3 +250,18 @@ links, static navigation without JavaScript, and automated accessibility.
   automated WCAG A/AA violations on the landing page in both themes.
 - The existing services browser suite and 12 Node tests passed. Physical
   devices, live booking, and production deployment were outside this check.
+
+### Shared services navigation and theme
+
+- Headless Chromium checked all 12 local pages at 320, 768, 1080, 1081, and
+  1440 CSS pixels in both themes. The sticky headers matched across routes.
+  No horizontal overflow, failed local responses, or JavaScript errors were
+  detected. The 320px preview also exposed the main navigation with JavaScript
+  disabled on every route.
+- Verified keyboard menu opening and Escape focus return, theme persistence
+  from the demo to infrastructure, and scroll clearance for links to Packages
+  and Portfolio. The booking menu link moved focus to the booking section.
+- Reviewed desktop captures of Services and Infrastructure and mobile captures
+  of Demo and Portfolio. The existing browser regression suite and all 12 Node
+  tests passed. Production deployment, live booking, and contact submission
+  were outside these checks.

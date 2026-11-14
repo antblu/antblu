@@ -20,30 +20,6 @@ document.querySelectorAll('[data-kinetic-text]').forEach(element => {
   element.replaceChildren(accessible, visual);
 });
 
-const menu = document.querySelector('.svc-menu-toggle');
-const navigation = document.querySelector('#landing-nav');
-const narrow = matchMedia('(max-width: 1080px)');
-function setMenu(open) {
-  menu.setAttribute('aria-expanded', String(open));
-  navigation.classList.toggle('svc-nav-open', open);
-}
-menu.hidden = false;
-menu.addEventListener('click', () => setMenu(menu.getAttribute('aria-expanded') !== 'true'));
-narrow.addEventListener('change', () => setMenu(false));
-navigation.addEventListener('click', event => {
-  const link = event.target.closest('a');
-  if (!link || !narrow.matches) return;
-  setMenu(false);
-  if (link.hash && link.pathname === location.pathname) {
-    document.getElementById(link.hash.slice(1))?.focus({ preventScroll: true });
-  }
-});
-document.querySelector('.svc-landing-header').addEventListener('keydown', event => {
-  if (event.key !== 'Escape' || menu.getAttribute('aria-expanded') !== 'true') return;
-  setMenu(false);
-  menu.focus();
-});
-
 // Reuse the homepage's locally bundled React and Base UI primitives.
 // Native details remain usable until the island has successfully mounted.
 async function enhanceFaq() {

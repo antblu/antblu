@@ -23,25 +23,6 @@ window.addEventListener('pageshow', scheduleScrollProgress);
 new ResizeObserver(scheduleScrollProgress).observe(document.body);
 scheduleScrollProgress();
 
-// Magnify the icons nearest the pointer while keeping link hit areas stable.
-const dock = document.querySelector('.site-dock');
-const dockItems = [...dock.querySelectorAll('.dock-item')];
-const dockMotion = matchMedia('(hover: hover) and (pointer: fine) and (min-width: 560px) and (prefers-reduced-motion: no-preference)');
-function resetDock() {
-  dockItems.forEach(item => item.style.removeProperty('--dock-magnification'));
-}
-dock.addEventListener('pointermove', event => {
-  if (!dockMotion.matches || event.pointerType === 'touch') return;
-  const left = dock.getBoundingClientRect().left + dock.clientLeft;
-  dockItems.forEach(item => {
-    const center = left + item.offsetLeft + item.offsetWidth / 2;
-    const proximity = Math.max(0, 1 - Math.abs(event.clientX - center) / 100);
-    item.style.setProperty('--dock-magnification', 1 + proximity ** 2 * 0.55);
-  });
-});
-dock.addEventListener('pointerleave', resetDock);
-dockMotion.addEventListener('change', resetDock);
-
 document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
   document.querySelectorAll('[data-filter]').forEach(item => { const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-pressed', String(active)); });
   document.querySelectorAll('.project').forEach(project => { project.hidden = button.dataset.filter !== 'all' && project.dataset.category !== button.dataset.filter; });

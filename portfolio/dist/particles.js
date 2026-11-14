@@ -3,7 +3,7 @@
 (() => {
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const forced = matchMedia('(forced-colors: active)');
-  document.querySelectorAll('.hero, .intro, footer').forEach(surface => {
+  document.querySelectorAll('.hero, .intro').forEach(surface => {
     const floating = surface.matches('.intro');
     const canvas = document.createElement('canvas');
     canvas.className = 'particles-background';

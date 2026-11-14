@@ -1,8 +1,7 @@
-const themeButton = document.querySelector('.theme-toggle, [data-svc-theme]');
+const themeButton = document.querySelector('[data-svc-theme]');
 if (themeButton) initTheme(themeButton);
 
 function initTheme(themeButton) {
-  const lightColor = themeButton.hasAttribute('data-svc-theme') ? '#eef5fc' : '#dcecff';
   const systemTheme = matchMedia('(prefers-color-scheme: dark)');
   let savedTheme;
   try { savedTheme = localStorage.getItem('antblu-theme'); } catch {}
@@ -11,10 +10,10 @@ function initTheme(themeButton) {
     document.documentElement.dataset.theme = theme;
     const dark = theme === 'dark';
     themeButton.setAttribute('aria-pressed', String(dark));
-    document.querySelector('meta[name="theme-color"]').content = dark ? '#070d16' : lightColor;
+    document.querySelector('meta[name="theme-color"]').content = dark ? '#101b29' : '#f3f7fb';
   }
   applyTheme(followsSystem ? (systemTheme.matches ? 'dark' : 'light') : savedTheme);
-  if (themeButton.hasAttribute('data-svc-theme')) themeButton.hidden = false;
+  themeButton.hidden = false;
   const reducedThemeMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let themeTransition;
   themeButton.addEventListener('click', () => {

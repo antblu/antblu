@@ -344,7 +344,7 @@ const UNIFORMS = [
   paused: false,
   dpr: 1,
   } };
-  document.querySelectorAll('.hero, .intro, footer').forEach(surface => {
+  document.querySelectorAll('.hero, .intro').forEach(surface => {
     const canvas = document.createElement('canvas');
     canvas.className = 'lightning-background';
     canvas.setAttribute('aria-hidden', 'true');

@@ -1,4 +1,5 @@
 import '../theme.mjs';
+import './navigation.mjs';
 import { pricing, hosting } from './pricing.mjs';
 
 const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2, minimumFractionDigits: 0 });
@@ -50,17 +51,4 @@ if (process) {
       <li>Train administrators and hand off the runbooks</li>
       <li>Operate independently or arrange optional support</li>
     </ol>`;
-}
-
-const serviceMenu = document.querySelector('.svc-nav details');
-if (serviceMenu) {
-  const summary = serviceMenu.querySelector('summary');
-  serviceMenu.addEventListener('keydown', event => {
-    if (event.key !== 'Escape' || !serviceMenu.open) return;
-    serviceMenu.open = false;
-    summary.focus();
-  });
-  document.addEventListener('click', event => {
-    if (!serviceMenu.contains(event.target)) serviceMenu.open = false;
-  });
 }
