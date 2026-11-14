@@ -1,7 +1,7 @@
 const header = document.querySelector('.svc-header');
 const menu = header.querySelector('.svc-menu-toggle');
 const navigation = document.getElementById(menu.getAttribute('aria-controls'));
-const narrow = matchMedia('(max-width: 1080px)');
+const narrow = matchMedia('(max-width: 700px)');
 
 function setMenu(open) {
   menu.setAttribute('aria-expanded', String(open));
@@ -14,11 +14,16 @@ narrow.addEventListener('change', event => {
 });
 navigation.addEventListener('click', event => {
   const link = event.target.closest('a');
-  if (!link || !narrow.matches || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-  setMenu(false);
-  if (link.hash && link.pathname === location.pathname) {
-    document.getElementById(link.hash.slice(1))?.focus({ preventScroll: true });
-  }
+  if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+  if (narrow.matches) setMenu(false);
+});
+
+document.addEventListener('click', event => {
+  if (!header.contains(event.target)) setMenu(false);
+});
+
+header.addEventListener('focusout', event => {
+  if (event.relatedTarget && !header.contains(event.relatedTarget)) setMenu(false);
 });
 
 header.addEventListener('keydown', event => {

@@ -23,7 +23,7 @@ nav .contact-link:hover{background:#a9d7ff;opacity:1}nav:where(:not(.svc-nav, .s
 footer:where(:not(.svc-footer)){background:#070d16;border-top:1px solid #22374d}.footer-brand{display:block;width:170px;margin:0 auto 32px}.footer-brand img{width:100%;height:auto}.footer-links a{color:#62a5ff}.footer-links a,.back-top{min-height:44px}.design-credit{color:#a9bbce}
 dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{background:#070d16cc}#dialog-tags span{border-color:#a9bbce;color:#0c335f}.dialog-close:hover{color:#0866d8}body:has(dialog[open]){overflow:hidden}
 @media(max-width:1100px){.header{padding-left:6%;padding-right:6%}.wordmark img{width:160px}.header nav{gap:20px}.hero-copy{left:6%;max-width:44%}.portrait{left:54%;width:42%;height:76%}}
-@media(max-width:700px){.header{background:#070d16;padding:0 22px}.wordmark img{width:140px}.header nav{gap:0;background:#070d16fa}.hero{background:#070d16}.portrait{left:0;bottom:145px;width:100%;height:575px;border-radius:0;box-shadow:none}.portrait>img{object-position:35% 22%;transform:scale(1.15);transform-origin:35% 20%}.hero-copy{left:0;max-width:none;background:linear-gradient(174deg,transparent 0%,#070d16f5 13%)}.greeting{color:#d4e8ff}.role{color:#b7d8ff}.socials a{background:#b7d8ff}.work-shortcut{color:#070d16}.copy-message{margin:20px 0 0}form>.bracket-link{display:table;margin-left:auto;margin-right:auto}}
+@media(max-width:700px){.header{background:#070d16;padding:0 22px}.wordmark img{width:140px}.header nav{gap:0;background:#070d16fa}.hero{background:#070d16}.portrait{left:0;bottom:145px;width:100%;height:575px;border-radius:0;box-shadow:none}.portrait>img{object-position:35% 22%;transform:scale(1.15);transform-origin:35% 20%}.hero-copy{left:0;max-width:none;background:linear-gradient(174deg,transparent 0%,#070d16f5 13%)}.greeting{color:#d4e8ff}.role{color:#b7d8ff}.socials a{background:#b7d8ff}.copy-message{margin:20px 0 0}form>.bracket-link{display:table;margin-left:auto;margin-right:auto}}
 
 /* Transparent portrait sits directly on the hero background. */
 .portrait{left:48%;width:44%;height:86%;border-radius:0;box-shadow:none}
@@ -79,7 +79,6 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 [data-theme="dark"] .dialog-close:hover{color:#62a5ff}
 [data-theme="dark"] .separator,[data-theme="dark"] .services img{filter:invert(1)}
 [data-theme="dark"] .portfolio-heading{background-image:linear-gradient(#070d16bb,#070d16bb),url('assets/3c74e.png')}
-[data-theme="dark"] .work-shortcut{color:#070d16}
 [data-theme="dark"] .skip-link{background:#17283d;color:#dbe6f2}
 @media(min-width:701px) and (max-width:1100px){.header{padding-left:4%;padding-right:4%}.header nav{gap:16px}.theme-toggle{margin-right:16px;padding:9px 10px}}
 @media(max-width:700px){.theme-toggle{margin-right:16px;padding:8px 12px}[data-theme="dark"] .hero{background:#070d16}}

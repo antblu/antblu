@@ -265,3 +265,15 @@ links, static navigation without JavaScript, and automated accessibility.
   of Demo and Portfolio. The existing browser regression suite and all 12 Node
   tests passed. Production deployment, live booking, and contact submission
   were outside these checks.
+
+### Simplified site navigation
+
+- Headless Chrome passed all 12 pages in both themes at 320, 390, 700, 701,
+  768, and 1440 CSS pixels with fallback fonts. Verified keyboard open and
+  Escape focus return, outside-click dismissal, and homepage section links
+  clearing the sticky header. The links remained visible at 320px with
+  JavaScript disabled. All local header and footer targets resolved.
+- The services browser suite, 12 Node tests, and portfolio smoke checks for
+  project filtering, the project dialog, stack search, and mocked contact
+  submission passed. Physical devices, live submissions, and deployment were
+  outside these checks.
