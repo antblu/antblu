@@ -4,13 +4,14 @@
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const forced = matchMedia('(forced-colors: active)');
   document.querySelectorAll('.hero, .intro, footer').forEach(surface => {
+    const floating = surface.matches('.intro');
     const canvas = document.createElement('canvas');
     canvas.className = 'particles-background';
     canvas.setAttribute('aria-hidden', 'true');
     surface.prepend(canvas);
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    const points = Array.from({ length: 65 }, () => ({
+    const points = Array.from({ length: floating ? 220 : 65 }, () => ({
       x: Math.random(), y: Math.random(), z: .3 + Math.random() * .7,
       phase: Math.random() * Math.PI * 2
     }));
@@ -29,7 +30,33 @@
       ctx.clearRect(0, 0, width, height);
       const dark = surface.matches('.intro, footer') || document.documentElement.dataset.theme === 'dark';
       ctx.fillStyle = dark ? '#b9caff' : '#4d6bff';
-      points.forEach(point => {
+      if (floating) {
+        // Perspective rotation and upward drift inspired by Magic UI Floating 3D Particles.
+        // https://magicui.design/docs/components/floating-3d-particles
+        const count = Math.min(points.length, Math.max(60, Math.round(width / 6)));
+        const cos = Math.cos(elapsed * .14);
+        const sin = Math.sin(elapsed * .14);
+        ctx.shadowBlur = 0;
+        for (let index = 0; index < count; index += 1) {
+          const point = points[index];
+          const x = point.x * 2 - 1;
+          const z = point.z * 2 - 1.3;
+          const depth = z * cos - x * sin;
+          const perspective = 1 / (1 - depth * .35);
+          const rise = elapsed * (.035 + point.z * .035);
+          const y = ((point.y - rise) % 1 + 1) % 1;
+          const bob = Math.sin(elapsed * .9 + point.phase) * 5;
+          ctx.globalAlpha = .42 * perspective;
+          ctx.beginPath();
+          ctx.arc(
+            width / 2 + (x * cos + z * sin) * width * .58 * perspective,
+            height / 2 + ((y - .5) * (height + 80) + bob) * perspective,
+            (.6 + point.z * 1.7) * perspective,
+            0, Math.PI * 2
+          );
+          ctx.fill();
+        }
+      } else points.forEach(point => {
         const x = ((point.x + elapsed * .008 * point.z) % 1) * width + pointer.x * point.z * 16;
         const y = ((point.y + elapsed * .012 * point.z) % 1) * height + pointer.y * point.z * 16;
         const pulse = motion.matches ? .7 : .65 + .2 * Math.sin(elapsed * .8 + point.phase);
@@ -54,7 +81,7 @@
     }).observe(surface);
     new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; refresh(); }).observe(surface);
     surface.addEventListener('pointermove', event => {
-      if (motion.matches) return;
+      if (floating || motion.matches) return;
       const rect = surface.getBoundingClientRect();
       pointer.x = (event.clientX - rect.left) / width - .5;
       pointer.y = (event.clientY - rect.top) / height - .5;

@@ -10,11 +10,37 @@ function applyTheme(theme) {
   document.querySelector('meta[name="theme-color"]').content = dark ? '#070d16' : '#dcecff';
 }
 applyTheme(document.documentElement.dataset.theme);
+const reducedThemeMotion = matchMedia('(prefers-reduced-motion: reduce)');
+let themeTransition;
 themeButton.addEventListener('click', () => {
-  const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-  followsSystem = false;
-  try { localStorage.setItem('antblu-theme', theme); } catch {}
-  applyTheme(theme);
+  const toggleTheme = () => {
+    const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    followsSystem = false;
+    try { localStorage.setItem('antblu-theme', theme); } catch {}
+    applyTheme(theme);
+  };
+
+  themeTransition?.skipTransition();
+  if (!document.startViewTransition || reducedThemeMotion.matches) {
+    toggleTheme();
+    return;
+  }
+
+  // Match Magic UI's circular reveal from the center of the toggle.
+  const { left, top, width, height } = themeButton.getBoundingClientRect();
+  const x = left + width / 2;
+  const y = top + height / 2;
+  const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+  const transition = document.startViewTransition(toggleTheme);
+  themeTransition = transition;
+  transition.ready.then(() => {
+    document.documentElement.animate({
+      clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`]
+    }, { duration: 400, easing: 'ease-in-out', pseudoElement: '::view-transition-new(root)' });
+  }).catch(() => transition.skipTransition());
+  transition.finished.then(() => {
+    if (themeTransition === transition) themeTransition = undefined;
+  });
 });
 systemTheme.addEventListener('change', event => {
   if (followsSystem) applyTheme(event.matches ? 'dark' : 'light');
@@ -25,36 +51,50 @@ window.addEventListener('storage', event => {
   applyTheme(followsSystem ? (systemTheme.matches ? 'dark' : 'light') : event.newValue);
 });
 
-const menuButton = document.querySelector('.menu-toggle');
-const navigation = document.querySelector('#navigation');
-// React Bits Bubble Menu adaptation: local CSS provides the spring and stagger.
-const siteHeader = document.querySelector('.header');
-siteHeader.classList.add('bubble-ready');
-navigation.inert = true;
-navigation.setAttribute('aria-hidden', 'true');
-function setMenu(open) {
-  navigation.classList.toggle('open', open);
-  navigation.inert = !open;
-  navigation.setAttribute('aria-hidden', String(!open));
-  menuButton.setAttribute('aria-expanded', String(open));
-  menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+const scrollProgress = document.querySelector('.scroll-progress');
+const scrollProgressLabel = scrollProgress.querySelector('span');
+const pageScroller = document.scrollingElement;
+let scrollProgressFrame = 0;
+function updateScrollProgress() {
+  scrollProgressFrame = 0;
+  const scrollRange = pageScroller.scrollHeight - pageScroller.clientHeight;
+  scrollProgress.hidden = scrollRange <= 0;
+  if (scrollProgress.hidden) return;
+
+  const percent = Math.min(100, Math.max(0, 100 * pageScroller.scrollTop / scrollRange));
+  const label = Math.round(percent);
+  scrollProgress.style.setProperty('--scroll-progress-offset', 100 - percent);
+  scrollProgress.setAttribute('aria-valuenow', String(label));
+  scrollProgressLabel.textContent = `${label}%`;
 }
-function closeMenu() {
-  const restoreFocus = navigation.contains(document.activeElement);
-  setMenu(false);
-  if (restoreFocus) menuButton.focus();
+function scheduleScrollProgress() {
+  if (!scrollProgressFrame) scrollProgressFrame = requestAnimationFrame(updateScrollProgress);
 }
-menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
-navigation.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && navigation.classList.contains('open')) {
-    closeMenu();
-    menuButton.focus();
-  }
+window.addEventListener('scroll', scheduleScrollProgress, { passive: true });
+window.addEventListener('resize', scheduleScrollProgress);
+window.addEventListener('pageshow', scheduleScrollProgress);
+new ResizeObserver(scheduleScrollProgress).observe(document.body);
+scheduleScrollProgress();
+
+// Magnify the icons nearest the pointer while keeping link hit areas stable.
+const dock = document.querySelector('.site-dock');
+const dockItems = [...dock.querySelectorAll('.dock-item')];
+const dockMotion = matchMedia('(hover: hover) and (pointer: fine) and (min-width: 560px) and (prefers-reduced-motion: no-preference)');
+function resetDock() {
+  dockItems.forEach(item => item.style.removeProperty('--dock-magnification'));
+}
+dock.addEventListener('pointermove', event => {
+  if (!dockMotion.matches || event.pointerType === 'touch') return;
+  const left = dock.getBoundingClientRect().left + dock.clientLeft;
+  dockItems.forEach(item => {
+    const center = left + item.offsetLeft + item.offsetWidth / 2;
+    const proximity = Math.max(0, 1 - Math.abs(event.clientX - center) / 100);
+    item.style.setProperty('--dock-magnification', 1 + proximity ** 2 * 0.55);
+  });
 });
-siteHeader.addEventListener('focusout', event => {
-  if (event.relatedTarget && !siteHeader.contains(event.relatedTarget)) closeMenu();
-});
+dock.addEventListener('pointerleave', resetDock);
+dockMotion.addEventListener('change', resetDock);
+
 document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
   document.querySelectorAll('[data-filter]').forEach(item => { const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-pressed', String(active)); });
   document.querySelectorAll('.project').forEach(project => { project.hidden = button.dataset.filter !== 'all' && project.dataset.category !== button.dataset.filter; });
@@ -131,9 +171,6 @@ document.querySelector('#contact-form')?.addEventListener('submit', async event 
 });
 document.querySelectorAll('#contact-form input, #contact-form textarea').forEach(field => field.addEventListener('input', () => field.setCustomValidity('')));
 
-document.addEventListener('click', event => {
-  if (navigation.classList.contains('open') && !navigation.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
-});
 // Cult UI-inspired text entrances, preserving the original semantic text and markup.
 (() => {
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');

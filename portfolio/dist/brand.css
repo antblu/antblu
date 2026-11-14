@@ -75,6 +75,9 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 :root{color-scheme:light}
 .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:8px;flex-shrink:0;border:1px solid #62a5ff;border-radius:24px;background:#070d16;color:#d4e8ff;font:600 12px var(--heading);margin-left:auto;margin-right:24px;white-space:nowrap}
 .theme-toggle:hover{background:#112a4a;border-color:#57d8ff}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-old(root){z-index:0}
+::view-transition-new(root){z-index:1}
 .theme-icon{font-size:21px;line-height:1}
 :root[data-theme="dark"]{color-scheme:dark;--ink:#dbe6f2;--paper:#101c2b;--muted:#a9bbce;--brand-link:#62a5ff}
 [data-theme="dark"] .hero{background:#101f33}
@@ -125,6 +128,8 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 .light-rays>span:nth-child(7){--ray-left:94%;--ray-angle:35deg;--ray-duration:15s;--ray-delay:-6s}
 @keyframes antblu-light-ray{from{opacity:.15;transform:rotate(var(--ray-angle)) scaleX(.85)}to{opacity:var(--ray-opacity);transform:rotate(calc(var(--ray-angle) + 12deg)) scaleX(1.15)}}
 @media(max-width:700px){.light-rays{--ray-blur:24px}}
+.intro{isolation:isolate}
+.intro>.light-rays{--ray-color:rgba(108,176,255,.48);--ray-blur:clamp(12px,2vw,24px)}
 @media(prefers-reduced-motion:reduce){.light-rays>span{animation:none;opacity:.35}}
 @media(forced-colors:active){.light-rays{display:none}}
 
@@ -476,35 +481,35 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 @keyframes carousel-rise{from{margin-top:70px;opacity:0}to{margin-top:0}}
 @media(prefers-reduced-motion:reduce){.circular-carousel .project{animation:none}}
 
-/* Bubble Menu adapted from React Bits (MIT); assets/react-bits-LICENSE.md.
-   Preserve the buildless site with CSS spring easing and a 120ms item stagger. */
-.header{justify-content:flex-end;gap:12px;z-index:100}
-.header .theme-toggle{margin:0;width:52px;height:52px;display:flex;align-items:center;justify-content:center;border-radius:50%;padding:0;flex-shrink:0;position:relative;z-index:2}
-.header .menu-toggle{display:none}
-.header.bubble-ready .menu-toggle{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:52px;height:52px;flex-shrink:0;padding:0;border:0;border-radius:50%;background:#fff;color:#111;box-shadow:0 4px 16px #0002}
-.header .menu-toggle span{display:block;width:26px;height:2px;background:currentColor;transition:transform .3s,opacity .3s}
-.header .menu-toggle[aria-expanded=true] span:first-child{transform:translateY(4px) rotate(45deg)}
-.header .menu-toggle[aria-expanded=true] span:last-child{transform:translateY(-4px) rotate(-45deg)}
-.header .bubble-navigation{position:fixed;inset:0;display:flex;align-items:safe center;justify-content:center;max-height:none;padding:110px 5% 48px;background:#dcecffed;overflow-y:auto;overscroll-behavior:contain;gap:0;z-index:1}
-.bubble-list{width:100%;max-width:1200px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 12px;margin:auto}
-.header .bubble-list>a{--bubble-index:0;--bubble-rotation:-8deg;--bubble-hover:#2563eb;min-width:0;width:100%;min-height:120px;display:flex;align-items:center;justify-content:center;padding:22px 14px;border-radius:999px;background:#fff;color:#111;box-shadow:0 4px 14px #0002;font:500 clamp(22px,3.2vw,46px)/1.2 var(--heading);transform:rotate(var(--bubble-rotation));transition:background .3s,color .3s,transform .2s;text-align:center}
-.header .bubble-list>.wordmark{letter-spacing:normal}
-.header .bubble-list>.wordmark img{width:160px;max-width:80%;height:auto}
-.header .bubble-list>a:hover,.header .bubble-list>a:focus-visible{opacity:1;background:var(--bubble-hover);color:#fff;transform:rotate(var(--bubble-rotation)) scale(1.04)}
-.header.bubble-ready .bubble-navigation{visibility:hidden;opacity:0;pointer-events:none;transition:opacity .2s,visibility 0s .2s}
-.header.bubble-ready .bubble-navigation.open{visibility:visible;opacity:1;pointer-events:auto;transition:opacity .2s}
-.header.bubble-ready .bubble-list>a{scale:0;transition:scale .2s,background .3s,color .3s,transform .2s}
-.header.bubble-ready .bubble-navigation.open .bubble-list>a{scale:1;transition:scale .5s cubic-bezier(.175,.885,.32,1.275) calc(var(--bubble-index)*.12s),background .3s,color .3s,transform .2s}
-.header .bubble-link span{opacity:0;translate:0 24px;transition:opacity .15s,translate .15s}
-.header .open .bubble-link span,.header:not(.bubble-ready) .bubble-link span{opacity:1;translate:0;transition:opacity .5s calc(var(--bubble-index)*.12s + .05s),translate .5s calc(var(--bubble-index)*.12s + .05s)}
-[data-theme="dark"] .header .bubble-navigation{background:#070d16f5}
-@media(max-width:700px){.header{padding:0 20px;background:transparent}.header .theme-toggle,.header.bubble-ready .menu-toggle{width:46px;height:46px}.header .bubble-navigation{padding:90px 24px 32px}.bubble-list{grid-template-columns:1fr;gap:12px;max-width:440px}.header .bubble-list>a{min-height:64px;padding:16px;font-size:24px;--bubble-rotation:0deg!important}.header .bubble-list>.wordmark img{width:130px}}
-@media(prefers-reduced-motion:reduce){.header .bubble-navigation,.header .bubble-list>a,.header.bubble-ready .bubble-navigation.open .bubble-list>a,.header .bubble-link span,.header .open .bubble-link span,.header .menu-toggle span{transition:none}}
-@media(forced-colors:active){.header .bubble-list>a,.header.bubble-ready .menu-toggle{border:1px solid ButtonText}.header .bubble-navigation{background:Canvas}}
-/* Keep dismiss/theme controls reachable while the full-screen menu scrolls. */
-.header:has(.bubble-navigation.open) .menu-toggle{position:fixed;top:20px;right:5%}
-.header:has(.bubble-navigation.open) .theme-toggle{position:fixed;top:20px;right:calc(5% + 64px)}
-@media(max-width:700px){.header:has(.bubble-navigation.open) .menu-toggle{top:12px;right:20px}.header:has(.bubble-navigation.open) .theme-toggle{top:12px;right:78px}}
+/* Floating navigation inspired by Magic UI's Dock. */
+:root{--dock-clearance:calc(88px + env(safe-area-inset-bottom));scroll-padding-top:0;scroll-padding-bottom:var(--dock-clearance)}
+body{padding-bottom:var(--dock-clearance)}
+.site-dock{--dock-border:#a9bed5;--dock-surface:#f4f9ffed;--dock-label-bg:#17283d;--dock-label-ink:#fff;--dock-hover:#dcecff;position:fixed;z-index:90;inset:auto auto calc(14px + env(safe-area-inset-bottom)) 50%;width:max-content;transform:translateX(-50%);display:grid;grid-template-columns:repeat(9,44px) 52px;gap:5px;align-items:center;padding:6px;border:1px solid var(--dock-border);border-radius:22px;background:var(--dock-surface);color:var(--ink);box-shadow:0 8px 32px #070d1638;backdrop-filter:blur(16px)}
+[data-theme="dark"] .site-dock{--dock-border:#435a71;--dock-surface:#101c2bf2;--dock-label-bg:#dbe6f2;--dock-label-ink:#070d16;--dock-hover:#253d57}
+.site-dock>.dock-item{position:relative;display:grid;place-items:center;width:100%;height:44px;margin:0;padding:0;border:0;border-radius:14px;background:transparent;color:inherit;opacity:1}
+.site-dock>.dock-item:hover,.site-dock>.dock-item:focus-visible{background:var(--dock-hover);opacity:1}
+.site-dock>.dock-item:focus-visible{outline:2px solid var(--brand-link);outline-offset:1px}
+.site-dock>.theme-toggle{border-inline-start:1px solid var(--dock-border);border-start-start-radius:0;border-end-start-radius:0}
+.dock-icon{width:21px;height:21px;transform-origin:center bottom;transform:scale(var(--dock-magnification,1));transition:transform .16s ease-out;pointer-events:none}
+.dock-label{position:absolute;z-index:1;left:50%;bottom:calc(100% + 12px);transform:translateX(-50%);padding:5px 9px;border:1px solid transparent;border-radius:8px;background:var(--dock-label-bg);color:var(--dock-label-ink);white-space:nowrap;visibility:hidden;pointer-events:none}
+.site-dock>.dock-item:focus-visible .dock-label{visibility:visible}
+@media(hover:hover){.site-dock>.dock-item:hover .dock-label{visibility:visible}}
+@media(max-width:559px){
+  :root{--dock-clearance:calc(128px + env(safe-area-inset-bottom))}
+  .site-dock{bottom:calc(8px + env(safe-area-inset-bottom));grid-template-columns:repeat(5,44px);gap:3px 5px;border-radius:19px}
+  .site-dock>.dock-item{position:static}
+  .dock-label{bottom:calc(100% + 7px)}
+}
+@media(prefers-reduced-motion:reduce){.dock-icon{transform:none;transition:none}}
+@media(forced-colors:active){.site-dock,.dock-label{border-color:CanvasText;background:Canvas;color:CanvasText}.site-dock>.dock-item:focus-visible{outline-color:Highlight}}
+
+.scroll-progress:not([hidden]){position:fixed;z-index:89;inset-block-start:calc(12px + env(safe-area-inset-top));inset-inline-end:calc(12px + env(safe-area-inset-right));display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#f4f9ff;color:#17283d;box-shadow:0 2px 12px #070d1626;font:700 11px/1 Montserrat,sans-serif;font-variant-numeric:tabular-nums;pointer-events:none}
+[data-theme="dark"] .scroll-progress{background:#101c2b;color:#dbe6f2}
+.scroll-progress svg{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke-width:3}
+.scroll-progress-track{stroke:currentColor;opacity:.2}
+.scroll-progress-fill{stroke:var(--brand-link);stroke-dasharray:100;stroke-dashoffset:var(--scroll-progress-offset,100);transition:stroke-dashoffset .16s ease-out}
+@media(prefers-reduced-motion:reduce){.scroll-progress-fill{transition:none}}
+@media(forced-colors:active){.scroll-progress{outline:1px solid CanvasText}.scroll-progress-fill{stroke:Highlight}}
 
 /* More readable copy and comfortable controls on narrow touch screens. */
 @media(max-width:700px){
@@ -523,8 +528,6 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 
 /* Phone layouts retain the desktop treatments with room for copy and touch. */
 .portfolio .portfolio-heading .boxed-title{color:#d4e8ff;border-color:#8bbdff;background:#070d1666}
-.header .bubble-navigation{justify-content:flex-start}
-.bubble-list{flex-shrink:0}
 @media(max-width:700px){
   .portfolio-heading{height:168px}
   .portfolio .boxed-title{max-width:calc(100% - 48px);padding:18px 20px;border-width:4px;font-size:21px;letter-spacing:4px;text-indent:4px}
@@ -544,13 +547,6 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
   .program-front{min-height:250px;gap:18px}
   .program-front .skill-logo{width:68px;height:68px}
   .program-back p{font-size:14px}
-}
-/* Landscape phones need a compact menu below the persistent controls. */
-@media(max-height:600px) and (max-width:1000px){
-  .header .bubble-navigation{padding:84px 24px 24px}
-  .bubble-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:900px}
-  .header .bubble-list>a{min-height:64px;padding:14px 10px;font-size:clamp(15px,2.8vw,24px);--bubble-rotation:0deg!important}
-  .header .bubble-list>.wordmark img{width:130px}
 }
 @media(forced-colors:active){.portfolio .portfolio-heading .boxed-title{color:CanvasText;border-color:CanvasText;background:Canvas}}
 
@@ -600,9 +596,39 @@ body{font-size:16px}
 
 /* Employer reading path: experience, selected work, then technical detail. */
 .hero-summary{max-width:480px;margin-top:18px;color:var(--muted);font-size:17px;line-height:1.7}
+.text-highlighter{
+  color:inherit;
+  background:linear-gradient(178deg,transparent 22%,#3999ee3d 25%,#3999ee3d 85%,transparent 89%) left center / 100% 100% no-repeat;
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
+}
+@media(prefers-reduced-motion:no-preference){
+  .text-highlighter{animation:draw-text-highlight 600ms ease-out both}
+}
+@keyframes draw-text-highlight{from{background-size:0% 100%}to{background-size:100% 100%}}
+@media(forced-colors:active){.text-highlighter{text-decoration:underline}}
 .hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px 20px;margin-top:22px}
 .hero-actions .gradient-pill{margin-top:0;min-height:46px}
-.hero-text-link{display:inline-flex;align-items:center;min-height:44px;color:var(--brand-link);font-weight:600;text-decoration:underline;text-underline-offset:5px}
+/* Dot-to-fill interaction inspired by Magic UI's Interactive Hover Button. */
+.hero-text-link{position:relative;isolation:isolate;display:inline-flex;align-items:center;min-height:44px;padding:0 2rem 0 1.75rem;border:1px solid currentColor;border-radius:999px;color:var(--brand-link);font-weight:600;text-decoration:none;transition:color .25s,border-color .25s}
+.hero-text-link::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:var(--brand-link);clip-path:circle(4px at 14px 50%);transition:clip-path .3s ease}
+.hero-text-link>span:first-child{transition:transform .3s ease}
+.hero-link-arrow{position:absolute;right:.75rem;opacity:0;transform:translateX(-4px);transition:opacity .25s,transform .3s ease}
+.hero-text-link:focus-visible{outline-offset:4px}
+.hero-text-link:focus-visible,.hero-text-link:active{color:#fff;border-color:var(--brand-link)}
+.hero-text-link:focus-visible::before,.hero-text-link:active::before{clip-path:circle(100% at 14px 50%)}
+.hero-text-link:focus-visible>span:first-child,.hero-text-link:active>span:first-child{transform:translateX(-8px)}
+.hero-text-link:focus-visible .hero-link-arrow,.hero-text-link:active .hero-link-arrow{opacity:1;transform:none}
+@media(hover:hover){
+  .hero-text-link:hover{color:#fff;border-color:var(--brand-link)}
+  .hero-text-link:hover::before{clip-path:circle(100% at 14px 50%)}
+  .hero-text-link:hover>span:first-child{transform:translateX(-8px)}
+  .hero-text-link:hover .hero-link-arrow{opacity:1;transform:none}
+}
+@media(forced-colors:active){
+  .hero-text-link::before{display:none}
+  .hero-text-link:is(:hover,:focus-visible,:active){color:LinkText;border-color:LinkText}
+}
 .hero-actions+.socials{margin-top:24px}
 .experience-highlights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 32px;margin:24px 0 0;padding-top:20px;border-top:1px solid #435a71}
 .experience-highlights dt{color:#8bbdff;font:700 12px/1.6 var(--heading)}
@@ -707,3 +733,36 @@ body{font-size:16px}
 #stack .stack-toolbar>button{color:#fff;border-color:#fff}
 #stack .stack-toolbar>button:hover{background:#ffffff26}
 @media(forced-colors:active){#stack::before,#stack::after{display:none}#stack{background:Canvas;color:CanvasText}#stack .boxed-title,#stack .stack-toolbar>button{color:CanvasText;border-color:CanvasText}#stack .stack-kicker,#stack .stack-count,#stack .stack-help,#stack .stack-source{color:CanvasText}}
+
+/* Technical skills bento, inspired by https://magicui.design/docs/components/bento-grid */
+.skills .skills-bento{grid-template-columns:minmax(0,1fr);gap:16px}
+.skills-bento>div{display:flex;flex-direction:column;justify-content:flex-end;min-height:172px;padding:22px;border:1px solid var(--resume-line);border-radius:16px;background:var(--paper);overflow:hidden;position:relative;isolation:isolate}
+.skills-bento>div::before{content:'';position:absolute;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(ellipse at 90% 0%,color-mix(in srgb,var(--brand) 20%,transparent),transparent 65%)}
+.skills-bento-art{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-bottom:auto;padding-bottom:16px;transition:transform .25s ease}
+.skills-bento-art img{box-sizing:content-box;display:block;width:32px;height:32px;object-fit:contain;padding:8px;border:1px solid #c1cede;border-radius:12px;background:#f3f7fb}
+.skills-bento-art .skills-bento-light-logo{background:#263b54}
+.skills-bento dt{display:flex;flex:1;flex-direction:column;font:700 16px/1.4 var(--heading)}
+.skills-bento dd{line-height:1.55}
+@media(min-width:580px) and (max-width:959px){
+  .skills .skills-bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .skills-bento>div:last-child{grid-column:1/-1}
+}
+@media(min-width:960px){
+  .skills .skills-bento{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .skills-bento-wide{grid-column:span 2}
+}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .skills-bento>div:hover .skills-bento-art{transform:translateY(-4px)}
+}
+@media(forced-colors:active){
+  .skills-bento>div{border-color:CanvasText}
+  .skills-bento>div::before{display:none}
+}
+
+/* Character weight on hover, inspired by Magic UI's Kinetic Text. */
+.kinetic-text{display:inline-flex;text-indent:0;padding-inline-start:3px}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .kinetic-text>span{transition:font-weight .24s ease-out}
+  .kinetic-text>span:has(+span:hover),.kinetic-text>span:hover+span{font-weight:800}
+  .kinetic-text>span:hover{font-weight:900}
+}
