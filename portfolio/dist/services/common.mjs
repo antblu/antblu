@@ -1,5 +1,4 @@
 import { pricing, hosting } from './pricing.mjs';
-import { siteConfig } from './site-config.mjs';
 
 const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2, minimumFractionDigits: 0 });
 export const money = value => currency.format(value);
@@ -67,7 +66,7 @@ if (process) {
     <ol class="svc-steps">
       <li><a href="/services/applications">Explore the catalog</a></li>
       <li><a href="/demo">Try the demo</a></li>
-      <li><a href="/contact">Request a consultation</a></li>
+      <li><a href="/services#booking">Book a consultation</a></li>
       <li>Review an architecture and cost estimate</li>
       <li>Approve scope and implementation</li>
       <li>Deploy and integrate</li>
@@ -87,13 +86,5 @@ if (serviceMenu) {
   });
   document.addEventListener('click', event => {
     if (!serviceMenu.contains(event.target)) serviceMenu.open = false;
-  });
-}
-
-const schedule = publicHttps(siteConfig.consultationSchedule);
-if (schedule) {
-  document.querySelectorAll('[data-schedule]').forEach(link => {
-    link.href = schedule;
-    link.hidden = false;
   });
 }

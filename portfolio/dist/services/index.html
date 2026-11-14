@@ -26,6 +26,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..750&amp;family=JetBrains+Mono:wght@400..600&amp;family=Plus+Jakarta+Sans:wght@600..750&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/services/services.css">
   <script type="module" src="/services/common.mjs"></script>
+  <script type="module" src="/services/booking.mjs"></script>
   <link rel="stylesheet" href="/services/landing.css">
   <script type="module" src="/services/landing.mjs"></script>
 </head>
@@ -43,7 +44,7 @@
         <a href="/demo">Demo</a>
         <a href="/#portfolio">Portfolio</a>
         <button type="button" class="svc-btn svc-landing-theme" data-svc-theme aria-label="Dark mode" aria-pressed="false">◐</button>
-        <a class="svc-btn svc-btn--primary svc-gold" href="/contact">Free Consultation</a>
+        <a class="svc-btn svc-btn--primary svc-gold" href="#booking">Free Consultation</a>
       </nav>
     </div>
   </header>
@@ -55,7 +56,7 @@
         <p class="svc-banner-lead">I deploy open-source systems in accounts you control, build business websites and online stores, and train your team to run them. The estimate separates implementation from hosting, paid extensions, and ongoing operation.</p>
         <div class="svc-cta">
           <a class="svc-btn svc-btn--primary svc-gold" href="/services/calculator">Calculate Your Costs</a>
-          <a class="svc-btn svc-banner-secondary" href="/contact">Book a Free Consultation <span aria-hidden="true">→</span></a>
+          <a class="svc-btn svc-banner-secondary" href="#booking">Book a Free Consultation <span aria-hidden="true">→</span></a>
         </div>
         <ul class="svc-checks svc-banner-benefits">
           <li>Your accounts and data</li>
@@ -229,13 +230,21 @@
       </div>
     </section>
 
+    <section class="svc-section" id="booking" aria-labelledby="booking-title" tabindex="-1">
+      <div class="svc-wrap">
+        <h2 id="booking-title">Book a free consultation</h2>
+        <div data-booking-calendar></div>
+        <p><a href="https://cal.antblu.net/anthony-bluemel/30min">Open the booking calendar directly</a></p>
+      </div>
+    </section>
+
     <section class="svc-banner svc-landing-close" aria-labelledby="close-title">
       <div class="svc-wrap">
         <h2 id="close-title">What would it take to <span>run it yourself?</span></h2>
         <p class="svc-banner-lead">Estimate your operating costs or bring your current tools to a free consultation. We’ll discuss what can move, what needs to stay, and what your team would manage.</p>
         <div class="svc-cta">
           <a class="svc-btn svc-btn--primary svc-gold" href="/services/calculator">Calculate Your Costs</a>
-          <a class="svc-btn svc-banner-secondary" href="/contact">Book a Free Consultation <span aria-hidden="true">→</span></a>
+          <a class="svc-btn svc-banner-secondary" href="#booking">Book a Free Consultation <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -245,7 +254,7 @@
     <div class="svc-wrap">
       <div class="svc-footer-intro"><a class="svc-brand" href="/">Anthony Bluemel<span aria-hidden="true">.</span></a><p>Independent infrastructure engineering, web development, and e-commerce.</p><a href="/#homelab">See the Antalos infrastructure project <span aria-hidden="true">→</span></a></div>
       <nav aria-label="Services"><strong>Explore</strong><a href="/services/infrastructure">Infrastructure</a><a href="/services/web-development">Website Development</a><a href="/services/ecommerce">E-commerce</a><a href="/services/applications">Application Catalog</a><a href="/services/compare">Replacement Map</a></nav>
-      <nav aria-label="Contact and resources"><strong>Get started</strong><a href="/contact">Free Consultation</a><a href="/services/calculator">Cost Calculator</a><a href="/demo">Interactive Demo</a><a href="/#portfolio">Portfolio</a><a href="https://blog.antblu.net">Blog</a></nav>
+      <nav aria-label="Contact and resources"><strong>Get started</strong><a href="#booking">Free Consultation</a><a href="/services/calculator">Cost Calculator</a><a href="/demo">Interactive Demo</a><a href="/#portfolio">Portfolio</a><a href="https://blog.antblu.net">Blog</a></nav>
     </div>
     <div class="svc-wrap svc-footer-bottom"><p>© 2026 Anthony Bluemel</p><div><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div></div>
   </footer>
