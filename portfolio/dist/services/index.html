@@ -23,11 +23,17 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..750&amp;family=JetBrains+Mono:wght@400..600&amp;family=Plus+Jakarta+Sans:wght@600..750&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..750&amp;family=JetBrains+Mono:wght@400..600&amp;family=Montserrat:wght@700..900&amp;family=Plus+Jakarta+Sans:wght@600..750&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/services/services.css">
   <script type="module" src="/services/common.mjs"></script>
   <script type="module" src="/services/booking.mjs"></script>
+  <link rel="stylesheet" href="/components.css">
+  <link rel="stylesheet" href="/text-3d-flip.css">
+  <link rel="stylesheet" href="/border-glow.css">
   <link rel="stylesheet" href="/services/landing.css">
+  <script src="/text-3d-flip.js" defer></script>
+  <script src="/circular-carousel.js" defer></script>
+  <script src="/border-glow.js" defer></script>
   <script type="module" src="/services/landing.mjs"></script>
 </head>
 <body class="svc-body svc-landing">
@@ -43,17 +49,17 @@
         <a href="#packages">Packages</a>
         <a href="/demo">Demo</a>
         <a href="/#portfolio">Portfolio</a>
-        <button type="button" class="svc-btn svc-landing-theme" data-svc-theme aria-label="Dark mode" aria-pressed="false">◐</button>
         <a class="svc-btn svc-btn--primary svc-gold" href="#booking">Free Consultation</a>
       </nav>
+      <button type="button" class="svc-btn svc-landing-theme" data-svc-theme aria-label="Dark mode" aria-pressed="false" hidden><svg class="theme-icon theme-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="5"/><path d="M11 1h2v3h-2zm0 19h2v3h-2zM1 11h3v2H1zm19 0h3v2h-3zM3.51 4.93l1.42-1.42 2.12 2.13-1.41 1.41zm13.44 13.43 1.41-1.41 2.13 2.12-1.42 1.42zM3.51 19.07l2.13-2.12 1.41 1.41-2.12 2.13zM16.95 5.64l2.12-2.13 1.42 1.42-2.13 2.12z"/></svg><svg class="theme-icon theme-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.9 13.4A9 9 0 0 1 10.6 3.1a.8.8 0 0 0-1.1-.9A10.2 10.2 0 1 0 21.8 14.5a.8.8 0 0 0-.9-1.1Z"/></svg></button>
     </div>
   </header>
   <main id="main">
-    <section class="svc-banner svc-landing-hero" aria-labelledby="landing-title">
+    <section class="svc-banner svc-landing-hero hero-copy" aria-labelledby="landing-title">
       <div class="svc-wrap">
         <p class="svc-banner-label">Open-source infrastructure consulting</p>
-        <h1 id="landing-title">Your infrastructure.<br><span>Your data. Your control.</span></h1>
-        <p class="svc-banner-lead">I deploy open-source systems in accounts you control, build business websites and online stores, and train your team to run them. The estimate separates implementation from hosting, paid extensions, and ongoing operation.</p>
+        <h1 id="landing-title">Your infrastructure.<br><span data-text-3d-flip>Your data. Your control.</span></h1>
+        <p class="svc-banner-lead">I deploy open-source systems in <mark class="text-highlighter">accounts you control</mark>, build business websites and online stores, and train your team to run them. The estimate separates implementation from hosting, paid extensions, and ongoing operation.</p>
         <div class="svc-cta">
           <a class="svc-btn svc-btn--primary svc-gold" href="/services/calculator">Calculate Your Costs</a>
           <a class="svc-btn svc-banner-secondary" href="#booking">Book a Free Consultation <span aria-hidden="true">→</span></a>
@@ -63,7 +69,7 @@
           <li>Documented handoff</li>
           <li>Optional ongoing support</li>
         </ul>
-        <a class="svc-banner-demo" href="/demo"><span><strong>Try the demo.</strong> Explore a simulated infrastructure alert, diagnosis, and approval workflow.</span><span aria-hidden="true">→</span></a>
+        <a class="svc-banner-demo" href="/demo"><span><strong class="animated-gradient-text">Try the demo.</strong> Explore a simulated infrastructure alert, diagnosis, and approval workflow.</span><span aria-hidden="true">→</span></a>
       </div>
     </section>
 
@@ -93,26 +99,33 @@
           <h2 id="why-title">Build around the work your team does</h2>
           <p>Choose applications, a website, or a storefront around your needs. Keep the accounts, data, and configuration when the work is done.</p>
         </header>
-        <div class="svc-grid svc-feature-grid">
-          <article class="svc-card">
-            <span class="svc-feature-icon" aria-hidden="true">▤</span>
+        <div class="svc-grid svc-offerings" data-circular-carousel data-carousel-radius="180" aria-label="Consulting services" id="service-carousel">
+          <article class="svc-card svc-offering" data-carousel-slide data-border-glow>
+            <img src="/assets/homelab/rack-and-ups.webp" alt="" loading="lazy" decoding="async" width="352" height="140">
             <h3>Open-Source Infrastructure</h3>
             <p>Deploy business applications with monitoring, offsite backups, and a recovery plan sized for your workload.</p>
             <a href="/services/infrastructure">Explore Infrastructure <span aria-hidden="true">→</span></a>
           </article>
-          <article class="svc-card">
-            <span class="svc-feature-icon" aria-hidden="true">⌘</span>
+          <article class="svc-card svc-offering" data-carousel-slide data-border-glow>
+            <img src="/assets/bogota.webp" alt="" loading="lazy" decoding="async" width="352" height="140">
             <h3>Website Development</h3>
             <p>Launch a responsive site with a content workflow, deployment, and access your team can manage.</p>
             <a href="/services/web-development">Explore Web Development <span aria-hidden="true">→</span></a>
           </article>
-          <article class="svc-card">
-            <span class="svc-feature-icon" aria-hidden="true">◇</span>
+          <article class="svc-card svc-offering" data-carousel-slide data-border-glow>
+            <img src="/assets/emiliany/rings.webp" alt="" loading="lazy" decoding="async" width="352" height="140">
             <h3>E-commerce Development</h3>
             <p>Connect your storefront, payments, inventory, and order workflows around the way your business sells.</p>
             <a href="/services/ecommerce">Explore E-commerce <span aria-hidden="true">→</span></a>
           </article>
-          <article class="svc-card">
+        </div>
+        <div class="svc-carousel-controls" role="group" aria-label="Service carousel controls" hidden>
+          <button class="svc-btn" type="button" data-carousel="prev" aria-label="Previous service" aria-controls="service-carousel">←</button>
+          <span class="carousel-position" role="status"></span>
+          <button class="svc-btn" type="button" data-carousel="next" aria-label="Next service" aria-controls="service-carousel">→</button>
+        </div>
+        <div class="svc-grid svc-feature-grid svc-service-resources">
+          <article class="svc-card" data-border-glow>
             <span class="svc-feature-icon" aria-hidden="true">$</span>
             <h3>Clear operating costs</h3>
             <p>Budget implementation separately from hosting, backups, support, and your team's time.</p>
@@ -138,7 +151,7 @@
       <div class="svc-wrap">
         <header class="svc-landing-intro">
           <p class="svc-kicker">Replacement map</p>
-          <h2 id="map-title">What could you <span>self-host?</span></h2>
+          <h2 id="map-title">What could you <span data-kinetic-text>self-host?</span></h2>
           <p>Review potential alternatives to the subscriptions you use today. Check feature fit, integration work, and operating costs before switching.</p>
         </header>
         <div class="svc-grid svc-map-grid">
@@ -179,7 +192,7 @@
           <p>Both include deployment, monitoring, offsite backups, and administrator training. Application modules, migration, and hosting are scoped separately.</p>
         </header>
         <div class="svc-grid svc-grid--two svc-package-grid">
-          <article class="svc-card svc-package">
+          <article data-border-glow class="svc-card svc-package">
             <p class="svc-kicker">Single-host deployment</p>
             <h3>Standard · Non-HA</h3>
             <p>For workloads that can tolerate occasional downtime.</p>
@@ -192,7 +205,7 @@
             </ul>
             <a class="svc-btn" href="/contact?service=infrastructure&amp;tier=standard">Request a Standard Quote</a>
           </article>
-          <article class="svc-card svc-package svc-package--ha">
+          <article data-border-glow class="svc-card svc-package svc-package--ha">
             <p class="svc-kicker">Redundant deployment</p>
             <h3>High Availability · HA</h3>
             <p>For business-critical workloads with defined recovery goals.</p>

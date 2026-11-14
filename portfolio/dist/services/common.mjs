@@ -1,3 +1,4 @@
+import '../theme.mjs';
 import { pricing, hosting } from './pricing.mjs';
 
 const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2, minimumFractionDigits: 0 });
@@ -28,31 +29,6 @@ export function readSession(key) {
 
 export function writeSession(key, value) {
   try { sessionStorage.setItem(key, JSON.stringify(value)); return true; } catch { return false; }
-}
-
-const theme = document.querySelector('[data-svc-theme]');
-if (theme) {
-  const system = matchMedia('(prefers-color-scheme: dark)');
-  let choice;
-  try { choice = localStorage.getItem('antblu-theme'); } catch {}
-  function apply() {
-    const dark = choice === 'dark' || (choice !== 'light' && system.matches);
-    document.documentElement.dataset.theme = dark ? 'dark' : 'light';
-    theme.setAttribute('aria-pressed', String(dark));
-    document.querySelector('meta[name="theme-color"]').content = dark ? '#070d16' : '#eef5fc';
-  }
-  theme.addEventListener('click', () => {
-    choice = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-    try { localStorage.setItem('antblu-theme', choice); } catch {}
-    apply();
-  });
-  system.addEventListener('change', apply);
-  window.addEventListener('storage', event => {
-    if (event.key !== 'antblu-theme' && event.key !== null) return;
-    choice = event.newValue;
-    apply();
-  });
-  apply();
 }
 
 document.querySelectorAll('[data-price]').forEach(node => { node.textContent = range(pricing[node.dataset.price]); });

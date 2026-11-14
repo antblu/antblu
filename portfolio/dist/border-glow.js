@@ -1,6 +1,6 @@
 /* Border Glow-inspired progressive enhancement: https://reactbits.dev/c/components/border-glow */
 (() => {
-  const selector = '.program-face, .project, .stack-card, .career-panel, .resume-entry-body, .resume-toolkit, .machine-panel, .chroma-card, .em-service, .em-steps > li';
+  const selector = '.program-face, .project, .stack-card, .career-panel, .resume-entry-body, .resume-toolkit, .machine-panel, .chroma-card, .em-service, .em-steps > li, [data-border-glow]';
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const enhance = root => {

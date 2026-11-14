@@ -4,9 +4,25 @@ import { comparisons } from './comparisons.mjs';
 document.querySelector('[data-app-count]').textContent = applications.length;
 document.querySelector('[data-category-count]').textContent = new Set(comparisons.map(plan => plan.category)).size;
 
+document.querySelectorAll('[data-kinetic-text]').forEach(element => {
+  const text = element.textContent;
+  const accessible = document.createElement('span');
+  accessible.className = 'svc-sr-only';
+  accessible.textContent = text;
+  const visual = document.createElement('span');
+  visual.className = 'kinetic-text';
+  visual.setAttribute('aria-hidden', 'true');
+  for (const character of text) {
+    const letter = document.createElement('span');
+    letter.textContent = character;
+    visual.append(letter);
+  }
+  element.replaceChildren(accessible, visual);
+});
+
 const menu = document.querySelector('.svc-menu-toggle');
 const navigation = document.querySelector('#landing-nav');
-const narrow = matchMedia('(max-width: 1000px)');
+const narrow = matchMedia('(max-width: 1080px)');
 function setMenu(open) {
   menu.setAttribute('aria-expanded', String(open));
   navigation.classList.toggle('svc-nav-open', open);

@@ -237,3 +237,16 @@ links, static navigation without JavaScript, and automated accessibility.
   jump-to-results, and no horizontal document overflow. Tightened the mobile
   result table so headings and currency amounts do not break mid-word. Reviewed
   FAQ desktop/mobile and calculator light/dark screenshots under `/tmp/`.
+
+### Homepage components on the services landing page
+
+- Chrome/Playwright passed both themes at 320, 390, 720, 768, 1080, 1081,
+  1168, and 1440 CSS pixels. Checked the carousel with buttons, arrow keys,
+  mouse drag, and emulated touch swipe. All three offerings remain visible as
+  linked cards without JavaScript.
+- Checked the 3D text flip, kinetic heading weights, border glow, reduced
+  motion, theme reveal, saved theme and cross-tab sync with the homepage.
+  Homepage project filtering and carousel controls passed. Axe reported zero
+  automated WCAG A/AA violations on the landing page in both themes.
+- The existing services browser suite and 12 Node tests passed. Physical
+  devices, live booking, and production deployment were outside this check.

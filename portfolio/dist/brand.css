@@ -1,20 +1,5 @@
 /* Antalos palette, adapted for antblu. */
-/* Animated gradient pill adapted from Magic UI's Animated Gradient Text demo.
-   Override --gradient-from, --gradient-to, or --gradient-duration to customize. */
-.gradient-pill{--gradient-from:#ffaa40;--gradient-to:#9c40ff;--gradient-duration:8s;position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;max-width:100%;margin-top:24px;padding:8px 16px;border:1px solid #9c40ff80;border-radius:999px;background:#070d16;color:#a9bbce;font:500 14px/1.5 var(--body);box-shadow:inset 0 -8px 10px #8fdfff1f;transition:box-shadow .5s ease-out}
-.gradient-pill::before{content:'';position:absolute;inset:-1px;pointer-events:none;border-radius:inherit;padding:1px;background:linear-gradient(90deg,#ffaa4080,#9c40ff80,#ffaa4080);background-size:300% 100%;animation:antblu-gradient var(--gradient-duration) linear infinite;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude}
-.animated-gradient-text{color:#ffaa40}
-@supports ((background-clip:text) or (-webkit-background-clip:text)){
-  .animated-gradient-text{background:linear-gradient(90deg,var(--gradient-from),var(--gradient-to),var(--gradient-from));background-size:300% 100%;background-clip:text;-webkit-background-clip:text;color:transparent;animation:antblu-gradient var(--gradient-duration,8s) linear infinite}
-}
-.gradient-pill-divider{width:1px;height:16px;flex-shrink:0;background:#707070}
-.gradient-pill-chevron{flex-shrink:0;transition:transform .3s ease-in-out}
-.gradient-pill:hover,.gradient-pill:focus-visible{box-shadow:inset 0 -5px 10px #8fdfff3f}
-.gradient-pill:hover .gradient-pill-chevron,.gradient-pill:focus-visible .gradient-pill-chevron{transform:translateX(2px)}
 .hero-copy .gradient-pill + .socials{margin-top:24px}
-@keyframes antblu-gradient{from{background-position:100% 50%}to{background-position:0% 50%}}
-@media(prefers-reduced-motion:reduce){.animated-gradient-text,.gradient-pill::before{animation:none}.gradient-pill,.gradient-pill-chevron{transition:none}.gradient-pill:hover .gradient-pill-chevron,.gradient-pill:focus-visible .gradient-pill-chevron{transform:none}}
-@media(forced-colors:active){.animated-gradient-text{background:none;color:LinkText}.gradient-pill::before{display:none}.gradient-pill{border-color:LinkText}.gradient-pill-divider{background:LinkText}}
 :root{--ink:#0a1420;--paper:#e4ebf2;--dark:#070d16;--muted:#435a71;--brand:#3488ff;--brand-bright:#62a5ff;--cyan:#57d8ff;--brand-link:#0866d8}
 body{background:var(--paper)}
 .header{padding-left:10%;padding-right:10%}.wordmark{display:block;line-height:0}.wordmark img{width:190px;height:auto}.header nav{gap:30px}
@@ -75,10 +60,6 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 :root{color-scheme:light}
 .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:8px;flex-shrink:0;border:1px solid #62a5ff;border-radius:24px;background:#070d16;color:#d4e8ff;font:600 12px var(--heading);margin-left:auto;margin-right:24px;white-space:nowrap}
 .theme-toggle:hover{background:#112a4a;border-color:#57d8ff}
-::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
-::view-transition-old(root){z-index:0}
-::view-transition-new(root){z-index:1}
-.theme-icon{font-size:21px;line-height:1}
 :root[data-theme="dark"]{color-scheme:dark;--ink:#dbe6f2;--paper:#101c2b;--muted:#a9bbce;--brand-link:#62a5ff}
 [data-theme="dark"] .hero{background:#101f33}
 [data-theme="dark"] .hero-dark{background:linear-gradient(140deg,#162f50,#070d16 75%)}
@@ -458,7 +439,7 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 .projects .project:has(.project-art-logo):after{background:linear-gradient(transparent 12%,#070d16 48%)}
 .projects .project:has(.project-art-logo) .project-copy{align-self:flex-end}
 .projects.circular-carousel{display:block;position:relative;height:560px;overflow:hidden;perspective:2500px;touch-action:pan-y;cursor:grab;isolation:isolate}
-.circular-carousel .project{position:absolute;left:50%;top:48%;width:min(340px,78vw);height:370px;aspect-ratio:auto;border-radius:12px;background:#070d16;box-shadow:0 18px 50px #0005;backface-visibility:hidden;will-change:transform;animation:carousel-rise 1.4s both}
+.circular-carousel .project{position:absolute;left:50%;top:48%;translate:-50% -50%;width:min(340px,78vw);height:370px;aspect-ratio:auto;border-radius:12px;background:#070d16;box-shadow:0 18px 50px #0005;backface-visibility:hidden;will-change:transform;animation:carousel-rise 1.4s both}
 .circular-carousel .project-copy{width:100%;padding:24px 16px}
 .circular-carousel .project h3{font-size:23px;letter-spacing:1px}
 .circular-carousel .project-actions{flex-wrap:wrap;gap:10px}
@@ -587,17 +568,6 @@ body{font-size:16px}
 
 /* Employer reading path: experience, selected work, then technical detail. */
 .hero-summary{max-width:480px;margin-top:18px;color:var(--muted);font-size:17px;line-height:1.7}
-.text-highlighter{
-  color:inherit;
-  background:linear-gradient(178deg,transparent 22%,#3999ee3d 25%,#3999ee3d 85%,transparent 89%) left center / 100% 100% no-repeat;
-  -webkit-box-decoration-break:clone;
-  box-decoration-break:clone;
-}
-@media(prefers-reduced-motion:no-preference){
-  .text-highlighter{animation:draw-text-highlight 600ms ease-out both}
-}
-@keyframes draw-text-highlight{from{background-size:0% 100%}to{background-size:100% 100%}}
-@media(forced-colors:active){.text-highlighter{text-decoration:underline}}
 .hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px 20px;margin-top:22px}
 .hero-actions .gradient-pill{margin-top:0;min-height:46px}
 /* Dot-to-fill interaction inspired by Magic UI's Interactive Hover Button. */
@@ -748,12 +718,4 @@ body{font-size:16px}
 @media(forced-colors:active){
   .skills-bento>div{border-color:CanvasText}
   .skills-bento>div::before{display:none}
-}
-
-/* Character weight on hover, inspired by Magic UI's Kinetic Text. */
-.kinetic-text{display:inline-flex;text-indent:0;padding-inline-start:3px}
-@media(hover:hover) and (prefers-reduced-motion:no-preference){
-  .kinetic-text>span{transition:font-weight .24s ease-out}
-  .kinetic-text>span:has(+span:hover),.kinetic-text>span:hover+span{font-weight:800}
-  .kinetic-text>span:hover{font-weight:900}
 }
