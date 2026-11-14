@@ -39,16 +39,16 @@ document.querySelectorAll('[data-hosting-price]').forEach(node => {
 });
 const process = document.querySelector('[data-service-process]');
 if (process) {
-  process.innerHTML = `<h2>From evaluation to handoff</h2>
+  process.innerHTML = `<h2>Project steps</h2>
     <ol class="svc-steps">
       <li><a href="/services/applications">Explore the catalog</a></li>
       <li><a href="/demo">Try the demo</a></li>
       <li><a href="/services#booking">Book a consultation</a></li>
       <li>Review an architecture and cost estimate</li>
-      <li>Approve scope and implementation</li>
+      <li>Approve the scope and implementation plan</li>
       <li>Deploy and integrate</li>
       <li>Test, migrate, and validate</li>
-      <li>Train administrators and hand off the runbooks</li>
-      <li>Operate independently or arrange optional support</li>
+      <li>Administrator training and runbook handoff</li>
+      <li>Run the system in-house or arrange support</li>
     </ol>`;
 }

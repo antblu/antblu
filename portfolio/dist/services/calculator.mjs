@@ -22,19 +22,19 @@ root.innerHTML = `<div class="svc-calc">
   <form class="svc-flow svc-calculator-fields">
     <a class="svc-btn svc-jump-results" href="#result-title">Jump to estimate</a>
     ${panel('1. Organization size', fields(...Object.entries(groups).map(([key, value]) => countField(key, groupLabels[key], value))) +
-      '<p class="svc-muted">Organization counts suggest seats for new subscription rows. Adjust each row to match your bill.</p>')}
+      '<p class="svc-muted">The calculator uses these headcounts to suggest seats for new subscriptions. Match each row to your bill.</p>')}
     ${panel('2. Commercial subscriptions',
       '<p class="svc-muted">Replace the two sample plans with your actual bills. Public prices are for US plans. Enter taxes, usage or fees under additional services.</p><div class="svc-flow" id="subscriptions"></div><div class="svc-cta"><button class="svc-btn" type="button" id="add-subscription">Add subscription</button></div>' +
       fields(numberField('commercialInitial', 'Implementation and migration ($)', 0), numberField('commercialMonthlyServices', 'Additional services / month ($)', 0)))}
     ${panel('3. Open-source applications',
       '<details class="svc-fold"><summary><span id="module-count">Select application modules</span></summary><div class="svc-module-list">' + appChoices + '</div></details>' +
-      '<p class="svc-muted">Ranges cover deployment and integration. The estimate excludes bundled provisioning and HA GitOps setup. Adjust module costs for any separately scoped work. Enter paid extensions and services under recurring extras.</p>' +
+      '<p class="svc-muted">Module prices cover deployment and integration. Infrastructure provisioning and HA GitOps setup are part of the infrastructure estimate. Adjust the module cost for extra work and enter paid extensions and services under recurring extras.</p>' +
       numberField('modulesInitial', 'One-time module costs ($)', 0))}
     ${panel('4. Infrastructure and hosting',
       fields('<label>Infrastructure tier<select name="tier"><option value="standard">Standard · Non-HA</option><option value="ha">High Availability · HA</option></select></label>',
         '<label>Hosting<select name="hosting"><option value="hardware">Own hardware</option><option value="vps" selected>Cloud VPS</option><option value="managed" disabled>Managed Kubernetes</option></select></label>',
         '<label>Provider allowance<select name="profile"></select></label>') +
-      '<p class="svc-muted">Provider allowances are illustrative, editable inputs. CPU and RAM are planning notes. Actual sizing depends on workload, peak traffic, storage behavior and recovery requirements.</p>' +
+      '<p class="svc-muted">Edit the sample hosting costs to match your plan. Use the CPU and RAM values as starting points and size the system for your workload, peak traffic, storage, and recovery requirements.</p>' +
       fields(numberField('infrastructureInitial', 'Infrastructure implementation ($)', 4500), numberField('migrationInitial', 'Self-hosted migration ($)', 0), numberField('hardwareInitial', 'Hardware purchase ($)', 0),
         countField('serverCount', 'Servers', 1, 1), countField('vcpu', 'vCPU per server', 4, 1), numberField('ram', 'RAM per server (GiB)', 8, '0.5', 0.5, 100000),
         numberField('serverMonthly', 'Server / month ($ each)', 35), countField('storageGb', 'Primary storage (GB)', 100), numberField('storageRate', 'Storage / GB / month ($)', 0.07, '0.0001'),
@@ -49,13 +49,13 @@ root.innerHTML = `<div class="svc-calc">
         checkbox('aiSetup', `AI operations assistant (one-time ${range(pricing.ai)})`) +
         checkbox('extraTraining', `Additional training (one-time ${range(pricing.training)})`) +
         fields(numberField('renewalAmount', 'Replacement or renewal cost ($)', 0), countField('renewalIntervalYears', 'Repeat every N years (0 disables)', 0)) +
-        '<p class="svc-muted">Standard handoff and training are included in infrastructure implementation. Select extra training only for expanded scope. Renewal applies on anniversaries inside the term.</p></details>')}
+        '<p class="svc-muted">Infrastructure implementation includes standard handoff and training. Select extra training for longer workshops. The calculator adds renewals on anniversaries within the estimate period.</p></details>')}
     ${panel('5. Projection horizon',
       '<label class="svc-field">Term<select name="years"><option value="1">1 year</option><option value="3" selected>3 years</option><option value="5">5 years</option></select></label>')}
   </form>
   <aside class="svc-result svc-panel" aria-labelledby="result-title">
     <h2 id="result-title" tabindex="-1">Ownership cost estimate</h2>
-    <p class="svc-note" id="scope-note">Sample comparison: select application modules and review feature fit before treating these totals as a replacement budget.</p>
+    <p class="svc-note" id="scope-note">Select the application modules you need and check that they cover your requirements before you use this estimate as a budget.</p>
     <p id="result-status" class="svc-note" role="status"></p>
     <div id="cost-results"></div>
     <figure class="svc-figure"><div id="cost-chart"></div><figcaption><span class="svc-key"></span> Commercial <span class="svc-key svc-key--self"></span> Self-hosted</figcaption></figure>
@@ -216,8 +216,8 @@ function update() {
   inputs.addOnsInitial = (field('aiSetup').checked ? midpoint(pricing.ai) : 0) + (field('extraTraining').checked ? midpoint(pricing.training) : 0);
   const { years } = inputs;
   const result = calculateTco(inputs);
-  const scopeNote = selectedApps().length ? 'Selected modules are included at editable planning costs. Confirm feature fit, migration, and capacity before comparing.' : 'Infrastructure only: no application modules selected. The sample subscriptions are not a matched replacement configuration.';
-  root.querySelector('#scope-note').textContent = scopeNote + (tierSelect.value === 'ha' && inputs.serverCount < 3 ? ' Fewer than three servers are budgeted: validate quorum, failure domains, and failover before calling this an HA design.' : '');
+  const scopeNote = selectedApps().length ? 'You can edit the cost of the selected modules. Check features, migration work, and capacity before comparing totals.' : 'The self-hosted estimate covers infrastructure only, with no application modules selected. Choose modules that cover your subscription features to compare the two setups.';
+  root.querySelector('#scope-note').textContent = scopeNote + (tierSelect.value === 'ha' && inputs.serverCount < 3 ? ' This estimate includes fewer than three servers. Check the design to validate quorum, failure domains, and failover.' : '');
   const difference = result.difference > 0 ? `Self-hosted costs ${money(result.difference)} less` :
     result.difference < 0 ? `Self-hosted costs ${money(-result.difference)} more` : 'Both options have the same estimated cost';
   status.textContent = `${difference} over ${years} ${years === 1 ? 'year' : 'years'}.`;

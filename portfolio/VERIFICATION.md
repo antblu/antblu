@@ -277,3 +277,16 @@ links, static navigation without JavaScript, and automated accessibility.
   project filtering, the project dialog, stack search, and mocked contact
   submission passed. Physical devices, live submissions, and deployment were
   outside these checks.
+
+### Website copy revision
+
+- Compared all 13 edited HTML pages against the original markup, allowing for
+  the existing homepage section move. Tags, navigation and asset attributes,
+  and price amounts matched.
+- Headless Chrome checked 320, 390, 768, and 1440 CSS pixels in both themes
+  with external requests blocked. No document overflow, failed local assets,
+  or JavaScript errors. Checked the blog redirect target and fallback copy.
+- The services browser suite, portfolio smoke checks, JavaScript syntax checks,
+  and all 12 Node tests passed. Browser checks covered the project dialog,
+  Emiliany workflow, stack search, FAQ, calculator, and mocked contact
+  submission. Physical devices and live services were outside these checks.

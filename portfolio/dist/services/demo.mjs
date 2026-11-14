@@ -7,10 +7,10 @@ const appIds = ['nextcloud', 'keycloak', 'zammad', 'grafana', 'argocd', 'forgejo
 const apps = appIds.map(id => applications.find(app => app.id === id));
 const names = ['Files workspace', 'Unified sign-in', 'Helpdesk queue', 'Metrics dashboard', 'GitOps deployments', 'Source repository'];
 const flow = [
-  { title: 'Normal operations', message: 'All example services are available. Start the scenario to watch an alert move through the operations workflow.' },
+  { title: 'Normal operations', message: 'All sample services are up. Start the incident to view the alert.' },
   { title: 'Alert received', message: 'The files workspace returned errors on 12% of sampled requests. The API p95 rose to 2.1 seconds shortly after a release.' },
   { title: 'Recommendation ready', message: 'Example AI recommendation: Worker memory limits were lowered in the latest deployment. Event history shows repeated out-of-memory restarts. Review the change, compare it with the last stable revision, and restore the previously tested resource setting with a rollback plan.' },
-  { title: 'Administrator approved the proposed change', message: 'The admin reviewed the evidence, authorized the resource change and recorded their approval on the change request. The deployment service can now apply the approved revision.' },
+  { title: 'Administrator approved the proposed change', message: 'The administrator checked the evidence and signed off on the resource change in the change request. The deployment service can apply that revision.' },
   { title: 'Approved Git revision synced', message: 'The simulated GitOps controller reconciled the manifest. The deployment passes readiness checks. Watch request latency and restart counts before closing the incident.' },
   { title: 'Recovery verified', message: 'Request latency returned to its baseline and restart counts held steady through the observation window. The administrator added the evidence and change revision to the incident record.' }
 ];
