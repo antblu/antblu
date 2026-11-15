@@ -69,6 +69,7 @@
 .svc-header, .svc-footer { font: 400 .94rem/1.65 var(--svc-body-font); color: var(--svc-ink); }
 .svc-header .svc-wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; min-height: var(--svc-header-height); padding-block: .5rem; gap: .75rem; }
 .svc-header .svc-brand, .svc-footer .svc-brand { display: inline-flex; align-items: center; font: 700 1.25rem/1.65 var(--svc-heading); letter-spacing: -.025em; text-decoration: none; color: var(--svc-ink); white-space: nowrap; }
+.svc-header .svc-brand img { display: block; width: clamp(120px, 24vw, 156px); height: auto; }
 .svc-brand span { margin-inline-start: .08em; color: var(--svc-gold-ink); }
 .svc-nav { display: flex; align-items: center; flex-wrap: wrap; gap: clamp(.8rem, 2vw, 1.7rem); font-size: .875rem; font-weight: 500; }
 .svc-nav a { display: flex; align-items: center; min-height: 44px; color: var(--svc-muted); text-decoration: none; }
@@ -94,7 +95,6 @@
 
 @media (max-width: 550px) {
   .svc-header .svc-wrap { gap: .5rem; }
-  .svc-header .svc-brand { font-size: 1.05rem; }
   .svc-header .svc-menu-toggle { padding-inline: .65rem; }
 }
 

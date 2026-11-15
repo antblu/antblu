@@ -320,3 +320,17 @@ consultation prefills. The checks used local assets and fallback fonts.
 - The supplied SVG path was unavailable. The docs card uses the existing
   portfolio SVG, which matches the Antalos docs repository favicon byte for
   byte. The attachment itself could not be compared.
+
+## Header logo (2026-11-15)
+
+Chromium loaded the supplied PNG in all 12 local page headers at 320px and
+1440px in light and dark themes. Each logo had the accessible name Anthony
+Bluemel and linked to the homepage. No header overflow was detected.
+Production deployment was outside this check.
+
+## Consulting Services background (2026-11-15)
+
+Chrome decoded the supplied photo's WebP derivative and confirmed that it
+covered the homepage section at 320px and 1440px in both themes. The
+theme-specific overlays applied, and the checks detected no horizontal
+overflow or uncaught page errors. Verification used a local preview.
