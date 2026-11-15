@@ -37,6 +37,10 @@ The container exposes `/healthz`. CI builds pull requests and publishes images f
 
 Use plain HTML, CSS, and browser JavaScript. Match existing compact CSS and two-space indentation in expanded JavaScript. Use single-quoted JavaScript strings, semicolons, `const` by default, camelCase identifiers, and lowercase hyphenated classes and asset filenames. No formatter or linter is configured. Preserve semantic HTML, keyboard access, reduced-motion support, relative asset paths, and progressive enhancement.
 
+## Writing and Editing Copy
+
+Read and apply the [stop-slop skill](/mnt/c/Users/antbl/.codex/skills/stop-slop/SKILL.md) whenever you add or revise prose in this repository.
+
 ## Testing Guidelines
 
 No automated test harness or coverage threshold is configured. Follow `portfolio/VERIFICATION.md`: check navigation, filters, dialogs, contact validation, email drafts, clipboard fallback, and changed feature interactions. Review both themes and desktop/mobile layouts, including 320px width. Check overflow, missing assets, and console errors. Record results and unverified behavior; previous Playwright checks are documentation, not an included runnable suite.

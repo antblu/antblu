@@ -18,9 +18,9 @@ PROFESSIONAL EXPERIENCE
 Principal System Engineer - Emiliany | Part time | October 2026 - Present
 
 Principal System Engineer - Vector Digital | July 2025 - Present
-- Support and troubleshoot Windows and Linux systems, networking, virtualization, DNS, VPNs, and cloud-connected infrastructure in an MSP environment.
-- Diagnose infrastructure and service issues across operating systems, networks, virtualized environments, and hosted services.
-- Create technical documentation and use scripting and automation to make recurring administration and troubleshooting tasks more consistent and repeatable.
+- Built the server, virtualization, and networking infrastructure Vector Digital uses to deliver managed open-source software to small businesses.
+- Maintain Windows and Linux systems and troubleshoot outages that affect DNS, VPNs, and hosted services.
+- Automate recurring administration tasks with scripts and write troubleshooting guides the team can reuse.
 
 SELECTED INFRASTRUCTURE PROJECTS
 Homelab Infrastructure & Automation

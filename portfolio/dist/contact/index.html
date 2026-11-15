@@ -27,7 +27,6 @@
   <link rel="stylesheet" href="/services/services.css">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/brand.css?v=20261114-components">
-  <script src="/curved-input.js" defer></script>
   <script type="module" src="/services/common.mjs"></script>
   <script type="module" src="/services/booking.mjs"></script>
   <script type="module" src="/services/contact.mjs"></script>
@@ -50,44 +49,65 @@
     </div>
   </header>
   <main id="main" tabindex="-1">
-    <section class="svc-body svc-hero svc-hero--compact">
-      <div class="svc-wrap"><div><h1>Contact</h1><p class="svc-lead">Hiring for systems administration or infrastructure work? I’d be glad to discuss my experience and learn about your team.</p><div class="svc-cta"><a class="svc-btn" href="#quote">Request a quote</a><a href="mailto:antblu@antblu.net">antblu@antblu.net</a></div></div></div>
-    </section>
-    <section class="photo-surface contact section paper" id="contact" tabindex="-1" aria-labelledby="contact-title"><div class="photo-background" aria-hidden="true"><img src="/assets/bogota.webp" alt="" loading="lazy" decoding="async"></div><div class="section-ripple" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><h2 class="boxed-title" id="contact-title">CONTACT</h2><p class="section-lead">Hiring for systems administration or infrastructure work? I’d be glad to discuss my experience and learn about your team. For consulting inquiries, <a class="email-address" href="#quote">request a quote</a>.</p><a class="email-address" href="mailto:antblu@antblu.net">antblu@antblu.net</a><img class="separator" src="/assets/40514.png" alt="">
-      <form id="contact-form" data-support-url=""><label hidden aria-hidden="true">Leave this empty<input name="zammad_form_url" tabindex="-1" autocomplete="off"></label><label><span class="sr-only">Your name (required)</span><input name="name" autocomplete="name" placeholder="ENTER YOUR NAME*" required maxlength="120"></label><label><span class="sr-only">Your email (required)</span><input type="email" name="email" autocomplete="email" placeholder="ENTER YOUR EMAIL*" required maxlength="254"></label><label><span class="sr-only">Phone number</span><input type="tel" name="phone" autocomplete="tel" placeholder="PHONE NUMBER" maxlength="50"></label><label><span class="sr-only">Your message (required)</span><textarea name="message" placeholder="YOUR MESSAGE*" required maxlength="5000" rows="5"></textarea></label><button class="shimmer-button" type="submit" disabled><span>SEND MESSAGE ↗</span></button><p class="form-note">Your message will create a support ticket. I’ll reply by email.</p><noscript><p>Please <a class="email-address" href="mailto:antblu@antblu.net">email antblu@antblu.net</a> to get in touch. Sending this form requires JavaScript.</p></noscript><p id="form-status" role="status" aria-live="polite"></p></form>
-    </section>
-    <div class="svc-body">
-      <section class="svc-wrap svc-section" id="quote" aria-labelledby="quote-title">
-        <h2 id="quote-title">Request a consultation</h2>
-        <p>Request a free consultation for infrastructure deployment, SaaS replacement, a business website, or an online store.</p>
+    <section class="svc-body svc-hero svc-hero--compact" aria-labelledby="page-title">
+      <div class="svc-wrap">
+        <h1 id="page-title">Contact</h1>
         <div class="svc-split svc-contact-layout">
-  <div class="svc-panel">
-    <form id="consultation-form" class="svc-form" data-support-url="">
-      <div hidden><label>Leave this empty<input name="zammad_form_url" tabindex="-1" autocomplete="off"></label></div>
-      <div class="svc-fields">
-        <label>Name<input name="name" autocomplete="name" required maxlength="120"></label>
-        <label>Business name (optional)<input name="business" autocomplete="organization" maxlength="120"></label>
+          <section class="svc-panel" id="quote" aria-labelledby="quote-title">
+            <h2 id="quote-title">Request a consultation</h2>
+            <p>Request a free consultation for infrastructure deployment, SaaS replacement, a business website, or an online store.</p>
+            <form id="consultation-form" class="svc-form" aria-labelledby="quote-title" data-support-url="">
+              <div hidden><label>Leave this empty<input name="zammad_form_url" tabindex="-1" autocomplete="off"></label></div>
+              <div class="svc-fields">
+                <label>Name<input name="name" autocomplete="name" required maxlength="120"></label>
+                <label>Business name (optional)<input name="business" autocomplete="organization" maxlength="120"></label>
+              </div>
+              <label>Email<input type="email" name="email" autocomplete="email" required maxlength="254"></label>
+              <div class="svc-fields">
+                <label>Requested service<select name="service" required>
+                  <option value="">Select a service</option><option value="infrastructure">Infrastructure deployment</option><option value="replacement">SaaS replacement</option><option value="website">Website development</option><option value="ecommerce">E-commerce development</option><option value="custom">Custom consulting</option>
+                </select></label>
+                <label>Preferred hosting (optional)<select name="hosting">
+                  <option value="">Undecided or not applicable</option><option value="hardware">Own hardware</option><option value="vps">Cloud VPS</option><option value="managed">Managed Kubernetes</option>
+                </select></label>
+              </div>
+              <label>Brief project description<textarea name="message" rows="5" required maxlength="4000" aria-describedby="project-hint"></textarea></label>
+              <p class="svc-muted" id="project-hint">Describe what you want to build or replace and who will use it.</p>
+              <details class="svc-fold" data-quote-details><summary>Optional configuration</summary><label class="svc-field">Application or calculator summary<textarea name="configuration" rows="7" maxlength="6500" placeholder="Paste a planning summary or leave this blank."></textarea></label></details>
+              <p class="svc-muted">Your inquiry goes to my support inbox so I can reply. Leave out passwords, tokens and private customer data. <a href="/privacy">Privacy notice</a></p>
+              <div class="svc-cta"><button class="svc-btn svc-btn--primary" type="submit" disabled>Send consultation request</button><button class="svc-btn" type="button" data-email-draft hidden>Open email draft</button></div>
+              <p id="consultation-status" role="status" tabindex="-1"></p>
+              <noscript><p>Please <a href="mailto:antblu@antblu.net">email Anthony</a> to request a consultation.</p></noscript>
+            </form>
+          </section>
+          <div class="svc-flow">
+            <aside class="svc-card" aria-labelledby="booking-title">
+              <h2 id="booking-title">Schedule your consultation</h2>
+              <p>We’ll use this call to choose a date and time for your free consultation.</p>
+              <div class="svc-cta">
+                <a class="svc-btn svc-btn--primary" href="/services#booking" data-booking-popup>Book a 30-minute scheduling call</a>
+              </div>
+            </aside>
+            <section class="svc-panel" id="contact" aria-labelledby="message-title">
+              <h2 id="message-title">Send a message</h2>
+              <p>Hiring for systems administration or infrastructure work? I’d be glad to discuss my experience and learn about your team.</p>
+              <p><a href="mailto:antblu@antblu.net">antblu@antblu.net</a></p>
+              <form id="contact-form" class="svc-form" aria-labelledby="message-title" data-support-url="">
+                <label hidden aria-hidden="true">Leave this empty<input name="zammad_form_url" tabindex="-1" autocomplete="off"></label>
+                <label>Name<input name="name" autocomplete="name" required maxlength="120"></label>
+                <label>Email<input type="email" name="email" autocomplete="email" required maxlength="254"></label>
+                <label>Phone number (optional)<input type="tel" name="phone" autocomplete="tel" maxlength="50"></label>
+                <label>Message<textarea name="message" required maxlength="5000" rows="5"></textarea></label>
+                <p class="svc-muted">Your message will create a support ticket. I’ll reply by email.</p>
+                <div class="svc-cta"><button class="svc-btn svc-btn--primary" type="submit" disabled>Send message</button></div>
+                <noscript><p>Please use the email link above to get in touch.</p></noscript>
+                <p id="form-status" role="status" aria-live="polite"></p>
+              </form>
+            </section>
+          </div>
+        </div>
       </div>
-      <label>Email<input type="email" name="email" autocomplete="email" required maxlength="254"></label>
-      <div class="svc-fields">
-        <label>Requested service<select name="service" required>
-          <option value="">Select a service</option><option value="infrastructure">Infrastructure deployment</option><option value="replacement">SaaS replacement</option><option value="website">Website development</option><option value="ecommerce">E-commerce development</option><option value="custom">Custom consulting</option>
-        </select></label>
-        <label>Preferred hosting (optional)<select name="hosting">
-          <option value="">Undecided or not applicable</option><option value="hardware">Own hardware</option><option value="vps">Cloud VPS</option><option value="managed">Managed Kubernetes</option>
-        </select></label>
-      </div>
-      <label>Brief project description<textarea name="message" rows="5" required maxlength="4000"></textarea></label>
-      <details class="svc-fold" data-quote-details><summary>Optional configuration</summary><label class="svc-field">Application or calculator summary<textarea name="configuration" rows="7" maxlength="6500" placeholder="Paste a planning summary or leave this blank."></textarea></label></details>
-      <p class="svc-muted">Your inquiry goes to my support inbox so I can reply. Leave out passwords, tokens and private customer data. <a href="/privacy">Privacy notice</a></p>
-      <div class="svc-cta"><button class="svc-btn svc-btn--primary" type="submit" disabled>Send consultation request</button><button class="svc-btn" type="button" data-email-draft hidden>Open email draft</button></div>
-      <p id="consultation-status" role="status" tabindex="-1"></p>
-      <noscript><p>Please <a href="mailto:antblu@antblu.net">email Anthony</a> to request a consultation.</p></noscript>
-    </form>
-  </div>
-  <aside class="svc-card"><h2>What to include</h2><p>Describe the system you want to build or replace. Include who will use it and what they need on launch day. For infrastructure projects, share your hosting preference and any recovery requirements you know.</p><p>The first consultation is free. I’ll follow up to confirm what the project depends on and what I need to prepare a proposal.</p><a class="svc-btn" href="/services#booking" data-booking-popup>Choose a 30-minute meeting</a><a href="mailto:antblu@antblu.net">antblu@antblu.net</a></aside>
-</div></section>
-    </div>
+    </section>
   </main>
   <footer class="svc-footer">
     <div class="svc-wrap">

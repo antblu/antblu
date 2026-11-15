@@ -334,3 +334,12 @@ Chrome decoded the supplied photo's WebP derivative and confirmed that it
 covered the homepage section at 320px and 1440px in both themes. The
 theme-specific overlays applied, and the checks detected no horizontal
 overflow or uncaught page errors. Verification used a local preview.
+
+## Contact page layout (2026-11-15)
+
+Chrome checked the combined contact section at 320px and 1440px in both
+themes. The layout switched from one column to two without horizontal
+overflow. Both forms initialized and rejected empty submissions through
+required-field validation. The scheduling control rendered without an
+uncaught page error. Live booking and support ticket delivery remain
+unverified.
