@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="/services/services.css">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/brand.css?v=20261114-components">
+  <script src="/curved-input.js" defer></script>
   <script type="module" src="/services/common.mjs"></script>
   <script type="module" src="/services/booking.mjs"></script>
   <script type="module" src="/services/contact.mjs"></script>
@@ -71,8 +72,7 @@
                   <option value="">Undecided or not applicable</option><option value="hardware">Own hardware</option><option value="vps">Cloud VPS</option><option value="managed">Managed Kubernetes</option>
                 </select></label>
               </div>
-              <label>Brief project description<textarea name="message" rows="5" required maxlength="4000" aria-describedby="project-hint"></textarea></label>
-              <p class="svc-muted" id="project-hint">Describe what you want to build or replace and who will use it.</p>
+              <label>Brief project description<textarea name="message" rows="5" required maxlength="4000"></textarea></label>
               <details class="svc-fold" data-quote-details><summary>Optional configuration</summary><label class="svc-field">Application or calculator summary<textarea name="configuration" rows="7" maxlength="6500" placeholder="Paste a planning summary or leave this blank."></textarea></label></details>
               <p class="svc-muted">Your inquiry goes to my support inbox so I can reply. Leave out passwords, tokens and private customer data. <a href="/privacy">Privacy notice</a></p>
               <div class="svc-cta"><button class="svc-btn svc-btn--primary" type="submit" disabled>Send consultation request</button><button class="svc-btn" type="button" data-email-draft hidden>Open email draft</button></div>
@@ -92,15 +92,15 @@
               <h2 id="message-title">Send a message</h2>
               <p>Hiring for systems administration or infrastructure work? I’d be glad to discuss my experience and learn about your team.</p>
               <p><a href="mailto:antblu@antblu.net">antblu@antblu.net</a></p>
-              <form id="contact-form" class="svc-form" aria-labelledby="message-title" data-support-url="">
+              <form id="contact-form" aria-labelledby="message-title" data-support-url="">
                 <label hidden aria-hidden="true">Leave this empty<input name="zammad_form_url" tabindex="-1" autocomplete="off"></label>
-                <label>Name<input name="name" autocomplete="name" required maxlength="120"></label>
-                <label>Email<input type="email" name="email" autocomplete="email" required maxlength="254"></label>
-                <label>Phone number (optional)<input type="tel" name="phone" autocomplete="tel" maxlength="50"></label>
-                <label>Message<textarea name="message" required maxlength="5000" rows="5"></textarea></label>
-                <p class="svc-muted">Your message will create a support ticket. I’ll reply by email.</p>
-                <div class="svc-cta"><button class="svc-btn svc-btn--primary" type="submit" disabled>Send message</button></div>
-                <noscript><p>Please use the email link above to get in touch.</p></noscript>
+                <label><span class="sr-only">Your name (required)</span><input name="name" autocomplete="name" placeholder="ENTER YOUR NAME*" required maxlength="120"></label>
+                <label><span class="sr-only">Your email (required)</span><input type="email" name="email" autocomplete="email" placeholder="ENTER YOUR EMAIL*" required maxlength="254"></label>
+                <label><span class="sr-only">Phone number</span><input type="tel" name="phone" autocomplete="tel" placeholder="PHONE NUMBER" maxlength="50"></label>
+                <label><span class="sr-only">Your message (required)</span><textarea name="message" placeholder="YOUR MESSAGE*" required maxlength="5000" rows="5"></textarea></label>
+                <button class="shimmer-button" type="submit" disabled><span>SEND MESSAGE ↗</span></button>
+                <p class="form-note">Your message will create a support ticket. I’ll reply by email.</p>
+                <noscript><p>Please <a class="email-address" href="mailto:antblu@antblu.net">email antblu@antblu.net</a> to get in touch. Sending this form requires JavaScript.</p></noscript>
                 <p id="form-status" role="status" aria-live="polite"></p>
               </form>
             </section>

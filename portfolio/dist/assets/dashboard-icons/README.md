@@ -49,6 +49,10 @@ Most logos: Dashboard Icons by Homarr Labs, https://dashboardicons.com, https://
 | immich | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/immich.svg |
 | speaches | https://speaches.ai/assets/images/favicon.png |
 | llama.cpp | https://github.com/ggml-org/llama-brand/blob/master/logo/svg/app/web/favicon-dark.svg — GGML logo (CC BY-NC 4.0, see LICENSE-llama-brand) |
+| homelable | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/homelable.svg |
+| caddy | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/caddy.svg |
+| jellyfin | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/jellyfin.svg |
+| storyteller | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/storyteller.webp |
 
 Cal.diy uses the related Cal.com mark; MariaDB Operator uses the MariaDB technology mark. Other downloaded logos match the named service. Neutral symbols are original SVGs, not product logos.
 

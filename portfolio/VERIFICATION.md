@@ -343,3 +343,14 @@ overflow. Both forms initialized and rejected empty submissions through
 required-field validation. The scheduling control rendered without an
 uncaught page error. Live booking and support ticket delivery remain
 unverified.
+
+After restoring the original message form, Chrome confirmed that the React
+Bits name and email previews gave way to editable inputs on focus and that
+the submit button retained its shimmer. Both forms passed the same layout
+and required-field checks at 320px and 1440px in both themes.
+
+- After removing llama-swap and LazyLibrarian and refreshing the logos, Chrome
+  decoded all 50 card images and verified search and category filtering at
+  320px in both themes and at 1440px in light mode with reduced motion.
+  Those checks reported no page errors or horizontal overflow. The 1440px
+  dark-mode browser check did not return a result.
