@@ -303,3 +303,20 @@ links, static navigation without JavaScript, and automated accessibility.
   `git diff --check` passed. The local Nginx container returned HTTP 200 at
   `/contact` and passed the same browser checks. Live ticket creation and
   production deployment were outside this check.
+
+The dedicated contact page restores the original homepage section styling.
+Compared against the archived homepage in headless Chrome at 320px, 768px,
+and 1440px in light and dark mode. Section dimensions, form placement,
+typography, colors, and Bogotá photo crop matched. Retested the old bookmark,
+curved fields, mocked ticket submission and retry, no-script email link, and
+consultation prefills. The checks used local assets and fallback fonts.
+
+### Antalos service inventory
+
+- Confirmed the requested removals and additions against the previous inventory.
+  Chrome decoded all 52 card images and verified search and category filtering
+  at 320px and 1440px in both themes, with no page errors or horizontal
+  overflow. The 320px light-theme check used reduced motion.
+- The supplied SVG path was unavailable. The docs card uses the existing
+  portfolio SVG, which matches the Antalos docs repository favicon byte for
+  byte. The attachment itself could not be compared.

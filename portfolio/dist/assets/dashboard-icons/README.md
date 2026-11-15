@@ -6,7 +6,7 @@ Most logos: Dashboard Icons by Homarr Labs, https://dashboardicons.com, https://
 | --- | --- |
 | bentopdf | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bentopdf.svg |
 | cal-diy | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/cal-com-light.svg |
-| docs | docs-fallback.svg — original neutral symbol; no matching product logo in Dashboard Icons |
+| docs | ../antalos.svg — favicon from the Antalos docs repository |
 | forgejo | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/forgejo.svg |
 | nextcloud | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/nextcloud.svg |
 | obsidian | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/obsidian.svg |
@@ -38,12 +38,17 @@ Most logos: Dashboard Icons by Homarr Labs, https://dashboardicons.com, https://
 | uptime-kuma | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/uptime-kuma.svg |
 | victoriametrics | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/victoriametrics-light.svg |
 | homepage | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/homepage.png |
-| metrics-server | platform-fallback.svg — original neutral symbol; no matching product logo in Dashboard Icons |
 | metallb | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/metallb.svg |
 | cnpg-operator | https://cdn.jsdelivr.net/gh/selfhst/icons/svg/cloudnativepg.svg |
 | mariadb-operator | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/mariadb.svg |
 | openebs | platform-fallback.svg — original neutral symbol; no matching product logo in Dashboard Icons |
-| nfs-driver | platform-fallback.svg — original neutral symbol; no matching product logo in Dashboard Icons |
+| littlelink | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/littlelink-custom.svg |
+| writefreely | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/writefreely-light.svg |
+| drupal | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/drupal.svg |
+| docling | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/docling.svg |
+| immich | https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/immich.svg |
+| speaches | https://speaches.ai/assets/images/favicon.png |
+| llama.cpp | https://github.com/ggml-org/llama-brand/blob/master/logo/svg/app/web/favicon-dark.svg — GGML logo (CC BY-NC 4.0, see LICENSE-llama-brand) |
 
 Cal.diy uses the related Cal.com mark; MariaDB Operator uses the MariaDB technology mark. Other downloaded logos match the named service. Neutral symbols are original SVGs, not product logos.
 
