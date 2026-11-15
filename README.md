@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/profile-banner.svg" width="100%" alt="Anthony Bluemel — System Administrator. Infrastructure, automation, and self-hosting." />
+  <img src="portfolio/dist/assets/antblu-logo.png" width="100%" alt="antblu — System Administrator. Infrastructure, automation, and self-hosting." />
 </p>
 
 <p align="center">
