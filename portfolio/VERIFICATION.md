@@ -290,3 +290,16 @@ links, static navigation without JavaScript, and automated accessibility.
   and all 12 Node tests passed. Browser checks covered the project dialog,
   Emiliany workflow, stack search, FAQ, calculator, and mocked contact
   submission. Physical devices and live services were outside these checks.
+
+### Dedicated contact page
+
+- Headless Chrome verified that the home page links to `/contact` and existing
+  `/#contact` bookmarks redirect there. Checked 320px and 1440px in both
+  themes with no horizontal overflow, missing local assets, or page errors.
+- Verified required-field validation, retry after a mocked service failure,
+  ticket confirmation, optional phone in the submission, and the email fallback
+  with JavaScript disabled. Verified quote links retain form prefills.
+- The services browser suite, 12 Node tests, JavaScript syntax checks, and
+  `git diff --check` passed. The local Nginx container returned HTTP 200 at
+  `/contact` and passed the same browser checks. Live ticket creation and
+  production deployment were outside this check.

@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Consultations &amp; Quotes | Anthony Bluemel</title>
-  <meta name="description" content="Request a free consultation for infrastructure deployment, SaaS replacement, a business website, or an online store.">
+  <title>Contact | Anthony Bluemel</title>
+  <meta name="description" content="Contact Anthony Bluemel about hiring, infrastructure work, or a consulting project.">
   <meta name="theme-color" content="#f3f7fb">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Anthony Bluemel">
-  <meta property="og:title" content="Consultations &amp; Quotes | Anthony Bluemel">
-  <meta property="og:description" content="Request a free consultation for infrastructure deployment, SaaS replacement, a business website, or an online store.">
+  <meta property="og:title" content="Contact | Anthony Bluemel">
+  <meta property="og:description" content="Contact Anthony Bluemel about hiring, infrastructure work, or a consulting project.">
   <meta property="og:url" content="https://antblu.net/contact">
   <meta property="og:image" content="https://antblu.net/assets/antblu-logo.png">
   <link rel="canonical" href="https://antblu.net/contact">
@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="/services/services.css">
   <script type="module" src="/services/common.mjs"></script>
   <script type="module" src="/services/booking.mjs"></script>
+  <script type="module" src="/services/contact.mjs"></script>
   <script type="module" src="/services/consultation.mjs"></script>
 </head>
 <body class="svc-body">
@@ -40,17 +41,38 @@
         <a href="/#portfolio">Projects</a>
         <a href="/services">Services</a>
         <a href="https://blog.antblu.net">Blog</a>
-        <a href="/#contact">Contact</a>
+        <a href="/contact" aria-current="page">Contact</a>
       </nav>
       <button type="button" class="svc-btn svc-theme" data-svc-theme aria-label="Dark mode" aria-pressed="false" hidden><svg class="theme-icon theme-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="5"/><path d="M11 1h2v3h-2zm0 19h2v3h-2zM1 11h3v2H1zm19 0h3v2h-3zM3.51 4.93l1.42-1.42 2.12 2.13-1.41 1.41zm13.44 13.43 1.41-1.41 2.13 2.12-1.42 1.42zM3.51 19.07l2.13-2.12 1.41 1.41-2.12 2.13zM16.95 5.64l2.12-2.13 1.42 1.42-2.13 2.12z"/></svg><svg class="theme-icon theme-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.9 13.4A9 9 0 0 1 10.6 3.1a.8.8 0 0 0-1.1-.9A10.2 10.2 0 1 0 21.8 14.5a.8.8 0 0 0-.9-1.1Z"/></svg></button>
     </div>
   </header>
   <main id="main" tabindex="-1">
     <section class="svc-hero svc-hero--compact">
-      <div class="svc-wrap"><div><h1>Request a consultation</h1><p class="svc-lead">Request a free consultation for infrastructure deployment, SaaS replacement, a business website, or an online store.</p></div></div>
+      <div class="svc-wrap"><div><h1>Contact</h1><p class="svc-lead">Hiring for systems administration or infrastructure work? I’d be glad to discuss my experience and learn about your team.</p><div class="svc-cta"><a class="svc-btn" href="#quote">Request a quote</a><a href="mailto:antblu@antblu.net">antblu@antblu.net</a></div></div></div>
     </section>
     <div class="svc-wrap">
-      <section class="svc-section" aria-label="Consultation request"><div class="svc-split svc-contact-layout">
+      <section class="svc-section" aria-labelledby="message-title">
+        <h2 id="message-title">Send a message</h2>
+        <div class="svc-panel">
+          <form id="contact-form" class="svc-form" data-support-url="">
+            <div hidden><label>Leave this empty<input name="zammad_form_url" tabindex="-1" autocomplete="off"></label></div>
+            <div class="svc-fields">
+              <label>Name<input name="name" autocomplete="name" required maxlength="120"></label>
+              <label>Email<input type="email" name="email" autocomplete="email" required maxlength="254"></label>
+            </div>
+            <label>Phone number (optional)<input type="tel" name="phone" autocomplete="tel" maxlength="50"></label>
+            <label>Message<textarea name="message" required maxlength="5000" rows="5"></textarea></label>
+            <p class="svc-muted">Your message will create a support ticket. I’ll reply by email.</p>
+            <div class="svc-cta"><button class="svc-btn svc-btn--primary" type="submit" disabled>Send message</button></div>
+            <p id="form-status" role="status"></p>
+            <noscript><p>Please <a href="mailto:antblu@antblu.net">email Anthony</a> to get in touch.</p></noscript>
+          </form>
+        </div>
+      </section>
+      <section class="svc-section" id="quote" aria-labelledby="quote-title">
+        <h2 id="quote-title">Request a consultation</h2>
+        <p>Request a free consultation for infrastructure deployment, SaaS replacement, a business website, or an online store.</p>
+        <div class="svc-split svc-contact-layout">
   <div class="svc-panel">
     <form id="consultation-form" class="svc-form" data-support-url="">
       <div hidden><label>Leave this empty<input name="zammad_form_url" tabindex="-1" autocomplete="off"></label></div>
@@ -91,7 +113,7 @@
         <a href="/#homelab">Homelab</a>
         <a href="/#stack">Service Inventory</a>
         <a href="https://blog.antblu.net">Blog</a>
-        <a href="/#contact">Contact</a>
+        <a href="/contact">Contact</a>
       </nav>
       <nav aria-labelledby="footer-services">
         <strong id="footer-services">Services</strong>
@@ -101,7 +123,7 @@
         <a href="/services/ecommerce">E-commerce</a>
         <a href="/services#packages">Infrastructure Packages</a>
         <a href="/services#booking">Book a Consultation</a>
-        <a href="/contact">Request a Quote</a>
+        <a href="/contact#quote">Request a Quote</a>
       </nav>
       <nav aria-labelledby="footer-tools">
         <strong id="footer-tools">Consulting Tools</strong>

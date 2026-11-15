@@ -15,6 +15,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <script>
     (() => {
+      if (location.hash === '#contact') location.replace('/contact' + location.search);
       let theme;
       try { theme = localStorage.getItem('antblu-theme'); } catch {}
       document.documentElement.dataset.theme = theme === 'light' || theme === 'dark' ? theme : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -22,7 +23,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..750&amp;family=JetBrains+Mono:wght@400..600&amp;family=Montserrat:wght@400..900&amp;family=Raleway:wght@400..800&amp;family=Plus+Jakarta+Sans:wght@600..750&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="components.css"><script type="module" src="theme.mjs"></script><script type="module" src="/services/navigation.mjs"></script><link rel="stylesheet" href="brand.css?v=20261114-components"><link rel="stylesheet" href="homelab.css"><link rel="stylesheet" href="emiliany.css"><script src="homelab.js" defer></script><script src="app.js?v=20261114-components" defer></script><script src="curved-input.js" defer></script><script src="glow-cursor.js" defer></script><script src="clouds.js" defer></script><script src="lightning.js" defer></script><script src="particles.js?v=20261114-floating" defer></script><script src="stack.js" defer></script><script src="emiliany.js" type="module"></script><script src="chromatic.js" defer></script><script src="electric-logo.js" defer></script><script src="flip-cards.js" defer></script><script src="circular-text.js" defer></script><script src="circular-carousel.js" defer></script>
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="components.css"><script type="module" src="theme.mjs"></script><script type="module" src="/services/navigation.mjs"></script><link rel="stylesheet" href="brand.css?v=20261114-components"><link rel="stylesheet" href="homelab.css"><link rel="stylesheet" href="emiliany.css"><script src="homelab.js" defer></script><script src="app.js?v=20261114-components" defer></script><script src="glow-cursor.js" defer></script><script src="clouds.js" defer></script><script src="lightning.js" defer></script><script src="particles.js?v=20261114-floating" defer></script><script src="stack.js" defer></script><script src="emiliany.js" type="module"></script><script src="chromatic.js" defer></script><script src="electric-logo.js" defer></script><script src="flip-cards.js" defer></script><script src="circular-text.js" defer></script><script src="circular-carousel.js" defer></script>
   <link rel="stylesheet" href="border-glow.css"><script src="border-glow.js" defer></script>
   <link rel="stylesheet" href="text-3d-flip.css"><script src="text-3d-flip.js" defer></script>
 </head>
@@ -53,7 +54,7 @@
         <a href="#portfolio">Projects</a>
         <a href="/services">Services</a>
         <a href="https://blog.antblu.net">Blog</a>
-        <a href="#contact">Contact</a>
+        <a href="/contact">Contact</a>
       </nav>
       <button type="button" class="svc-btn svc-theme" data-svc-theme aria-label="Dark mode" aria-pressed="false" hidden><svg class="theme-icon theme-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="5"/><path d="M11 1h2v3h-2zm0 19h2v3h-2zM1 11h3v2H1zm19 0h3v2h-3zM3.51 4.93l1.42-1.42 2.12 2.13-1.41 1.41zm13.44 13.43 1.41-1.41 2.13 2.12-1.42 1.42zM3.51 19.07l2.13-2.12 1.41 1.41-2.12 2.13zM16.95 5.64l2.12-2.13 1.42 1.42-2.13 2.12z"/></svg><svg class="theme-icon theme-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.9 13.4A9 9 0 0 1 10.6 3.1a.8.8 0 0 0-1.1-.9A10.2 10.2 0 1 0 21.8 14.5a.8.8 0 0 0-.9-1.1Z"/></svg></button>
     </div>
@@ -96,7 +97,7 @@
   <section class="photo-surface resume section" id="resume" tabindex="-1" aria-labelledby="resume-title"><div class="photo-background" aria-hidden="true" data-chromatic><img src="assets/forest.webp" alt="" loading="lazy" decoding="async"></div>
     <h2 class="boxed-title" id="resume-title" aria-label="Experience"><span class="kinetic-text" aria-hidden="true"><span>E</span><span>X</span><span>P</span><span>E</span><span>R</span><span>I</span><span>E</span><span>N</span><span>C</span><span>E</span></span></h2>
     <p class="section-lead">I support client systems at Vector Digital and build the storefront and service integrations for Emiliany.</p>
-    <div class="career-actions"><a class="bracket-link" href="#portfolio">SEE SELECTED PROJECTS ↓</a><a class="bracket-link" href="#contact">DISCUSS A ROLE</a></div>
+    <div class="career-actions"><a class="bracket-link" href="#portfolio">SEE SELECTED PROJECTS ↓</a><a class="bracket-link" href="/contact">DISCUSS A ROLE</a></div>
     <ol class="resume-timeline" aria-label="Professional experience">
       <li class="resume-entry resume-entry--work">
         <div class="resume-when"><div class="resume-when-inner"><p class="resume-period"><time datetime="2025-07">Jul 2025</time> — Present</p><span class="resume-badge">Work</span></div></div>
@@ -747,9 +748,6 @@
     </div>
     <p class="stack-source">Inventory from Antalos Kubernetes, Debian workload, and template sources · November 14, 2026. For deployment and health, check the running cluster. <a href="https://github.com/antblu/antalos/tree/main/apps" target="_blank" rel="noopener noreferrer">Browse the stack ↗</a></p>
   </section>
-  <section class="photo-surface contact section paper" id="contact" tabindex="-1" aria-labelledby="contact-title"><div class="photo-background" aria-hidden="true"><img src="assets/bogota.webp" alt="" loading="lazy" decoding="async"></div><div class="section-ripple" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><h2 class="boxed-title" id="contact-title">CONTACT</h2><p class="section-lead">Hiring for systems administration or infrastructure work? I’d be glad to discuss my experience and learn about your team. For consulting inquiries, <a class="email-address" href="/contact">request a quote</a>.</p><a class="email-address" href="mailto:antblu@antblu.net">antblu@antblu.net</a><img class="separator" src="assets/40514.png" alt="">
-    <form id="contact-form" data-support-url=""><label hidden aria-hidden="true">Leave this empty<input name="zammad_form_url" tabindex="-1" autocomplete="off"></label><label><span class="sr-only">Your name (required)</span><input name="name" autocomplete="name" placeholder="ENTER YOUR NAME*" required maxlength="120"></label><label><span class="sr-only">Your email (required)</span><input type="email" name="email" autocomplete="email" placeholder="ENTER YOUR EMAIL*" required maxlength="254"></label><label><span class="sr-only">Phone number</span><input type="tel" name="phone" autocomplete="tel" placeholder="PHONE NUMBER" maxlength="50"></label><label><span class="sr-only">Your message (required)</span><textarea name="message" placeholder="YOUR MESSAGE*" required maxlength="5000" rows="5"></textarea></label><button class="shimmer-button" type="submit"><span>SEND MESSAGE ↗</span></button><p class="form-note">Your message will create a support ticket. I’ll reply by email.</p><noscript><p>Please email antblu@antblu.net to get in touch. Sending this form requires JavaScript.</p></noscript><p id="form-status" role="status" aria-live="polite"></p></form>
-  </section>
 </main>
   <footer class="svc-footer">
     <div class="svc-wrap">
@@ -763,7 +761,7 @@
         <a href="#homelab">Homelab</a>
         <a href="#stack">Service Inventory</a>
         <a href="https://blog.antblu.net">Blog</a>
-        <a href="#contact">Contact</a>
+        <a href="/contact">Contact</a>
       </nav>
       <nav aria-labelledby="footer-services">
         <strong id="footer-services">Services</strong>
@@ -773,7 +771,7 @@
         <a href="/services/ecommerce">E-commerce</a>
         <a href="/services#packages">Infrastructure Packages</a>
         <a href="/services#booking">Book a Consultation</a>
-        <a href="/contact">Request a Quote</a>
+        <a href="/contact#quote">Request a Quote</a>
       </nav>
       <nav aria-labelledby="footer-tools">
         <strong id="footer-tools">Consulting Tools</strong>

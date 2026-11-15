@@ -330,7 +330,7 @@ root.querySelector('#request-estimate').addEventListener('click', () => {
     actionStatus.textContent = 'Automatic transfer is unavailable for this summary. Copy the details and include the relevant lines in your consultation.';
     return;
   }
-  location.assign('/contact?service=infrastructure&configuration=calculator');
+  location.assign('/contact?service=infrastructure&configuration=calculator#quote');
 });
 setHosting();
 updateModuleCost();

@@ -14,7 +14,7 @@ catalog.innerHTML = `
   </div>
   <div class="svc-catalog-toolbar">
     <p role="status" data-catalog-status></p>
-    <div class="svc-cta"><a class="svc-btn svc-btn--primary" data-estimate href="/services/calculator">Estimate selected apps</a><a class="svc-btn" data-request href="/contact?service=infrastructure">Request a module quote</a></div>
+    <div class="svc-cta"><a class="svc-btn svc-btn--primary" data-estimate href="/services/calculator">Estimate selected apps</a><a class="svc-btn" data-request href="/contact?service=infrastructure#quote">Request a module quote</a></div>
   </div>
   <div class="svc-grid svc-grid--auto" data-catalog-cards></div>
   <dialog aria-labelledby="application-title"><button class="svc-btn" type="button">Close details</button><div data-app-detail></div></dialog>`;
@@ -29,7 +29,7 @@ const estimateLink = catalog.querySelector('[data-estimate]');
 function updateSelection(count) {
   catalog.querySelector('[data-catalog-status]').textContent = `${count} ${count === 1 ? 'application' : 'applications'} shown · ${selected.size} selected`;
   const selection = new URLSearchParams({ apps: [...selected].join(',') });
-  quoteLink.href = '/contact?service=infrastructure' + (selected.size ? `&${selection}` : '');
+  quoteLink.href = '/contact?service=infrastructure' + (selected.size ? `&${selection}` : '') + '#quote';
   estimateLink.href = '/services/calculator' + (selected.size ? `?${selection}` : '');
 }
 
