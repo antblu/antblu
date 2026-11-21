@@ -674,3 +674,12 @@ body{font-size:16px}
 @media(max-width:700px){#project-carousel.circular-carousel{height:540px}}
 
 @media(min-width:701px){#project-carousel.circular-carousel .project{width:min(430px,52vw)}.project-media{height:210px}}
+
+/* Keep the restored homepage atmosphere above the solid hero base. */
+.hero.cloud-surface>.cloud-background{display:block;z-index:-1;opacity:.82}
+.hero.cloud-surface>.cloud-background::after{background:linear-gradient(90deg,#dcecffd9 0%,#dcecff55 44%,transparent 78%)}
+[data-theme="dark"] .hero.cloud-surface>.cloud-background::after{background:linear-gradient(90deg,#101f33e8 0%,#101f3366 44%,transparent 78%)}
+.hero.cloud-surface>.lightning-background,.hero.cloud-surface>.particles-background{display:block;z-index:0}
+.hero.cloud-surface>.light-rays{z-index:0}
+.hero.cloud-surface>.hero-dark{z-index:-1}
+.hero.cloud-surface .hero-copy,.hero.cloud-surface .portrait{z-index:1}
