@@ -42,7 +42,8 @@ function render() {
   });
   count = matches.length;
   cards.innerHTML = matches.map(app => `<article class="svc-card">
-    <span class="svc-kicker">${escapeHtml(app.category)}</span><h2 class="svc-card-title">${app.name}</h2><p>${app.description}</p>
+    ${app.logo ? `<img class="svc-app-logo" src="${escapeHtml(app.logo)}" alt="${escapeHtml(app.name)} logo" loading="lazy" decoding="async">` : ''}
+    <span class="svc-kicker">${escapeHtml(app.category)}</span><h2 class="svc-card-title">${escapeHtml(app.name)}</h2><p>${escapeHtml(app.description)}</p>
     <p class="svc-module-price"><strong>${range(pricing[app.price])}</strong> implementation</p>
     <div class="svc-cta"><button class="svc-btn" type="button" data-app="${app.id}" aria-label="Details for ${app.name}">Details</button></div>
     <label class="svc-choice"><input type="checkbox" value="${app.id}" ${selected.has(app.id) ? 'checked' : ''}> Select for quote<span class="svc-sr-only"> for ${app.name}</span></label>
@@ -65,6 +66,7 @@ cards.addEventListener('click', event => {
   const app = applications.find(item => item.id === button.dataset.app);
   const sandbox = publicHttps(siteConfig.sandboxUrls[app.id]);
   dialog.querySelector('[data-app-detail]').innerHTML = `
+    ${app.logo ? `<img class="svc-app-logo" src="${escapeHtml(app.logo)}" alt="${escapeHtml(app.name)} logo">` : ''}
     <h2 id="application-title">${app.name}</h2><p>${app.description}</p>
     <dl>${[
       ['Capabilities', app.capabilities], ['Database', app.database], ['Typical hosting', app.hosting],

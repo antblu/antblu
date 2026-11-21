@@ -1,4 +1,5 @@
 import { comparisons } from './comparisons.mjs';
+import { applications } from './applications.mjs';
 import { escapeHtml, publicHttps } from './common.mjs';
 
 const mount = document.querySelector('#comparison-results');
@@ -72,7 +73,10 @@ if (mount) {
           <p><small>Checked <time datetime="${escapeHtml(plan.verified)}">${dateFormat.format(new Date(plan.verified))}</time></small><br>
           ${pricingUrl ? `<a href="${escapeHtml(pricingUrl)}">Vendor pricing</a>` : ''}${termsUrl ? ` · <a href="${escapeHtml(termsUrl)}">Billing details</a>` : ''}</p>
         </td>
-        <td data-label="Potential alternatives">${escapeHtml(plan.alternatives.join(', '))}</td>
+        <td data-label="Potential alternatives"><div class="svc-alternative-list">${plan.alternatives.map(name => {
+          const app = applications.find(item => item.name === name);
+          return `<span class="svc-alternative">${app?.logo ? `<img src="${escapeHtml(app.logo)}" alt="" loading="lazy" decoding="async">` : ''}${escapeHtml(name)}</span>`;
+        }).join('')}</div></td>
         <td data-label="What changes">${escapeHtml(plan.details)}</td>
       </tr>`;
     }).join('');

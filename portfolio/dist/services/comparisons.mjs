@@ -9,8 +9,8 @@ export const comparisons = [
   {
     id: 'microsoft-365', category: 'Office Productivity',
     vendor: 'Microsoft 365', plan: 'Business Basic with Teams',
-    alternatives: ['Nextcloud', 'Collabora', 'Matrix / Element'],
-    details: 'Business Basic bundles hosted email, Teams, browser-based Office apps, 1 TB of file storage per user and Microsoft support. Nextcloud and Collabora cover file collaboration and browser editing. Budget separately for mail, meetings and support, test complex Office files, and size and back up your file storage.',
+    alternatives: ['Nextcloud', 'EuroOffice', 'Nextcloud Talk'],
+    details: 'Business Basic bundles hosted email, Teams, browser-based Office apps, 1 TB of file storage per user and Microsoft support. Nextcloud and EuroOffice cover file collaboration and browser editing, while Nextcloud Talk supports team communication. Budget separately for mail, meetings and support, test complex Office files, and size and back up your file storage.',
     url: 'https://www.microsoft.com/en-us/microsoft-365/business/microsoft-365-business-basic',
     prices: [annually(84), monthly(8.40)], unit: 'seat', minimum: 1, maximum: 300, seatGroup: 'employees',
     billingNote: 'For organizations of up to 300 users.'
@@ -27,8 +27,8 @@ export const comparisons = [
   {
     id: 'slack', category: 'Team Communication',
     vendor: 'Slack', plan: 'Pro',
-    alternatives: ['Matrix / Element', 'Jitsi'],
-    details: 'Pro hosts message and file history, group calls and an app directory. Matrix with Element supports rooms and federation, while Jitsi can provide meetings. Validate bridges, retention, encryption recovery and call capacity. Your team handles updates, media storage, abuse controls and service availability.',
+    alternatives: ['Nextcloud Talk', 'Jitsi'],
+    details: 'Pro hosts message and file history, group calls and an app directory. Nextcloud Talk supports team messaging and calls, while Jitsi can provide meetings. Validate identity integration, retention, encryption recovery and call capacity. Your team handles updates, media storage, abuse controls and service availability.',
     url: 'https://slack.com/pricing',
     termsUrl: 'https://slack.com/help/articles/218915077-Slacks-Fair-Billing-Policy',
     prices: [annually(87), monthly(8.75)], unit: 'seat', minimum: 1, seatGroup: 'users',
@@ -130,8 +130,8 @@ export const comparisons = [
   {
     id: 'shopify', category: 'E-commerce',
     vendor: 'Shopify', plan: 'Basic',
-    alternatives: ['WooCommerce', 'Medusa'],
-    details: 'Shopify Basic bundles hosted checkout, store operation and merchant support. WooCommerce provides a WordPress-based store, while Medusa provides commerce APIs for a custom storefront. Plan checkout testing, service availability, media storage, extensions and payments, tax and shipping integrations. Payment-processing fees apply separately.',
+    alternatives: ['Medusa'],
+    details: 'Shopify Basic bundles hosted checkout, store operation and merchant support. Medusa provides commerce APIs for a custom storefront. Plan checkout testing, service availability, media storage, extensions and payments, tax and shipping integrations. Payment-processing fees apply separately.',
     url: 'https://www.shopify.com/pricing',
     termsUrl: 'https://www.shopify.com/about',
     prices: [annually(348), monthly(39)], unit: 'account', unitLabel: 'store', minimum: 1, seatGroup: 'users',
@@ -140,8 +140,8 @@ export const comparisons = [
   {
     id: 'shopify-grow', category: 'E-commerce',
     vendor: 'Shopify', plan: 'Grow',
-    alternatives: ['WooCommerce', 'Medusa'],
-    details: 'Grow adds up to five staff accounts and different processing rates to Shopify’s hosted store and checkout. WooCommerce or Medusa can support staffed stores with configured roles. Verify inventory, fulfillment and integrations, and plan media storage, backup recovery, application support and checkout availability.',
+    alternatives: ['Medusa'],
+    details: 'Grow adds up to five staff accounts and different processing rates to Shopify’s hosted store and checkout. Medusa can support staffed stores with configured roles. Verify inventory, fulfillment and integrations, and plan media storage, backup recovery, application support and checkout availability.',
     url: 'https://www.shopify.com/pricing',
     termsUrl: 'https://www.shopify.com/about',
     prices: [annually(948), monthly(105)], unit: 'account', unitLabel: 'store', minimum: 1, seatGroup: 'users',

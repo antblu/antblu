@@ -3,15 +3,15 @@ const entries = [
   ['nextcloud', 'Nextcloud', 'Collaboration', 'File sync, shared folders and calendar for a team.',
     'File sharing, WebDAV, calendar and contact sync', 'MariaDB, MySQL or PostgreSQL', 'PHP runtime, durable file storage and scheduled jobs',
     'WebDAV clients, optional office editor, edition-specific identity connectors', 'Nextcloud Server · AGPLv3', 'intermediate',
-    'https://nextcloud.com/', 'https://github.com/nextcloud/server/blob/master/COPYING', 'Enterprise subscriptions provide separate support and services.'],
-  ['collabora', 'Collabora Online', 'Collaboration', 'Browser-based editing of documents, spreadsheets and presentations.',
-    'Concurrent editing, comments and office document rendering', 'No separate SQL database for the editor', 'Editor service, memory sized for concurrent sessions and an integration host',
-    'Nextcloud or another WOPI-capable host', 'Core source / CODE · MPL-2.0', 'intermediate',
-    'https://www.collaboraonline.com/', 'https://github.com/CollaboraOnline/online/blob/main/COPYING', 'CODE is intended for testing. For business production, assess the supported subscription separately.', 'https://www.collaboraonline.com/faqs/'],
-  ['matrix', 'Matrix / Element', 'Collaboration', 'Federated team chat using Synapse and the Element Web client.',
-    'Rooms, file exchange, encryption and optional federation', 'PostgreSQL for Synapse production', 'Homeserver, web client, media storage and optional TURN service',
-    'OpenID Connect and approved bridges, subject to edition and policy', 'Synapse + Element Web · AGPLv3', 'complex',
-    'https://element.io/', 'https://github.com/element-hq/synapse/blob/develop/LICENSE-AGPL-3.0', 'Standalone upstream components are scoped here. Element recommends its Pro distribution for commercial production. Verify support and advanced features separately.', 'https://element.io/server-suite/community'],
+    'https://nextcloud.com/', 'https://github.com/nextcloud/server/blob/master/COPYING', 'Enterprise subscriptions provide separate support and services.', undefined, '/assets/dashboard-icons/nextcloud.svg'],
+  ['eurooffice', 'EuroOffice', 'Collaboration', 'Browser-based editing of documents, spreadsheets and presentations.',
+    'Collaborative office editing and Microsoft Office format compatibility', 'PostgreSQL for the office server', 'Office server, persistent document storage and a Nextcloud integration',
+    'Nextcloud integration and compatible office document formats', 'Euro-Office · AGPLv3', 'intermediate',
+    'https://euro-office.github.io/documentation/', 'https://github.com/Euro-Office/DocumentServer/blob/main/LICENSE', 'Confirm the current release and production support requirements during discovery.', 'https://nextcloud.com/blog/euro-office-building-momentum/', 'https://nextcloud.com/c/uploads/2026/04/officeeu-logo-864x576.png'],
+  ['nextcloud-talk', 'Nextcloud Talk', 'Collaboration', 'Team messaging, voice and video calls, and meeting recording.',
+    'Chats, calls, screen sharing and meeting recording', 'Nextcloud database plus NATS for the high-performance backend', 'Nextcloud, signaling service, media bridge and optional recording service',
+    'Nextcloud identity, high-performance backend and TURN', 'Nextcloud Talk · AGPLv3', 'complex',
+    'https://nextcloud.com/talk/', 'https://github.com/nextcloud/spreed/blob/main/LICENSE', 'Call quality depends on signaling, TURN, firewall and bandwidth configuration.', undefined, '/assets/dashboard-icons/nextcloud.svg'],
   ['jitsi', 'Jitsi Meet', 'Collaboration', 'Browser-based video meetings with a self-hosted media bridge.',
     'Video meetings, screen sharing and moderator controls', 'No SQL database required for a baseline deployment', 'Web gateway, XMPP signaling and bandwidth sized for video',
     'JWT-based authentication and optional separate recording services', 'Jitsi Meet core · Apache-2.0', 'intermediate',
@@ -31,7 +31,11 @@ const entries = [
   ['suitecrm', 'SuiteCRM', 'Business Operations', 'CRM for accounts, leads, opportunities and follow-up.',
     'Sales pipeline, reporting, contacts and workflow automation', 'MySQL or MariaDB', 'PHP web runtime, scheduled jobs, SQL database and SMTP',
     'REST API, email and custom field integrations', 'SuiteCRM 8 core · AGPLv3', 'complex',
-    'https://suitecrm.com/', 'https://github.com/SuiteCRM/SuiteCRM-Core/blob/hotfix/LICENSE.txt', 'Add-ons, support and migration are scoped separately.'],
+    'https://suitecrm.com/', 'https://github.com/SuiteCRM/SuiteCRM-Core/blob/hotfix/LICENSE.txt', 'Add-ons, support and migration are scoped separately.', undefined, '/assets/dashboard-icons/suite-crm.png'],
+  ['odoo', 'Odoo', 'Business Operations', 'Business management platform for customer records and operational workflows.',
+    'Customer records, sales and business applications', 'PostgreSQL', 'Odoo application service, database, filestore and scheduled jobs',
+    'APIs and compatible business applications', 'Odoo Community · LGPLv3', 'complex',
+    'https://www.odoo.com/', 'https://github.com/odoo/odoo/blob/18.0/LICENSE', 'Some apps and features require Odoo Enterprise subscriptions.', undefined, '/assets/dashboard-icons/odoo.svg'],
   ['erpnext', 'ERPNext', 'Business Operations', 'ERP for inventory, purchasing, sales and accounting workflows.',
     'Inventory, orders, accounting and manufacturing workflows', 'MariaDB for standard deployments', 'Frappe web and workers, Redis and managed backups',
     'Frappe REST API, webhooks and compatible regional modules', 'ERPNext core · GPLv3', 'complex',
@@ -80,16 +84,23 @@ const entries = [
     'Declarative provisioning, state management and change previews', 'No SQL database required; remote state backend recommended', 'Administrator workstation or CI runner, encrypted state and scoped credentials',
     'Cloud providers, S3-compatible state and supported CI systems', 'OpenTofu CLI · MPL-2.0', 'intermediate',
     'https://opentofu.org/', 'https://github.com/opentofu/opentofu/blob/main/LICENSE', 'Provider plugins may have separate terms. Scope a module only if it extends the infrastructure tier’s provisioning work.'],
-  ['woocommerce', 'WooCommerce', 'E-commerce', 'Commerce plugin for WordPress-managed storefronts.',
-    'Products, orders, checkout and plugin-based extensions', 'WordPress on MySQL or MariaDB', 'WordPress/PHP runtime, SQL database and durable media',
-    'Payment gateways, shipping plugins and WordPress extensions', 'WooCommerce core plugin · GPL-3.0-or-later', 'complex',
-    'https://woocommerce.com/', 'https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/license.txt', 'Extensions, payment processing and custom storefront development are separate.'],
   ['medusa', 'Medusa', 'E-commerce', 'Headless commerce backend for custom storefronts and workflows.',
     'Catalog, carts, orders, workflows and commerce APIs', 'PostgreSQL', 'API server, workers, Redis and a separately deployed storefront',
     'Payment, fulfillment and inventory providers through modules', 'Medusa OSS core · MIT', 'complex',
     'https://medusajs.com/', 'https://github.com/medusajs/medusa/blob/develop/LICENSE', 'Enterprise RBAC and SSO materials use separate commercial terms.', 'https://github.com/medusajs/medusa/blob/develop/ENTERPRISE-LICENSE.md']
 ];
 
-export const applications = entries.map(([id, name, category, description, capabilities, database, hosting, integrations, edition, price, url, licenseUrl, qualification, qualificationUrl]) => ({
-  id, name, category, description, capabilities, database, hosting, integrations, edition, price, url, licenseUrl, qualification, qualificationUrl
+const logos = {
+  vaultwarden: 'vaultwarden.svg',
+  zammad: 'zammad.svg',
+  mautic: 'mautic.svg',
+  forgejo: 'forgejo.svg',
+  argocd: 'argo-cd.svg',
+  opentofu: 'opentofu.svg',
+  medusa: 'medusa-light.svg'
+};
+
+export const applications = entries.map(([id, name, category, description, capabilities, database, hosting, integrations, edition, price, url, licenseUrl, qualification, qualificationUrl, logo]) => ({
+  id, name, category, description, capabilities, database, hosting, integrations, edition, price, url, licenseUrl, qualification, qualificationUrl,
+  logo: logo || (logos[id] ? `/assets/dashboard-icons/${logos[id]}` : '')
 }));

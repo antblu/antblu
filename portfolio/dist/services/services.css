@@ -119,12 +119,15 @@
 .svc-grid--auto{grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr))}
 .svc-card,.svc-panel{padding:clamp(1rem,2.7vw,1.65rem);border:1px solid var(--svc-line);border-radius:13px;background:var(--svc-surface);min-width:0}
 .svc-card{display:flex;flex-direction:column;align-items:flex-start;gap:.65rem}
+.svc-app-logo{display:block;width:3rem;height:3rem;object-fit:contain;border-radius:8px;background:#fff;padding:.2rem}
+.svc-alternative-list{display:flex;flex-wrap:wrap;gap:.55rem}.svc-alternative{display:inline-flex;align-items:center;gap:.35rem}.svc-alternative img{width:1.45rem;height:1.45rem;object-fit:contain;border-radius:4px;background:#fff;padding:.1rem}
 .svc-card :is(p,h3),.svc-card .svc-card-title{margin:0}.svc-card p,.svc-muted{color:var(--svc-muted)}
 .svc-body .svc-card-title{font-size:1.18rem;font-weight:750}
 .svc-card a:last-child{margin-top:auto}.svc-card p + a{padding-top:.35rem}.svc-card .svc-price{color:var(--svc-ink);font-family:var(--svc-heading);font-size:clamp(1.38rem,3vw,2.25rem);font-weight:800;letter-spacing:-.055em}
 .svc-card--ha{border-color:var(--svc-gold-ink);box-shadow:0 0 0 1px var(--svc-gold-ink)}
 .svc-card ul,.svc-body ul{padding-inline-start:1.3em;margin-block:.3rem .75rem}.svc-body li + li{margin-top:.4rem}
 .svc-kicker{display:block;color:var(--svc-link);font-size:.78rem;font-weight:750;letter-spacing:.11em;text-transform:uppercase}
+.svc-map-services{display:inline-flex;flex-wrap:wrap;align-items:center;gap:.45rem}.svc-map-services > span{display:inline-flex;align-items:center;gap:.3rem}.svc-map-logo{width:1.35rem;height:1.35rem;object-fit:contain;border-radius:4px;background:#fff;padding:.1rem;vertical-align:middle}
 .svc-cta{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem;margin-top:1.3rem}
 .svc-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:44px;min-inline-size:0;max-inline-size:100%;overflow-wrap:anywhere;border:1px solid var(--svc-line);border-radius:12px;background:var(--svc-surface);color:var(--svc-link)!important;padding:.52rem .9rem;font:600 .9rem/1.3 var(--svc-body-font);cursor:pointer;text-decoration:none;transition:background .16s,color .16s;text-align:center}
 .svc-btn:hover{background:var(--svc-soft)}.svc-btn--primary{background:var(--svc-action);border-color:var(--svc-action);color:var(--svc-action-ink)!important}.svc-btn--primary:hover{filter:brightness(1.13);background:var(--svc-action)}
