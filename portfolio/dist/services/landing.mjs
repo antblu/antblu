@@ -1,9 +1,3 @@
-import { applications } from './applications.mjs';
-import { comparisons } from './comparisons.mjs';
-
-document.querySelector('[data-app-count]').textContent = applications.length;
-document.querySelector('[data-category-count]').textContent = new Set(comparisons.map(plan => plan.category)).size;
-
 document.querySelectorAll('[data-kinetic-text]').forEach(element => {
   const text = element.textContent;
   const accessible = document.createElement('span');

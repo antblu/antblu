@@ -9,7 +9,7 @@
   isolation: isolate;
 }
 
-.svc-landing-hero { padding: clamp(4.4rem, 7vw, 6.5rem) 0; }
+.svc-landing-hero { padding: clamp(2.5rem, 4.4vw, 4rem) 0; }
 .svc-landing-hero .text-highlighter { --text-highlight: #429cf059; }
 .svc-landing-hero::before {
   content: "";
@@ -28,24 +28,10 @@
 }
 [data-theme="light"] .svc-landing-hero h1 { color: var(--svc-ink); }
 [data-theme="light"] .svc-landing-hero h1 span { color: #20558a; }
-[data-theme="light"] .svc-landing-hero .svc-banner-label { border-color: #9eb8d2; background: #e6effa; }
 [data-theme="light"] .svc-landing-hero .svc-banner-secondary { color: #183858!important; background: #f3f8fd; border-color: #849fba; }
 [data-theme="light"] .svc-landing-hero .svc-banner-secondary:hover { background: #dcecff; }
-[data-theme="light"] .svc-landing-hero .svc-banner-benefits li::before,
-[data-theme="light"] .svc-landing-hero .svc-banner-demo > span:last-child { color: #20558a; }
-[data-theme="light"] .svc-landing-hero .svc-banner-demo { border-color: #849fba; }
-[data-theme="light"] .svc-landing-hero .svc-banner-demo:hover { background: #f3f8fd; }
+[data-theme="light"] .svc-landing-hero .svc-banner-benefits li::before { color: #20558a; }
 [data-theme="light"] .svc-landing-hero :focus-visible { outline-color: var(--svc-link); }
-
-.svc-banner .svc-banner-label {
-  display: inline-block;
-  border: 1px solid #adc6dc35;
-  background: #aec6dd16;
-  border-radius: 30px;
-  padding: .4rem .95rem;
-  font-size: .88rem;
-  margin: 0 0 2rem;
-}
 
 .svc-banner h1, .svc-banner h2 { color: #f4f8ff; letter-spacing: -.025em; }
 .svc-banner h1 { max-width: 810px; margin-bottom: 1.65rem; font-size: clamp(2rem, 4.6vw, 3.5rem); font-weight: 700; line-height: 1; }
@@ -53,51 +39,18 @@
 .svc-banner h1 span, .svc-banner h2 span { color: var(--svc-gold); }
 .svc-banner .svc-banner-lead { color: var(--banner-muted); max-width: 62ch; margin-bottom: 0; font-size: clamp(1.05rem, 1.6vw, 1.25rem); line-height: 1.4; }
 .svc-banner .svc-cta { margin-top: 2.5rem; gap: 1rem; }
+.svc-landing-hero .svc-cta { margin-top: 1.75rem; gap: .75rem; }
 .svc-banner .svc-btn { min-height: 49px; font-size: .98rem; padding-inline: clamp(1rem, 2.3vw, 2rem); }
 .svc-banner .svc-banner-secondary { color: #f4f8ff!important; background: #c1d7ed16; border-color: #c1d7ed50; }
 .svc-banner .svc-banner-secondary:hover { background: #c1d7ed2a; }
-.svc-banner :focus-visible, .svc-summary-strip :focus-visible { outline-color: var(--svc-gold); }
+.svc-banner :focus-visible { outline-color: var(--svc-gold); }
 
 .svc-landing .svc-checks { padding: 0; list-style: none; margin: 0; }
 .svc-landing .svc-checks li { position: relative; padding-inline-start: 1.55rem; }
 .svc-landing .svc-checks li::before { content: "✓"; position: absolute; inset-inline-start: 0; color: var(--svc-link); font-weight: 750; }
-.svc-landing .svc-banner-benefits { display: flex; flex-wrap: wrap; gap: .5rem 1.45rem; margin-top: 2.9rem; color: var(--banner-muted); font-size: .89rem; }
+.svc-landing .svc-banner-benefits { display: flex; flex-wrap: wrap; gap: .5rem 1.45rem; margin-top: 1.5rem; color: var(--banner-muted); font-size: .89rem; }
 .svc-landing .svc-banner-benefits li { margin: 0; }
 .svc-banner .svc-banner-benefits li::before { color: #83bdfe; }
-.svc-banner .svc-banner-demo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  width: min(100%, 768px);
-  margin-top: 2.5rem;
-  padding: .75rem 1rem;
-  border: 1px solid #e3ad6155;
-  border-radius: 12px;
-  color: var(--banner-muted);
-  text-decoration: none;
-}
-.svc-banner .svc-banner-demo strong, .svc-banner .svc-banner-demo > span:last-child { color: var(--svc-gold); }
-.svc-banner .svc-banner-demo .animated-gradient-text {
-  --gradient-from: #f5c982;
-  --gradient-to: #9cd8ff;
-  --gradient-duration: 5s;
-  color: var(--svc-gold);
-}
-[data-theme="light"] .svc-banner-demo .animated-gradient-text { --gradient-from: #23578b; --gradient-to: #764719; color: #23578b; }
-@supports (background-clip: text) {
-  .svc-banner .svc-banner-demo .animated-gradient-text,
-  [data-theme="light"] .svc-banner-demo .animated-gradient-text { color: transparent; }
-}
-.svc-banner .svc-banner-demo:hover { background: #ffffff0f; }
-
-.svc-summary-strip { background: #0c1d30; border-block: 1px solid #213a54; }
-.svc-summary-strip .svc-wrap { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
-.svc-summary-strip a { display: grid; align-content: center; text-align: center; padding: 1.65rem .6rem; color: #c0cfdf; text-decoration: none; font-size: .9rem; }
-.svc-summary-strip a + a { border-inline-start: 1px solid #c0cfdf24; }
-.svc-summary-strip a:hover { background: #c0cfdf0f; }
-.svc-summary-strip strong { font: 750 clamp(1.35rem, 2.35vw, 2rem)/1.25 var(--svc-heading); color: var(--svc-gold); }
-
 .svc-landing-pillars { padding-block: 3.5rem 2.7rem; }
 .svc-pillar-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem 1.35rem; text-align: center; }
 .svc-pillar-grid h2 { margin: .9rem 0 .4rem; font-size: 1rem; letter-spacing: -.018em; }
@@ -117,37 +70,15 @@
 .svc-landing .svc-feature-grid h3 { font-size: 1.13rem; }
 .svc-landing .svc-landing-center { justify-content: center; text-align: center; margin-top: 2.4rem; }
 
-.svc-landing .svc-offering { gap: .65rem; padding: .8rem; box-shadow: 0 12px 32px #0a1a2c15; }
-.svc-offering img { display: block; width: 100%; height: 135px; object-fit: cover; border-radius: 8px; pointer-events: none; }
+.svc-landing-offerings { padding-block: clamp(2.5rem, 4vw, 3rem); }
+.svc-landing-offerings .svc-landing-intro { margin-bottom: clamp(1.25rem, 2vw, 1.5rem); }
+.svc-landing .svc-offerings { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.svc-landing .svc-offering { padding: .8rem; box-shadow: 0 12px 32px #0a1a2c15; }
+.svc-offering img { display: block; width: 100%; height: 120px; object-fit: cover; border-radius: 8px; }
 .svc-offering :is(h3, p, a) { margin-inline: .5rem; }
 .svc-offering h3 { margin-block-start: .4rem; }
-.svc-offering a { font-weight: 700; margin-block-end: .4rem; }
-.svc-offerings.circular-carousel {
-  --carousel-tilt: 0deg;
-  display: grid;
-  place-items: center;
-  position: relative;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0;
-  padding-block: 1.75rem;
-  overflow: hidden;
-  perspective: 1700px;
-  isolation: isolate;
-  touch-action: pan-y;
-  cursor: grab;
-}
-.svc-offerings.circular-carousel:active { cursor: grabbing; }
-.svc-offerings.circular-carousel .svc-offering {
-  --carousel-face-offset: calc(var(--carousel-angle, 0deg) * -.55);
-  grid-area: 1 / 1;
-  align-self: stretch;
-  width: min(352px, 79%);
-  backface-visibility: hidden;
-}
+.svc-offering a { display: block; align-content: center; min-height: 44px; font-weight: 700; }
 .svc-offerings :focus-visible { outline-offset: 2px; }
-.svc-carousel-controls { display: flex; align-items: center; justify-content: center; gap: 1rem; }
-.svc-carousel-controls .svc-btn { min-width: 44px; border-radius: 50%; }
-.svc-carousel-controls .carousel-position { min-width: 5ch; text-align: center; font-variant-numeric: tabular-nums; }
 .svc-landing .svc-service-resources { margin-top: 2.5rem; }
 
 .svc-landing .svc-map-card { display: block; padding: 1.1rem 1.2rem; text-decoration: none; }
@@ -173,21 +104,15 @@
 .svc-landing-close .svc-cta { justify-content: center; }
 
 @media (max-width: 720px) {
-  .svc-landing .svc-grid:not(.circular-carousel), .svc-pillar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .svc-summary-strip .svc-wrap { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .svc-summary-strip a:nth-child(n+4) { border-top: 1px solid #c0cfdf24; }
-  .svc-summary-strip a:nth-child(4) { border-inline-start: none; }
+  .svc-landing .svc-grid, .svc-pillar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .svc-landing .svc-offerings { grid-template-columns: 1fr; }
 }
 @media (max-width: 550px) {
   .svc-banner h1 { font-size: clamp(1.9rem, 9.25vw, 2.25rem); line-height: 1.1; }
   .svc-landing-hero::before { display: none; }
   .svc-banner .svc-cta { display: grid; }
   .svc-landing .svc-banner-benefits { flex-direction: column; }
-  .svc-landing .svc-grid:not(.circular-carousel) { grid-template-columns: 1fr; }
-}
-@media (forced-colors: active) {
-  .svc-banner .svc-banner-demo .animated-gradient-text,
-  [data-theme="light"] .svc-banner-demo .animated-gradient-text { color: LinkText; }
+  .svc-landing .svc-grid { grid-template-columns: 1fr; }
 }
 .svc-landing .svc-landing-process { max-width: 925px; margin: 2rem auto 0; }
 .svc-landing-process [data-service-process] { padding-block: .75rem .15rem; }

@@ -32,7 +32,6 @@
   <link rel="stylesheet" href="/border-glow.css">
   <link rel="stylesheet" href="/services/landing.css">
   <script src="/text-3d-flip.js" defer></script>
-  <script src="/circular-carousel.js" defer></script>
   <script src="/border-glow.js" defer></script>
   <script type="module" src="/services/landing.mjs"></script>
   <link rel="stylesheet" href="../dashboards.css">
@@ -57,11 +56,10 @@
   <main id="main" tabindex="-1">
     <section class="svc-banner svc-landing-hero hero-copy" aria-labelledby="landing-title">
       <div class="svc-wrap">
-        <p class="svc-banner-label">Open-source infrastructure consulting</p>
         <h1 id="landing-title">Open-source systems<br><span data-text-3d-flip>you control</span></h1>
         <p class="svc-banner-lead">I deploy open-source systems in <mark class="text-highlighter">accounts you control</mark>. I build business websites and online stores and train your team to run them. I estimate setup, hosting, paid extensions, and operating costs as separate items.</p>
         <div class="svc-cta">
-          <a class="svc-btn svc-btn--primary svc-gold" href="/services/calculator">Calculate Your Costs</a>
+          <a class="svc-btn svc-btn--primary svc-gold" href="#why">Explore Services</a>
           <a class="svc-btn svc-banner-secondary" href="#booking">Book a Free Consultation <span aria-hidden="true">→</span></a>
         </div>
         <ul class="svc-checks svc-banner-benefits">
@@ -69,60 +67,34 @@
           <li>Documented handoff</li>
           <li>Optional ongoing support</li>
         </ul>
-        <a class="svc-banner-demo" href="/demo"><span><strong class="animated-gradient-text">Try the operations demo.</strong> Diagnose a simulated alert and approve a deployment change.</span><span aria-hidden="true">→</span></a>
       </div>
     </section>
 
-    <nav class="svc-summary-strip" aria-label="Explore services">
-      <div class="svc-wrap">
-        <a href="/services/applications"><strong data-app-count>22</strong><span>Application profiles</span></a>
-        <a href="/services/compare"><strong data-category-count>13</strong><span>Comparison categories</span></a>
-        <a href="#packages"><strong>2</strong><span>Infrastructure tiers</span></a>
-        <a href="/services/infrastructure#hosting"><strong>3</strong><span>Hosting options</span></a>
-        <a href="/services/calculator"><strong>1 / 3 / 5</strong><span>Projection years</span></a>
-      </div>
-    </nav>
-
-    <section class="svc-landing-pillars" aria-label="What customers control">
-      <div class="svc-wrap svc-pillar-grid">
-        <article><span class="svc-feature-icon" aria-hidden="true">⌂</span><h2>Your deployment</h2><p>Use your hardware or an account with a cloud provider.</p></article>
-        <article><span class="svc-feature-icon" aria-hidden="true">↗</span><h2>Your data</h2><p>Choose where it lives and who can access it.</p></article>
-        <article><span class="svc-feature-icon" aria-hidden="true">≡</span><h2>Your documentation</h2><p>Keep the configuration, runbooks, and recovery procedures.</p></article>
-        <article><span class="svc-feature-icon" aria-hidden="true">✓</span><h2>Your support options</h2><p>Run the system in-house or request help as needed.</p></article>
-      </div>
-    </section>
-
-    <section class="svc-landing-section" id="why" tabindex="-1" aria-labelledby="why-title">
+    <section class="svc-landing-section svc-landing-offerings" id="why" tabindex="-1" aria-labelledby="why-title">
       <div class="svc-wrap">
         <header class="svc-landing-intro">
-          <p class="svc-kicker">Why open source</p>
           <h2 id="why-title">Infrastructure, websites, and online stores</h2>
           <p>Choose the tools your team needs. At handoff, you keep the accounts, data, and configuration.</p>
         </header>
-        <div class="svc-grid svc-offerings" data-circular-carousel data-carousel-radius="180" aria-label="Consulting services" id="service-carousel">
-          <article class="svc-card svc-offering" data-carousel-slide data-border-glow>
+        <div class="svc-grid svc-offerings">
+          <article class="svc-card svc-offering">
             <img src="/assets/homelab/rack-and-ups.webp" alt="" loading="lazy" decoding="async" width="352" height="140">
             <h3>Open-Source Infrastructure</h3>
             <p>Deploy business applications with monitoring, offsite backups, and a recovery plan sized for your workload.</p>
-            <a href="/services/infrastructure">Explore Infrastructure <span aria-hidden="true">→</span></a>
+            <a href="/services/infrastructure">Explore Infrastructure</a>
           </article>
-          <article class="svc-card svc-offering" data-carousel-slide data-border-glow>
+          <article class="svc-card svc-offering">
             <img src="/assets/bogota.webp" alt="" loading="lazy" decoding="async" width="352" height="140">
             <h3>Website Development</h3>
             <p>I build a responsive site and set up publishing, deployment, and access so your team can manage it.</p>
-            <a href="/services/web-development">Explore Web Development <span aria-hidden="true">→</span></a>
+            <a href="/services/web-development">Explore Web Development</a>
           </article>
-          <article class="svc-card svc-offering" data-carousel-slide data-border-glow>
+          <article class="svc-card svc-offering">
             <img src="/assets/emiliany/rings.webp" alt="" loading="lazy" decoding="async" width="352" height="140">
             <h3>E-commerce Development</h3>
             <p>I build the storefront and connect it to your payment, inventory, and order systems.</p>
-            <a href="/services/ecommerce">Explore E-commerce <span aria-hidden="true">→</span></a>
+            <a href="/services/ecommerce">Explore E-commerce</a>
           </article>
-        </div>
-        <div class="svc-carousel-controls" role="group" aria-label="Service carousel controls" hidden>
-          <button class="svc-btn" type="button" data-carousel="prev" aria-label="Previous service" aria-controls="service-carousel">←</button>
-          <span class="carousel-position" role="status"></span>
-          <button class="svc-btn" type="button" data-carousel="next" aria-label="Next service" aria-controls="service-carousel">→</button>
         </div>
         <div class="svc-grid svc-feature-grid svc-service-resources">
           <article class="svc-card" data-border-glow>
@@ -144,6 +116,15 @@
             <a href="/demo">Try the Operations Demo <span aria-hidden="true">→</span></a>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="svc-landing-pillars" aria-label="What customers control">
+      <div class="svc-wrap svc-pillar-grid">
+        <article><span class="svc-feature-icon" aria-hidden="true">⌂</span><h2>Your deployment</h2><p>Use your hardware or an account with a cloud provider.</p></article>
+        <article><span class="svc-feature-icon" aria-hidden="true">↗</span><h2>Your data</h2><p>Choose where it lives and who can access it.</p></article>
+        <article><span class="svc-feature-icon" aria-hidden="true">≡</span><h2>Your documentation</h2><p>Keep the configuration, runbooks, and recovery procedures.</p></article>
+        <article><span class="svc-feature-icon" aria-hidden="true">✓</span><h2>Your support options</h2><p>Run the system in-house or request help as needed.</p></article>
       </div>
     </section>
 
