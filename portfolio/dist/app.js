@@ -75,3 +75,150 @@ dialog?.addEventListener('click', event => { if (event.target === dialog) { cons
     list.classList.remove('is-waiting', 'is-revealing');
   });
 })();
+
+// Cult UI-inspired text entrances, preserving the original semantic text and markup.
+(() => {
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const forcedColors = matchMedia('(forced-colors: active)');
+  if (reducedMotion.matches || forcedColors.matches || !('IntersectionObserver' in window)) return;
+  const presets = ['roll', 'whip', 'fade', 'pop', 'fade-up', 'shift-up', 'whip-up', 'calm-up'];
+  const active = new Set();
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const element = entry.target;
+      observer.unobserve(element);
+      active.add(element);
+      element.classList.add('text-entering');
+      // Remove animation styles after the longest stagger, including when a tab is backgrounded.
+      setTimeout(() => {
+        element.classList.remove('text-entering');
+        active.delete(element);
+      }, 1500);
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('#hero-title, #home .role').forEach((element, index) => {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        return node.parentElement.closest('[aria-hidden="true"]') || !node.textContent.trim()
+          ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    let wordIndex = 0;
+    nodes.forEach(node => {
+      const fragment = document.createDocumentFragment();
+      node.textContent.split(/(\s+)/).forEach(part => {
+        if (!part.trim()) { fragment.append(document.createTextNode(part)); return; }
+        const word = document.createElement('span');
+        word.className = 'text-enter-word';
+        word.dataset.entrance = presets[(index + wordIndex) % presets.length];
+        word.style.setProperty('--enter-delay', `${Math.min(wordIndex * 45, 450)}ms`);
+        word.textContent = part;
+        fragment.append(word);
+        wordIndex++;
+      });
+      node.replaceWith(fragment);
+    });
+    observer.observe(element);
+  });
+  function stopMotion() {
+    if (!reducedMotion.matches && !forcedColors.matches) return;
+    observer.disconnect();
+    active.forEach(element => element.classList.remove('text-entering'));
+    active.clear();
+  }
+  reducedMotion.addEventListener('change', stopMotion);
+  forcedColors.addEventListener('change', stopMotion);
+})();
+
+// Buildless ClickSpark-inspired feedback for deliberate control activations.
+(() => {
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const forcedColors = matchMedia('(forced-colors: active)');
+  const bursts = new Set();
+  const clearBursts = () => {
+    bursts.forEach(burst => burst.remove());
+    bursts.clear();
+  };
+  reducedMotion.addEventListener('change', clearBursts);
+  forcedColors.addEventListener('change', clearBursts);
+  document.addEventListener('visibilitychange', clearBursts);
+  window.addEventListener('scroll', clearBursts, { passive: true });
+
+  document.addEventListener('click', event => {
+    if (reducedMotion.matches || forcedColors.matches || event.button !== 0) return;
+    if (!(event.target instanceof Element)) return;
+    const control = event.target.closest('a[href], button, summary, [role="button"]');
+    if (!control?.closest('#home') || control.matches(':disabled, [aria-disabled="true"], .stack-handle') ||
+        control.closest('[inert], [data-click-spark="off"]')) return;
+
+    const rect = control.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    const burst = document.createElement('span');
+    burst.className = 'click-spark';
+    burst.setAttribute('aria-hidden', 'true');
+    // Keyboard and assistive activation use the control's center.
+    burst.style.setProperty('--spark-x', `${event.detail === 0 ? rect.left + rect.width / 2 : event.clientX}px`);
+    burst.style.setProperty('--spark-y', `${event.detail === 0 ? rect.top + rect.height / 2 : event.clientY}px`);
+    for (let index = 0; index < 8; index++) {
+      const ray = document.createElement('span');
+      ray.style.setProperty('--spark-angle', `${index * 45}deg`);
+      burst.append(ray);
+    }
+    document.body.append(burst);
+    bursts.add(burst);
+    if (bursts.size > 16) {
+      const oldest = bursts.values().next().value;
+      oldest.remove();
+      bursts.delete(oldest);
+    }
+    setTimeout(() => {
+      burst.remove();
+      bursts.delete(burst);
+    }, 500);
+  }, { capture: true });
+})();
+
+// TypingAnimatedText adaptation: https://www.reactcomponents.com/block/1059
+(() => {
+  const greeting = document.querySelector('[data-typing-text]');
+  if (!greeting) return;
+  const value = greeting.querySelector('.typing-value');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const words = ['Hi, I’m', 'Hello, I’m', 'Welcome, I’m'];
+  let wordIndex = 0;
+  let deleting = false;
+  let timer;
+  function tick() {
+    const word = words[wordIndex];
+    if (deleting) {
+      value.textContent = value.textContent.slice(0, -1);
+      if (!value.textContent) {
+        deleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+      }
+    } else {
+      value.textContent = word.slice(0, value.textContent.length + 1);
+      if (value.textContent === word) {
+        deleting = true;
+        timer = setTimeout(tick, 2200);
+        return;
+      }
+    }
+    timer = setTimeout(tick, deleting ? 100 : 150);
+  }
+  function reset() {
+    clearTimeout(timer);
+    wordIndex = 0;
+    deleting = true;
+    value.textContent = words[0];
+    const active = !reducedMotion.matches && !document.hidden;
+    greeting.classList.toggle('is-typing', active);
+    if (active) timer = setTimeout(tick, 2200);
+  }
+  reducedMotion.addEventListener('change', reset);
+  document.addEventListener('visibilitychange', reset);
+  reset();
+})();

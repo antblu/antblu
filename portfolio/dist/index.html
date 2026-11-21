@@ -23,7 +23,11 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..750&amp;family=JetBrains+Mono:wght@400..600&amp;family=Montserrat:wght@400..900&amp;family=Raleway:wght@400..800&amp;family=Plus+Jakarta+Sans:wght@600..750&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261121-flat-controls"><link rel="stylesheet" href="components.css?v=20261121-flat-controls"><script type="module" src="theme.mjs"></script><script type="module" src="/services/navigation.mjs"></script><link rel="stylesheet" href="brand.css?v=20261121-flat-controls"><link rel="stylesheet" href="homelab.css"><link rel="stylesheet" href="emiliany.css?v=20261121-flat-controls"><script src="homelab.js" defer></script><script src="app.js?v=20261121-flat-controls" defer></script><script src="stack.js" defer></script><script src="emiliany.js?v=20261121-flat-controls" type="module"></script><script src="chromatic.js" defer></script><script src="electric-logo.js" defer></script><script src="flip-cards.js" defer></script><script src="circular-carousel.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261121-flat-controls"><link rel="stylesheet" href="components.css?v=20261121-flat-controls"><script type="module" src="theme.mjs"></script><script type="module" src="/services/navigation.mjs"></script><link rel="stylesheet" href="brand.css?v=20261121-hero-effects"><link rel="stylesheet" href="homelab.css"><link rel="stylesheet" href="emiliany.css?v=20261121-flat-controls"><script src="homelab.js" defer></script><script src="app.js?v=20261121-hero-effects" defer></script><script src="stack.js" defer></script><script src="emiliany.js?v=20261121-flat-controls" type="module"></script><script src="chromatic.js" defer></script><script src="electric-logo.js" defer></script><script src="flip-cards.js" defer></script><script src="circular-carousel.js" defer></script>
+  <script src="glow-cursor.js?v=20261121-hero-effects" defer></script>
+  <script src="clouds.js" defer></script>
+  <script src="lightning.js" defer></script>
+  <script src="particles.js?v=20261114-floating" defer></script>
   <link rel="stylesheet" href="text-3d-flip.css"><script src="text-3d-flip.js" defer></script>
   <link rel="stylesheet" href="dashboards.css">
   <script src="dashboards.js" defer></script>
@@ -32,6 +36,15 @@
   <script src="/hover-card.js" defer></script>
 </head>
 <body class="portfolio-page">
+<svg class="squiggly-filters" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="squiggly-0" x="-20%" y="-30%" width="140%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="1" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="squiggly-1" x="-20%" y="-30%" width="140%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="2" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="9" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="squiggly-2" x="-20%" y="-30%" width="140%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="3" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="squiggly-3" x="-20%" y="-30%" width="140%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="4" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="9" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="squiggly-4" x="-20%" y="-30%" width="140%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="5" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/></filter>
+  </defs>
+</svg>
 <a class="skip-link" href="#main">Skip to content</a>
 <div class="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuenow="0" hidden>
   <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
@@ -46,7 +59,7 @@
 <main id="main" tabindex="-1">
   <section class="hero cloud-surface" id="home" aria-labelledby="hero-title">
     <div class="hero-dark"></div><div class="cloud-background" aria-hidden="true"><canvas class="cloud-shader"></canvas></div><div class="light-rays" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-    <div class="hero-copy"><p class="greeting" data-typing-text><span class="typing-accessible">Hi, I’m</span><span class="typing-display" aria-hidden="true"><span class="typing-value">Hi, I’m</span><span class="typing-cursor">|</span></span></p><h1 id="hero-title"><span class="squiggly-text">Anthony</span><br><span class="colourful-text">Bluemel</span></h1><p class="role" data-text-3d-flip>System Administrator</p>
+    <div class="hero-copy"><p class="greeting" data-typing-text><span class="typing-accessible">Hi, I’m</span><span class="typing-display" aria-hidden="true"><span class="typing-value">Hi, I’m</span><span class="typing-cursor">|</span></span></p><h1 id="hero-title" aria-label="Anthony Bluemel"><span class="squiggly-text">Anthony</span><br> <span class="colourful-text"><span style="--letter:0">B</span><span style="--letter:1">l</span><span style="--letter:2">u</span><span style="--letter:3">e</span><span style="--letter:4">m</span><span style="--letter:5">e</span><span style="--letter:6">l</span></span></h1><p class="role" data-text-3d-flip>System Administrator</p>
       <p class="hero-summary">I support Windows and Linux systems, troubleshoot networks, and automate infrastructure. I do this work for clients and on my own Kubernetes cluster.</p>
       <div class="hero-actions">
         <a class="hero-primary-link" href="#resume" data-hover-title="Experience" data-hover-description="My systems administration work, certifications, and technical skills.">View my experience</a>

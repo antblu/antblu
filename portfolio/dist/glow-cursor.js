@@ -3,6 +3,8 @@
 // License: assets/react-bits-LICENSE.md
 (() => {
   'use strict';
+  const hero = document.querySelector('#home');
+  if (!hero) return;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const forced = matchMedia('(forced-colors: active)');
   const pointer = matchMedia('(any-hover: hover) and (any-pointer: fine)');
@@ -867,9 +869,9 @@ const fromHsv = (hue, saturation, value) => {
       }
     });
     intersection.observe(container);
-    window.addEventListener('pointermove', onPointerMove, { passive: true });
-    window.addEventListener('pointerdown', onPointerDown, { passive: true });
-    document.documentElement.addEventListener('pointerleave', onPointerLeave);
+    hero.addEventListener('pointermove', onPointerMove, { passive: true });
+    hero.addEventListener('pointerdown', onPointerDown, { passive: true });
+    hero.addEventListener('pointerleave', onPointerLeave);
     document.addEventListener('visibilitychange', onVisibility);
     resize();
     blank();
@@ -879,9 +881,9 @@ const fromHsv = (hue, saturation, value) => {
       cancelAnimationFrame(raf);
       resizeObserver.disconnect();
       intersection.disconnect();
-      window.removeEventListener('pointermove', onPointerMove);
-      window.removeEventListener('pointerdown', onPointerDown);
-      document.documentElement.removeEventListener('pointerleave', onPointerLeave);
+      hero.removeEventListener('pointermove', onPointerMove);
+      hero.removeEventListener('pointerdown', onPointerDown);
+      hero.removeEventListener('pointerleave', onPointerLeave);
       document.removeEventListener('visibilitychange', onVisibility);
       release();
       Object.values(passes).forEach(pass => gl.deleteProgram(pass.program));

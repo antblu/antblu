@@ -683,3 +683,4 @@ body{font-size:16px}
 .hero.cloud-surface>.light-rays{z-index:0}
 .hero.cloud-surface>.hero-dark{z-index:-1}
 .hero.cloud-surface .hero-copy,.hero.cloud-surface .portrait{z-index:1}
+@media(forced-colors:active){.hero.cloud-surface>.cloud-background,.hero.cloud-surface>.lightning-background,.hero.cloud-surface>.particles-background{display:none}}
