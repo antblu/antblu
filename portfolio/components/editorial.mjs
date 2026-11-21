@@ -12,9 +12,6 @@ function Header({ services = false }) {
   ];
   return h('header', { className: 'svc-header' },
     h('div', { className: 'svc-wrap' },
-      h('a', { className: 'svc-brand', href: '/', 'aria-label': 'antblu home' },
-        h('picture', null, h('img', { src: '/favicon.svg', alt: '', width: 42, height: 28 })),
-        h('span', null, 'antblu')),
       h('button', {
         className: 'svc-btn svc-menu-toggle', type: 'button', hidden: true,
         'aria-expanded': false, 'aria-controls': 'site-nav'
@@ -31,7 +28,9 @@ function Header({ services = false }) {
           h('circle', { cx: '12', cy: '12', r: '5' }),
           h('path', { d: 'M11 1h2v3h-2zm0 19h2v3h-2zM1 11h3v2H1zm19 0h3v2h-3zM3.51 4.93l1.42-1.42 2.12 2.13-1.41 1.41zm13.44 13.43 1.41-1.41 2.13 2.12-1.42 1.42zM3.51 19.07l2.13-2.12 1.41 1.41-2.12 2.13zM16.95 5.64l2.12-2.13 1.42 1.42-2.13 2.12z' })),
         h('svg', { className: 'theme-icon theme-moon', viewBox: '0 0 24 24', fill: 'currentColor', 'aria-hidden': true },
-          h('path', { d: 'M20.9 13.4A9 9 0 0 1 10.6 3.1a.8.8 0 0 0-1.1-.9A10.2 10.2 0 1 0 21.8 14.5a.8.8 0 0 0-.9-1.1Z' })))));
+          h('path', { d: 'M20.9 13.4A9 9 0 0 1 10.6 3.1a.8.8 0 0 0-1.1-.9A10.2 10.2 0 1 0 21.8 14.5a.8.8 0 0 0-.9-1.1Z' }))),
+      h('a', { className: 'svc-brand', href: '/', 'aria-label': 'antblu home' },
+        h('img', { src: '/assets/logoantbluenhanced.png', alt: 'Anthony Bluemel', width: 2172, height: 724 }))));
 }
 
 const sections = [
