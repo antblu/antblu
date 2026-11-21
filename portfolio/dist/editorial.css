@@ -1,10 +1,4 @@
 /* Shared portfolio and Services header. */
-:is(.portfolio-page, .svc-landing) .svc-header .svc-brand { margin-inline-start: auto; }
-
-@media (min-width: 701px) {
-  :is(.portfolio-page, .svc-landing) .svc-header .svc-theme { margin-inline-start: auto; }
-  :is(.portfolio-page, .svc-landing) .svc-header .svc-theme:not([hidden]) + .svc-brand { margin-inline-start: 0; }
-}
 :is(.portfolio-page, .svc-landing) .svc-header .svc-wrap { width: min(1168px, calc(100% - clamp(2rem, 9vw, 9rem))); margin-inline: auto; }
 
 @media (max-width: 700px) {
