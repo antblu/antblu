@@ -135,7 +135,15 @@
           <h2 id="map-title">Software you can <span data-kinetic-text>self-host</span></h2>
           <p>Compare open-source options with your current subscriptions. Check the features you need, the work to connect your tools, and the cost to run them.</p>
         </header>
-        <div class="svc-grid svc-map-grid">
+        <div class="svc-map-controls" role="group" aria-label="Browse software comparisons" hidden>
+          <button type="button" class="svc-btn" aria-label="Previous comparison" aria-controls="software-comparisons" aria-disabled="true" data-map-prev>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7 7-7-7 7-7"/></svg>
+          </button>
+          <button type="button" class="svc-btn" aria-label="Next comparison" aria-controls="software-comparisons" data-map-next>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+          </button>
+        </div>
+        <div class="svc-grid svc-map-grid" id="software-comparisons">
           <a class="svc-card svc-map-card" href="/services/compare?q=Business+Basic">
             <h3>Office productivity</h3><p><span>Microsoft 365</span><span aria-hidden="true">→</span><strong class="svc-map-services"><span><img class="svc-map-logo" src="/assets/dashboard-icons/nextcloud.svg" alt="">Nextcloud</span><span><img class="svc-map-logo" src="https://nextcloud.com/c/uploads/2026/04/officeeu-logo-864x576.png" alt="">EuroOffice</span></strong></p>
             <small>Compare Business Basic with Teams</small>

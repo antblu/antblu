@@ -23,7 +23,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..750&amp;family=JetBrains+Mono:wght@400..600&amp;family=Montserrat:wght@400..900&amp;family=Raleway:wght@400..800&amp;family=Plus+Jakarta+Sans:wght@600..750&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="components.css"><script type="module" src="theme.mjs"></script><script type="module" src="/services/navigation.mjs"></script><link rel="stylesheet" href="brand.css?v=20261121-effects"><link rel="stylesheet" href="homelab.css"><link rel="stylesheet" href="emiliany.css"><script src="homelab.js" defer></script><script src="app.js?v=20261121-effects" defer></script><script src="glow-cursor.js" defer></script><script src="clouds.js" defer></script><script src="lightning.js" defer></script><script src="particles.js?v=20261114-floating" defer></script><script src="stack.js" defer></script><script src="emiliany.js" type="module"></script><script src="chromatic.js" defer></script><script src="electric-logo.js" defer></script><script src="flip-cards.js" defer></script><script src="circular-text.js" defer></script><script src="circular-carousel.js" defer></script>
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="components.css"><script type="module" src="theme.mjs"></script><script type="module" src="/services/navigation.mjs"></script><link rel="stylesheet" href="brand.css?v=20261121-button-groups"><link rel="stylesheet" href="homelab.css"><link rel="stylesheet" href="emiliany.css"><script src="homelab.js" defer></script><script src="app.js?v=20261121-effects" defer></script><script src="glow-cursor.js" defer></script><script src="clouds.js" defer></script><script src="lightning.js" defer></script><script src="particles.js?v=20261114-floating" defer></script><script src="stack.js" defer></script><script src="emiliany.js" type="module"></script><script src="chromatic.js" defer></script><script src="electric-logo.js" defer></script><script src="flip-cards.js" defer></script><script src="circular-text.js" defer></script><script src="circular-carousel.js" defer></script>
   <link rel="stylesheet" href="border-glow.css"><script src="border-glow.js" defer></script>
   <link rel="stylesheet" href="text-3d-flip.css"><script src="text-3d-flip.js" defer></script>
   <link rel="stylesheet" href="dashboards.css">
@@ -57,7 +57,7 @@
     <div class="cloud-background" aria-hidden="true"><canvas class="cloud-shader"></canvas></div>
     <div class="light-rays" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
     <div class="hero-copy"><p class="greeting" data-typing-text><span class="typing-accessible">Hi, I’m</span><span class="typing-display" aria-hidden="true"><span class="typing-value">Hi, I’m</span><span class="typing-cursor">|</span></span></p><h1 id="hero-title"><span class="squiggly-text">Anthony</span><br> <span class="colourful-text"><span style="--letter:0">B</span><span style="--letter:1">l</span><span style="--letter:2">u</span><span style="--letter:3">e</span><span style="--letter:4">m</span><span style="--letter:5">e</span><span style="--letter:6">l</span></span></h1><p class="role" data-text-3d-flip>System Administrator</p>
-      <p class="hero-summary">I support Windows and Linux systems, troubleshoot networks, and <mark class="text-highlighter">automate infrastructure</mark>. I do this work for clients and on my own Kubernetes cluster.</p>
+      <p class="hero-summary">I support Windows and Linux systems, troubleshoot networks, and automate infrastructure. I do this work for clients and on my own Kubernetes cluster.</p>
       <div class="hero-actions"><a class="gradient-pill" href="#resume">
         <span aria-hidden="true">↗</span><span class="gradient-pill-divider" aria-hidden="true"></span>
         <span class="animated-gradient-text">View my experience</span>
@@ -97,13 +97,13 @@
       </li>
     </ol>
   </section>
-  <section class="photo-surface portfolio" id="portfolio" tabindex="-1" aria-labelledby="portfolio-title"><div class="photo-background" aria-hidden="true"><img src="assets/mist-waterfall.webp" alt="" loading="lazy" decoding="async"></div><div class="portfolio-heading"><h2 class="boxed-title" id="portfolio-title">SELECTED PROJECTS</h2></div><div class="filters" role="group" aria-label="Filter projects"><button class="active" data-filter="all" aria-pressed="true">ALL</button><button data-filter="infrastructure" aria-pressed="false">INFRASTRUCTURE</button><button data-filter="applications" aria-pressed="false">APPLICATIONS</button></div>
+  <section class="photo-surface portfolio" id="portfolio" tabindex="-1" aria-labelledby="portfolio-title"><div class="photo-background" aria-hidden="true"><img src="assets/mist-waterfall.webp" alt="" loading="lazy" decoding="async"></div><div class="portfolio-heading"><h2 class="boxed-title" id="portfolio-title">SELECTED PROJECTS</h2></div><div class="filters button-group" role="group" aria-label="Filter projects"><button class="active" data-filter="all" aria-pressed="true">ALL</button><button data-filter="infrastructure" aria-pressed="false">INFRASTRUCTURE</button><button data-filter="applications" aria-pressed="false">APPLICATIONS</button></div>
     <div class="projects" id="project-carousel" data-circular-carousel aria-label="Portfolio projects">
       <article class="project" data-carousel-slide data-category="infrastructure"><img src="assets/75480.png" alt="Abstract purple geometric artwork" width="1620" height="1080" loading="lazy" decoding="async"><div class="project-copy"><span class="eyebrow">Infrastructure &amp; automation</span><h3 class="project-brand"><img class="project-logo" src="assets/antalos.svg" alt="" width="60" height="40" loading="lazy">antalos.</h3><p>I built and run a five-node Kubernetes cluster on three Proxmox hosts. I track infrastructure and deployment configuration in Git.</p><div class="project-actions"><a class="bracket-link light" href="https://github.com/antblu/antalos" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><a class="bracket-link light" href="https://docs.antblu.net" target="_blank" rel="noopener noreferrer">DOCS ↗</a><button class="bracket-link light" data-project="antalos">PROJECT DETAILS</button></div></div></article>
       <article class="project em-project" data-carousel-slide data-category="infrastructure"><img src="assets/emiliany/collection.png" alt="Emiliany jewelry collection artwork" loading="lazy" decoding="async"><div class="project-copy"><span class="eyebrow">Storefront &amp; service integration</span><h3>emiliany.</h3><p>I built the bilingual storefront and connected it to the services that handle accounts, orders, marketing, and support.</p><div class="project-actions"><a class="bracket-link light" href="#emiliany">VIEW CASE STUDY ↓</a></div></div></article>
       <article class="project" data-carousel-slide data-category="applications"><img class="project-art-logo" src="assets/jev-ultrafast.svg" alt="Jev Ultrafast project wordmark" loading="lazy" decoding="async"><div class="project-copy"><span class="eyebrow">browser agents, automation</span><h3>jev-ultrafast.</h3><p>I explored an AI browser agent that identifies page controls and uses them to act on a web page.</p><div class="project-actions"><a class="bracket-link light" href="https://github.com/antblu/jev-ultrafast" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><button class="bracket-link light" data-project="jev">PROJECT DETAILS</button></div></div></article>
       <article class="project" data-carousel-slide data-category="applications"><img class="project-art-logo" src="assets/dashboard-icons/cal-com-light.svg" alt="Cal.com logo — upstream scheduling project" loading="lazy" decoding="async"><div class="project-copy"><span class="eyebrow">self-hosted applications</span><h3>cal.diy-OIDC.</h3><p>My copy of Cal.diy includes the source and setup instructions for self-hosted scheduling.</p><div class="project-actions"><a class="bracket-link light" href="https://github.com/antblu/cal.diy-OIDC" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><button class="bracket-link light" data-project="cal">PROJECT DETAILS</button></div></div></article>
-    </div><div class="carousel-controls" hidden><button type="button" data-carousel="prev" aria-label="Previous project">←</button><span class="carousel-position" aria-live="off"></span><button type="button" data-carousel="next" aria-label="Next project">→</button><button type="button" data-carousel="pause" aria-pressed="false">Pause rotation</button></div><p id="filter-status" class="sr-only" role="status" aria-live="polite"></p><p class="portfolio-footer"><a href="https://github.com/antblu?tab=repositories" target="_blank" rel="noopener noreferrer">More on GitHub <span aria-hidden="true">↗</span></a></p>
+    </div><div class="carousel-controls" hidden><div class="button-group" role="group" aria-label="Browse projects"><button type="button" data-carousel="prev" aria-label="Previous project">←</button><span class="carousel-position" aria-live="off"></span><button type="button" data-carousel="next" aria-label="Next project">→</button></div><button type="button" data-carousel="pause" aria-pressed="false">Pause rotation</button></div><p id="filter-status" class="sr-only" role="status" aria-live="polite"></p><p class="portfolio-footer"><a href="https://github.com/antblu?tab=repositories" target="_blank" rel="noopener noreferrer">More on GitHub <span aria-hidden="true">↗</span></a></p>
   </section>
   <section id="consulting-services" class="svc-home photo-surface" aria-labelledby="consulting-title">
     <div class="photo-background" aria-hidden="true"><img src="assets/consulting-mountain-valley.webp" alt="" loading="lazy" decoding="async"></div>
@@ -113,6 +113,30 @@
     <p>I set up access controls, monitoring, and backups for open-source deployments. You can reduce software licensing costs and run the system in your own accounts.</p><a class="svc-btn" href="/services/infrastructure">Explore Infrastructure</a></article><article class="svc-card"><h3>Website Development</h3>
     <p>I build responsive business sites and check their performance before launch. You keep control of the content and can review the estimate before work starts.</p><a class="svc-btn" href="/services/web-development">Explore Web Development</a></article><article class="svc-card"><h3>E-commerce Development</h3>
     <p>I build online stores that connect your catalog, payments, and inventory. I plan capacity around the size of your catalog and order volume.</p><a class="svc-btn" href="/services/ecommerce">Explore E-commerce</a></article></div>
+    <section class="svc-app-handoff svc-panel" id="app-setup" aria-labelledby="app-setup-title">
+      <div class="svc-app-handoff-intro">
+        <h3 id="app-setup-title">I’ll set up your apps and show you how to run them</h3>
+        <a class="svc-btn svc-btn--primary" href="/services/#booking">Talk through your app setup</a>
+      </div>
+      <ol class="svc-app-chat" role="list" aria-label="Example conversation">
+        <li class="svc-app-chat-client">
+          <span class="svc-app-chat-speaker">You</span>
+          <p>Can you set up everything my team needs? We need a place to share files and track projects.</p>
+        </li>
+        <li>
+          <span class="svc-app-chat-speaker">Anthony</span>
+          <p>Yes. We’ll go through how your team works, then I’ll install the apps you need, set up access and backups, and test them with you.</p>
+        </li>
+        <li class="svc-app-chat-client">
+          <span class="svc-app-chat-speaker">You</span>
+          <p>Can my team handle updates after you hand it over?</p>
+        </li>
+        <li>
+          <span class="svc-app-chat-speaker">Anthony</span>
+          <p>I’ll document your setup and walk your team through an update. We’ll practice using AI with your notes to check what to back up, investigate errors, and verify its suggestions before making changes.</p>
+        </li>
+      </ol>
+    </section>
     <ul class="svc-benefits"><li>Customer-controlled accounts and data</li><li>Open-source components</li><li>Optional support</li><li>AI-assisted maintenance</li><li>Itemized estimates</li></ul>
     <div class="svc-cta"><a class="svc-btn svc-btn--primary" href="/services">Explore All Services</a><a class="svc-btn" href="/services/calculator">Calculate Your Costs</a><a class="svc-btn" href="/services#booking">Book a Free Consultation</a></div>
     </div>

@@ -88,6 +88,34 @@
 .svc-map-card p span[aria-hidden] { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--svc-soft); color: var(--svc-link); }
 .svc-map-card strong { color: var(--svc-link); }
 .svc-map-card small { display: block; font-family: var(--svc-mono); border-top: 1px solid var(--svc-line); padding-top: .6rem; color: var(--svc-muted); }
+.svc-map-controls { display: flex; justify-content: flex-end; gap: .65rem; margin-bottom: .85rem; }
+.svc-map-controls .svc-btn { width: 44px; padding: 0; border-radius: 50%; }
+.svc-map-controls .svc-btn[aria-disabled="true"] { opacity: .5; cursor: default; background: var(--svc-surface); }
+.svc-landing .svc-map-grid[data-scroll-snap] {
+  --map-gap: clamp(.85rem, 2vw, 1.5rem);
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 2 * var(--map-gap)) / 3);
+  gap: var(--map-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--svc-link) var(--svc-soft);
+  padding-bottom: .65rem;
+}
+.svc-map-grid[data-scroll-snap] .svc-map-card { scroll-snap-align: start; }
+.svc-map-grid[data-scroll-snap] .svc-map-card:focus-visible { outline-offset: -4px; }
+@media (max-width: 900px) {
+  .svc-landing .svc-map-grid[data-scroll-snap] { grid-auto-columns: calc((100% - var(--map-gap)) / 2); }
+}
+@media (max-width: 580px) {
+  .svc-landing .svc-map-grid[data-scroll-snap] { grid-auto-columns: 100%; }
+  .svc-map-card p { grid-template-columns: minmax(0, .85fr) auto minmax(0, 1.15fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .svc-landing .svc-map-grid[data-scroll-snap] { scroll-behavior: auto; }
+}
 
 .svc-landing-packages { background: var(--svc-soft); }
 .svc-landing .svc-package-grid { max-width: 925px; margin-inline: auto; }
@@ -122,15 +150,21 @@
 .svc-landing-process [data-service-process] { padding-block: .75rem .15rem; }
 .svc-landing-process h2 { font-size: 1.2rem; }
 
-/* Base UI accordion, sharing the portfolio's React vendor bundle. */
+/* shadcn accordion styling with local Services theme tokens. */
 .svc-react-faq {max-width:850px;margin-inline:auto}
-.svc-faq-item {border-bottom:1px solid var(--svc-line)}
-.svc-faq-heading {margin:0;font-size:1rem}
-.svc-faq-trigger {display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;padding:22px 4px;border:0;background:transparent;color:inherit;font:inherit;font-weight:650;text-align:left;cursor:pointer}
-.svc-faq-trigger:focus-visible {outline:2px solid var(--svc-accent);outline-offset:3px;border-radius:4px}
-.svc-faq-plus {font-size:1.5rem;transition:transform .2s;flex:none}
-.svc-faq-trigger[aria-expanded="true"] .svc-faq-plus {transform:rotate(45deg)}
-.svc-faq-panel p {margin:0;padding:0 4px 24px;color:var(--svc-muted);line-height:1.75}
-@media(prefers-reduced-motion:reduce){.svc-faq-plus{transition:none}}
+.svc-faq-item:not(:last-child) {border-bottom:1px solid var(--svc-line)}
+.svc-faq-heading {display:flex;margin:0;font-size:.9375rem}
+.svc-faq-trigger {display:flex;flex:1;align-items:flex-start;justify-content:space-between;gap:1rem;min-height:44px;padding:.75rem .25rem;border:1px solid transparent;border-radius:8px;background:transparent;color:inherit;font:inherit;font-weight:600;text-align:start;cursor:pointer}
+.svc-faq-trigger:hover {text-decoration:underline;text-underline-offset:3px}
+.svc-body .svc-faq-trigger:focus-visible {outline:2px solid var(--svc-accent);outline-offset:1px}
+.svc-faq-chevron {flex:none;width:1rem;height:1rem;margin-block-start:.2em;color:var(--svc-muted);pointer-events:none}
+.svc-faq-trigger[aria-expanded="true"] .svc-faq-chevron {transform:rotate(180deg)}
+.svc-faq-panel {height:var(--accordion-panel-height,auto);overflow:hidden;font-size:.9375rem;transition:height .2s ease-out}
+.svc-faq-panel:is([data-starting-style],[data-ending-style]) {height:0}
+.svc-faq-content {padding:0 .3125rem .875rem;color:var(--svc-muted);line-height:1.65}
+.svc-faq-content p {margin:0}
+.svc-faq-content p:not(:last-child) {margin-block-end:1rem}
+.svc-faq-content a {text-decoration:underline;text-underline-offset:3px}
+@media(prefers-reduced-motion:reduce){.svc-faq-panel{transition:none}}
 /* Long product names must also fit when web fonts are unavailable. */
 .svc-map-card p > :is(span,strong) {min-width:0;overflow-wrap:anywhere}

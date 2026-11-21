@@ -1,5 +1,7 @@
 # Verification — 2026-10-25
 
+Services comparison carousel (2026-11-21) turns the six self-hosted software cards into a swipeable row. Chromium checks passed in light and dark themes at 320, 768, and 1440px. Checks covered emulated touch, arrow controls and keyboard navigation, disabled states at both ends, comparison navigation, reduced motion, horizontal overflow, page errors, and the grid fallback without JavaScript. External requests were blocked during testing, so the existing remote EuroOffice logo was outside the check. Physical touch devices and production deployment were outside the check.
+
 Technical Skills bento update (2026-11-14): “Systems I work with” uses seven cards with existing site icons, alternating wide cards on desktop, and a single column on narrow screens. Headless Chrome checked light and dark themes at 320, 580, 959, 960, and 1440px with reduced motion. Verified column counts, wide card spans, no horizontal overflow, successful image decoding, and no page errors or failed local requests. All seven descriptions stayed visible at 320px with JavaScript disabled and forced colors enabled. Desktop dark screenshot reviewed. `git diff --check` passed. Normal-motion hover, full interaction regressions, and production deployment were not checked.
 
 Mobile layout refinement (2026-10-25): raised the visible portrait by approximately 130px at 390px width, replaced the fixed 790px hero with a content-sized layout, softened its image/copy transition, and made the two-line name responsive. Mobile social links now have 46px rounded targets; the project action is at least 44px tall. Increased introductory/service copy and section-lead sizing, simplified boxed headings, reduced the decorative intro ring, enlarged shortcut/footer targets, and set form controls to 16px. The redundant SysAdmin suffix is hidden on mobile while the System Administrator role remains visible with and without text-entry enhancement. Headless Chrome checked both themes at 320, 360, 390, 430, 600, 700, 701, 768, 1024, and 1440px: no document overflow or clipped hero/section headings, all images loaded, and no captured runtime errors or failed local responses. Menu opening, Escape/focus restoration, anchor dismissal, theme switching, project filters/dialogs, contact field sizing, and empty-form validation passed. JavaScript-disabled 320px content and normal/reduced motion passed. Compared desktop element geometry against the original stylesheet at 1440px; unchanged. Screenshots `/tmp/antblu-mobile-light-390.png` and `/tmp/antblu-mobile-dark-320.png` were visually reviewed. `git diff --check` passed; no JavaScript changed. Physical iOS/Android testing, live contact submission, container build, and production deployment were not performed. Changes are local and unpublished.
@@ -396,3 +398,12 @@ and required-field checks at 320px and 1440px in both themes.
   reduced motion. Verified effect initialization, carousel pause and filters,
   project dialog dismissal, and Services heading enhancement. Chrome reported
   no horizontal overflow, script errors, or failed local requests.
+
+### Project button groups (2026-11-21)
+
+- Chrome checked the joined project filters and carousel controls at 320px
+  and 1440px in both themes with reduced motion. Keyboard checks covered
+  filter selection, visible focus, and carousel navigation. The project count
+  updated as expected, and the pause button switched to Resume rotation.
+  The checks found no horizontal overflow, missing local assets, or page
+  errors. Physical devices and automatic rotation timing remain unverified.

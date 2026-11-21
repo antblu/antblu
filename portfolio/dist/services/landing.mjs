@@ -36,12 +36,23 @@ async function enhanceFaq() {
     }
     function Faq() {
       useEffect(() => { fallback.hidden = true; mount.hidden = false; }, []);
-      return h(Accordion.Root, { multiple: true }, ...entries.map((entry, index) =>
-        h(Accordion.Item, { key: index, value: index, className: 'svc-faq-item' },
+      return h(Accordion.Root, { multiple: true, 'data-slot': 'accordion' }, ...entries.map((entry, index) =>
+        h(Accordion.Item, { key: index, value: index, className: 'svc-faq-item', 'data-slot': 'accordion-item' },
           h(Accordion.Header, { className: 'svc-faq-heading' },
-            h(Accordion.Trigger, { className: 'svc-faq-trigger' }, entry.question,
-              h('span', { 'aria-hidden': true, className: 'svc-faq-plus' }, '+'))),
-          h(Accordion.Panel, { className: 'svc-faq-panel' }, h('p', null, entry.answer)))
+            h(Accordion.Trigger, { className: 'svc-faq-trigger', 'data-slot': 'accordion-trigger' }, entry.question,
+              h('svg', {
+                'aria-hidden': true,
+                'data-slot': 'accordion-trigger-icon',
+                className: 'svc-faq-chevron',
+                viewBox: '0 0 24 24',
+                fill: 'none',
+                stroke: 'currentColor',
+                strokeWidth: 2,
+                strokeLinecap: 'round',
+                strokeLinejoin: 'round'
+              }, h('path', { d: 'm6 9 6 6 6-6' })))),
+          h(Accordion.Panel, { className: 'svc-faq-panel', 'data-slot': 'accordion-content' },
+            h('div', { className: 'svc-faq-content' }, h('p', null, entry.answer))))
       ));
     }
     createRoot(mount).render(h(Boundary, null, h(Faq)));
@@ -50,3 +61,45 @@ async function enhanceFaq() {
   }
 }
 enhanceFaq();
+
+function enhanceSoftwareComparisons() {
+  const track = document.querySelector('#software-comparisons');
+  const controls = document.querySelector('.svc-map-controls');
+  if (!track || !controls) return;
+
+  const previous = controls.querySelector('[data-map-prev]');
+  const next = controls.querySelector('[data-map-next]');
+  const [firstCard, secondCard] = track.children;
+
+  function updateControls() {
+    previous.setAttribute('aria-disabled', track.scrollLeft <= 1);
+    next.setAttribute('aria-disabled', track.scrollLeft >= track.scrollWidth - track.clientWidth - 1);
+  }
+
+  function move(direction) {
+    const step = secondCard.getBoundingClientRect().left - firstCard.getBoundingClientRect().left;
+    track.scrollBy({ left: direction * step });
+  }
+
+  previous.addEventListener('click', () => move(-1));
+  next.addEventListener('click', () => move(1));
+  track.parentElement.addEventListener('keydown', event => {
+    if (!track.contains(event.target) && !controls.contains(event.target)) return;
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    if (track.contains(event.target)) {
+      const card = event.key === 'ArrowLeft' ? event.target.previousElementSibling : event.target.nextElementSibling;
+      card?.focus();
+    } else {
+      move(event.key === 'ArrowLeft' ? -1 : 1);
+    }
+  });
+
+  track.dataset.scrollSnap = '';
+  track.addEventListener('scroll', updateControls, { passive: true });
+  new ResizeObserver(updateControls).observe(track);
+  updateControls();
+  controls.hidden = false;
+}
+enhanceSoftwareComparisons();

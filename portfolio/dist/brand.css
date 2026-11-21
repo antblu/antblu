@@ -18,7 +18,7 @@ nav .contact-link:hover{background:#a9d7ff;opacity:1}nav:where(:not(.svc-nav, .s
 .intro{background:#080f19;border-top:1px solid #22374d}.intro h2{color:#62a5ff}.intro p{color:#dbe6f2}.intro-mark{color:#112a4a;border-color:#112a4a}
 .paper{background:radial-gradient(ellipse at center,#f5f9ff,#e4ebf2)}.boxed-title{border-color:#0c335f;color:#0c335f}.bracket-link{border-color:#0866d8;color:#0c335f}.bracket-link:hover{background:#0866d8;color:white}.bracket-link.light{color:#d4e8ff;border-color:#62a5ff}.bracket-link.light:hover{background:#62a5ff;color:#070d16}
 .skill-note,.form-note{color:#435a71}.tech-glyph{color:#0866d8}.focus-list span{border-color:#a9bbce}.skill-content h3,.services h3{color:#0c335f}
-.portfolio{background:#070d16}.portfolio-heading{background-image:linear-gradient(#d4e8ff99,#d4e8ff99),url('assets/3c74e.png')}.filters button{color:#a9bbce;border-color:#435a71;min-height:48px}.filters button.active{color:#57d8ff;border-color:#57d8ff}.filters button:hover{color:#fff;background:#112a4a}.project:after{background:#070d16aa}.project:hover:after{background:#070d16cc}.project h3{color:#fff}.project .eyebrow{color:#b7d8ff}.project-actions .bracket-link{min-height:44px}.portfolio-footer a{color:#62a5ff}
+.portfolio{background:#070d16}.portfolio-heading{background-image:linear-gradient(#d4e8ff99,#d4e8ff99),url('assets/3c74e.png')}.project:after{background:#070d16aa}.project:hover:after{background:#070d16cc}.project h3{color:#fff}.project .eyebrow{color:#b7d8ff}.project-actions .bracket-link{min-height:44px}.portfolio-footer a{color:#62a5ff}
 .email-address{color:#0866d8;border-color:#0866d8}input,textarea{border-color:#0c335f;color:#0a1420}input::placeholder,textarea::placeholder{color:#435a71}.copy-message{margin-left:18px}#form-status{color:#0c335f}
 footer:where(:not(.svc-footer)){background:#070d16;border-top:1px solid #22374d}.footer-brand{display:block;width:170px;margin:0 auto 32px}.footer-brand img{width:100%;height:auto}.footer-links a{color:#62a5ff}.footer-links a,.back-top{min-height:44px}.design-credit{color:#a9bbce}
 dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{background:#070d16cc}#dialog-tags span{border-color:#a9bbce;color:#0c335f}.dialog-close:hover{color:#0866d8}body:has(dialog[open]){overflow:hidden}
@@ -450,9 +450,22 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 .circular-carousel .project>img.project-art-logo{padding:24px 24px 200px}
 .carousel-controls{display:flex;align-items:center;justify-content:center;gap:16px;padding:0 16px 32px;color:#d4e8ff;flex-wrap:wrap}
 .carousel-controls[hidden]{display:none}
-.carousel-controls button{min-height:44px;min-width:44px;border:1px solid currentColor;border-radius:24px;background:transparent;color:inherit;padding:8px 16px;font:600 12px var(--heading)}
+.carousel-controls button{min-height:44px;min-width:44px;padding:8px 16px;font:600 12px var(--heading)}
+.carousel-controls>button{border:1px solid currentColor;border-radius:24px;background:transparent;color:inherit}
 .carousel-controls button:disabled{opacity:.4;cursor:default}
 .carousel-position{font-variant-numeric:tabular-nums;min-width:40px;text-align:center}
+.button-group{display:flex;align-items:stretch;gap:0;--group-border:#526e8f}
+.button-group>:is(button,.carousel-position){border:1px solid var(--group-border);border-radius:0;background:#101e30;color:#d4e8ff}
+.button-group>:first-child{border-start-start-radius:10px;border-end-start-radius:10px}
+.button-group>:last-child{border-start-end-radius:10px;border-end-end-radius:10px}
+.button-group>:not(:first-child){border-inline-start:0}
+.button-group>button:not(:disabled):hover{background:#203957;color:#fff}
+.button-group>button:focus-visible{position:relative;z-index:1;outline:2px solid #8bbdff;outline-offset:2px}
+.filters.button-group>button{flex:1 1 auto;min-inline-size:0;padding:8px 4px;font-size:clamp(10px,2.8vw,13px);overflow-wrap:anywhere}
+.filters.button-group>button[aria-pressed="true"]{border-bottom:1px solid var(--group-border);background:#24496e;color:#fff;text-decoration:underline;text-underline-offset:.25em}
+.carousel-controls .button-group>button{padding-inline:12px;font-size:16px}
+.button-group>.carousel-position{display:grid;place-items:center;padding:0 12px}
+@media(forced-colors:active){.button-group>button:focus-visible{outline-color:Highlight}}
 @keyframes carousel-rise{from{margin-top:70px;opacity:0}to{margin-top:0}}
 @media(prefers-reduced-motion:reduce){.circular-carousel .project{animation:none}}
 
@@ -485,7 +498,6 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
   .portfolio-heading{height:168px}
   .portfolio .boxed-title{max-width:calc(100% - 48px);padding:18px 20px;border-width:4px;font-size:21px;letter-spacing:4px;text-indent:4px}
   .filters{padding:8px 16px 16px}
-  .filters button{font-size:10px}
   .projects.circular-carousel{height:460px}
   .circular-carousel .project{top:50%;width:min(340px,80vw);height:360px}
   .circular-carousel .project-copy{padding:22px 16px}
@@ -535,10 +547,8 @@ body{font-size:16px}
 .skill-note,.resume-period,.career-meta{font-size:15px}
 .resume-entry-body .resume-tags li,.stack-help,.stack-source{font-size:13px}
 .stack-description,.stack-category{font-size:13px}
-.filters button{font-size:13px}
 @media(max-width:700px){
   .intro p,.services p,.section-lead,.program-back p{font-size:16px}
-  .filters button{font-size:12px}
 }
 .stack-card .stack-category{border-top:1px solid #899dbb44;padding-top:12px;margin-top:14px;letter-spacing:1.3px}
 .stack-card:focus-within .stack-art::before{opacity:.6}
@@ -605,8 +615,6 @@ body{font-size:16px}
   .hero-link-arrow{position:static;flex:none}
   .boxed-title{overflow-wrap:anywhere}
   .boxed-title .kinetic-text{max-inline-size:100%;flex-wrap:wrap;justify-content:center}
-  .portfolio .filters{flex-wrap:wrap}
-  .portfolio .filters button{flex:1 1 auto;min-inline-size:0;overflow-wrap:anywhere}
   .experience-highlights{width:100%}
   .selected-work{padding:60px 24px 16px}
   .selected-work .portfolio-heading .boxed-title{max-width:100%;font-size:20px;letter-spacing:3px;text-indent:3px}
