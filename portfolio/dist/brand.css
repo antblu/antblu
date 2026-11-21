@@ -616,7 +616,7 @@ body{font-size:16px}
 @media(max-width:700px){.intro{padding-top:20px;padding-bottom:12px}.about{padding-top:16px}}
 
 /* About tiles: Star Border and Animated List inspired, dependency-free. */
-#about .services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:900px;align-items:stretch}
+#about .services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:900px;margin:32px auto 40px;align-items:stretch}
 #about .services article:last-child{grid-column:auto;width:auto;justify-self:stretch}
 @media(max-width:700px){#about .services{grid-template-columns:minmax(0,1fr);max-width:400px}}
 #about .services article{min-width:0;padding:16px;border:1px solid var(--svc-line);border-radius:12px;background:var(--svc-surface);box-shadow:none}
