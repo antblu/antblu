@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="components.css"><script type="module" src="theme.mjs"></script><script type="module" src="/services/navigation.mjs"></script><link rel="stylesheet" href="brand.css?v=20261115-consulting-photo"><link rel="stylesheet" href="homelab.css"><link rel="stylesheet" href="emiliany.css"><script src="homelab.js" defer></script><script src="app.js?v=20261114-components" defer></script><script src="glow-cursor.js" defer></script><script src="clouds.js" defer></script><script src="lightning.js" defer></script><script src="particles.js?v=20261114-floating" defer></script><script src="stack.js" defer></script><script src="emiliany.js" type="module"></script><script src="chromatic.js" defer></script><script src="electric-logo.js" defer></script><script src="flip-cards.js" defer></script><script src="circular-text.js" defer></script><script src="circular-carousel.js" defer></script>
   <link rel="stylesheet" href="border-glow.css"><script src="border-glow.js" defer></script>
   <link rel="stylesheet" href="text-3d-flip.css"><script src="text-3d-flip.js" defer></script>
+  <link rel="stylesheet" href="dashboards.css">
+  <script src="dashboards.js" defer></script>
 </head>
 <body class="portfolio-page">
 <svg class="squiggly-filters" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false">
@@ -281,6 +283,18 @@
         <figure><a href="assets/homelab/se350-nodes.webp"><img src="assets/homelab/se350-nodes.webp" alt="Two Lenovo ThinkSystem SE350 servers with their covers removed" width="1500" height="1125" loading="lazy" decoding="async"></a><figcaption>Two edge servers, side by side.</figcaption></figure>
       </div>
 </div>      <p class="lab-source">I used my October 2026 hardware inventory and network and VM plans for this write-up. The photos span several stages of the build, and the VM plan may differ from the running setup.</p>
+    </div>
+  </section>
+  <section class="dashboard-story" aria-labelledby="dashboard-heading">
+    <div class="svc-wrap">
+      <header><p class="dashboard-kicker">Inside Antalos</p>
+        <h2 id="dashboard-heading">One sign-in for my lab</h2>
+        <p>I use Authentik for single sign-on (SSO). I sign in once, then open connected apps from my dashboard. When I need to check a slow service, I open Grafana and look at request latency.</p>
+      </header>
+      <div class="dashboard-grid">
+        <a class="dashboard-card" href="#stack" data-detail="I use the Authentik launcher to find apps such as Nextcloud and Grafana. My account permissions determine which connected services I can open."><span class="dashboard-caption"><span><strong>Application access</strong><span>How I use Authentik</span></span><span class="dashboard-expand" aria-hidden="true">↗</span></span></a>
+        <a class="dashboard-card" href="#stack" data-detail="In Grafana, I compare request rates with latency over the same period. That helps me see whether a slowdown coincides with a rise in traffic."><span class="dashboard-caption"><span><strong>Service monitoring</strong><span>What I check in Grafana</span></span><span class="dashboard-expand" aria-hidden="true">↗</span></span></a>
+      </div>
     </div>
   </section>
   <section class="stack-explorer section" id="stack" aria-labelledby="stack-title">
