@@ -8,6 +8,7 @@ document.querySelectorAll('[data-circular-carousel]').forEach(stage => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let visible = cards, angle = 0, target = null, velocity = 0, drag = null;
   let hovered = false, paused = false, last = 0, moved = false;
+  let inView = false, frameId = 0;
   let radius = 0;
   stage.classList.add('circular-carousel');
   stage.setAttribute('role', 'region');
@@ -39,6 +40,7 @@ document.querySelectorAll('[data-circular-carousel]').forEach(stage => {
     target = (Math.round(-(target ?? angle) / step) + direction) * -step;
     velocity = 0;
     if (reduced.matches) { angle = target; target = null; render(); }
+    syncAnimation();
   }
   controls.addEventListener('click', event => {
     const action = event.target.closest('[data-carousel]')?.dataset.carousel;
@@ -48,6 +50,7 @@ document.querySelectorAll('[data-circular-carousel]').forEach(stage => {
       paused = !paused;
       pause.setAttribute('aria-pressed', String(paused));
       pause.textContent = paused ? 'Resume rotation' : 'Pause rotation';
+      syncAnimation();
     }
   });
   stage.addEventListener('keydown', event => {
@@ -55,13 +58,18 @@ document.querySelectorAll('[data-circular-carousel]').forEach(stage => {
       event.preventDefault(); move(event.key === 'ArrowRight' ? 1 : -1);
     }
   });
-  stage.addEventListener('pointerenter', () => { hovered = true; });
-  stage.addEventListener('pointerleave', () => { hovered = false; });
+  for (const region of [stage, controls]) {
+    region.addEventListener('focusin', syncAnimation);
+    region.addEventListener('focusout', () => queueMicrotask(syncAnimation));
+  }
+  stage.addEventListener('pointerenter', () => { hovered = true; syncAnimation(); });
+  stage.addEventListener('pointerleave', () => { hovered = false; syncAnimation(); });
   stage.addEventListener('pointerdown', event => {
     moved = false;
     if (event.button !== 0 || event.target.closest('a, button')) return;
     drag = { x: event.clientX, angle, id: event.pointerId };
     target = null; velocity = 0;
+    syncAnimation();
   });
   stage.addEventListener('pointermove', event => {
     if (!drag || event.pointerId !== drag.id) return;
@@ -85,6 +93,7 @@ document.querySelectorAll('[data-circular-carousel]').forEach(stage => {
       target += Math.sign(angle - start) * step;
     }
     if (reduced.matches) { angle = target; target = null; render(); }
+    syncAnimation();
   }
   stage.addEventListener('pointerup', release);
   stage.addEventListener('pointercancel', release);
@@ -98,6 +107,7 @@ document.querySelectorAll('[data-circular-carousel]').forEach(stage => {
     visible = cards.filter(card => !card.hidden);
     cards.forEach(card => { card.inert = card.hidden; });
     angle = 0; target = null; velocity = 0; render();
+    syncAnimation();
   }));
   function resize() {
     const maxRadius = Number(stage.dataset.carouselRadius ?? 330);
@@ -106,19 +116,48 @@ document.querySelectorAll('[data-circular-carousel]').forEach(stage => {
   }
   new ResizeObserver(resize).observe(stage);
   reduced.addEventListener('change', () => { move(0); });
-  function frame(time) {
-    const dt = Math.min((time - last) / 1000, .05); last = time;
-    const bounds = stage.getBoundingClientRect();
-    if (bounds.bottom > 0 && bounds.top < innerHeight && !document.hidden) {
-      if (target !== null && !drag) {
-        angle += (target - angle) * Math.min(1, dt * 9);
-        if (Math.abs(target - angle) < .05) { angle = target; target = null; }
-        render();
-      } else if (pause && !drag && !paused && !hovered && !stage.contains(document.activeElement) && !controls.contains(document.activeElement) && !reduced.matches && visible.length > 1) {
-        angle -= 14 * dt; render();
-      }
+  document.addEventListener('visibilitychange', syncAnimation);
+
+  function syncAnimation() {
+    const rotating = pause && !paused && !hovered && !reduced.matches && visible.length > 1 &&
+      !stage.contains(document.activeElement) && !controls.contains(document.activeElement);
+    if (inView && !document.hidden && !drag && (target !== null || rotating)) {
+      if (!frameId) frameId = requestAnimationFrame(frame);
+    } else {
+      if (frameId) cancelAnimationFrame(frameId);
+      frameId = 0;
+      last = 0;
     }
-    requestAnimationFrame(frame);
   }
-  resize(); requestAnimationFrame(frame);
+
+  function frame(time) {
+    frameId = 0;
+    const dt = last ? Math.min((time - last) / 1000, .05) : 0;
+    last = time;
+    if (target !== null) {
+      angle += (target - angle) * Math.min(1, dt * 9);
+      if (Math.abs(target - angle) < .05) { angle = target; target = null; }
+    } else {
+      angle -= 14 * dt;
+    }
+    render();
+    syncAnimation();
+  }
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      syncAnimation();
+    }).observe(stage);
+  } else {
+    const checkViewport = () => {
+      const { top, bottom } = stage.getBoundingClientRect();
+      inView = bottom > 0 && top < innerHeight;
+      syncAnimation();
+    };
+    addEventListener('scroll', checkViewport, { passive: true });
+    addEventListener('resize', checkViewport);
+    checkViewport();
+  }
+  resize();
 });

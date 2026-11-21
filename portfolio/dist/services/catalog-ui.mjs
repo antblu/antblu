@@ -42,7 +42,7 @@ function render() {
   });
   count = matches.length;
   cards.innerHTML = matches.map(app => `<article class="svc-card">
-    <span class="svc-kicker">${escapeHtml(app.category)}</span><h3>${app.name}</h3><p>${app.description}</p>
+    <span class="svc-kicker">${escapeHtml(app.category)}</span><h2 class="svc-card-title">${app.name}</h2><p>${app.description}</p>
     <p class="svc-module-price"><strong>${range(pricing[app.price])}</strong> implementation</p>
     <div class="svc-cta"><button class="svc-btn" type="button" data-app="${app.id}" aria-label="Details for ${app.name}">Details</button></div>
     <label class="svc-choice"><input type="checkbox" value="${app.id}" ${selected.has(app.id) ? 'checked' : ''}> Select for quote<span class="svc-sr-only"> for ${app.name}</span></label>

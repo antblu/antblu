@@ -52,7 +52,7 @@
 [data-theme="dark"] .lab-hardware article,[data-theme="dark"] .lab-network,[data-theme="dark"] .lab-vlans article{background:#132338;border-color:#435a71}
 [data-theme="dark"] .lab-path li,[data-theme="dark"] .lab-hardware .lab-detail,[data-theme="dark"] .lab-source{border-color:#435a71}
 @media(max-width:1000px){.lab-overview{gap:28px}.lab-vlans{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:700px){.lab-content{margin-top:36px}.lab-overview,.lab-hardware,.lab-branches{grid-template-columns:1fr}.lab-rack{max-width:430px;width:100%;justify-self:center}.lab-heading{margin-top:48px}.lab-hardware article,.lab-network{padding:22px}.lab-path{grid-template-columns:1fr;gap:28px}.lab-path li+li::before{content:'↓';left:50%;top:-26px;transform:translateX(-50%)}.lab-gallery{grid-template-columns:1fr;gap:24px}.lab-gallery img{aspect-ratio:4/3}.lab-workloads{padding:24px}.lab-content h3{font-size:26px}}
+@media(max-width:700px){.lab-content{margin-top:36px}.lab-overview,.lab-hardware,.lab-branches{grid-template-columns:minmax(0,1fr)}.lab-rack{max-width:430px;width:100%;justify-self:center}.lab-heading{margin-top:48px}.lab-hardware article,.lab-network{padding:22px}.lab-path{grid-template-columns:1fr;gap:28px}.lab-path li+li::before{content:'↓';left:50%;top:-26px;transform:translateX(-50%)}.lab-gallery{grid-template-columns:1fr;gap:24px}.lab-gallery img{aspect-ratio:4/3}.lab-workloads{padding:24px}.lab-content h3{font-size:26px}}
 @media(max-width:380px){.lab-vlans{grid-template-columns:1fr}.lab-stats{gap:8px}.lab-stats dt{font-size:20px}.lab-content .bracket-link{padding-left:12px;padding-right:12px}}
 @media(forced-colors:active){.lab-hardware article,.lab-network,.lab-path li,.lab-vlans article{border-color:CanvasText}.lab-branches,.lab-branches>div,.lab-workloads,.lab-stats div{border-color:CanvasText}.lab-kicker,.lab-label,.lab-vlans article>span,.lab-path span{color:CanvasText}}
 
@@ -84,7 +84,7 @@
 .lab-workloads{border:1px solid #435a7155;border-radius:22px;padding:36px;background:linear-gradient(120deg,#3488ff16,#8b5cf60b)}
 .lab-gallery figure{padding:10px;border:1px solid #435a7140;border-radius:22px;background:var(--paper)}
 .lab-gallery figcaption{padding:14px 8px 6px}
-@media(max-width:700px){.lab-overview,.lab-hardware{grid-template-columns:1fr}.lab-rack{max-width:none}.lab-rack img{max-height:390px;object-position:center 45%}.lab-tabs{width:100%;gap:2px;padding:4px}.lab-tabs button{flex:1;padding:12px 5px;font-size:11px}.lab-stats div{padding:14px 8px}.lab-hardware article{padding:24px}}
+@media(max-width:700px){.lab-overview,.lab-hardware{grid-template-columns:minmax(0,1fr)}.lab-rack{max-width:none}.lab-rack img{max-height:390px;object-position:center 45%}.lab-tabs{width:100%;gap:2px;padding:4px}.lab-tabs button{flex:1;padding:12px 5px;font-size:11px}.lab-stats div{padding:14px 8px}.lab-hardware article{padding:24px}}
 @media(prefers-reduced-motion:reduce){.lab-hardware article{transition:none}}
 @media(forced-colors:active){.lab-tabs button[aria-selected="true"]{border:2px solid Highlight}.lab-rack figcaption{background:Canvas;color:CanvasText}}
 

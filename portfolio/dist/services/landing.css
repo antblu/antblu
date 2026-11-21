@@ -74,7 +74,7 @@
 .svc-landing-offerings .svc-landing-intro { margin-bottom: clamp(1.25rem, 2vw, 1.5rem); }
 .svc-landing .svc-offerings { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .svc-landing .svc-offering { padding: .8rem; box-shadow: 0 12px 32px #0a1a2c15; }
-.svc-offering img { display: block; width: 100%; height: 120px; object-fit: cover; border-radius: 8px; }
+.svc-offering img { display: block; width: 100%; height: 120px; object-fit: cover; border-radius: 8px; background: var(--svc-soft); }
 .svc-offering :is(h3, p, a) { margin-inline: .5rem; }
 .svc-offering h3 { margin-block-start: .4rem; }
 .svc-offering a { display: block; align-content: center; min-height: 44px; font-weight: 700; }
@@ -109,10 +109,14 @@
 }
 @media (max-width: 550px) {
   .svc-banner h1 { font-size: clamp(1.9rem, 9.25vw, 2.25rem); line-height: 1.1; }
+  .svc-banner .text-flip-word { max-inline-size: 100%; white-space: normal; }
   .svc-landing-hero::before { display: none; }
-  .svc-banner .svc-cta { display: grid; }
+  .svc-banner .svc-cta { display: grid; grid-template-columns: minmax(0, 1fr); }
   .svc-landing .svc-banner-benefits { flex-direction: column; }
   .svc-landing .svc-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 380px) {
+  .svc-banner .svc-banner-secondary { padding-inline: .625rem; }
 }
 .svc-landing .svc-landing-process { max-width: 925px; margin: 2rem auto 0; }
 .svc-landing-process [data-service-process] { padding-block: .75rem .15rem; }

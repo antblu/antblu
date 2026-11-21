@@ -7,6 +7,9 @@ const form = document.querySelector('#consultation-form');
 const status = document.querySelector('#consultation-status');
 const send = form.querySelector('[type="submit"]');
 const draft = form.querySelector('[data-email-draft]');
+const details = form.querySelector('[data-quote-details]');
+const detailsTitle = details.querySelector('summary');
+const defaultDetailsTitle = detailsTitle.textContent;
 const query = new URLSearchParams(location.search);
 const get = name => form.elements.namedItem(name);
 const quote = query.get('configuration') === 'calculator' ? readSession('antblu-quote') : null;
@@ -24,7 +27,8 @@ const prepared = [
 ].filter(Boolean).join('\n\n');
 if (prepared) {
   get('configuration').value = prepared.slice(0, 6500);
-  form.querySelector('[data-quote-details]').open = true;
+  if (quote?.sample === true) detailsTitle.textContent = 'Configuration · Sample scenario';
+  details.open = true;
 }
 
 function valid() {
@@ -61,6 +65,7 @@ form.addEventListener('submit', async event => {
   const result = await submitContactTicket({ ...inquiry(), supportUrl: form.dataset.supportUrl });
   if (result.state === 'sent') {
     form.reset();
+    detailsTitle.textContent = defaultDetailsTitle;
     try { if (quote) sessionStorage.removeItem('antblu-quote'); } catch {}
     status.textContent = `Consultation request received. Your ticket number is #${result.number}.`;
   } else {
@@ -79,7 +84,7 @@ draft.addEventListener('click', () => {
   if (email.length > 1900) {
     const summary = get('configuration');
     const text = summary.value ? summary : get('message');
-    if (summary.value) form.querySelector('[data-quote-details]').open = true;
+    if (summary.value) details.open = true;
     text.focus();
     text.select();
     status.textContent = 'This request is too long for a portable email link. Copy the selected text and email it with your inquiry to antblu@antblu.net, or send it through the form.';
