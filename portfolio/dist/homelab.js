@@ -166,7 +166,8 @@
     status.textContent = `${active + 1} / ${cards.length} · ${cards[active].querySelector('figcaption').textContent}`;
     function tick(now) {
       const progress = motion.matches || !animate ? 1 : Math.min(1, (now - started) / 700);
-      position = start + (target - start) * (1 - Math.pow(1 - progress, 4));
+      const eased = progress * progress * (3 - 2 * progress);
+      position = start + (target - start) * eased;
       layout(position);
       if (progress < 1) frame = requestAnimationFrame(tick);
       else position = active;
@@ -195,8 +196,9 @@
   });
   stage.addEventListener('pointerdown', event => {
     if (!event.isPrimary || event.button !== 0) return;
+    cancelAnimationFrame(frame);
     suppressClick = false;
-    drag = { x: event.clientX, y: event.clientY, id: event.pointerId, moved: false };
+    drag = { position, x: event.clientX, y: event.clientY, id: event.pointerId, moved: false };
   });
   stage.addEventListener('pointermove', event => {
     if (!drag || event.pointerId !== drag.id) return;
@@ -208,7 +210,7 @@
       cancelAnimationFrame(frame);
     }
     if (drag.moved) {
-      position = active - dx / Math.max(80, gallery.clientWidth * .35);
+      position = drag.position - dx / Math.max(80, gallery.clientWidth * .35);
       layout(position);
     }
   });
@@ -217,7 +219,8 @@
     const moved = drag.moved;
     drag = null;
     if (stage.hasPointerCapture(event.pointerId)) stage.releasePointerCapture(event.pointerId);
-    if (moved) select(event.type === 'pointercancel' ? active : Math.round(position));
+    if (moved && event.type !== 'pointercancel') select(Math.round(position));
+    else if (position !== active) select(active);
   }
   stage.addEventListener('pointerup', endDrag);
   stage.addEventListener('pointercancel', endDrag);

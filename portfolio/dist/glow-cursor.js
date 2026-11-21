@@ -12,7 +12,7 @@
   const container = canvas;
   const settingsRef = { current: {
     color: '#5f8bff', secondaryColor: '', intensity: 1.3, trailWidth: 3,
-    linger: 1.4, glow: 1.2, hotspot: 0.8, followSpeed: 0.6, grain: 0,
+    linger: 1.4, glow: 1.2, hotspot: 0.8, followSpeed: 0.6,
     clickBurst: true, quality: 'medium', maxDevicePixelRatio: 1.5, enabled: true,
     theme: document.documentElement.dataset.theme || 'dark'
   } };
@@ -230,20 +230,12 @@ const DISPLAY = `${HEADER}${SHADE}
 uniform sampler2D uDye;
 uniform sampler2D uBloom;
 uniform float uGlow;
-uniform float uGrain;
-uniform float uTime;
 uniform float uLight;
-float hash(vec2 p) {
-  p = fract(p * vec2(123.34, 456.21));
-  p += dot(p, p + 45.32);
-  return fract(p.x * p.y);
-}
 void main() {
   vec3 dye = texture(uDye, vUv).xyz;
   vec3 light = shade(dye);
   vec3 bloom = texture(uBloom, vUv).rgb * uGlow;
   float edge = smoothstep(0.0, 0.02, min(min(vUv.x, 1.0 - vUv.x), min(vUv.y, 1.0 - vUv.y)));
-  float grain = 1.0 + (hash(gl_FragCoord.xy + fract(uTime * 13.7) * 97.0) - 0.5) * uGrain * 2.0;
   if (uLight > 0.5) {
     float energy = max(dye.x, 0.0);
     float heat = clamp(dye.y, 0.0, energy);
@@ -255,10 +247,10 @@ void main() {
     float tone = dot(tint, vec3(0.2126, 0.7152, 0.0722));
     vec3 ink = tint * min(1.0, 0.5 / max(tone, 0.001)) * mix(0.95, 0.72, smoothstep(0.5, 3.0, energy));
     ink = mix(ink, vec3(1.0), clamp(heat * heat * 0.05 * uHotspot, 0.0, 0.45));
-    density = clamp(density * grain, 0.0, 1.0) * edge;
+    density = clamp(density, 0.0, 1.0) * edge;
     outColor = vec4(ink * density, density);
   } else {
-    vec3 color = 1.0 - exp(-(light + bloom) * grain);
+    vec3 color = 1.0 - exp(-(light + bloom));
     color *= edge;
     outColor = vec4(color, max(color.r, max(color.g, color.b)));
   }
@@ -319,6 +311,7 @@ const fromHsv = (hue, saturation, value) => {
       stencil: false
     });
     if (!container || !canvas || !gl || !gl.getExtension('EXT_color_buffer_float')) return undefined;
+    gl.disable(gl.DITHER);
 
     const vertexShader = compile(gl, gl.VERTEX_SHADER, VERTEX);
     if (!vertexShader) return undefined;
@@ -386,7 +379,6 @@ const fromHsv = (hue, saturation, value) => {
       ready: false,
       bursts: [],
       active: -Infinity,
-      time: 0,
       allocated: '',
       targets: null
     };
@@ -763,8 +755,6 @@ const fromHsv = (hue, saturation, value) => {
       gl.uniform1i(u.uBloom, bind(1, bloom[0]));
       setShade(u, s);
       gl.uniform1f(u.uGlow, s.glow > 0 ? (s.glow * 1.4) / BLOOM_LEVELS : 0);
-      gl.uniform1f(u.uGrain, s.grain);
-      gl.uniform1f(u.uTime, state.time);
       gl.uniform1f(u.uLight, s.theme === 'light' ? 1 : 0);
       draw(null);
     };
@@ -782,7 +772,6 @@ const fromHsv = (hue, saturation, value) => {
       const s = settingsRef.current;
       const dt = last ? Math.min(1 / 30, (now - last) / 1000) : 1 / 60;
       last = now;
-      state.time += dt;
       const wanted = Math.min(window.devicePixelRatio || 1, Math.max(0.5, s.maxDevicePixelRatio || 2));
       if (Math.abs(wanted - state.ratio) > 0.01) resize();
       allocate();

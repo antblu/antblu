@@ -5,13 +5,20 @@ const narrow = matchMedia('(max-width: 700px)');
 navigation.querySelectorAll('a').forEach((link, index) => link.style.setProperty('--row-delay', `${index * 30}ms`));
 
 function setMenu(open) {
+  if (open) {
+    const trigger = menu.getBoundingClientRect();
+    const headerLeft = header.getBoundingClientRect().left;
+    navigation.style.setProperty('--menu-origin', (trigger.left + trigger.width / 2 - headerLeft) + 'px');
+  }
+  navigation.inert = narrow.matches && !open;
   menu.setAttribute('aria-expanded', String(open));
 }
 
 menu.hidden = false;
+setMenu(false);
 menu.addEventListener('click', () => setMenu(menu.getAttribute('aria-expanded') !== 'true'));
-narrow.addEventListener('change', event => {
-  if (!event.matches) setMenu(false);
+narrow.addEventListener('change', () => {
+  setMenu(false);
 });
 navigation.addEventListener('click', event => {
   const link = event.target.closest('a');

@@ -1,5 +1,9 @@
 # Verification — 2026-10-25
 
+Portfolio controls (2026-11-21) replace résumé badges and tags with the existing dates and descriptions, show project metadata in plain text, and use an underline for the active Emiliany journey. Chromium checked both themes at 320, 768, and 1440 pixels. Checks covered hero links and keyboard previews, project filtering and the Antalos dialog, keyboard and pointer tab selection, journey accordions, overflow, and local asset and page errors. All four journeys remained visible with JavaScript disabled and forced colors enabled at 320 pixels. The contact submit button and required-field validation passed in both themes at 320 and 1440 pixels. Reviewed screenshots of the hero, tabs, project card, and submit button. Live contact delivery and production deployment were outside these checks.
+
+Hover cards (2026-11-21) add previews to the three homepage hero links and the three main service links. Headless Chrome checked all six previews in light and dark themes at 320px and 1440px. Checks covered keyboard focus, Escape dismissal, moving the pointer onto the preview, viewport fit, reduced motion, emulated touch navigation, and link navigation with JavaScript disabled. Reviewed desktop dark screenshots for both pages. External requests were blocked during testing. Physical touch devices and production deployment were outside the check.
+
 Services comparison carousel (2026-11-21) turns the six self-hosted software cards into a swipeable row. Chromium checks passed in light and dark themes at 320, 768, and 1440px. Checks covered emulated touch, arrow controls and keyboard navigation, disabled states at both ends, comparison navigation, reduced motion, horizontal overflow, page errors, and the grid fallback without JavaScript. External requests were blocked during testing, so the existing remote EuroOffice logo was outside the check. Physical touch devices and production deployment were outside the check.
 
 Technical Skills bento update (2026-11-14): “Systems I work with” uses seven cards with existing site icons, alternating wide cards on desktop, and a single column on narrow screens. Headless Chrome checked light and dark themes at 320, 580, 959, 960, and 1440px with reduced motion. Verified column counts, wide card spans, no horizontal overflow, successful image decoding, and no page errors or failed local requests. All seven descriptions stayed visible at 320px with JavaScript disabled and forced colors enabled. Desktop dark screenshot reviewed. `git diff --check` passed. Normal-motion hover, full interaction regressions, and production deployment were not checked.
@@ -407,3 +411,26 @@ and required-field checks at 320px and 1440px in both themes.
   updated as expected, and the pause button switched to Resume rotation.
   The checks found no horizontal overflow, missing local assets, or page
   errors. Physical devices and automatic rotation timing remain unverified.
+
+### Consultation form fields (2026-11-21)
+
+- Chrome checked the consultation form at 320px and 1440px in both themes.
+  Verified keyboard submission, focus on the first invalid field, inline errors
+  and their descriptions, and correction of blank, whitespace-only, and
+  malformed values. Found no horizontal overflow, failed local assets, or
+  uncaught page errors.
+- Verified service prefills, optional configuration, email draft initiation,
+  long-draft text selection, and the no-script email link. Mocked a ticket
+  service failure and confirmed that retry sent the retained values and reset
+  the form on success. JavaScript syntax and whitespace checks passed. Live
+  ticket delivery and opening a desktop mail client remain unverified.
+
+### Homepage and Services tooltips (2026-11-21)
+
+- Chrome verified hover, pointer movement onto the tooltip, keyboard focus,
+  and Escape on both pages at 320px and 1440px in light and dark modes.
+  The tooltips stayed inside the viewport and respected reduced motion.
+  The existing hover cards opened on both pages. Chrome reported no page
+  errors, failed local assets, or horizontal page overflow.
+- JavaScript syntax and whitespace checks passed. Physical touch devices
+  and screen readers remain unverified.

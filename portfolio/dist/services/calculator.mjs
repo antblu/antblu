@@ -31,7 +31,11 @@ root.innerHTML = `<div class="svc-calc">
     <section class="svc-panel" aria-labelledby="estimate-inputs">
       <h2 id="estimate-inputs">Estimate inputs</h2>
       ${fields(
-        '<label>Term<select name="years"><option value="1">1 year</option><option value="3" selected>3 years</option><option value="5">5 years</option></select></label>',
+        `<div class="svc-term">
+          <div class="svc-term-heading"><label for="estimate-term">Term</label><span id="estimate-term-value" aria-hidden="true">3 years</span></div>
+          <input class="svc-term-slider" id="estimate-term" type="range" name="years" min="1" max="5" step="2" value="3" aria-valuetext="3 years">
+          <div class="svc-term-scale" aria-hidden="true"><span>1 year</span><span>3 years</span><span>5 years</span></div>
+        </div>`,
         '<label>Infrastructure tier<select name="tier"><option value="standard">Standard · Non-HA</option><option value="ha">High Availability · HA</option></select></label>',
         '<label>Hosting<select name="hosting"><option value="hardware">Own hardware</option><option value="vps" selected>Cloud VPS</option><option value="managed" disabled>Managed Kubernetes</option></select></label>',
         numberField('serverMonthly', 'Server / month ($ each)', 35))}
@@ -112,6 +116,8 @@ const rateFormat = new Intl.NumberFormat('en-US', { style: 'currency', currency:
 const midpoint = ({ low, high }) => Math.round((low + (high ?? low)) / 2);
 const field = name => form.elements.namedItem(name);
 const value = name => Number(field(name).value);
+const termSlider = field('years');
+const termValue = root.querySelector('#estimate-term-value');
 const planById = id => comparisons.find(plan => plan.id === id);
 const selectedApps = () => [...form.querySelectorAll('[name="applications"]:checked')]
   .map(input => applications.find(app => app.id === input.value));
@@ -223,6 +229,11 @@ function chart(result, years) {
 }
 
 function update() {
+  const years = termSlider.valueAsNumber;
+  const term = years === 1 ? '1 year' : `${years} years`;
+  termValue.textContent = term;
+  termSlider.setAttribute('aria-valuetext', term);
+  termSlider.style.setProperty('--term-fill', `${(years - 1) * 25}%`);
   add.disabled = subscriptions.children.length >= 25;
   const isValid = form.matches(':valid');
   const comparable = scopeConfirmed.checked;
@@ -250,7 +261,6 @@ function update() {
   inputs.subscriptions = readSubscriptions();
   inputs.databaseHa = field('databaseHa').checked;
   inputs.addOnsInitial = (field('aiSetup').checked ? midpoint(pricing.ai) : 0) + (field('extraTraining').checked ? midpoint(pricing.training) : 0);
-  const { years } = inputs;
   const result = calculateTco(inputs);
   const applicationNote = selectedApps().length ? 'The self-hosted total includes your selected modules. Check features, migration work, and capacity before using the estimate.' : 'The self-hosted total uses your cost inputs, with no application modules selected. Include the costs of any replacements you need.';
   const sizingNote = tierSelect.value === 'ha' && inputs.serverCount < 3 ? 'This estimate includes fewer than three servers. Check the design to validate quorum, failure domains, and failover.' : '';
@@ -355,6 +365,9 @@ add.addEventListener('click', () => {
 root.querySelector('#copy-estimate').addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(estimateSummary);
+    if (matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      actionStatus.animate([{ opacity: 1 }, { opacity: .65 }, { opacity: 1 }], { duration: 240, easing: 'ease-out' });
+    }
     actionStatus.textContent = 'Summary copied.';
   } catch {
     root.querySelector('#estimate-details').open = true;

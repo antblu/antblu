@@ -28,15 +28,15 @@
   <script type="module" src="/services/common.mjs"></script>
   <script type="module" src="/services/booking.mjs"></script>
   <link rel="stylesheet" href="/components.css">
-  <link rel="stylesheet" href="/border-glow.css">
   <link rel="stylesheet" href="/services/landing.css">
-  <script src="/border-glow.js" defer></script>
   <script type="module" src="/services/landing.mjs"></script>
   <link rel="stylesheet" href="/dashboards.css">
   <script src="/dashboards.js" defer></script>
   <link rel="stylesheet" href="/text-3d-flip.css">
   <script src="/text-3d-flip.js" defer></script>
   <link rel="stylesheet" href="/editorial.css">
+  <link rel="stylesheet" href="/hover-card.css">
+  <script src="/hover-card.js" defer></script>
 </head>
 <body class="svc-body svc-landing">
   <a class="svc-skip" href="#main">Skip to content</a>
@@ -71,27 +71,27 @@
             <img src="/assets/homelab/rack-and-ups.webp" alt="" loading="lazy" decoding="async" width="352" height="140">
             <h3>Open-Source Infrastructure</h3>
             <p>Deploy business applications with monitoring, offsite backups, and a recovery plan sized for your workload.</p>
-            <a href="/services/infrastructure">Explore Infrastructure</a>
+            <a data-hover-title="Open-source infrastructure" data-hover-description="Compare single-server and high-availability setups, hosting options, and recovery plans." href="/services/infrastructure">Explore Infrastructure</a>
           </article>
           <article class="svc-card svc-offering">
             <img src="/assets/bogota-service-card.webp" alt="" loading="lazy" decoding="async" width="768" height="576">
             <h3>Website Development</h3>
             <p>I build a responsive site and set up publishing, deployment, and access so your team can manage it.</p>
-            <a href="/services/web-development">Explore Web Development</a>
+            <a data-hover-title="Website development" data-hover-description="Compare a single landing page with a multi-page business site your team can edit." href="/services/web-development">Explore Web Development</a>
           </article>
           <article class="svc-card svc-offering">
             <img src="/assets/emiliany/rings.webp" alt="" loading="lazy" decoding="async" width="352" height="140">
             <h3>E-commerce Development</h3>
             <p>I build the storefront and connect it to your payment, inventory, and order systems.</p>
-            <a href="/services/ecommerce">Explore E-commerce</a>
+            <a data-hover-title="E-commerce development" data-hover-description="Compare a storefront with catalog and checkout to a custom build with fulfillment and CRM integrations." href="/services/ecommerce">Explore E-commerce</a>
           </article>
         </div>
         <div class="svc-grid svc-feature-grid svc-service-resources">
-          <article class="svc-card" data-border-glow>
+          <article class="svc-card">
             <span class="svc-feature-icon" aria-hidden="true">$</span>
             <h3>Setup and operating costs</h3>
             <p>Budget implementation separately from hosting, backups, support, and your team's time.</p>
-            <a href="/services/calculator">Model Your Costs <span aria-hidden="true">→</span></a>
+            <a data-tooltip="Compare costs over 1, 3, or 5 years." href="/services/calculator">Model Your Costs <span aria-hidden="true">→</span></a>
           </article>
           <article class="svc-card">
             <span class="svc-feature-icon" aria-hidden="true">⊞</span>
@@ -131,15 +131,14 @@
     <section class="svc-landing-section" aria-labelledby="map-title">
       <div class="svc-wrap">
         <header class="svc-landing-intro">
-          <p class="svc-kicker">Replacement map</p>
           <h2 id="map-title">Software you can <span data-kinetic-text>self-host</span></h2>
           <p>Compare open-source options with your current subscriptions. Check the features you need, the work to connect your tools, and the cost to run them.</p>
         </header>
         <div class="svc-map-controls" role="group" aria-label="Browse software comparisons" hidden>
-          <button type="button" class="svc-btn" aria-label="Previous comparison" aria-controls="software-comparisons" aria-disabled="true" data-map-prev>
+          <button type="button" class="svc-btn" aria-label="Previous comparison" aria-controls="software-comparisons" aria-disabled="true" data-map-prev data-tooltip>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7 7-7-7 7-7"/></svg>
           </button>
-          <button type="button" class="svc-btn" aria-label="Next comparison" aria-controls="software-comparisons" data-map-next>
+          <button type="button" class="svc-btn" aria-label="Next comparison" aria-controls="software-comparisons" data-map-next data-tooltip>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
           </button>
         </div>
@@ -175,7 +174,7 @@
 
   <section class="dashboard-story" aria-labelledby="dashboard-heading">
     <div class="svc-wrap">
-      <header><p class="dashboard-kicker">Inside Antalos</p>
+      <header>
         <h2 id="dashboard-heading">One sign-in for your team’s apps</h2>
         <p>With single sign-on (SSO), you sign in to Authentik once. From there, you can open connected apps your account has permission to use. In my lab, that includes Grafana, where I check how the services are running.</p>
       </header>
@@ -194,13 +193,11 @@
     <section class="svc-landing-section svc-landing-packages" id="packages" tabindex="-1" aria-labelledby="packages-title">
       <div class="svc-wrap">
         <header class="svc-landing-intro">
-          <p class="svc-kicker">Pricing</p>
           <h2 id="packages-title">Two infrastructure packages</h2>
           <p>Both packages include deployment, monitoring, offsite backups, and administrator training. I quote application modules, migration, and hosting as separate items.</p>
         </header>
         <div class="svc-grid svc-grid--two svc-package-grid">
-          <article data-border-glow class="svc-card svc-package">
-            <p class="svc-kicker">Single-host deployment</p>
+          <article class="svc-card svc-package">
             <h3>Standard · Non-HA</h3>
             <p>For workloads that can tolerate occasional downtime.</p>
             <div class="svc-package-price"><span class="svc-price" data-price="standard">$3,000–$6,000</span><span>One-time estimate · USD</span></div>
@@ -212,8 +209,7 @@
             </ul>
             <a class="svc-btn" href="/contact?service=infrastructure&amp;tier=standard#quote">Request a Standard Quote</a>
           </article>
-          <article data-border-glow class="svc-card svc-package svc-package--ha">
-            <p class="svc-kicker">Redundant deployment</p>
+          <article class="svc-card svc-package svc-package--ha">
             <h3>High Availability · HA</h3>
             <p>For business-critical workloads with defined recovery goals.</p>
             <div class="svc-package-price"><span class="svc-price" data-price="ha">$8,000–$15,000+</span><span>One-time estimate · USD</span></div>
@@ -239,12 +235,12 @@
 
     <section class="svc-landing-section" aria-labelledby="faq-title">
       <div class="svc-wrap">
-        <header class="svc-landing-intro"><p class="svc-kicker">Before you start</p><h2 id="faq-title">Pricing, availability, and examples</h2></header>
+        <header class="svc-landing-intro"><h2 id="faq-title">Pricing, availability, and examples</h2></header>
         <div class="svc-faq" data-react-faq>
-          <details><summary>What does the package price include?</summary><p>The infrastructure range covers deployment, monitoring, backup configuration, documentation, and administrator training. I quote application modules, migration, hardware, hosting, and optional support as separate items. The final quote confirms the deliverables and recurring costs.</p></details>
-          <details><summary>Will self-hosting cost less than my subscriptions?</summary><p>It depends on your workload and the time needed to operate it. The calculator includes setup, hosting, backups, labor, and scheduled replacements. Select the applications you need and enter your own bills. The sample subscriptions show how the calculator works. You still need to define your replacement setup.</p></details>
-          <details><summary>Does the HA package guarantee no downtime?</summary><p>No. High availability requires compatible applications, redundant databases and storage, and tested failover across independent failure domains. We agree on recovery goals and acceptance tests before implementation.</p></details>
-          <details><summary>Can I see an example before requesting a quote?</summary><p>The portfolio includes the Antalos infrastructure and Emiliany commerce case studies. The operations demo runs in a simulation with no access to live customer systems.</p></details>
+          <details name="services-faq" data-icon="📦" open><summary>What does the package price include?</summary><p>The infrastructure range covers deployment, monitoring, backup configuration, documentation, and administrator training. I quote application modules, migration, hardware, hosting, and optional support as separate items. The final quote confirms the deliverables and recurring costs.</p></details>
+          <details name="services-faq" data-icon="🧮"><summary>Will self-hosting cost less than my subscriptions?</summary><p>It depends on your workload and the time needed to operate it. The calculator includes setup, hosting, backups, labor, and scheduled replacements. Select the applications you need and enter your own bills. The sample subscriptions show how the calculator works. You still need to define your replacement setup.</p></details>
+          <details name="services-faq" data-icon="⏱️"><summary>Does the HA package guarantee no downtime?</summary><p>No. High availability requires compatible applications, redundant databases and storage, and tested failover across independent failure domains. We agree on recovery goals and acceptance tests before implementation.</p></details>
+          <details name="services-faq" data-icon="📂"><summary>Can I see an example before requesting a quote?</summary><p>The portfolio includes the Antalos infrastructure and Emiliany commerce case studies. The operations demo runs in a simulation with no access to live customer systems.</p></details>
         </div>
         <div class="svc-cta svc-landing-center"><a href="/#homelab">Explore Antalos</a><a href="/#emiliany">Read the Emiliany case study</a><a href="/demo">Try the simulation</a></div>
       </div>

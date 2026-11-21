@@ -76,8 +76,8 @@ typography:
     lineHeight: 1.3
   hero-action:
     fontFamily: "Inter, system-ui, sans-serif"
-    fontSize: "14px"
-    fontWeight: 500
+    fontSize: "0.9rem"
+    fontWeight: 650
     lineHeight: 1.5
   bracket-action:
     fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
@@ -99,7 +99,6 @@ rounded:
   panel: "13px"
   inventory: "14px"
   feature: "16px"
-  pill: "999px"
 spacing:
   service-gutter: "16px"
   portfolio-gutter: "24px"
@@ -130,10 +129,11 @@ components:
     textColor: "{colors.gold-ink}"
     rounded: "{rounded.button}"
   button-hero:
-    backgroundColor: "{colors.midnight}"
+    backgroundColor: "{colors.light-action}"
+    textColor: "{colors.white}"
     typography: "{typography.hero-action}"
-    rounded: "{rounded.pill}"
-    padding: "8px 16px"
+    rounded: "{rounded.field}"
+    padding: "0.52rem 0.9rem"
   button-bracket:
     textColor: "#0c335f"
     typography: "{typography.bracket-action}"
@@ -147,11 +147,6 @@ components:
     textColor: "{colors.light-ink}"
     rounded: "{rounded.field}"
     padding: "0.54rem 0.6rem"
-  tag-resume:
-    backgroundColor: "{colors.light-page}"
-    textColor: "{colors.light-muted}"
-    rounded: "{rounded.pill}"
-    padding: "3px 10px"
   card-services:
     backgroundColor: "{colors.white}"
     textColor: "{colors.light-ink}"
@@ -223,7 +218,7 @@ The project carousel uses a diffuse black shadow (`0 18px 50px #0005`). Inventor
 
 ## Shapes
 
-- Keep boxed portfolio titles square and bracket links open at the top and bottom. Use a pill for the hero links, a circle for the shared theme toggle, and small pills for experience skill tags.
+- Keep boxed portfolio titles square and bracket links open at the top and bottom. Use a circle for the shared theme toggle. Show experience dates and project categories as plain text.
 - Use 8px corners for standard inputs, 12px for consulting buttons and carousel cards, 13px for consulting panels, 14px for foil inventory cards, and 16px for skills cards. Clip artwork inside cards that use it as a background.
 - Use a rounded browser frame for the Emiliany composition. Preserve the provided logo, collection artwork, and case-study photography.
 
@@ -231,11 +226,11 @@ The project carousel uses a diffuse black shadow (`0 18px 50px #0005`). Inventor
 
 ### Actions
 
-Use filled blue buttons for primary consulting actions and bordered buttons for secondary actions. Standard buttons have a 44px minimum height. Gold singles out the cost action on the consulting landing page. The portfolio hero uses a dark gradient pill for experience and outlined pills for projects and services. Elsewhere on portfolio surfaces, paired vertical strokes identify bracket links and give way to a fill on hover.
+Use filled blue buttons for primary consulting actions and bordered buttons for secondary actions. Standard buttons have a 44px minimum height. Gold singles out the cost action on the consulting landing page. In the portfolio hero, use one filled experience link and underlined links for projects and services. Elsewhere on portfolio surfaces, paired vertical strokes identify bracket links and give way to a fill on hover.
 
 ### Navigation and filters
 
-Keep the logo and theme toggle in the sticky shared header. At 700px and below, show the Menu button and put navigation in a dropdown. Underline the current route and links on hover. The theme toggle follows system preference until the visitor chooses a theme, then stores that choice. Use a text and underline change for selected project filters. Homelab tabs use a filled selected state. Experience skill tags have the same outline in every state because they are static labels.
+Keep the logo and theme toggle in the sticky shared header. At 700px and below, show the Menu button and put navigation in a dropdown. Underline the current route and links on hover. The theme toggle follows system preference until the visitor chooses a theme, then stores that choice. Underline the selected project filter and the active Emiliany journey. Homelab tabs use a filled selected state.
 
 ### Cards and dialogs
 

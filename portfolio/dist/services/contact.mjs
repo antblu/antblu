@@ -13,6 +13,7 @@ form.addEventListener('submit', async event => {
   const data = new FormData(form);
   const supportUrl = form.dataset.supportUrl;
   button.disabled = true;
+  status.classList.remove('motion-success');
   form.setAttribute('aria-busy', 'true');
   status.textContent = 'Sending your message…';
   try {
@@ -26,6 +27,7 @@ form.addEventListener('submit', async event => {
       body: `${data.get('message').trim()}\n\nFrom: ${name}\nEmail: ${email}${phone ? `\nPhone: ${phone}` : ''}\nSource: antblu.net contact form`
     });
     if (result.state === 'sent') {
+      status.classList.add('motion-success');
       status.textContent = `Message sent. Your ticket number is #${result.number}. I’ll reply to your email address.`;
       form.reset();
     } else {

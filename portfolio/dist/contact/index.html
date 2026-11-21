@@ -26,7 +26,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..750&amp;family=JetBrains+Mono:wght@400..600&amp;family=Montserrat:wght@700..900&amp;family=Plus+Jakarta+Sans:wght@600..750&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/services/services.css">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/brand.css?v=20261114-components">
+  <link rel="stylesheet" href="/brand.css?v=20261121-flat-controls">
   <script src="/curved-input.js" defer></script>
   <script type="module" src="/services/common.mjs"></script>
   <script type="module" src="/services/booking.mjs"></script>
@@ -59,21 +59,62 @@
             <p>Request a free consultation for infrastructure deployment, SaaS replacement, a business website, or an online store.</p>
             <form id="consultation-form" class="svc-form" aria-labelledby="quote-title" data-support-url="">
               <div hidden><label>Leave this empty<input name="zammad_form_url" tabindex="-1" autocomplete="off"></label></div>
-              <div class="svc-fields">
-                <label>Name<input name="name" autocomplete="name" required maxlength="120"></label>
-                <label>Business name (optional)<input name="business" autocomplete="organization" maxlength="120"></label>
-              </div>
-              <label>Email<input type="email" name="email" autocomplete="email" required maxlength="254"></label>
-              <div class="svc-fields">
-                <label>Requested service<select name="service" required>
-                  <option value="">Select a service</option><option value="infrastructure">Infrastructure deployment</option><option value="replacement">SaaS replacement</option><option value="website">Website development</option><option value="ecommerce">E-commerce development</option><option value="custom">Custom consulting</option>
-                </select></label>
-                <label>Preferred hosting (optional)<select name="hosting">
-                  <option value="">Undecided or not applicable</option><option value="hardware">Own hardware</option><option value="vps">Cloud VPS</option><option value="managed">Managed Kubernetes</option>
-                </select></label>
-              </div>
-              <label>Brief project description<textarea name="message" rows="5" required maxlength="4000"></textarea></label>
-              <details class="svc-fold" data-quote-details><summary>Optional configuration</summary><label class="svc-field">Application or calculator summary<textarea name="configuration" rows="7" maxlength="6500" placeholder="Paste a planning summary or leave this blank."></textarea></label></details>
+              <fieldset data-slot="field-set">
+                <legend data-slot="field-legend">Your details</legend>
+                <div data-slot="field-group">
+                  <div class="svc-fields">
+                    <div data-slot="field" data-orientation="vertical">
+                      <label data-slot="field-label" for="consultation-name">Name</label>
+                      <input id="consultation-name" name="name" autocomplete="name" required maxlength="120">
+                      <div id="consultation-name-error" data-slot="field-error" role="alert" hidden></div>
+                    </div>
+                    <div data-slot="field" data-orientation="vertical">
+                      <label data-slot="field-label" for="consultation-business">Business name <span>(optional)</span></label>
+                      <input id="consultation-business" name="business" autocomplete="organization" maxlength="120">
+                    </div>
+                  </div>
+                  <div data-slot="field" data-orientation="vertical">
+                    <label data-slot="field-label" for="consultation-email">Email</label>
+                    <input id="consultation-email" type="email" name="email" autocomplete="email" required maxlength="254">
+                    <div id="consultation-email-error" data-slot="field-error" role="alert" hidden></div>
+                  </div>
+                </div>
+              </fieldset>
+              <hr data-slot="field-separator">
+              <fieldset data-slot="field-set">
+                <legend data-slot="field-legend">Project details</legend>
+                <div data-slot="field-group">
+                  <div class="svc-fields">
+                    <div data-slot="field" data-orientation="vertical">
+                      <label data-slot="field-label" for="consultation-service">Requested service</label>
+                      <select id="consultation-service" name="service" required>
+                        <option value="">Select a service</option><option value="infrastructure">Infrastructure deployment</option><option value="replacement">SaaS replacement</option><option value="website">Website development</option><option value="ecommerce">E-commerce development</option><option value="custom">Custom consulting</option>
+                      </select>
+                      <div id="consultation-service-error" data-slot="field-error" role="alert" hidden></div>
+                    </div>
+                    <div data-slot="field" data-orientation="vertical">
+                      <label data-slot="field-label" for="consultation-hosting">Preferred hosting <span>(optional)</span></label>
+                      <select id="consultation-hosting" name="hosting">
+                        <option value="">Undecided or not needed</option><option value="hardware">Own hardware</option><option value="vps">Cloud VPS</option><option value="managed">Managed Kubernetes</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div data-slot="field" data-orientation="vertical">
+                    <label data-slot="field-label" for="consultation-message">Brief project description</label>
+                    <textarea id="consultation-message" name="message" rows="5" required maxlength="4000" aria-describedby="consultation-message-help"></textarea>
+                    <p id="consultation-message-help" data-slot="field-description">Describe what you want to build, replace, or improve.</p>
+                    <div id="consultation-message-error" data-slot="field-error" role="alert" hidden></div>
+                  </div>
+                  <details class="svc-fold" data-quote-details>
+                    <summary>Optional configuration</summary>
+                    <div data-slot="field" data-orientation="vertical">
+                      <label data-slot="field-label" for="consultation-configuration">Application or calculator summary</label>
+                      <textarea id="consultation-configuration" name="configuration" rows="7" maxlength="6500" aria-describedby="consultation-configuration-help"></textarea>
+                      <p id="consultation-configuration-help" data-slot="field-description">Paste a planning summary if you have one.</p>
+                    </div>
+                  </details>
+                </div>
+              </fieldset>
               <p class="svc-muted">Your inquiry goes to my support inbox so I can reply. Leave out passwords, tokens and private customer data. <a href="/privacy">Privacy notice</a></p>
               <div class="svc-cta"><button class="svc-btn svc-btn--primary" type="submit" disabled>Send consultation request</button><button class="svc-btn" type="button" data-email-draft hidden>Open email draft</button></div>
               <p id="consultation-status" role="status" tabindex="-1"></p>

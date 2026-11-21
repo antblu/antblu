@@ -31,10 +31,42 @@ if (prepared) {
   details.open = true;
 }
 
-function valid() {
-  for (const field of [get('name'), get('message')]) field.setCustomValidity(field.value.trim() ? '' : 'Please fill out this field.');
-  return form.reportValidity();
+const requiredFields = [...form.querySelectorAll('[data-slot="field"] [required]')];
+const fieldDescriptions = new Map(requiredFields.map(field => [field, field.getAttribute('aria-describedby')]));
+
+function showFieldError(field, message) {
+  const group = field.closest('[data-slot="field"]');
+  const error = group.querySelector('[data-slot="field-error"]');
+  const description = fieldDescriptions.get(field);
+  const describedBy = [description, message && error.id].filter(Boolean).join(' ');
+  if (describedBy) field.setAttribute('aria-describedby', describedBy);
+  else field.removeAttribute('aria-describedby');
+
+  if (message) {
+    group.dataset.invalid = 'true';
+    field.setAttribute('aria-invalid', 'true');
+  } else {
+    delete group.dataset.invalid;
+    field.removeAttribute('aria-invalid');
+  }
+  error.hidden = !message;
+  if (error.textContent !== message) error.textContent = message;
 }
+
+function validateField(field) {
+  if (field.name === 'name' || field.name === 'message') {
+    field.setCustomValidity(field.value && !field.value.trim() ? 'Please fill out this field.' : '');
+  }
+  showFieldError(field, field.validationMessage);
+  return field.validity.valid;
+}
+
+function valid() {
+  const invalidFields = requiredFields.filter(field => !validateField(field));
+  invalidFields[0]?.focus();
+  return invalidFields.length === 0;
+}
+
 function inquiry() {
   const selectLabel = name => get(name).selectedOptions[0].text;
   const name = get('name').value.trim();
@@ -54,17 +86,28 @@ function inquiry() {
 
 send.disabled = false;
 draft.hidden = false;
-form.addEventListener('input', event => event.target.setCustomValidity?.(''));
+form.noValidate = true;
+for (const field of requiredFields) {
+  field.addEventListener('blur', () => {
+    if (field.value || field.hasAttribute('aria-invalid')) validateField(field);
+  });
+  field.addEventListener('input', () => {
+    if (field.hasAttribute('aria-invalid')) validateField(field);
+  });
+}
 form.addEventListener('submit', async event => {
   event.preventDefault();
   if (send.disabled || !valid()) return;
   send.disabled = true;
   draft.disabled = true;
+  status.classList.remove('motion-success');
   form.setAttribute('aria-busy', 'true');
   status.textContent = 'Sending your consultation request…';
   const result = await submitContactTicket({ ...inquiry(), supportUrl: form.dataset.supportUrl });
   if (result.state === 'sent') {
+    status.classList.add('motion-success');
     form.reset();
+    for (const field of requiredFields) showFieldError(field, '');
     detailsTitle.textContent = defaultDetailsTitle;
     try { if (quote) sessionStorage.removeItem('antblu-quote'); } catch {}
     status.textContent = `Consultation request received. Your ticket number is #${result.number}.`;

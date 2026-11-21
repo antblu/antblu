@@ -1,19 +1,3 @@
-/* Animated gradient pill adapted from Magic UI's Animated Gradient Text demo.
-   Override --gradient-from, --gradient-to, or --gradient-duration to customize. */
-.gradient-pill{--gradient-from:#ffaa40;--gradient-to:#9c40ff;--gradient-duration:8s;position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;max-width:100%;margin-top:24px;padding:8px 16px;border:1px solid #9c40ff80;border-radius:999px;background:#070d16;color:#a9bbce;font:500 14px/1.5 var(--body, system-ui);box-shadow:inset 0 -8px 10px #8fdfff1f;transition:box-shadow .5s ease-out}
-.gradient-pill::before{content:'';position:absolute;inset:-1px;pointer-events:none;border-radius:inherit;padding:1px;background:linear-gradient(90deg,#ffaa4080,#9c40ff80,#ffaa4080);background-size:300% 100%;animation:antblu-gradient var(--gradient-duration) linear infinite;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude}
-.animated-gradient-text{color:#ffaa40}
-@supports ((background-clip:text) or (-webkit-background-clip:text)){
-  .animated-gradient-text{background:linear-gradient(90deg,var(--gradient-from),var(--gradient-to),var(--gradient-from));background-size:300% 100%;background-clip:text;-webkit-background-clip:text;color:transparent;animation:antblu-gradient var(--gradient-duration,8s) linear infinite}
-}
-.gradient-pill-divider{width:1px;height:16px;flex-shrink:0;background:#707070}
-.gradient-pill-chevron{flex-shrink:0;transition:transform .3s ease-in-out}
-.gradient-pill:hover,.gradient-pill:focus-visible{box-shadow:inset 0 -5px 10px #8fdfff3f}
-.gradient-pill:hover .gradient-pill-chevron,.gradient-pill:focus-visible .gradient-pill-chevron{transform:translateX(2px)}
-@keyframes antblu-gradient{from{background-position:100% 50%}to{background-position:0% 50%}}
-@media(prefers-reduced-motion:reduce){.animated-gradient-text,.gradient-pill::before{animation:none}.gradient-pill,.gradient-pill-chevron{transition:none}.gradient-pill:hover .gradient-pill-chevron,.gradient-pill:focus-visible .gradient-pill-chevron{transform:none}}
-@media(forced-colors:active){.animated-gradient-text{background:none;color:LinkText}.gradient-pill::before{display:none}.gradient-pill{border-color:LinkText}.gradient-pill-divider{background:LinkText}}
-
 .text-highlighter{
   color:inherit;
   background:linear-gradient(178deg,transparent 22%,var(--text-highlight,#3999ee3d) 25%,var(--text-highlight,#3999ee3d) 85%,transparent 89%) left center / 100% 100% no-repeat;

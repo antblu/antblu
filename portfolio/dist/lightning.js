@@ -351,6 +351,7 @@ const UNIFORMS = [
     surface.prepend(canvas);
     const gl = canvas.getContext('webgl2', { alpha: true, premultipliedAlpha: true, antialias: false });
     if (!gl) return;
+    gl.disable(gl.DITHER);
 
     const program = gl.createProgram();
     gl.attachShader(program, compile(gl, gl.VERTEX_SHADER, VERTEX));

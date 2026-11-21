@@ -15,6 +15,7 @@
   const positions = new Map();
   let layer = 0;
   let drag = null;
+  let settleAnimation;
   function place(card, x, y) {
     const bounds = container.getBoundingClientRect();
     const rect = card.getBoundingClientRect();
@@ -33,6 +34,7 @@
     card.style.setProperty('--card-y', `${y}px`);
   }
   function reset() {
+    settleAnimation?.cancel();
     drag = null;
     cards.forEach(card => {
       positions.delete(card);
@@ -69,6 +71,7 @@
     const handle = card.querySelector('.stack-handle');
     handle.addEventListener('pointerdown', event => {
       if (!desktop.matches || event.button !== 0 || drag) return;
+      settleAnimation?.cancel();
       const position = positions.get(card) || { x: 0, y: 0 };
       drag = { card, id: event.pointerId, startX: event.clientX, startY: event.clientY, ...position };
       card.style.zIndex = String(++layer);
@@ -85,7 +88,17 @@
       if (!drag || drag.card !== card) return;
       drag = null;
       const position = positions.get(card);
-      if (position) place(card, position.x, position.y);
+      if (position) {
+        place(card, position.x, position.y);
+        const settled = positions.get(card);
+        const dx = position.x - settled.x;
+        const dy = position.y - settled.y;
+        if ((dx || dy) && foilMotion.matches) {
+          settleAnimation = card.animate([{ translate: dx + 'px ' + dy + 'px' }, { translate: '0 0' }], {
+            duration: 160, easing: 'ease-in-out'
+          });
+        }
+      }
       card.classList.remove('is-dragging');
     };
     handle.addEventListener('pointerup', end);

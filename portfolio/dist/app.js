@@ -30,9 +30,9 @@ document.querySelectorAll('[data-filter]').forEach(button => button.addEventList
   document.querySelector('#filter-status').textContent = `${count} ${count === 1 ? 'project' : 'projects'} shown.`;
 }));
 const projectDetails = {
-  antalos: { title: 'antalos.', category: 'Infrastructure & self-hosting', description: 'I built and operate Antalos, a self-hosted infrastructure platform on three Proxmox hosts and five Talos Kubernetes nodes. I define VMs with OpenTofu, configure Debian services with Ansible, and use Argo CD to deploy from Git. I review changes in Git and reuse the configuration to set up services again. The repository includes deployment, troubleshooting, and recovery instructions.', tags: ['Kubernetes', 'Proxmox', 'OpenTofu', 'Ansible', 'Argo CD'], url: 'https://github.com/antblu/antalos' },
-  cal: { title: 'cal.diy-OIDC.', category: 'Self-hosted applications', description: 'I keep a copy of Cal.diy, an open-source scheduling project. The repository includes the source, setup instructions, project history, and credit to the upstream project.', tags: ['Scheduling', 'Self-hosting', 'Next.js', 'Community project'], url: 'https://github.com/antblu/cal.diy-OIDC' },
-  jev: { title: 'jev-ultrafast.', category: 'Browser agents & automation', description: 'I explored how Jev Ultrafast uses what it sees on a page to choose an action and the element to interact with. The repository documents the implementation and credits the upstream project.', tags: ['Python', 'Browser automation', 'Agents', 'Community project'], url: 'https://github.com/antblu/jev-ultrafast' }
+  antalos: { title: 'antalos.', category: 'Infrastructure & self-hosting', description: 'I built and operate Antalos, a self-hosted infrastructure platform on three Proxmox hosts and five Talos Kubernetes nodes. I define VMs with OpenTofu, configure Debian services with Ansible, and use Argo CD to deploy from Git. I review changes in Git and reuse the configuration to set up services again. The repository includes deployment, troubleshooting, and recovery instructions.', topics: ['Kubernetes', 'Proxmox', 'OpenTofu', 'Ansible', 'Argo CD'], url: 'https://github.com/antblu/antalos' },
+  cal: { title: 'cal.diy-OIDC.', category: 'Self-hosted applications', description: 'I keep a copy of Cal.diy, an open-source scheduling project. The repository includes the source, setup instructions, project history, and credit to the upstream project.', topics: ['Scheduling', 'Self-hosting', 'Next.js', 'Community project'], url: 'https://github.com/antblu/cal.diy-OIDC' },
+  jev: { title: 'jev-ultrafast.', category: 'Browser agents & automation', description: 'I explored how Jev Ultrafast uses what it sees on a page to choose an action and the element to interact with. The repository documents the implementation and credits the upstream project.', topics: ['Python', 'Browser automation', 'Agents', 'Community project'], url: 'https://github.com/antblu/jev-ultrafast' }
 };
 const dialog = document.querySelector('#project-dialog');
 document.querySelectorAll('[data-project]').forEach(button => button.addEventListener('click', () => {
@@ -41,13 +41,13 @@ document.querySelectorAll('[data-project]').forEach(button => button.addEventLis
   document.querySelector('#dialog-category').textContent = project.category;
   document.querySelector('#dialog-description').textContent = project.description;
   document.querySelector('#dialog-link').href = project.url;
-  document.querySelector('#dialog-tags').replaceChildren(...project.tags.map(tag => { const item = document.createElement('span'); item.textContent = tag; return item; }));
+  document.querySelector('#dialog-topics').textContent = project.topics.join(', ');
   dialog.dataset.layoutId = button.dataset.project;
   button.dataset.layoutId = button.dataset.project;
-  dialog.showModal();
   const source = button.getBoundingClientRect();
-  dialog.style.setProperty('--trigger-x', (source.left + source.width / 2 - dialog.offsetLeft - dialog.offsetWidth / 2) + 'px');
-  dialog.style.setProperty('--trigger-y', (source.top + source.height / 2 - dialog.offsetTop - dialog.offsetHeight / 2) + 'px');
+  dialog.style.setProperty('--trigger-x', (source.left + source.width / 2 - window.innerWidth / 2) + 'px');
+  dialog.style.setProperty('--trigger-y', (source.top + source.height / 2 - window.innerHeight / 2) + 'px');
+  dialog.showModal();
 }));
 document.querySelector('.dialog-close')?.addEventListener('click', () => dialog.close());
 dialog?.addEventListener('click', event => { if (event.target === dialog) { const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); } });

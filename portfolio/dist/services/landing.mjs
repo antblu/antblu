@@ -22,9 +22,12 @@ async function enhanceFaq() {
   try {
     const { createElement: h, createRoot, Accordion, Component, useEffect } = await import('../assets/vendor/emiliany-vendor.js');
     const entries = [...fallback.querySelectorAll('details')].map(item => ({
+      icon: item.dataset.icon,
+      open: item.open,
       question: item.querySelector('summary').textContent,
       answer: item.querySelector('p').textContent
     }));
+    const defaultValue = entries.flatMap((entry, index) => entry.open ? [index] : []);
     const mount = document.createElement('div');
     mount.className = 'svc-faq svc-react-faq';
     fallback.after(mount);
@@ -36,10 +39,12 @@ async function enhanceFaq() {
     }
     function Faq() {
       useEffect(() => { fallback.hidden = true; mount.hidden = false; }, []);
-      return h(Accordion.Root, { multiple: true, 'data-slot': 'accordion' }, ...entries.map((entry, index) =>
+      return h(Accordion.Root, { defaultValue, 'data-slot': 'accordion' }, ...entries.map((entry, index) =>
         h(Accordion.Item, { key: index, value: index, className: 'svc-faq-item', 'data-slot': 'accordion-item' },
-          h(Accordion.Header, { className: 'svc-faq-heading' },
-            h(Accordion.Trigger, { className: 'svc-faq-trigger', 'data-slot': 'accordion-trigger' }, entry.question,
+          h(Accordion.Header, { className: 'svc-faq-heading', render: h('h3') },
+            h(Accordion.Trigger, { className: 'svc-faq-trigger', 'data-slot': 'accordion-trigger' },
+              h('span', { className: 'svc-faq-icon', 'aria-hidden': true }, entry.icon),
+              h('span', { className: 'svc-faq-label' }, entry.question),
               h('svg', {
                 'aria-hidden': true,
                 'data-slot': 'accordion-trigger-icon',

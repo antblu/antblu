@@ -1,0 +1,18 @@
+.hover-card{position:fixed;inset:auto;margin:0;width:min(17rem,calc(100% - 24px));padding:12px 14px;border:1px solid var(--svc-line);border-radius:10px;background:var(--svc-surface);color:var(--svc-ink);box-shadow:0 8px 24px #07162530;font:400 .875rem/1.5 var(--svc-body-font);box-sizing:border-box}
+.hover-card::before{content:"";position:absolute;inset:-6px 0}
+.hover-card strong{display:block;margin-bottom:3px;font-weight:700}
+.hover-card p{margin:0;color:var(--svc-muted)}
+.site-tooltip{width:max-content;max-width:min(20rem,calc(100% - 24px));border:0;border-radius:6px;background:var(--svc-ink);color:var(--svc-bg);font-size:.75rem}
+.site-tooltip{padding:6px 12px}
+.site-tooltip strong{display:none}
+.site-tooltip p{color:inherit}
+.site-tooltip::after{content:"";position:absolute;left:var(--arrow-x);width:9px;height:9px;translate:-50% 0;rotate:45deg;border-radius:1px;background:inherit}
+.site-tooltip[data-side="top"]::after{bottom:-4px}
+.site-tooltip[data-side="bottom"]::after{top:-4px}
+@media(prefers-reduced-motion:no-preference){
+  .hover-card{--toward-trigger:-6px;transform-origin:var(--arrow-x,50%) top;opacity:0;scale:.95;translate:0 var(--toward-trigger);transition:opacity 160ms ease-in,scale 160ms ease-in,translate 160ms ease-in-out,display 160ms allow-discrete,overlay 160ms allow-discrete}
+  .hover-card[data-side="top"]{--toward-trigger:6px;transform-origin:var(--arrow-x,50%) bottom}
+  .hover-card:not(:popover-open){pointer-events:none}
+  .hover-card:popover-open{opacity:1;scale:1;translate:0 0;transition-duration:200ms;transition-timing-function:ease-out}
+  @starting-style{.hover-card:popover-open{opacity:0;scale:.95;translate:0 var(--toward-trigger)}}
+}

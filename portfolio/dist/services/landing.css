@@ -33,7 +33,7 @@
 [data-theme="light"] .svc-landing-hero .svc-banner-benefits li::before { color: #20558a; }
 [data-theme="light"] .svc-landing-hero :focus-visible { outline-color: var(--svc-link); }
 
-.svc-banner h1, .svc-banner h2 { color: #f4f8ff; letter-spacing: -.025em; }
+.svc-banner h1, .svc-banner h2 { color: #f4f8ff;  }
 .svc-banner h1 { max-width: 810px; margin-bottom: 1.65rem; font-size: clamp(2rem, 4.6vw, 3.5rem); font-weight: 700; line-height: 1; }
 .svc-banner h2 { font-size: clamp(2.15rem, 4.1vw, 3.15rem); }
 .svc-banner h1 span, .svc-banner h2 span { color: var(--svc-gold); }
@@ -53,14 +53,13 @@
 .svc-banner .svc-banner-benefits li::before { color: #83bdfe; }
 .svc-landing-pillars { padding-block: 3.5rem 2.7rem; }
 .svc-pillar-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem 1.35rem; text-align: center; }
-.svc-pillar-grid h2 { margin: .9rem 0 .4rem; font-size: 1rem; letter-spacing: -.018em; }
+.svc-pillar-grid h2 { margin: .9rem 0 .4rem; font-size: 1rem;  }
 .svc-pillar-grid p { max-width: 25ch; margin-inline: auto; color: var(--svc-muted); font-size: .87rem; }
-.svc-feature-icon { display: inline-grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; border: 1px solid var(--svc-line); color: var(--svc-link); background: var(--svc-soft); font: 650 1.3rem system-ui, sans-serif; }
+.svc-feature-icon { display: inline-grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; color: var(--svc-link); background: var(--svc-soft); font: 650 1.3rem system-ui, sans-serif; }
 
 .svc-landing-section { padding-block: clamp(3.8rem, 7.8vw, 7rem); }
 .svc-landing-intro { text-align: center; margin: 0 auto clamp(2rem, 5vw, 4rem); }
-.svc-landing-intro .svc-kicker { margin-bottom: .72rem; color: var(--svc-gold-ink); letter-spacing: .12em; }
-.svc-landing-intro h2 { font-size: clamp(1.8rem, 3.3vw, 2.25rem); font-weight: 700; letter-spacing: -.025em; margin-bottom: .55em; }
+.svc-landing-intro h2 { font-size: clamp(1.8rem, 3.3vw, 2.25rem); font-weight: 700;  margin-bottom: .55em; }
 .svc-landing-intro h2 span { color: var(--svc-gold-ink); }
 .svc-landing-intro .kinetic-text { font-family: Montserrat, var(--svc-heading); padding: 0; }
 .svc-landing-intro p:last-child { max-width: 64ch; margin-inline: auto; color: var(--svc-muted); font-size: clamp(1rem, 1.5vw, 1.12rem); }
@@ -82,7 +81,7 @@
 .svc-landing .svc-service-resources { margin-top: 2.5rem; }
 
 .svc-landing .svc-map-card { display: block; padding: 1.1rem 1.2rem; text-decoration: none; }
-.svc-landing .svc-map-card:hover { border-color: var(--svc-link); }
+.svc-landing .svc-map-card:hover { background: var(--svc-soft); }
 .svc-landing .svc-map-card h3 { color: var(--svc-gold-ink); font: 500 .75rem/1.3 var(--svc-mono); text-transform: uppercase; letter-spacing: .08em; }
 .svc-map-card p { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: .55rem; align-items: center; margin-block: .65rem .75rem; color: var(--svc-muted); font-size: .88rem; }
 .svc-map-card p span[aria-hidden] { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--svc-soft); color: var(--svc-link); }
@@ -120,8 +119,7 @@
 .svc-landing-packages { background: var(--svc-soft); }
 .svc-landing .svc-package-grid { max-width: 925px; margin-inline: auto; }
 .svc-landing .svc-package { padding: clamp(1.15rem, 2.8vw, 2rem); gap: .5rem; }
-.svc-landing .svc-package--ha { border-color: var(--svc-gold-ink); box-shadow: 0 0 0 1px var(--svc-gold-ink); }
-.svc-landing .svc-package .svc-kicker { color: var(--svc-muted); font-size: .74rem; }
+.svc-landing .svc-package--ha { background: color-mix(in srgb, var(--svc-surface), var(--svc-gold-ink) 7%); }
 .svc-landing .svc-package h3 { font-size: 1.43rem; }
 .svc-package-price { align-self: stretch; display: grid; margin-block: .85rem .5rem; padding-bottom: .95rem; border-bottom: 1px solid var(--svc-line); }
 .svc-package-price span:last-child { color: var(--svc-muted); font-size: .83rem; }
@@ -150,21 +148,28 @@
 .svc-landing-process [data-service-process] { padding-block: .75rem .15rem; }
 .svc-landing-process h2 { font-size: 1.2rem; }
 
-/* shadcn accordion styling with local Services theme tokens. */
+/* Services FAQ accordion */
 .svc-react-faq {max-width:850px;margin-inline:auto}
 .svc-faq-item:not(:last-child) {border-bottom:1px solid var(--svc-line)}
 .svc-faq-heading {display:flex;margin:0;font-size:.9375rem}
-.svc-faq-trigger {display:flex;flex:1;align-items:flex-start;justify-content:space-between;gap:1rem;min-height:44px;padding:.75rem .25rem;border:1px solid transparent;border-radius:8px;background:transparent;color:inherit;font:inherit;font-weight:600;text-align:start;cursor:pointer}
+.svc-faq-trigger {display:flex;flex:1;align-items:flex-start;gap:.75rem;min-height:44px;padding:.75rem .25rem;border:1px solid transparent;border-radius:8px;background:transparent;color:inherit;font:inherit;font-weight:600;text-align:start;cursor:pointer}
+.svc-faq-icon {flex:none;width:1.25rem;text-align:center}
+.svc-faq-label {flex:1;min-width:0}
 .svc-faq-trigger:hover {text-decoration:underline;text-underline-offset:3px}
 .svc-body .svc-faq-trigger:focus-visible {outline:2px solid var(--svc-accent);outline-offset:1px}
 .svc-faq-chevron {flex:none;width:1rem;height:1rem;margin-block-start:.2em;color:var(--svc-muted);pointer-events:none}
 .svc-faq-trigger[aria-expanded="true"] .svc-faq-chevron {transform:rotate(180deg)}
 .svc-faq-panel {height:var(--accordion-panel-height,auto);overflow:hidden;font-size:.9375rem;transition:height .2s ease-out}
 .svc-faq-panel:is([data-starting-style],[data-ending-style]) {height:0}
-.svc-faq-content {padding:0 .3125rem .875rem;color:var(--svc-muted);line-height:1.65}
+.svc-faq-content {padding:0 .3125rem .875rem 2.3125rem;color:var(--svc-muted);line-height:1.65}
 .svc-faq-content p {margin:0}
 .svc-faq-content p:not(:last-child) {margin-block-end:1rem}
 .svc-faq-content a {text-decoration:underline;text-underline-offset:3px}
+@media(prefers-reduced-motion:no-preference){
+  .svc-faq-panel[data-ending-style]{transition:height 160ms ease-in;animation:none}
+  .svc-faq-chevron{transition:transform 200ms ease-in-out}
+  .svc-faq-trigger[aria-expanded="false"] .svc-faq-chevron{transition-duration:160ms}
+}
 @media(prefers-reduced-motion:reduce){.svc-faq-panel{transition:none}}
 /* Long product names must also fit when web fonts are unavailable. */
 .svc-map-card p > :is(span,strong) {min-width:0;overflow-wrap:anywhere}

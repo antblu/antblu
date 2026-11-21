@@ -15,6 +15,7 @@
   const darkSurface = canvas.parentElement.parentElement.matches('.intro, .portfolio, footer');
   const gl = canvas.getContext('webgl', { alpha: false, antialias: false, depth: false });
   if (!gl) return; // The CSS cloud field remains visible without WebGL.
+  gl.disable(gl.DITHER);
   const vertex = 'attribute vec2 position; void main(){gl_Position=vec4(position,0.0,1.0);}';
   const fragment = `
     precision mediump float;
