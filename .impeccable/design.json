@@ -1,0 +1,376 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-21T03:55:58Z",
+  "title": "Design System: Anthony Bluemel Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Antalos Blue",
+        "tonalRamp": ["oklch(15% 0.053 258.0)", "oklch(26% 0.089 258.0)", "oklch(38% 0.126 258.0)", "oklch(50% 0.165 258.0)", "oklch(62% 0.195 258.0)", "oklch(74% 0.156 258.0)", "oklch(86% 0.099 258.0)", "oklch(95% 0.047 258.0)"]
+      },
+      "bright-blue": {
+        "role": "primary",
+        "displayName": "Bright Blue",
+        "tonalRamp": ["oklch(15% 0.040 256.3)", "oklch(26% 0.068 256.3)", "oklch(38% 0.097 256.3)", "oklch(50% 0.127 256.3)", "oklch(62% 0.149 256.3)", "oklch(74% 0.119 256.3)", "oklch(86% 0.076 256.3)", "oklch(95% 0.036 256.3)"]
+      },
+      "cyan": {
+        "role": "primary",
+        "displayName": "Cyan",
+        "tonalRamp": ["oklch(15% 0.034 221.4)", "oklch(26% 0.057 221.4)", "oklch(38% 0.081 221.4)", "oklch(50% 0.106 221.4)", "oklch(62% 0.124 221.4)", "oklch(74% 0.099 221.4)", "oklch(86% 0.063 221.4)", "oklch(95% 0.030 221.4)"]
+      },
+      "gold": {
+        "role": "secondary",
+        "displayName": "Warm Gold",
+        "tonalRamp": ["oklch(15% 0.031 74.3)", "oklch(26% 0.052 74.3)", "oklch(38% 0.073 74.3)", "oklch(50% 0.096 74.3)", "oklch(62% 0.113 74.3)", "oklch(74% 0.090 74.3)", "oklch(86% 0.058 74.3)", "oklch(95% 0.027 74.3)"]
+      },
+      "gold-ink": {
+        "role": "secondary",
+        "displayName": "Gold Action Ink",
+        "tonalRamp": ["oklch(15% 0.007 70.7)", "oklch(26% 0.012 70.7)", "oklch(38% 0.017 70.7)", "oklch(50% 0.023 70.7)", "oklch(62% 0.027 70.7)", "oklch(74% 0.021 70.7)", "oklch(86% 0.014 70.7)", "oklch(95% 0.006 70.7)"]
+      },
+      "midnight": {
+        "role": "neutral",
+        "displayName": "Midnight Navy",
+        "tonalRamp": ["oklch(15% 0.006 257.2)", "oklch(26% 0.010 257.2)", "oklch(38% 0.014 257.2)", "oklch(50% 0.019 257.2)", "oklch(62% 0.022 257.2)", "oklch(74% 0.017 257.2)", "oklch(86% 0.011 257.2)", "oklch(95% 0.005 257.2)"]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "tonalRamp": ["oklch(15% 0.000 89.9)", "oklch(26% 0.000 89.9)", "oklch(38% 0.000 89.9)", "oklch(50% 0.000 89.9)", "oklch(62% 0.000 89.9)", "oklch(74% 0.000 89.9)", "oklch(86% 0.000 89.9)", "oklch(95% 0.000 89.9)"]
+      },
+      "light-page": {
+        "role": "neutral",
+        "displayName": "Blue-Gray Page",
+        "tonalRamp": ["oklch(15% 0.002 247.9)", "oklch(26% 0.003 247.9)", "oklch(38% 0.004 247.9)", "oklch(50% 0.006 247.9)", "oklch(62% 0.007 247.9)", "oklch(74% 0.005 247.9)", "oklch(86% 0.003 247.9)", "oklch(95% 0.002 247.9)"]
+      },
+      "light-soft": {
+        "role": "neutral",
+        "displayName": "Pale Blue Panel",
+        "tonalRamp": ["oklch(15% 0.003 248.0)", "oklch(26% 0.006 248.0)", "oklch(38% 0.008 248.0)", "oklch(50% 0.010 248.0)", "oklch(62% 0.012 248.0)", "oklch(74% 0.010 248.0)", "oklch(86% 0.006 248.0)", "oklch(95% 0.003 248.0)"]
+      },
+      "light-ink": {
+        "role": "neutral",
+        "displayName": "Navy Ink",
+        "tonalRamp": ["oklch(15% 0.017 254.4)", "oklch(26% 0.028 254.4)", "oklch(38% 0.040 254.4)", "oklch(50% 0.052 254.4)", "oklch(62% 0.061 254.4)", "oklch(74% 0.049 254.4)", "oklch(86% 0.031 254.4)", "oklch(95% 0.015 254.4)"]
+      },
+      "light-muted": {
+        "role": "neutral",
+        "displayName": "Slate Text",
+        "tonalRamp": ["oklch(15% 0.012 251.1)", "oklch(26% 0.021 251.1)", "oklch(38% 0.029 251.1)", "oklch(50% 0.038 251.1)", "oklch(62% 0.045 251.1)", "oklch(74% 0.036 251.1)", "oklch(86% 0.023 251.1)", "oklch(95% 0.011 251.1)"]
+      },
+      "light-line": {
+        "role": "neutral",
+        "displayName": "Pale Blue Divider",
+        "tonalRamp": ["oklch(15% 0.005 250.4)", "oklch(26% 0.009 250.4)", "oklch(38% 0.013 250.4)", "oklch(50% 0.017 250.4)", "oklch(62% 0.020 250.4)", "oklch(74% 0.016 250.4)", "oklch(86% 0.010 250.4)", "oklch(95% 0.005 250.4)"]
+      },
+      "light-link": {
+        "role": "primary",
+        "displayName": "Link Blue",
+        "tonalRamp": ["oklch(15% 0.028 251.4)", "oklch(26% 0.048 251.4)", "oklch(38% 0.067 251.4)", "oklch(50% 0.088 251.4)", "oklch(62% 0.104 251.4)", "oklch(74% 0.083 251.4)", "oklch(86% 0.053 251.4)", "oklch(95% 0.025 251.4)"]
+      },
+      "light-action": {
+        "role": "primary",
+        "displayName": "Action Blue",
+        "tonalRamp": ["oklch(15% 0.028 254.4)", "oklch(26% 0.047 254.4)", "oklch(38% 0.067 254.4)", "oklch(50% 0.088 254.4)", "oklch(62% 0.103 254.4)", "oklch(74% 0.083 254.4)", "oklch(86% 0.053 254.4)", "oklch(95% 0.025 254.4)"]
+      },
+      "light-focus": {
+        "role": "primary",
+        "displayName": "Focus Blue",
+        "tonalRamp": ["oklch(15% 0.049 257.8)", "oklch(26% 0.083 257.8)", "oklch(38% 0.118 257.8)", "oklch(50% 0.154 257.8)", "oklch(62% 0.181 257.8)", "oklch(74% 0.145 257.8)", "oklch(86% 0.092 257.8)", "oklch(95% 0.044 257.8)"]
+      },
+      "dark-page": {
+        "role": "neutral",
+        "displayName": "Navy Page",
+        "tonalRamp": ["oklch(15% 0.009 254.9)", "oklch(26% 0.015 254.9)", "oklch(38% 0.021 254.9)", "oklch(50% 0.027 254.9)", "oklch(62% 0.032 254.9)", "oklch(74% 0.026 254.9)", "oklch(86% 0.016 254.9)", "oklch(95% 0.008 254.9)"]
+      },
+      "dark-panel": {
+        "role": "neutral",
+        "displayName": "Navy Panel",
+        "tonalRamp": ["oklch(15% 0.009 252.8)", "oklch(26% 0.016 252.8)", "oklch(38% 0.022 252.8)", "oklch(50% 0.029 252.8)", "oklch(62% 0.035 252.8)", "oklch(74% 0.028 252.8)", "oklch(86% 0.018 252.8)", "oklch(95% 0.008 252.8)"]
+      },
+      "dark-soft": {
+        "role": "neutral",
+        "displayName": "Raised Navy Panel",
+        "tonalRamp": ["oklch(15% 0.012 257.0)", "oklch(26% 0.021 257.0)", "oklch(38% 0.029 257.0)", "oklch(50% 0.038 257.0)", "oklch(62% 0.045 257.0)", "oklch(74% 0.036 257.0)", "oklch(86% 0.023 257.0)", "oklch(95% 0.011 257.0)"]
+      },
+      "dark-ink": {
+        "role": "neutral",
+        "displayName": "Ice Blue Ink",
+        "tonalRamp": ["oklch(15% 0.004 253.9)", "oklch(26% 0.007 253.9)", "oklch(38% 0.010 253.9)", "oklch(50% 0.014 253.9)", "oklch(62% 0.016 253.9)", "oklch(74% 0.013 253.9)", "oklch(86% 0.008 253.9)", "oklch(95% 0.004 253.9)"]
+      },
+      "dark-muted": {
+        "role": "neutral",
+        "displayName": "Pale Slate Text",
+        "tonalRamp": ["oklch(15% 0.008 251.5)", "oklch(26% 0.013 251.5)", "oklch(38% 0.019 251.5)", "oklch(50% 0.025 251.5)", "oklch(62% 0.029 251.5)", "oklch(74% 0.023 251.5)", "oklch(86% 0.015 251.5)", "oklch(95% 0.007 251.5)"]
+      },
+      "dark-line": {
+        "role": "neutral",
+        "displayName": "Steel Blue Divider",
+        "tonalRamp": ["oklch(15% 0.014 251.2)", "oklch(26% 0.023 251.2)", "oklch(38% 0.033 251.2)", "oklch(50% 0.043 251.2)", "oklch(62% 0.051 251.2)", "oklch(74% 0.041 251.2)", "oklch(86% 0.026 251.2)", "oklch(95% 0.012 251.2)"]
+      },
+      "dark-link": {
+        "role": "primary",
+        "displayName": "Pale Blue Link",
+        "tonalRamp": ["oklch(15% 0.023 256.8)", "oklch(26% 0.039 256.8)", "oklch(38% 0.055 256.8)", "oklch(50% 0.073 256.8)", "oklch(62% 0.085 256.8)", "oklch(74% 0.068 256.8)", "oklch(86% 0.044 256.8)", "oklch(95% 0.020 256.8)"]
+      },
+      "dark-action": {
+        "role": "primary",
+        "displayName": "Pale Blue Action",
+        "tonalRamp": ["oklch(15% 0.022 257.3)", "oklch(26% 0.037 257.3)", "oklch(38% 0.052 257.3)", "oklch(50% 0.068 257.3)", "oklch(62% 0.080 257.3)", "oklch(74% 0.064 257.3)", "oklch(86% 0.041 257.3)", "oklch(95% 0.019 257.3)"]
+      },
+      "dark-action-ink": {
+        "role": "neutral",
+        "displayName": "Navy Action Ink",
+        "tonalRamp": ["oklch(15% 0.017 258.4)", "oklch(26% 0.029 258.4)", "oklch(38% 0.040 258.4)", "oklch(50% 0.053 258.4)", "oklch(62% 0.062 258.4)", "oklch(74% 0.050 258.4)", "oklch(86% 0.032 258.4)", "oklch(95% 0.015 258.4)"]
+      },
+      "dark-focus": {
+        "role": "primary",
+        "displayName": "Pale Blue Focus",
+        "tonalRamp": ["oklch(15% 0.036 258.7)", "oklch(26% 0.062 258.7)", "oklch(38% 0.087 258.7)", "oklch(50% 0.114 258.7)", "oklch(62% 0.134 258.7)", "oklch(74% 0.107 258.7)", "oklch(86% 0.068 258.7)", "oklch(95% 0.032 258.7)"]
+      },
+      "emiliany-ivory": {
+        "role": "neutral",
+        "displayName": "Emiliany Ivory",
+        "tonalRamp": ["oklch(15% 0.002 98.9)", "oklch(26% 0.004 98.9)", "oklch(38% 0.005 98.9)", "oklch(50% 0.007 98.9)", "oklch(62% 0.008 98.9)", "oklch(74% 0.006 98.9)", "oklch(86% 0.004 98.9)", "oklch(95% 0.002 98.9)"]
+      },
+      "emiliany-olive": {
+        "role": "secondary",
+        "displayName": "Emiliany Olive",
+        "tonalRamp": ["oklch(15% 0.020 127.5)", "oklch(26% 0.034 127.5)", "oklch(38% 0.047 127.5)", "oklch(50% 0.062 127.5)", "oklch(62% 0.073 127.5)", "oklch(74% 0.058 127.5)", "oklch(86% 0.037 127.5)", "oklch(95% 0.018 127.5)"]
+      },
+      "emiliany-pine": {
+        "role": "neutral",
+        "displayName": "Emiliany Pine",
+        "tonalRamp": ["oklch(15% 0.004 163.3)", "oklch(26% 0.006 163.3)", "oklch(38% 0.009 163.3)", "oklch(50% 0.012 163.3)", "oklch(62% 0.014 163.3)", "oklch(74% 0.011 163.3)", "oklch(86% 0.007 163.3)", "oklch(95% 0.003 163.3)"]
+      },
+      "emiliany-sage": {
+        "role": "secondary",
+        "displayName": "Emiliany Sage",
+        "tonalRamp": ["oklch(15% 0.020 120.5)", "oklch(26% 0.034 120.5)", "oklch(38% 0.047 120.5)", "oklch(50% 0.062 120.5)", "oklch(62% 0.073 120.5)", "oklch(74% 0.058 120.5)", "oklch(86% 0.037 120.5)", "oklch(95% 0.018 120.5)"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Portfolio display",
+        "purpose": "The name in the portfolio hero."
+      },
+      "headline": {
+        "displayName": "Consulting headline",
+        "purpose": "Page titles on consulting routes."
+      },
+      "section-title": {
+        "displayName": "Boxed section title",
+        "purpose": "Major portfolio sections."
+      },
+      "title": {
+        "displayName": "Consulting card title",
+        "purpose": "Service cards and subsection titles."
+      },
+      "body": {
+        "displayName": "Portfolio body",
+        "purpose": "Portfolio narrative and descriptions."
+      },
+      "consulting-body": {
+        "displayName": "Consulting body",
+        "purpose": "Consulting pages, shared navigation, and forms."
+      },
+      "label": {
+        "displayName": "Consulting overline",
+        "purpose": "Short uppercase labels."
+      },
+      "button": {
+        "displayName": "Consulting button",
+        "purpose": "Standard primary and secondary actions."
+      },
+      "hero-action": {
+        "displayName": "Portfolio hero action",
+        "purpose": "The gradient experience link."
+      },
+      "bracket-action": {
+        "displayName": "Bracket action",
+        "purpose": "Portfolio shortcuts and project actions."
+      },
+      "mono": {
+        "displayName": "Technical labels",
+        "purpose": "Application names and metadata in the replacement map."
+      },
+      "emiliany-display": {
+        "displayName": "Emiliany display",
+        "purpose": "The main case-study headline."
+      }
+    },
+    "shadows": [
+      {
+        "name": "project-carousel",
+        "value": "0 18px 50px #0005",
+        "purpose": "Lift the project cards over the dark carousel stage."
+      },
+      {
+        "name": "inventory-card-light",
+        "value": "0 12px 26px #070d1626,inset 0 0 0 3px #ffffff80",
+        "purpose": "Add depth and an inset rim to light foil inventory cards."
+      },
+      {
+        "name": "inventory-card-dark",
+        "value": "0 12px 26px #0005,inset 0 0 0 3px #ffffff0b",
+        "purpose": "Add a lower-contrast inset rim to dark foil inventory cards."
+      },
+      {
+        "name": "consulting-offering",
+        "value": "0 12px 32px #0a1a2c15",
+        "purpose": "Lift the consulting landing page offering cards."
+      }
+    ],
+    "motion": [
+      {
+        "name": "consulting-button",
+        "value": "background .16s,color .16s",
+        "purpose": "Change consulting button fill and text on hover."
+      },
+      {
+        "name": "hero-dot-fill",
+        "value": ".3s ease",
+        "purpose": "Expand the outlined hero action’s accent dot into its fill."
+      },
+      {
+        "name": "hero-gradient",
+        "value": "8s linear infinite",
+        "purpose": "Move the experience link’s text and border gradients."
+      },
+      {
+        "name": "inventory-foil",
+        "value": ".25s ease",
+        "purpose": "Ease the tilt in the inventory illustration area."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "inventory-single-column",
+        "value": "360px"
+      },
+      {
+        "name": "skills-two-columns",
+        "value": "580px"
+      },
+      {
+        "name": "header-menu-and-portrait-stack",
+        "value": "700px"
+      },
+      {
+        "name": "timeline-single-column",
+        "value": "767px"
+      },
+      {
+        "name": "calculator-single-column",
+        "value": "850px"
+      },
+      {
+        "name": "skills-three-columns",
+        "value": "960px"
+      },
+      {
+        "name": "inventory-three-columns",
+        "value": "1100px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary consulting button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Use for the main action in a consulting section.",
+      "html": "<button class=\"ds-button\" type=\"button\">Explore All Services</button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:44px;border:1px solid;border-radius:12px;padding:.52rem .9rem;font:600 .9rem/1.3 var(--svc-body-font,Inter,system-ui,sans-serif);cursor:pointer;transition:background .16s,color .16s;text-align:center;background:var(--svc-action,#204e84);border-color:var(--svc-action,#204e84);color:var(--svc-action-ink,#fff)}.ds-button:hover{filter:brightness(1.13)}.ds-button:focus-visible{outline:3px solid var(--svc-accent,#2473df);outline-offset:4px}@media(prefers-reduced-motion:reduce){.ds-button{transition:none}}"
+    },
+    {
+      "name": "Secondary consulting button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Use for supporting actions.",
+      "html": "<button class=\"ds-button\" type=\"button\">Explore Infrastructure</button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:44px;border:1px solid;border-radius:12px;padding:.52rem .9rem;font:600 .9rem/1.3 var(--svc-body-font,Inter,system-ui,sans-serif);cursor:pointer;transition:background .16s,color .16s;text-align:center;background:var(--svc-surface,#fff);border-color:var(--svc-line,#d4dfeb);color:var(--svc-link,#20558a)}.ds-button:hover{background:var(--svc-soft,#eaf1f8)}.ds-button:focus-visible{outline:3px solid var(--svc-accent,#2473df);outline-offset:4px}@media(prefers-reduced-motion:reduce){.ds-button{transition:none}}"
+    },
+    {
+      "name": "Gold consulting button",
+      "kind": "button",
+      "refersTo": "button-gold",
+      "description": "Highlight the cost calculator on the consulting landing page.",
+      "html": "<button class=\"ds-button\" type=\"button\">Calculate Your Costs</button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:44px;border:1px solid;border-radius:12px;padding:.52rem .9rem;font:600 .9rem/1.3 var(--svc-body-font,Inter,system-ui,sans-serif);cursor:pointer;transition:background .16s,color .16s;text-align:center;min-height:49px;font-size:.98rem;padding-inline:clamp(1rem,2.3vw,2rem);background:var(--svc-gold,#e3ad61);border-color:var(--svc-gold,#e3ad61);color:#21170b}.ds-button:hover{background:#f0bd76}.ds-button:focus-visible{outline:3px solid var(--svc-accent,#2473df);outline-offset:4px}:host-context([data-theme=\"dark\"]) .ds-button:focus-visible{outline-color:var(--svc-gold,#e3ad61)}@media(prefers-reduced-motion:reduce){.ds-button{transition:none}}"
+    },
+    {
+      "name": "Gradient hero action",
+      "kind": "button",
+      "refersTo": "button-hero",
+      "description": "Lead from the portfolio hero into experience.",
+      "html": "<button class=\"ds-hero\" type=\"button\"><span aria-hidden=\"true\">↗</span><span class=\"ds-divider\" aria-hidden=\"true\"></span><span class=\"ds-gradient-text\">View my experience</span><svg class=\"ds-chevron\" aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m9 6 6 6-6 6\"/></svg></button>",
+      "css": ".ds-hero{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:8px 16px;border:1px solid #9c40ff80;border-radius:999px;background:#070d16;color:#a9bbce;font:500 14px/1.5 var(--svc-body-font,Inter,system-ui,sans-serif);box-shadow:inset 0 -8px 10px #8fdfff1f;transition:box-shadow .5s ease-out;cursor:pointer}.ds-hero::before{content:\"\";position:absolute;inset:-1px;padding:1px;pointer-events:none;border-radius:inherit;background:linear-gradient(90deg,#ffaa4080,#9c40ff80,#ffaa4080) 100% 50%/300% 100%;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;animation:ds-gradient 8s linear infinite}.ds-gradient-text{color:#ffaa40;background:linear-gradient(90deg,#ffaa40,#9c40ff,#ffaa40) 100% 50%/300% 100%;background-clip:text;-webkit-text-fill-color:transparent;animation:ds-gradient 8s linear infinite}.ds-divider{width:1px;height:16px;background:#707070}.ds-chevron{transition:transform .3s ease-in-out}.ds-hero:is(:hover,:focus-visible){box-shadow:inset 0 -5px 10px #8fdfff3f}.ds-hero:is(:hover,:focus-visible) .ds-chevron{transform:translateX(2px)}.ds-hero:focus-visible{outline:3px solid var(--svc-link,#20558a);outline-offset:4px}@keyframes ds-gradient{to{background-position:0% 50%}}@media(prefers-reduced-motion:reduce){.ds-gradient-text,.ds-hero::before{animation:none}.ds-hero,.ds-chevron{transition:none}.ds-hero:is(:hover,:focus-visible) .ds-chevron{transform:none}}@media(forced-colors:active){.ds-gradient-text{background:none;color:LinkText;-webkit-text-fill-color:currentColor}.ds-hero::before{display:none}.ds-hero{border-color:LinkText}}"
+    },
+    {
+      "name": "Bracket action",
+      "kind": "button",
+      "refersTo": "button-bracket",
+      "description": "Use for portfolio shortcuts and project links.",
+      "html": "<button class=\"ds-bracket\" type=\"button\">VIEW RESUME</button>",
+      "css": ".ds-bracket{--ds-bracket-line:#0866d8;--ds-bracket-text:#0c335f;--ds-bracket-hover:#fff;display:inline-flex;align-items:center;justify-content:center;min-height:32px;border:0;border-inline:2px solid var(--ds-bracket-line);background:none;color:var(--ds-bracket-text);padding:7px 25px;font:700 12px/1.5 var(--svc-heading,\"Plus Jakarta Sans\",system-ui,sans-serif);letter-spacing:1px;transition:background .2s;cursor:pointer}.ds-bracket:hover{background:var(--ds-bracket-line);color:var(--ds-bracket-hover)}.ds-bracket:focus-visible{outline:3px solid var(--svc-link,#20558a);outline-offset:4px}:host-context([data-theme=\"dark\"]) .ds-bracket{--ds-bracket-line:var(--brand-bright,#62a5ff);--ds-bracket-text:#d4e8ff;--ds-bracket-hover:#070d16}@media(max-width:700px){.ds-bracket{min-height:44px}}@media(prefers-reduced-motion:reduce){.ds-bracket{transition:none}}"
+    },
+    {
+      "name": "Shared navigation links",
+      "kind": "nav",
+      "refersTo": "nav-shared",
+      "description": "Show a route with an underline when it is current.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Site navigation\"><a href=\"#experience\">Experience</a><a href=\"#projects\">Projects</a><a href=\"#services\" aria-current=\"page\">Services</a><a href=\"#contact\">Contact</a></nav>",
+      "css": ".ds-nav{display:flex;flex-wrap:wrap;gap:clamp(.8rem,2vw,1.7rem);padding-inline:16px;background:var(--svc-bg,#f3f7fb);border-bottom:1px solid var(--svc-line,#d4dfeb);font:500 .875rem/1.65 var(--svc-body-font,Inter,system-ui,sans-serif)}.ds-nav a{display:flex;align-items:center;min-height:44px;color:var(--svc-muted,#4b6077);text-decoration:none}.ds-nav a:is(:hover,[aria-current=\"page\"]){color:var(--svc-link,#20558a);text-decoration:underline;text-underline-offset:.2em}.ds-nav a:focus-visible{outline:3px solid var(--svc-accent,#2473df);outline-offset:4px}"
+    },
+    {
+      "name": "Standard text field",
+      "kind": "input",
+      "refersTo": "field-standard",
+      "description": "Use a visible label and a native form control.",
+      "html": "<label class=\"ds-field\">Email<input class=\"ds-input\" type=\"email\" placeholder=\"you@example.com\" autocomplete=\"email\"></label>",
+      "css": ".ds-field{display:grid;gap:.3rem;color:var(--svc-ink,#132b48);font:650 .94rem/1.65 var(--svc-body-font,Inter,system-ui,sans-serif)}.ds-input{box-sizing:border-box;width:100%;min-height:44px;min-width:0;padding:.54rem .6rem;border:1px solid var(--svc-line,#d4dfeb);border-radius:8px;background:var(--svc-bg,#f3f7fb);color:inherit;font:inherit;font-size:1rem}.ds-input:focus-visible{outline:3px solid var(--svc-accent,#2473df);outline-offset:4px}"
+    },
+    {
+      "name": "Experience skill tag",
+      "kind": "chip",
+      "refersTo": "tag-resume",
+      "description": "Identify a tool or skill in an experience entry.",
+      "html": "<span class=\"ds-tag\">Kubernetes</span>",
+      "css": ".ds-tag{display:inline-block;border:1px solid var(--resume-line,#435a7138);border-radius:999px;background:var(--svc-bg,#f3f7fb);color:var(--svc-muted,#4b6077);padding:3px 10px;font:400 13px/1.5 var(--svc-body-font,Inter,system-ui,sans-serif)}:host-context([data-theme=\"dark\"]) .ds-tag{border-color:var(--resume-line,#a9bbce38)}"
+    },
+    {
+      "name": "Consulting service card",
+      "kind": "card",
+      "refersTo": "card-services",
+      "description": "Group a service title, summary, and link on a solid panel.",
+      "html": "<article class=\"ds-service\"><h3>Open-Source Infrastructure</h3><p>Access controls, monitoring, and backups for open-source deployments.</p><a href=\"#infrastructure\">Explore Infrastructure</a></article>",
+      "css": ".ds-service{display:flex;flex-direction:column;align-items:flex-start;gap:.65rem;padding:clamp(1rem,2.7vw,1.65rem);border:1px solid var(--svc-line,#d4dfeb);border-radius:13px;background:var(--svc-surface,#fff);color:var(--svc-ink,#132b48);font:400 .94rem/1.65 var(--svc-body-font,Inter,system-ui,sans-serif)}.ds-service h3{margin:0;font:750 1.18rem/1.14 var(--svc-heading,\"Plus Jakarta Sans\",system-ui,sans-serif);letter-spacing:-.033em}.ds-service p{margin:0;color:var(--svc-muted,#4b6077)}.ds-service a{margin-top:auto;color:var(--svc-link,#20558a);text-underline-offset:.2em}.ds-service a:focus-visible{outline:3px solid var(--svc-accent,#2473df);outline-offset:4px}"
+    },
+    {
+      "name": "Project carousel card",
+      "kind": "card",
+      "refersTo": "card-project",
+      "description": "Frame project artwork above the description and detail action.",
+      "html": "<article class=\"ds-project\"><div class=\"ds-art\" aria-hidden=\"true\"><svg width=\"88\" height=\"72\" viewBox=\"0 0 88 72\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"30\" y=\"4\" width=\"28\" height=\"22\" rx=\"6\"/><rect x=\"4\" y=\"46\" width=\"26\" height=\"22\" rx=\"6\"/><rect x=\"58\" y=\"46\" width=\"26\" height=\"22\" rx=\"6\"/><path d=\"M44 26v10M17 46V36h54v10\"/></svg></div><div class=\"ds-copy\"><span class=\"ds-category\">INFRASTRUCTURE</span><h3>Antalos</h3><p>Kubernetes infrastructure and GitOps deployments.</p><button class=\"ds-project-link\" type=\"button\">VIEW DETAILS</button></div></article>",
+      "css": ".ds-project{box-sizing:border-box;display:grid;align-content:end;min-height:370px;width:min(340px,100%);overflow:hidden;border-radius:12px;background:#070d16;color:#fff;box-shadow:0 18px 50px #0005;font:400 15px/1.6 var(--svc-body-font,Inter,system-ui,sans-serif)}.ds-art{display:grid;min-height:160px;place-items:center;background:radial-gradient(ellipse at 50% 0%,#3488ff50,transparent 85%);color:var(--brand-bright,#62a5ff)}.ds-copy{padding:24px 16px}.ds-copy h3{margin:.15em 0;font:700 23px/1.3 var(--svc-heading,\"Plus Jakarta Sans\",system-ui,sans-serif);letter-spacing:1px}.ds-copy p{margin:0 0 12px;color:#dbe6f2}.ds-category{color:#b7d8ff;font-size:12px;letter-spacing:1px}.ds-project-link{min-height:44px;padding:8px 10px;border:0;border-inline:2px solid #62a5ff;background:transparent;color:#d4e8ff;cursor:pointer;font:700 12px/1.5 var(--svc-heading,\"Plus Jakarta Sans\",system-ui,sans-serif);letter-spacing:1px}.ds-project-link:hover{background:#62a5ff;color:#070d16}.ds-project-link:focus-visible{outline:3px solid #62a5ff;outline-offset:4px}@media(max-width:700px){.ds-project{min-height:360px}.ds-copy{padding:22px 16px}.ds-copy h3{font-size:22px}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Systems, services, automation",
+    "overview": "The portfolio pairs Anthony’s portrait and blue skies with evidence from his systems work. Landscape photography gives the homepage its rhythm. Project artwork, rack photos, topology diagrams, and service logos show visitors what he built and how the pieces fit.\n\nThe consulting pages share the blue palette and site navigation. They use solid panels, diagrams, and labeled controls so visitors can compare services and work through estimates. The Emiliany case study uses the store’s olive and ivory palette and its own photography.",
+    "keyCharacteristics": [
+      "Blue-gray surfaces and a persistent light/dark theme.",
+      "Photo-backed portfolio sections with solid reading surfaces where the content needs them.",
+      "Color and motion on the hero, project artwork, and inventory illustrations."
+    ],
+    "dos": [
+      "Do use the shared theme variables for new consulting pages and check the page in both themes at 320px.",
+      "Do keep text readable against a solid panel or a theme-aware photo overlay.",
+      "Do limit the Emiliany colors and Georgia headline to that case study.",
+      "Do keep visible keyboard focus and preserve text labels when a control has a decorative effect.",
+      "Do keep project and inventory details available through their text and actions, including in reduced motion."
+    ]
+  }
+}

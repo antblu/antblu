@@ -1,0 +1,7 @@
+{
+  "files": ["portfolio/dist/**/*.html"],
+  "exclude": ["portfolio/dist/blog/index.html"],
+  "insertBefore": "</body>",
+  "commentSyntax": "html",
+  "cspChecked": true
+}

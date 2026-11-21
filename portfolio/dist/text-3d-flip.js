@@ -7,6 +7,7 @@
     accessibleText.className = 'sr-only';
     accessibleText.textContent = text;
     const visual = document.createElement('span');
+    visual.className = 'text-flip-visual';
     visual.setAttribute('aria-hidden', 'true');
     let index = 0;
     text.split(' ').forEach((word, wordIndex) => {
