@@ -446,3 +446,5 @@ and required-field checks at 320px and 1440px in both themes.
 - Checked 12 routes in Chromium at 320px, 768px, and 1440px in both themes. Found no horizontal page overflow or uncaught page errors. Reviewed the portfolio portrait and Services dashboard layouts. Captured the portfolio homepage for the web development card.
 - Verified the Services CTA, menu keyboard controls, project dialogs, gallery controls, FAQ and calculator fallbacks. Used a local ticket fixture to check the disabled submit button, pending indicator, and confirmation with both motion preferences.
 - JavaScript syntax checks and the Git whitespace check passed. Physical devices, live booking, and ticket delivery remain unverified.
+
+Emiliany project card (2026-11-21). Captured the live English homepage and saved it as a local WebP. In Chrome, selected Infrastructure and advanced to Emiliany at 320px and 1440px in both themes. The screenshot decoded without page errors or horizontal overflow. Reviewed the mobile dark and desktop light card captures. Production deployment was outside this check.
