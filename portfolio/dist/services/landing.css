@@ -11,6 +11,12 @@
 
 .svc-landing-hero { padding: clamp(2.5rem, 4.4vw, 4rem) 0; }
 .svc-hero-layout{display:grid;align-items:center;gap:clamp(1.75rem,4vw,4rem)}
+.svc-hero-dashboard{display:block;width:min(100%,25rem);padding:6px;border:1px solid var(--svc-line);border-radius:14px;background:var(--svc-surface)}
+.svc-hero-dashboard img{display:block;width:100%;height:auto;border-radius:8px}
+@media(min-width:800px){
+  .svc-hero-layout{grid-template-columns:minmax(0,3fr) minmax(0,2fr)}
+  .svc-hero-dashboard{justify-self:end}
+}
 .svc-hero-secondary{display:inline-flex;align-items:center;justify-content:center;min-height:44px;color:inherit;text-underline-offset:.22em}
 [data-theme="light"] .svc-landing-hero {
   --banner-muted: #314c67;

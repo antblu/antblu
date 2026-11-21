@@ -310,6 +310,7 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 .photo-surface>.photo-background.photo-background{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
 .photo-background>img,.photo-background>canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--photo-position,center);pointer-events:none}
 #consulting-services{--photo-position:39% 57%}
+#consulting-services .svc-grid > .svc-card{background:color-mix(in srgb,var(--svc-surface) 55%,transparent)}
 #resume{--photo-position:44% center}
 #contact{--photo-position:57% center}
 #portfolio{--photo-position:64% center}

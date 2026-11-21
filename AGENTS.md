@@ -10,7 +10,7 @@ This repository hosts Anthony Bluemel’s buildless portfolio. Edit `portfolio/d
 - `styles.css`: base layout; `brand.css`: branding, theme, and feature overrides.
 - `assets/`: local images, logos, and asset licenses.
 
-Supporting documentation lives in `portfolio/README.md`, `BRANDING.md`, and `VERIFICATION.md`. Root `Dockerfile` and `nginx.conf` serve the site; `.github/workflows/` handles container builds and runner selection. There is no separate application source or test directory.
+Supporting documentation lives in `portfolio/README.md`, `BRANDING.md`, and `VERIFICATION.md`. Root `Dockerfile` and `nginx.conf` serve the site; `.github/workflows/` handles container builds. There is no separate application source or test directory.
 
 ## Build, Test, and Development Commands
 
