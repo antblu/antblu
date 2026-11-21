@@ -11,12 +11,7 @@
 
 .svc-landing-hero { padding: clamp(2.5rem, 4.4vw, 4rem) 0; }
 .svc-hero-layout{display:grid;align-items:center;gap:clamp(1.75rem,4vw,4rem)}
-.svc-hero-product{min-width:0;margin:0}
-.svc-hero-product a{display:block;padding:var(--svc-frame-pad);border-radius:var(--svc-frame-radius);background:var(--svc-line)}
-.svc-hero-product img{display:block;width:100%;height:auto;aspect-ratio:1.65;object-fit:cover;object-position:top;border-radius:calc(var(--svc-frame-radius) - var(--svc-frame-pad))}
-.svc-hero-product figcaption{margin-top:.65rem;color:var(--banner-muted);font-size:.875rem}
 .svc-hero-secondary{display:inline-flex;align-items:center;justify-content:center;min-height:44px;color:inherit;text-underline-offset:.22em}
-@media(min-width:800px){.svc-hero-layout{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}}
 [data-theme="light"] .svc-landing-hero {
   --banner-muted: #314c67;
   color: var(--svc-ink);
