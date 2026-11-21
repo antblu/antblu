@@ -28,33 +28,23 @@
   <script type="module" src="/services/common.mjs"></script>
   <script type="module" src="/services/booking.mjs"></script>
   <link rel="stylesheet" href="/components.css">
-  <link rel="stylesheet" href="/text-3d-flip.css">
   <link rel="stylesheet" href="/border-glow.css">
   <link rel="stylesheet" href="/services/landing.css">
-  <script src="/text-3d-flip.js" defer></script>
   <script src="/border-glow.js" defer></script>
   <script type="module" src="/services/landing.mjs"></script>
-  <link rel="stylesheet" href="../dashboards.css">
-  <script src="../dashboards.js" defer></script>
+  <link rel="stylesheet" href="/dashboards.css">
+  <script src="/dashboards.js" defer></script>
+  <link rel="stylesheet" href="/text-3d-flip.css">
+  <script src="/text-3d-flip.js" defer></script>
+  <link rel="stylesheet" href="/editorial.css">
 </head>
 <body class="svc-body svc-landing">
   <a class="svc-skip" href="#main">Skip to content</a>
-  <header class="svc-header">
-    <div class="svc-wrap">
-      <a class="svc-brand" href="/"><img src="../assets/logoantbluenhanced.png" alt="Anthony Bluemel" width="2172" height="724"></a>
-      <button class="svc-btn svc-menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>Menu</button>
-      <nav id="site-nav" class="svc-nav" aria-label="Main navigation">
-        <a href="/#resume">Experience</a>
-        <a href="/#portfolio">Projects</a>
-        <a href="/services" aria-current="page">Services</a>
-        <a href="https://blog.antblu.net">Blog</a>
-        <a href="/contact">Contact</a>
-      </nav>
-      <button type="button" class="svc-btn svc-theme" data-svc-theme aria-label="Dark mode" aria-pressed="false" hidden><svg class="theme-icon theme-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="5"/><path d="M11 1h2v3h-2zm0 19h2v3h-2zM1 11h3v2H1zm19 0h3v2h-3zM3.51 4.93l1.42-1.42 2.12 2.13-1.41 1.41zm13.44 13.43 1.41-1.41 2.13 2.12-1.42 1.42zM3.51 19.07l2.13-2.12 1.41 1.41-2.12 2.13zM16.95 5.64l2.12-2.13 1.42 1.42-2.13 2.12z"/></svg><svg class="theme-icon theme-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.9 13.4A9 9 0 0 1 10.6 3.1a.8.8 0 0 0-1.1-.9A10.2 10.2 0 1 0 21.8 14.5a.8.8 0 0 0-.9-1.1Z"/></svg></button>
-    </div>
-  </header>
+  <!-- BEGIN site-header -->
+  <header class="svc-header"><div class="svc-wrap"><a class="svc-brand" href="/" aria-label="antblu home"><picture><img src="/favicon.svg" alt="" width="42" height="28"/></picture><span>antblu</span></a><button class="svc-btn svc-menu-toggle" type="button" hidden="" aria-expanded="false" aria-controls="site-nav">Menu</button><nav id="site-nav" class="svc-nav" aria-label="Main navigation"><a href="/#resume">Experience</a><a href="/#portfolio">Projects</a><a href="/services" aria-current="page">Services</a><a href="https://blog.antblu.net">Blog</a><a href="/contact">Contact</a></nav><button class="svc-btn svc-theme" type="button" hidden="" data-svc-theme="" aria-label="Dark mode" aria-pressed="false"><svg class="theme-icon theme-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><path d="M11 1h2v3h-2zm0 19h2v3h-2zM1 11h3v2H1zm19 0h3v2h-3zM3.51 4.93l1.42-1.42 2.12 2.13-1.41 1.41zm13.44 13.43 1.41-1.41 2.13 2.12-1.42 1.42zM3.51 19.07l2.13-2.12 1.41 1.41-2.12 2.13zM16.95 5.64l2.12-2.13 1.42 1.42-2.13 2.12z"></path></svg><svg class="theme-icon theme-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.9 13.4A9 9 0 0 1 10.6 3.1a.8.8 0 0 0-1.1-.9A10.2 10.2 0 1 0 21.8 14.5a.8.8 0 0 0-.9-1.1Z"></path></svg></button></div></header>
+  <!-- END site-header -->
   <main id="main" tabindex="-1">
-    <section class="svc-banner svc-landing-hero hero-copy" aria-labelledby="landing-title">
+    <section id="services" class="svc-banner svc-landing-hero hero-copy" aria-labelledby="landing-title">
       <div class="svc-wrap">
         <h1 id="landing-title">Open-source systems<br><span data-text-3d-flip>you control</span></h1>
         <p class="svc-banner-lead">I deploy open-source systems in <mark class="text-highlighter">accounts you control</mark>. I build business websites and online stores and train your team to run them. I estimate setup, hosting, paid extensions, and operating costs as separate items.</p>
@@ -128,6 +118,16 @@
       </div>
     </section>
 
+
+    <section class="svc-landing-pillars" aria-label="What customers control">
+      <div class="svc-wrap svc-pillar-grid">
+        <article><span class="svc-feature-icon" aria-hidden="true">⌂</span><h2>Your deployment</h2><p>Use your hardware or an account with a cloud provider.</p></article>
+        <article><span class="svc-feature-icon" aria-hidden="true">↗</span><h2>Your data</h2><p>Choose where it lives and who can access it.</p></article>
+        <article><span class="svc-feature-icon" aria-hidden="true">≡</span><h2>Your documentation</h2><p>Keep the configuration, runbooks, and recovery procedures.</p></article>
+        <article><span class="svc-feature-icon" aria-hidden="true">✓</span><h2>Your support options</h2><p>Run the system in-house or request help as needed.</p></article>
+      </div>
+    </section>
+
     <section class="svc-landing-section" aria-labelledby="map-title">
       <div class="svc-wrap">
         <header class="svc-landing-intro">
@@ -172,12 +172,12 @@
         <p>With single sign-on (SSO), you sign in to Authentik once. From there, you can open connected apps your account has permission to use. In my lab, that includes Grafana, where I check how the services are running.</p>
       </header>
       <div class="dashboard-grid">
-        <a class="dashboard-card" href="../assets/authentik-dashboard.png" aria-label="View the Authentik screenshot">
-          <span class="dashboard-frame"><img src="../assets/authentik-dashboard.png" alt="Authentik application launcher with tiles for Grafana, Nextcloud, and other lab apps" width="2108" height="1773" loading="lazy" decoding="async"></span>
+        <a class="dashboard-card" href="/assets/authentik-dashboard.png" aria-label="View the Authentik screenshot">
+          <span class="dashboard-frame"><img src="/assets/authentik-dashboard.png" alt="Authentik application launcher with tiles for Grafana, Nextcloud, and other lab apps" width="2108" height="1773" loading="lazy" decoding="async"></span>
           <span class="dashboard-caption"><span><strong>Authentik</strong><span>Open an app from the launcher.</span></span><span class="dashboard-expand" aria-hidden="true">↗</span></span>
         </a>
-        <a class="dashboard-card" href="../assets/grafana-overview.png" aria-label="View the Grafana screenshot">
-          <span class="dashboard-frame"><img src="../assets/grafana-overview.png" alt="Grafana overview showing alert counts, request rates, and latency over six hours" width="1276" height="1026" loading="lazy" decoding="async"></span>
+        <a class="dashboard-card" href="/assets/grafana-overview.png" aria-label="View the Grafana screenshot">
+          <span class="dashboard-frame"><img src="/assets/grafana-overview.png" alt="Grafana overview showing alert counts, request rates, and latency over six hours" width="1276" height="1026" loading="lazy" decoding="async"></span>
           <span class="dashboard-caption"><span><strong>Grafana</strong><span>Check alerts and request latency.</span></span><span class="dashboard-expand" aria-hidden="true">↗</span></span>
         </a>
       </div>
@@ -255,8 +255,8 @@
         <h2 id="close-title">Plan your <span>self-hosted setup</span></h2>
         <p class="svc-banner-lead">Use the calculator to estimate running costs. In a free consultation, we can review your current tools, decide which ones to keep, and identify what your team would operate.</p>
         <div class="svc-cta">
-          <a class="svc-btn svc-btn--primary svc-gold" href="/services/calculator">Calculate Your Costs</a>
-          <a class="svc-btn svc-banner-secondary" href="#booking">Book a Free Consultation <span aria-hidden="true">→</span></a>
+          <a class="svc-btn svc-btn--primary" href="/services/calculator">Calculate your costs</a>
+          <a class="svc-btn svc-banner-secondary" href="#booking">Book a free consultation <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>

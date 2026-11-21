@@ -1,0 +1,12 @@
+/* Shared portfolio and Services header. */
+:is(.portfolio-page, .svc-landing) .svc-header .svc-brand {
+  gap: .35rem;
+  font: 700 1.1rem/1 var(--svc-body-font);
+}
+:is(.portfolio-page, .svc-landing) .svc-header .svc-brand img { width: 42px; }
+:is(.portfolio-page, .svc-landing) .svc-header .svc-brand span { color: var(--svc-ink); }
+:is(.portfolio-page, .svc-landing) .svc-header .svc-wrap { width: min(1168px, calc(100% - clamp(2rem, 9vw, 9rem))); margin-inline: auto; }
+
+@media (max-width: 700px) {
+  :is(.portfolio-page, .svc-landing) .svc-header .svc-wrap { width: calc(100% - 32px); }
+}

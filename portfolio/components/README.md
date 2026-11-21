@@ -26,3 +26,9 @@ The services landing page also reuses this vendor bundle for a Base UI Accordion
 FAQ in `dist/services/landing.mjs`. Its content lives in native HTML disclosures
 in `dist/services/index.html`, which remain usable without JavaScript or if the
 bundle cannot load. No dependency rebuild is required for these page edits.
+
+## Portfolio and Services header
+
+Edit the shared header in `editorial.mjs`. Run `node editorial.mjs` from this
+folder to update the marked header in each HTML page. Commit the generated HTML
+with the component change.

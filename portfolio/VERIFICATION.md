@@ -354,3 +354,45 @@ and required-field checks at 320px and 1440px in both themes.
   320px in both themes and at 1440px in light mode with reduced motion.
   Those checks reported no page errors or horizontal overflow. The 1440px
   dark-mode browser check did not return a result.
+
+### Portfolio and Services redesign (2026-11-21)
+
+- Checked both pages in Chromium at 320, 390, 700, 768, 1024, and 1440px in
+  light and dark mode. Hero and feature images decoded. The checks found no
+  horizontal overflow, failed local requests, or uncaught JavaScript errors.
+  Reviewed desktop and 320px screenshots and checked both layouts with
+  JavaScript disabled.
+- Checked keyboard dismissal and focus return for the project dialog, project
+  filters, mobile navigation, theme switching, homelab tabs, Services links,
+  the Grafana viewer, and the FAQ. Checked required fields and both email-draft
+  paths on the consultation form. Simulated a denied clipboard write and
+  confirmed that the calculator selected the summary for manual copying.
+- Checked JavaScript syntax and whitespace. Regenerating the React sections
+  produced the same HTML. Live booking, ticket delivery, physical devices,
+  and the production container remain unverified.
+
+### Portfolio typography, color, and motion (2026-11-21)
+
+- Checked both themes in Chrome at 320, 390, 700, 701, 960, and 1440px.
+  At 320px, reran the layout checks with double the root font size and checked
+  the static content with JavaScript disabled and forced colors enabled. Found
+  no horizontal overflow, script errors, or failed local requests.
+- Checked the three mobile project dialogs, keyboard and backdrop dismissal,
+  focus return, filters, theme persistence, homelab tabs, inventory search,
+  contact validation, email draft encoding, and the clipboard-denied fallback.
+- Stepped the hero accent and dialog transitions frame by frame in desktop
+  Chrome. The hero text stayed visible and stationary. With reduced motion,
+  Chrome showed the full accent from the first frame and opened and closed the
+  dialog without a transition. Physical-device frame pacing remains unmeasured.
+- JavaScript syntax and `git diff --check` passed. The Impeccable engine was
+  unavailable, so the browser and source checks covered the final review.
+
+### Restored portfolio and Services effects (2026-11-21)
+
+- Restored the effect-bearing hero and project sections on the homepage and
+  the animated headings and glow on Services. The shared React header remains
+  in place. These changes supersede the hero and project motion pass above.
+- Checked desktop light mode at 1440px and mobile dark mode at 320px with
+  reduced motion. Verified effect initialization, carousel pause and filters,
+  project dialog dismissal, and Services heading enhancement. Chrome reported
+  no horizontal overflow, script errors, or failed local requests.
