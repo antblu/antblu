@@ -23,7 +23,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..750&amp;family=JetBrains+Mono:wght@400..600&amp;family=Montserrat:wght@400..900&amp;family=Raleway:wght@400..800&amp;family=Plus+Jakarta+Sans:wght@600..750&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261121-flat-controls"><link rel="stylesheet" href="components.css?v=20261121-flat-controls"><script type="module" src="theme.mjs"></script><script type="module" src="/services/navigation.mjs"></script><link rel="stylesheet" href="brand.css?v=20261121-hero-effects"><link rel="stylesheet" href="homelab.css"><link rel="stylesheet" href="emiliany.css?v=20261121-flat-controls"><script src="homelab.js" defer></script><script src="app.js?v=20261121-hero-effects" defer></script><script src="stack.js" defer></script><script src="emiliany.js?v=20261121-flat-controls" type="module"></script><script src="chromatic.js" defer></script><script src="electric-logo.js" defer></script><script src="flip-cards.js" defer></script><script src="circular-carousel.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261121-flat-controls"><link rel="stylesheet" href="components.css?v=20261121-hero-buttons"><script type="module" src="theme.mjs"></script><script type="module" src="/services/navigation.mjs"></script><link rel="stylesheet" href="brand.css?v=20261121-hero-buttons"><link rel="stylesheet" href="homelab.css"><link rel="stylesheet" href="emiliany.css?v=20261121-flat-controls"><script src="homelab.js" defer></script><script src="app.js?v=20261121-hero-effects" defer></script><script src="stack.js" defer></script><script src="emiliany.js?v=20261121-flat-controls" type="module"></script><script src="chromatic.js" defer></script><script src="electric-logo.js" defer></script><script src="flip-cards.js" defer></script><script src="circular-carousel.js" defer></script>
   <script src="glow-cursor.js?v=20261121-hero-effects" defer></script>
   <script src="clouds.js" defer></script>
   <script src="lightning.js" defer></script>
@@ -32,8 +32,6 @@
   <link rel="stylesheet" href="dashboards.css">
   <script src="dashboards.js" defer></script>
   <link rel="stylesheet" href="/editorial.css">
-  <link rel="stylesheet" href="/hover-card.css">
-  <script src="/hover-card.js" defer></script>
 </head>
 <body class="portfolio-page">
 <svg class="squiggly-filters" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false">
@@ -61,11 +59,11 @@
     <div class="hero-dark"></div><div class="cloud-background" aria-hidden="true"><canvas class="cloud-shader"></canvas></div><div class="light-rays" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
     <div class="hero-copy"><p class="greeting" data-typing-text><span class="typing-accessible">Hi, I’m</span><span class="typing-display" aria-hidden="true"><span class="typing-value">Hi, I’m</span><span class="typing-cursor">|</span></span></p><h1 id="hero-title" aria-label="Anthony Bluemel"><span class="squiggly-text">Anthony</span><br> <span class="colourful-text"><span style="--letter:0">B</span><span style="--letter:1">l</span><span style="--letter:2">u</span><span style="--letter:3">e</span><span style="--letter:4">m</span><span style="--letter:5">e</span><span style="--letter:6">l</span></span></h1><p class="role" data-text-3d-flip>System Administrator</p>
       <p class="hero-summary">I support Windows and Linux systems, troubleshoot networks, and automate infrastructure. I do this work for clients and on my own Kubernetes cluster.</p>
-      <div class="hero-actions">
-        <a class="hero-primary-link" href="#resume" data-hover-title="Experience" data-hover-description="My systems administration work, certifications, and technical skills.">View my experience</a>
-        <a class="hero-text-link" href="#portfolio" data-hover-title="Selected projects" data-hover-description="See the Antalos Kubernetes platform, the Emiliany storefront, and my application projects.">View projects</a>
-        <a class="hero-text-link" href="/services" data-hover-title="Consulting services" data-hover-description="Explore open-source infrastructure, business websites, and online stores you can run in your own accounts.">Explore services</a>
-      </div>
+      <div class="hero-actions"><a class="gradient-pill" href="#resume">
+        <span aria-hidden="true">↗</span><span class="gradient-pill-divider" aria-hidden="true"></span>
+        <span class="animated-gradient-text">View my experience</span>
+        <svg class="gradient-pill-chevron" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+      </a><a class="hero-text-link" href="#portfolio"><span>View projects</span><span class="hero-link-arrow" aria-hidden="true">→</span></a><a class="hero-text-link" href="/services"><span>Explore services</span><span class="hero-link-arrow" aria-hidden="true">→</span></a></div>
       <div class="socials"><a href="https://x.com/anthonybluemel" target="_blank" rel="noopener noreferrer" aria-label="Anthony on X"><img src="assets/x-logo.svg" alt=""></a><a href="https://github.com/antblu" target="_blank" rel="noopener noreferrer" aria-label="Anthony on GitHub"><img src="assets/87572.svg" alt=""></a><a href="https://www.linkedin.com/in/antblu" target="_blank" rel="noopener noreferrer" aria-label="Anthony on LinkedIn"><img src="assets/linkedin-logo.svg" alt=""></a></div>
     </div>
     <figure class="portrait">
