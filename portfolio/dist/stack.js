@@ -19,9 +19,15 @@
     const bounds = container.getBoundingClientRect();
     const rect = card.getBoundingClientRect();
     const current = positions.get(card) || { x: 0, y: 0 };
+    const requestedX = x;
+    const requestedY = y;
     // Keep the entire card inside the explorer, including its rotated corners.
     x = Math.max(current.x + bounds.left - rect.left + 10, Math.min(x, current.x + bounds.right - rect.right - 10));
     y = Math.max(current.y + bounds.top - rect.top + 10, Math.min(y, current.y + bounds.bottom - rect.bottom - 10));
+    if (drag && foilMotion.matches) {
+      x += 12 * Math.tanh((requestedX - x) / 60);
+      y += 12 * Math.tanh((requestedY - y) / 60);
+    }
     positions.set(card, { x, y });
     card.style.setProperty('--card-x', `${x}px`);
     card.style.setProperty('--card-y', `${y}px`);
@@ -78,6 +84,8 @@
     const end = () => {
       if (!drag || drag.card !== card) return;
       drag = null;
+      const position = positions.get(card);
+      if (position) place(card, position.x, position.y);
       card.classList.remove('is-dragging');
     };
     handle.addEventListener('pointerup', end);
@@ -103,7 +111,12 @@
   });
   search.addEventListener('input', filter);
   category.addEventListener('change', filter);
-  document.querySelector('#stack-reset').addEventListener('click', reset);
+  document.querySelector('#stack-reset').addEventListener('click', event => {
+    reset();
+    if (matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      event.currentTarget.animate([{ opacity: 1 }, { opacity: .6 }, { opacity: 1 }], { duration: 220 });
+    }
+  });
   window.addEventListener('resize', reset);
   filter();
 })();

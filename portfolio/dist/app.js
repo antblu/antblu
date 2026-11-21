@@ -42,7 +42,12 @@ document.querySelectorAll('[data-project]').forEach(button => button.addEventLis
   document.querySelector('#dialog-description').textContent = project.description;
   document.querySelector('#dialog-link').href = project.url;
   document.querySelector('#dialog-tags').replaceChildren(...project.tags.map(tag => { const item = document.createElement('span'); item.textContent = tag; return item; }));
+  dialog.dataset.layoutId = button.dataset.project;
+  button.dataset.layoutId = button.dataset.project;
   dialog.showModal();
+  const source = button.getBoundingClientRect();
+  dialog.style.setProperty('--trigger-x', (source.left + source.width / 2 - dialog.offsetLeft - dialog.offsetWidth / 2) + 'px');
+  dialog.style.setProperty('--trigger-y', (source.top + source.height / 2 - dialog.offsetTop - dialog.offsetHeight / 2) + 'px');
 }));
 document.querySelector('.dialog-close')?.addEventListener('click', () => dialog.close());
 dialog?.addEventListener('click', event => { if (event.target === dialog) { const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); } });

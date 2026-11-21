@@ -2,6 +2,7 @@ const header = document.querySelector('.svc-header');
 const menu = header.querySelector('.svc-menu-toggle');
 const navigation = document.getElementById(menu.getAttribute('aria-controls'));
 const narrow = matchMedia('(max-width: 700px)');
+navigation.querySelectorAll('a').forEach((link, index) => link.style.setProperty('--row-delay', `${index * 30}ms`));
 
 function setMenu(open) {
   menu.setAttribute('aria-expanded', String(open));

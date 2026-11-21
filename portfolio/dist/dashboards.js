@@ -15,6 +15,8 @@
   const image = viewer.querySelector('img');
   const animations = new Set();
   let lastCard;
+  let duration;
+  let closing = false;
   let hasOpened = false;
 
   function animate(element, frames, options) {
@@ -22,6 +24,7 @@
     const animation = element.animate(frames, options);
     animations.add(animation);
     animation.finished.then(() => animations.delete(animation), () => animations.delete(animation));
+    return animation;
   }
 
   function stopMotion() {
@@ -35,12 +38,13 @@
       if (!entries.some(entry => entry.isIntersecting)) return;
       cards.forEach((card, index) => animate(card.querySelector('.dashboard-frame, .dashboard-caption'), [
         { transform: 'translateY(8px)', opacity: .84 }, { transform: 'none', opacity: 1 }
-      ], { duration: 260, delay: index * 55, easing: 'ease-out' }));
+      ], { duration: 260, delay: index * 30, easing: 'ease-out' }));
       observer.disconnect();
     });
     observer.observe(cards[0].parentElement);
   }
 
+  cards.forEach((card, index) => { card.dataset.layoutId = 'dashboard-' + index; });
   cards.forEach(card => card.addEventListener('click', event => {
     if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
@@ -59,34 +63,53 @@
       image.src = card.href;
     }
     lastCard = card;
+    viewer.dataset.layoutId = card.dataset.layoutId;
+    duration = hasOpened ? 160 : 240;
     viewer.showModal();
     const target = viewer.getBoundingClientRect();
     const x = source.left + source.width / 2 - target.left - target.width / 2;
     const y = source.top + source.height / 2 - target.top - target.height / 2;
     animate(viewer, [
-      { transform: 'translate(' + x + 'px,' + y + 'px) scale(.58)', opacity: .65 },
-      { transform: 'translate(' + x * .42 + 'px,' + (y * .42 - 12) + 'px) scale(.86)', offset: .47 },
-      { transform: 'translate(0,-3px) scale(1.012)', offset: .82 },
+      { transform: 'translate(' + x + 'px,' + y + 'px) scale(.95)', opacity: .65 },
+      { transform: 'translate(' + x * .42 + 'px,' + (y * .42 - 12) + 'px) scale(.975)', offset: .47 },
       { transform: 'none', opacity: 1 }
-    ], { duration: hasOpened ? 160 : 280, easing: 'cubic-bezier(.3,.05,.2,1)' });
+    ], { duration, easing: 'ease-out' });
+    animate(preview ? original : detail, [{ opacity: .3 }, { opacity: 1 }], { duration: duration - 30, delay: 30, easing: 'ease-out', fill: 'backwards' });
     hasOpened = true;
   }));
 
-  viewer.querySelector('button').addEventListener('click', () => viewer.close());
+  function closeViewer() {
+    if (closing) return;
+    closing = true;
+    const start = getComputedStyle(viewer).transform;
+    stopMotion();
+    const target = viewer.getBoundingClientRect();
+    const card = lastCard.getBoundingClientRect();
+    const x = card.left + card.width / 2 - target.left - target.width / 2;
+    const y = card.top + card.height / 2 - target.top - target.height / 2;
+    const exit = animate(viewer, [
+      { transform: start, opacity: 1 },
+      { transform: 'translate(' + x + 'px,' + y + 'px) scale(.95)', opacity: 0 }
+    ], { duration: duration * .8, easing: 'ease-in-out' });
+    const finish = () => { closing = false; viewer.close(); };
+    if (exit) exit.finished.then(finish, finish);
+    else finish();
+  }
+  viewer.querySelector('button').addEventListener('click', closeViewer);
+  viewer.addEventListener('cancel', event => { event.preventDefault(); closeViewer(); });
   viewer.addEventListener('close', () => {
     if (viewer.open) return;
     stopMotion();
     if (!lastCard) return;
     lastCard.focus({ preventScroll: true });
     animate(lastCard.querySelector('.dashboard-expand'), [
-      { transform: 'translate(-3px,2px) scale(.91,1.06)' },
-      { transform: 'translate(1px,-2px) scale(1.06,.97)', offset: .7 },
+      { opacity: .55 },
       { transform: 'none' }
     ], { duration: 190, easing: 'ease-out' });
   });
   viewer.addEventListener('click', event => {
     if (event.target !== viewer) return;
     const rect = viewer.getBoundingClientRect();
-    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) viewer.close();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) closeViewer();
   });
 })();
