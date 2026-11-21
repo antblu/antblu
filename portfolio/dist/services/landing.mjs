@@ -1,19 +1,3 @@
-document.querySelectorAll('[data-kinetic-text]').forEach(element => {
-  const text = element.textContent;
-  const accessible = document.createElement('span');
-  accessible.className = 'svc-sr-only';
-  accessible.textContent = text;
-  const visual = document.createElement('span');
-  visual.className = 'kinetic-text';
-  visual.setAttribute('aria-hidden', 'true');
-  for (const character of text) {
-    const letter = document.createElement('span');
-    letter.textContent = character;
-    visual.append(letter);
-  }
-  element.replaceChildren(accessible, visual);
-});
-
 // Reuse the homepage's locally bundled React and Base UI primitives.
 // Native details remain usable until the island has successfully mounted.
 async function enhanceFaq() {
@@ -22,7 +6,6 @@ async function enhanceFaq() {
   try {
     const { createElement: h, createRoot, Accordion, Component, useEffect } = await import('../assets/vendor/emiliany-vendor.js');
     const entries = [...fallback.querySelectorAll('details')].map(item => ({
-      icon: item.dataset.icon,
       open: item.open,
       question: item.querySelector('summary').textContent,
       answer: item.querySelector('p').textContent
@@ -43,7 +26,6 @@ async function enhanceFaq() {
         h(Accordion.Item, { key: index, value: index, className: 'svc-faq-item', 'data-slot': 'accordion-item' },
           h(Accordion.Header, { className: 'svc-faq-heading', render: h('h3') },
             h(Accordion.Trigger, { className: 'svc-faq-trigger', 'data-slot': 'accordion-trigger' },
-              h('span', { className: 'svc-faq-icon', 'aria-hidden': true }, entry.icon),
               h('span', { className: 'svc-faq-label' }, entry.question),
               h('svg', {
                 'aria-hidden': true,

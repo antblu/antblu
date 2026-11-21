@@ -27,7 +27,6 @@
   <link rel="stylesheet" href="/services/services.css">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/brand.css?v=20261121-flat-controls">
-  <script src="/curved-input.js" defer></script>
   <script type="module" src="/services/common.mjs"></script>
   <script type="module" src="/services/booking.mjs"></script>
   <script type="module" src="/services/contact.mjs"></script>
@@ -133,13 +132,13 @@
               <h2 id="message-title">Send a message</h2>
               <p>Hiring for systems administration or infrastructure work? I’d be glad to discuss my experience and learn about your team.</p>
               <p><a href="mailto:antblu@antblu.net">antblu@antblu.net</a></p>
-              <form id="contact-form" aria-labelledby="message-title" data-support-url="">
+              <form id="contact-form" class="svc-form" aria-labelledby="message-title" data-support-url="">
                 <label hidden aria-hidden="true">Leave this empty<input name="zammad_form_url" tabindex="-1" autocomplete="off"></label>
-                <label><span class="sr-only">Your name (required)</span><input name="name" autocomplete="name" placeholder="ENTER YOUR NAME*" required maxlength="120"></label>
-                <label><span class="sr-only">Your email (required)</span><input type="email" name="email" autocomplete="email" placeholder="ENTER YOUR EMAIL*" required maxlength="254"></label>
-                <label><span class="sr-only">Phone number</span><input type="tel" name="phone" autocomplete="tel" placeholder="PHONE NUMBER" maxlength="50"></label>
-                <label><span class="sr-only">Your message (required)</span><textarea name="message" placeholder="YOUR MESSAGE*" required maxlength="5000" rows="5"></textarea></label>
-                <button class="shimmer-button" type="submit" disabled><span>SEND MESSAGE ↗</span></button>
+                <label>Name<input name="name" autocomplete="name" required maxlength="120"></label>
+                <label>Email<input type="email" name="email" autocomplete="email" required maxlength="254"></label>
+                <label>Phone number (optional)<input type="tel" name="phone" autocomplete="tel" maxlength="50"></label>
+                <label>Message<textarea name="message" required maxlength="5000" rows="5"></textarea></label>
+                <button class="svc-btn svc-btn--primary" type="submit" disabled>Send message</button>
                 <p class="form-note">Your message will create a support ticket. I’ll reply by email.</p>
                 <noscript><p>Please <a class="email-address" href="mailto:antblu@antblu.net">email antblu@antblu.net</a> to get in touch. Sending this form requires JavaScript.</p></noscript>
                 <p id="form-status" role="status" aria-live="polite"></p>

@@ -434,3 +434,15 @@ and required-field checks at 320px and 1440px in both themes.
   errors, failed local assets, or horizontal page overflow.
 - JavaScript syntax and whitespace checks passed. Physical touch devices
   and screen readers remain unverified.
+
+### Shared motion controls (2026-11-21)
+
+- Checked the mobile menu on the homepage, Services, Contact, and calculator at 320px in Chromium. Verified the 200ms entrance, Escape dismissal, focus return, and inert links while closed. Checked for horizontal overflow and page errors.
+- At 1440px, opened and dismissed a hover preview and project dialog, advanced the homelab gallery, and submitted Contact against a local ticket fixture. Checked the confirmation pulse in light mode and the reduced-motion behavior in dark mode.
+- Ran the Services browser suite, syntax checks for the edited scripts, and the Git whitespace check. Physical touch, Safari, Firefox, and live ticket delivery remain unverified.
+
+### Portfolio, Services, and Contact design review (2026-11-21)
+
+- Checked 12 routes in Chromium at 320px, 768px, and 1440px in both themes. Found no horizontal page overflow or uncaught page errors. Reviewed the portfolio portrait and Services dashboard layouts. Captured the portfolio homepage for the web development card.
+- Verified the Services CTA, menu keyboard controls, project dialogs, gallery controls, FAQ and calculator fallbacks. Used a local ticket fixture to check the disabled submit button, pending indicator, and confirmation with both motion preferences.
+- JavaScript syntax checks and the Git whitespace check passed. Physical devices, live booking, and ticket delivery remain unverified.

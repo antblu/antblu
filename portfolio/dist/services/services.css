@@ -1,6 +1,8 @@
 /* Shared theme for the portfolio and consulting pages. */
 :root {
   color-scheme: light;
+  --svc-frame-radius: 14px;
+  --svc-frame-pad: 6px;
   --svc-header-height: 65px;
   --svc-heading: "Plus Jakarta Sans", system-ui, sans-serif;
   --svc-body-font: Inter, system-ui, sans-serif;
@@ -283,3 +285,10 @@
   .motion-success{animation:confirm-success 240ms ease-out}
   @keyframes confirm-success{from{background-color:transparent}40%{background-color:color-mix(in srgb,var(--svc-accent) 22%,transparent)}to{background-color:transparent}}
 }
+
+:where(h1,h2,h3){text-wrap:balance}
+:where(time,.carousel-position,.scroll-progress,.svc-price,.svc-result,.svc-table){font-variant-numeric:tabular-nums}
+form[aria-busy="true"] button[type="submit"]{cursor:progress}
+form[aria-busy="true"] button[type="submit"]::after{content:'';display:inline-block;width:.8em;height:.8em;margin-inline-start:.5em;border:2px solid currentColor;border-inline-end-color:transparent;border-radius:50%;vertical-align:middle}
+@media(prefers-reduced-motion:no-preference){form[aria-busy="true"] button[type="submit"]::after{animation:submit-pending .75s linear infinite}}
+@keyframes submit-pending{to{rotate:1turn}}

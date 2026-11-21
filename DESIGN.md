@@ -187,7 +187,7 @@ Read the shared theme in `@portfolio/dist/services/services.css` first. It maps 
 
 ### Secondary
 
-- Use warm gold for the consulting landing page’s cost CTA, summary figures, and featured package accents. The landing headline uses gold emphasis in dark mode and link blue in light mode.
+- Use warm gold for the consulting landing page’s booking CTA, summary figures, and featured package accents. Use the theme’s heading color for the full headline.
 
 ### Neutral
 
@@ -212,7 +212,7 @@ Read the shared theme in `@portfolio/dist/services/services.css` first. It maps 
 
 ## Elevation & Depth
 
-Use theme-aware scrims over landscape photography, with a dark fade behind project card copy. The hero layers the portrait over clouds and lightning and fades the lower crop into the intro. Consulting controls sit on solid panels with a thin border. The consulting landing page adds a grid and a faint rack image to its banner.
+Use theme-aware scrims over landscape photography, with a dark fade behind project card copy. The homepage hero pairs Anthony’s portrait with his role and experience link. Consulting controls sit on solid panels with a thin border. The consulting hero features a Grafana screenshot. Frame product previews with a 14px outer radius and 6px padding. Use an 8px radius on the image.
 
 The project carousel uses a diffuse black shadow (`0 18px 50px #0005`). Inventory cards use an inset rim and a shorter shadow (`0 12px 26px #070d1626` plus the inset stroke in light mode). Consulting landing cards use lighter lift (`0 12px 32px #0a1a2c15`). Keep the calculator panels and skills cards flat with a visible border.
 
@@ -226,7 +226,7 @@ The project carousel uses a diffuse black shadow (`0 18px 50px #0005`). Inventor
 
 ### Actions
 
-Use filled blue buttons for primary consulting actions and bordered buttons for secondary actions. Standard buttons have a 44px minimum height. Gold singles out the cost action on the consulting landing page. In the portfolio hero, use one filled experience link and underlined links for projects and services. Elsewhere on portfolio surfaces, paired vertical strokes identify bracket links and give way to a fill on hover.
+Use filled blue buttons for primary consulting actions and bordered buttons for secondary actions. Standard buttons have a 44px minimum height. Gold marks the booking action in the consulting hero. In the portfolio hero, use one filled experience link and underlined links for projects and services. Elsewhere on portfolio surfaces, paired vertical strokes identify bracket links and give way to a fill on hover.
 
 ### Navigation and filters
 
@@ -240,11 +240,11 @@ Use 1px borders and solid fills for consulting cards, with the action near the f
 
 ### Fields
 
-Give standard fields a visible border, 8px corners, and a 44px minimum height. Consulting forms use 16px input text. Use a 3px focus outline with a 4px offset on shared consulting controls. The contact message form’s curved name and email previews reveal native inputs on focus and use a navy shimmer button for submission.
+Give standard fields a visible border, 8px corners, and a 44px minimum height. Consulting forms use 16px input text. Use a 3px focus outline with a 4px offset on shared consulting controls. Keep contact field labels visible as visitors type. Show progress beside the submit label while the request is pending.
 
 ### Motion and fallback
 
-Use motion on the hero atmosphere, carousel, and illustration treatments. Keep navigation, form feedback, and selected states readable when motion is reduced. Preserve keyboard controls, native form fields, and the static content that the portfolio renders before enhancement. Use visible borders and system colors for interactive states in forced colors.
+Use motion to show carousel position, pending submissions, and confirmed actions. Keep navigation, form feedback, and selected states readable when motion is reduced. Preserve keyboard controls, native form fields, and the static content that the portfolio renders before enhancement. Use visible borders and system colors for interactive states in forced colors.
 
 ## Do's and Don'ts
 
