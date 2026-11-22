@@ -51,6 +51,17 @@ const landingBody = `<section class="consult-hero consult-cover">
   <div class="svc-wrap">
     <h1>${escape(landing.title).replace('open-source', 'open&#8209;source')}</h1><p class="consult-lead">${escape(landing.lead)}</p>
     <div class="svc-cta">${anchor(links.contact, 'svc-btn--primary')}${anchor(['#consult-evidence', 'See the work'], 'consult-secondary')}</div>
+    <details class="consult-chat" id="services-chat">
+      <summary class="consult-chat-launcher">
+        <svg class="consult-chat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H5l1.7-3.4A7.5 7.5 0 1 1 20 11.5Z"/><path d="M9 11.5h7m-7 3h4"/></svg>
+        <span>Ask about my services</span>
+        <svg class="consult-chat-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+      </summary>
+      <div id="services-chat-panel">
+        <p id="services-chat-loading" role="status" hidden>Opening chat…</p>
+        <p>Have a question about your project? ${anchor(links.contact)}.</p>
+      </div>
+    </details>
     <figure id="app-tour" class="consult-tour">
       <video controls autoplay muted loop playsinline disablepictureinpicture preload="metadata" width="1414" height="920" poster="/assets/tour/application-tour.webp" aria-label="Authentik sign-in and application tour" aria-describedby="tour-caption">
         <source src="/assets/tour/application-tour.mp4" type="video/mp4">
@@ -125,7 +136,7 @@ const catalogFallback = `<noscript><p>Browse the editions below. Enable JavaScri
 const pages = [
   { path: 'services', body: landingBody, meta: landing },
   { path: 'services/handoff', body: handoffBody, meta: handoff },
-  { path: 'privacy', body: intro({ title: 'Privacy notice', lead: 'How I use information from project briefs and site visits.' }) +
+  { path: 'privacy', body: intro({ title: 'Privacy notice', lead: 'How I use information from project briefs, Services chat, and site visits.' }) +
     `<div class="svc-wrap">${policy.privacy.map(([title, copy]) => block(title, paragraph(copy))).join('')}
     <p>For questions about your inquiry, email ${anchor([`mailto:${brand.email}`, brand.email])}.</p></div>` },
   { path: 'terms', body: intro({ title: 'Consulting estimates and site terms', lead: 'What a project estimate covers and what you buy directly.' }) +

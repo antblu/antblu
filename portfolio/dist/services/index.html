@@ -45,6 +45,17 @@
   <div class="svc-wrap">
     <h1>Open-source systems you own</h1><p class="consult-lead">You control the hosting accounts, administrator access, code, and data. You pay no software license fees for the agreed open-source stack. I train one person to handle routine maintenance with AI and runbooks, so you can run it without a dedicated IT team.</p>
     <div class="svc-cta"><a class="svc-btn svc-btn--primary" href="/contact#quote">Prepare a project brief</a><a class="svc-btn consult-secondary" href="#consult-evidence">See the work</a></div>
+    <details class="consult-chat" id="services-chat">
+      <summary class="consult-chat-launcher">
+        <svg class="consult-chat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H5l1.7-3.4A7.5 7.5 0 1 1 20 11.5Z"/><path d="M9 11.5h7m-7 3h4"/></svg>
+        <span>Ask about my services</span>
+        <svg class="consult-chat-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+      </summary>
+      <div id="services-chat-panel">
+        <p id="services-chat-loading" role="status" hidden>Opening chat…</p>
+        <p>Have a question about your project? <a href="/contact#quote">Prepare a project brief</a>.</p>
+      </div>
+    </details>
     <figure id="app-tour" class="consult-tour">
       <video controls autoplay muted loop playsinline disablepictureinpicture preload="metadata" width="1414" height="920" poster="/assets/tour/application-tour.webp" aria-label="Authentik sign-in and application tour" aria-describedby="tour-caption">
         <source src="/assets/tour/application-tour.mp4" type="video/mp4">
@@ -113,21 +124,7 @@
   <h2>Questions before you start</h2>
   <div class="consult-faq"><details name="consult-faq" open><summary>What does the one-time payment cover?</summary><p>We agree on the deployment, integrations, migration, recovery checks, and training before I quote one implementation fee. You buy infrastructure and any third-party services in your name.</p></details><details name="consult-faq"><summary>Will self-hosting cost less?</summary><p>It depends on your current bills, the hardware or provider you choose, and who maintains the stack. Run the comparison with your own costs over one, three, or five years.</p></details><details name="consult-faq"><summary>Who runs the system after handoff?</summary><p>You or one person you choose can handle routine maintenance. During handoff, we practice using AI to consult the runbooks and troubleshoot errors. The person running the system checks suggestions before making changes.</p></details><details name="consult-faq"><summary>Can you build a website or store in my accounts?</summary><p>Yes. I can deploy a website or store in your accounts, document its integrations, and train your team to edit and operate it.</p></details></div>
 </section>
-  <section class="consult-section" id="services-chat" aria-labelledby="services-chat-title">
-  <div class="svc-wrap">
-    <h2 id="services-chat-title">Ask about my services</h2>
-    <p>Ask the AI assistant about packages, costs, or what your team receives at handoff. <a href="/contact#quote">Prepare a project brief</a> to discuss your requirements with me.</p>
-    <ol id="services-chat-history" class="consult-chat-history" aria-label="Conversation" aria-live="polite"></ol>
-    <form id="services-chat-form" class="svc-form consult-chat-form" hidden>
-      <label for="services-chat-question">Your question</label>
-      <textarea id="services-chat-question" name="question" rows="3" maxlength="1200" required aria-describedby="services-chat-privacy"></textarea>
-      <p id="services-chat-privacy" class="svc-muted">Keep contact details, passwords, and private project information out of chat.</p>
-      <div class="svc-cta"><button class="svc-btn svc-btn--primary" type="submit">Ask the assistant</button></div>
-      <p id="services-chat-status" class="svc-muted" role="status"></p>
-    </form>
-  </div>
-</section>
-<section class="consult-section" id="booking">
+  <section class="consult-section" id="booking">
   <h2>Tell me what you want to build or replace</h2>
   <p>Include the tools you use today and who will run the system after handoff.</p><div class="svc-cta"><a class="svc-btn svc-btn--primary" href="/contact#quote">Prepare a project brief</a></div>
 </section>

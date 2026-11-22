@@ -140,6 +140,7 @@ export const recovery = {
 export const policy = {
   privacy: [
     ['Project briefs and messages', 'The forms compose your message in your browser. You choose whether to copy it or open a draft in your email app. If you send it, I use the information to respond and assess your project. The host may log basic connection details for site operation.'],
+    ['Services chat', 'When you ask the AI assistant a question, the site sends it and recent questions from the same chat to my servers to look up public Services information and generate a reply. Keep contact details, credentials, and private project information out of the chat. Use the project brief to discuss your project with me.'],
     ['Browser storage and external links', 'The calculator can keep a summary in your current tab for the project brief. The site can remember your theme preference across visits and loads typefaces from Google Fonts. External websites and email providers have their own privacy terms.']
   ],
   terms: [
