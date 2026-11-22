@@ -52,7 +52,7 @@ const landingBody = `<section class="consult-hero consult-cover">
     <h1>${escape(landing.title).replace('open-source', 'open&#8209;source')}</h1><p class="consult-lead">${escape(landing.lead)}</p>
     <div class="svc-cta">${anchor(links.contact, 'svc-btn--primary')}${anchor(['#consult-evidence', 'See the work'], 'consult-secondary')}</div>
     <figure id="app-tour" class="consult-tour">
-      <video autoplay muted loop playsinline controls preload="metadata" width="1440" height="900" poster="/assets/tour/application-tour.webp" aria-label="Safari tour of nine self-hosted applications" aria-describedby="tour-caption">
+      <video autoplay muted loop playsinline disablepictureinpicture preload="metadata" width="1356" height="786" poster="/assets/tour/application-tour.webp" aria-label="Safari tour of nine self-hosted applications" aria-describedby="tour-caption">
         <source src="/assets/tour/application-tour.mp4" type="video/mp4">
         <track kind="captions" srclang="en" label="Application names" src="/assets/tour/application-tour.vtt">
         <a href="/assets/tour/application-tour.mp4">Watch the application tour</a>

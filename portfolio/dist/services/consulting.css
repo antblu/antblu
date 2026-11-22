@@ -123,6 +123,8 @@
 .svc-landing #booking p { margin-inline: auto; }
 .svc-landing #booking .svc-cta { justify-content: center; }
 
-.consult-tour { width: min(100%, 1000px); margin: 2.5rem auto 0; scroll-margin-top: calc(var(--svc-header-height) + 12px); }
+.consult-tour { width: 100%; max-width: 55ch; font-size: clamp(1.05rem, 1.7vw, 1.4rem); margin: 2.5rem auto 0; scroll-margin-top: calc(var(--svc-header-height) + 12px); }
 .consult-tour video { display: block; width: 100%; height: auto; border: 1px solid #ffffff65; border-radius: 12px; background: #182f40; box-shadow: 0 12px 38px #03132155; }
 .consult-tour figcaption { max-width: 76ch; margin: .8rem auto 0; color: white; font-size: .88rem; }
+
+.consult-cover > .svc-wrap { justify-self: center; }
