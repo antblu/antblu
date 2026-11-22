@@ -57,7 +57,7 @@ const landingBody = `<section class="consult-hero consult-cover">
         <track kind="captions" srclang="en" label="Application names" src="/assets/tour/application-tour.vtt">
         <a href="/assets/tour/application-tour.mp4">Watch the application tour</a>
       </video>
-      <figcaption id="tour-caption">From the Authentik launcher to Nextcloud, Grafana, Argo CD, Odoo, SuiteCRM, Invoice Ninja, Headscale, Zammad, and Vaultwarden. The tour combines lab captures with screenshots from the application projects.</figcaption>
+      <figcaption id="tour-caption">Featuring authentik, Nextcloud, Grafana, Argo CD, Odoo, SuiteCRM, Invoice Ninja, Headscale, Zammad, and Vaultwarden.</figcaption>
     </figure>
   </div>
   <a class="consult-scroll" href="#delivery">Scroll <span aria-hidden="true">↓</span></a>
