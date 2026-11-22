@@ -67,7 +67,13 @@
   <dl class="consult-ledger"><div><dt>Existing equipment</dt><dd>I check available CPU, memory, storage health, network capacity, and whether the hardware has a workable replacement path.</dd></div>
 <div><dt>New bare metal</dt><dd>I specify the hardware, disks, power protection, network ports, and off-site backup capacity. You place the order.</dd></div>
 <div><dt>VPS or cloud</dt><dd>I specify the region, instance sizes, storage, networking, and backup destination. You open the account and pay the provider.</dd></div></dl>
-  <h3>Sample purchase brief for a 12-person office</h3><p>For a files-and-CRM workload that can tolerate a single-server outage, start the assessment with one 8-core host, 32 GB RAM, two 2 TB SSDs in a mirror, a UPS with shutdown signaling, and a separate encrypted off-site backup destination. I confirm capacity from your current data and growth before you order.</p>
+  <div class="consult-split consult-purchase-example">
+    <div><h3>Sample purchase brief for a 12-person office</h3><p>For a files-and-CRM workload that can tolerate a single-server outage, start the assessment with one 8-core host, 32 GB RAM, two 2 TB SSDs in a mirror, a UPS with shutdown signaling, and a separate encrypted off-site backup destination. I confirm capacity from your current data and growth before you order.</p></div>
+    <figure class="consult-photo consult-server-photo">
+    <a href="/assets/homelab/se350-nodes.webp" aria-label="View full-size photo. Two Lenovo ThinkSystem SE350 servers with their covers removed"><img src="/assets/homelab/se350-nodes.webp" alt="Two Lenovo ThinkSystem SE350 servers with their covers removed" width="1500" height="1125" decoding="async" loading="lazy"></a>
+    <figcaption>The two Lenovo ThinkSystem SE350 nodes in my Antalos lab</figcaption>
+  </figure>
+  </div>
   <p>One example pairs Nextcloud Community for files with Keycloak for identity and restic for backups. I check the supported sign-in connector on the versions we plan to deploy and test file recovery before handoff.</p>
   <ul class="consult-links"><li><a href="https://docs.nextcloud.com/server/latest/admin_manual/">Nextcloud administration</a></li><li><a href="https://apps.nextcloud.com/apps/user_saml">Nextcloud SSO connector</a></li><li><a href="https://www.keycloak.org/documentation">Keycloak documentation</a></li><li><a href="https://restic.net/">restic documentation and license</a></li></ul>
   <div class="svc-cta"><a class="svc-btn svc-btn--primary" href="/services/handoff">See what you receive</a></div>
@@ -104,7 +110,7 @@
   <li>The team monitors and documents the outcome.</li>
 </ol><p>AI-searchable documentation and diagnostics can use a self-hosted model where practical. Production actions require least-privilege access, human approval and an auditable change record.</p><div class="svc-grid svc-grid--two"><article class="svc-card"><h3>Expanded AI operations assistant</h3><p class="svc-price" data-price="ai">$1,500–$4,000</p><p class="svc-muted">One-time professional services · USD</p>
     <p>Expanded setup for additional diagnostic and documentation sources. Your business controls the model environment and pays any provider charges.</p></article><article class="svc-card"><h3>Additional training and handoff</h3><p class="svc-price" data-price="training">$750–$2,000</p><p class="svc-muted">One-time professional services · USD</p>
-    <p>Deployment includes administrator training and an AI-assisted runbook for the agreed stack. Choose this option for longer workshops or standalone training.</p></article></div><div class="svc-cta"><a class="svc-btn" href="/demo">Try the Operations Demo</a><a class="svc-btn svc-btn--primary" href="/services/calculator">Price Your Configuration</a></div></section><section class="svc-section"><h2>Project steps</h2><p>Review the applications and prepare a project brief. We’ll agree on the scope and tests before I deploy the system and hand it over.</p></section><section class="svc-section"><h2>Frequently asked questions</h2><div class="svc-faq"><details><summary>What do I own in the cloud?</summary><p>You control your cloud account, data, configuration, and workloads. The cloud provider owns the physical equipment that runs your rented services.</p></details><details><summary>Does Kubernetes make an application highly available?</summary><p>Availability depends on the application’s replication behavior, network and ingress, database failover, shared storage and failure domains. I assess and test each component as part of the availability design.</p></details><details><summary>Can my team operate the system after delivery?</summary><p>I train your administrators and give them runbooks to operate the system. We confirm the handoff with a restore exercise using your administrator’s account.</p></details></div></section><section class="svc-section"><h2>Discuss your workload</h2><div class="svc-cta"><a class="svc-btn svc-btn--primary" href="/contact#quote">Prepare a Project Brief</a><a class="svc-btn" href="/services/compare">Compare Software</a></div></section>
+    <p>Deployment includes administrator training and an AI-assisted runbook for the agreed stack. Choose this option for longer workshops or standalone training.</p></article></div><div class="svc-cta"><a class="svc-btn" href="/services#app-tour">Watch the Application Tour</a><a class="svc-btn svc-btn--primary" href="/services/calculator">Price Your Configuration</a></div></section><section class="svc-section"><h2>Project steps</h2><p>Review the applications and prepare a project brief. We’ll agree on the scope and tests before I deploy the system and hand it over.</p></section><section class="svc-section"><h2>Frequently asked questions</h2><div class="svc-faq"><details><summary>What do I own in the cloud?</summary><p>You control your cloud account, data, configuration, and workloads. The cloud provider owns the physical equipment that runs your rented services.</p></details><details><summary>Does Kubernetes make an application highly available?</summary><p>Availability depends on the application’s replication behavior, network and ingress, database failover, shared storage and failure domains. I assess and test each component as part of the availability design.</p></details><details><summary>Can my team operate the system after delivery?</summary><p>I train your administrators and give them runbooks to operate the system. We confirm the handoff with a restore exercise using your administrator’s account.</p></details></div></section><section class="svc-section"><h2>Discuss your workload</h2><div class="svc-cta"><a class="svc-btn svc-btn--primary" href="/contact#quote">Prepare a Project Brief</a><a class="svc-btn" href="/services/compare">Compare Software</a></div></section>
     </div>
   </main>
   <footer class="svc-footer">
@@ -117,7 +123,7 @@
         <a href="/#portfolio">Projects</a>
         <a href="/#skills">Skills</a>
         <a href="/#homelab">Homelab</a>
-        <a href="/#stack">Service Inventory</a>
+        <a href="/services#stack">Service Inventory</a>
         <a href="https://blog.antblu.net">Blog</a>
         <a href="/contact">Contact</a>
       </nav>
@@ -137,7 +143,7 @@
         <a href="/services/applications">Application Catalog</a>
         <a href="/services/compare">Replacement Map</a>
         <a href="/services/calculator">Cost Calculator</a>
-        <a href="/demo">Interactive Demo</a>
+        <a href="/services#app-tour">Application Tour</a>
       </nav>
     </div>
     <div class="svc-wrap svc-footer-bottom"><p>© 2026 Anthony Bluemel</p><div><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div></div>

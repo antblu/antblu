@@ -1,7 +1,7 @@
 import { pricing, hosting } from './dist/services/pricing.mjs';
 import { applications } from './dist/services/applications.mjs';
 import { readFile, writeFile } from 'node:fs/promises';
-import { brand, links, landing, handoff, infrastructure, recovery, policy, ownershipComparison, implementations } from './dist/services/site-content.mjs';
+import { brand, links, landing, dashboards, handoff, infrastructure, recovery, policy, ownershipComparison, implementations } from './dist/services/site-content.mjs';
 
 const escape = value => String(value).replace(/[&<>"']/g, character => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -20,9 +20,9 @@ const block = (heading, body, id = '') => `<section class="consult-section"${id 
   <h2>${escape(heading)}</h2>
   ${body}
 </section>`;
-const intro = ({ title, lead }, extra = '') => `<section class="consult-hero">
+const intro = ({ title, lead }, extra = '', callsToAction = '') => `<section class="consult-hero">
   <div class="svc-wrap${extra ? ' consult-split' : ''}">
-    <div><h1>${escape(title)}</h1><p class="consult-lead">${escape(lead)}</p>${extra ? actions('handoff', 'calculator') : ''}</div>
+    <div><h1>${escape(title)}</h1><p class="consult-lead">${escape(lead)}</p>${callsToAction}</div>
 ${extra ? `    ${extra}` : ''}
   </div>
 </section>`;
@@ -32,19 +32,53 @@ const runbook = (onDemo = false) => `<figure class="consult-runbook"${onDemo ? '
   <h2>${escape(recovery.title)}</h2>
   <dl><div><dt>Operator</dt><dd>${escape(recovery.operator)}</dd></div><div><dt>File</dt><dd><code>${escape(recovery.file)}</code></dd></div></dl>
   <ol>${recovery.steps.map(step => `<li>${escape(step)}</li>`).join('')}</ol>
-${onDemo ? '' : `  ${anchor(links.demo)}`}
+${onDemo ? '' : `  ${anchor(['/services/handoff#restore', 'Try the restore exercise'])}`}
 </figure>`;
 
-const landingBody = `${intro(landing, runbook())}
+const serverPhoto = ({ src, alt, caption, width, height }, lazy = false) =>
+  `<figure class="consult-photo consult-server-photo">
+    <a href="${escape(src)}" aria-label="View full-size photo. ${escape(alt)}"><img src="${escape(src)}" alt="${escape(alt)}" width="${width}" height="${height}" decoding="async"${lazy ? ' loading="lazy"' : ''}></a>
+    <figcaption>${escape(caption)}</figcaption>
+  </figure>`;
+
+const dashboardCards = dashboards.screenshots.map(({ name, image, width, height, alt, caption }) =>
+  `<a class="dashboard-card" href="${escape(image)}" aria-label="View the ${escape(name)} screenshot">
+    <span class="dashboard-frame"><img src="${escape(image)}" alt="${escape(alt)}" width="${width}" height="${height}" loading="lazy" decoding="async"></span>
+    <span class="dashboard-caption"><span><strong>${escape(name)}</strong><span>${escape(caption)}</span></span><span class="dashboard-expand" aria-hidden="true">↗</span></span>
+  </a>`).join('\n');
+
+const landingBody = `<section class="consult-hero consult-cover">
+  <div class="svc-wrap">
+    <h1>${escape(landing.title).replace('open-source', 'open&#8209;source')}</h1><p class="consult-lead">${escape(landing.lead)}</p>
+    <div class="svc-cta">${anchor(links.contact, 'svc-btn--primary')}${anchor(['#consult-evidence', 'See the work'], 'consult-secondary')}</div>
+    <figure id="app-tour" class="consult-tour">
+      <video autoplay muted loop playsinline controls preload="metadata" width="1440" height="900" poster="/assets/tour/application-tour.webp" aria-label="Safari tour of nine self-hosted applications" aria-describedby="tour-caption">
+        <source src="/assets/tour/application-tour.mp4" type="video/mp4">
+        <track kind="captions" srclang="en" label="Application names" src="/assets/tour/application-tour.vtt">
+        <a href="/assets/tour/application-tour.mp4">Watch the application tour</a>
+      </video>
+      <figcaption id="tour-caption">From the Authentik launcher to Nextcloud, Grafana, Argo CD, Odoo, SuiteCRM, Invoice Ninja, Headscale, Zammad, and Vaultwarden. The tour combines lab captures with screenshots from the application projects.</figcaption>
+    </figure>
+  </div>
+  <a class="consult-scroll" href="#delivery">Scroll <span aria-hidden="true">↓</span></a>
+</section>
+<aside class="consult-proof" id="delivery" aria-label="Project examples">
+  <div class="svc-wrap"><strong>Project examples</strong>
+    ${[...landing.evidence.links, links.demo, ['#stack', 'Browse the service inventory']].map(link => anchor(link)).join('')}
+  </div>
+</aside>
 <div class="svc-wrap">
   ${block('From purchase brief to first restore', `<ol class="consult-stages">${landing.steps.map(([title, text, link]) =>
     `<li><h3>${escape(title)}</h3>${paragraph(text)}${anchor(links[link])}</li>`).join('')}</ol>`, 'why')}
-  ${block('What stays in your hands', `<dl class="consult-ledger">${entries(landing.ownership)}</dl>`)}
+  ${block('What stays in your hands', `<div class="consult-split"><dl class="consult-ledger">${entries(landing.ownership)}</dl>${runbook()}</div>`)}
   <section class="consult-section consult-split" aria-labelledby="consult-evidence">
     <div><h2 id="consult-evidence">${escape(landing.evidence.title)}</h2>${paragraph(landing.evidence.text)}
     <ul>${landing.evidence.links.map(link => `<li>${anchor(link)}</li>`).join('')}</ul></div>
     <figure class="consult-photo"><img src="${escape(landing.evidence.image)}" alt="Rack-mounted lab hardware above an uninterruptible power supply" decoding="async"><figcaption>${escape(landing.evidence.caption)}</figcaption></figure>
   </section>
+  ${block(dashboards.title, `${paragraph(dashboards.lead)}
+    <div class="dashboard-grid">${dashboardCards}</div>
+    <p class="consult-dashboard-link">${anchor(dashboards.homelable)}</p>`, 'dashboard')}
   ${block('Scope and costs', `<p>Start with one server or scope a redundant deployment around your recovery targets. I also build business sites and stores in client-owned accounts.</p>
     <ul class="consult-links">${[[links.infrastructure[0], 'Infrastructure packages'], ['/services/web-development', 'Business websites'], ['/services/ecommerce', 'Online stores'], links.compare].map(link => `<li>${anchor(link)}</li>`).join('')}</ul>
     <div class="consult-cta-row">${actions('calculator', 'contact')}</div>`, 'packages')}
@@ -53,23 +87,18 @@ const landingBody = `${intro(landing, runbook())}
   ${block('Tell me what you want to build or replace', `<p>Include the tools you use today and who will run the system after handoff.</p>${actions('contact')}`, 'booking')}
 </div>`;
 
-const handoffBody = `${intro(handoff)}<div class="svc-wrap">
+const handoffBody = `${intro(handoff, serverPhoto(handoff.image))}<div class="svc-wrap">
   ${block('Deliverables and acceptance checks', `<dl class="consult-ledger consult-checks">${handoff.checks.map(([title, deliverable, check]) =>
     `<div><dt>${escape(title)}</dt><dd>${paragraph(deliverable)}<p><strong>Acceptance check</strong> ${escape(check)}</p></dd></div>`).join('')}</dl>`)}
-  ${block('Practice a file restore', `${runbook()}${actions('contact')}`)}
-</div>`;
-
-const demoBody = `${intro(recovery)}<div class="svc-wrap">
-  <section class="consult-section consult-split" aria-label="Recovery exercise">
-    ${runbook(true)}
-    <div id="service-demo"><p>Enable JavaScript to work through the simulation.</p></div>
-  </section>
-  ${block('Plan your own handoff', actions('handoff', 'contact'))}
+  ${block('Practice a file restore', `<div class="consult-split">${runbook(true)}<div id="service-demo"><p>Enable JavaScript to practice the restore.</p></div></div>${actions('contact')}`, 'restore')}
 </div>`;
 
 const infrastructureBlock = block(infrastructure.title, `${paragraph(infrastructure.lead)}
   <dl class="consult-ledger">${entries(infrastructure.options)}</dl>
-  <h3>${escape(infrastructure.example.title)}</h3>${paragraph(infrastructure.example.detail)}
+  <div class="consult-split consult-purchase-example">
+    <div><h3>${escape(infrastructure.example.title)}</h3>${paragraph(infrastructure.example.detail)}</div>
+    ${serverPhoto(infrastructure.example.image, true)}
+  </div>
   ${paragraph(infrastructure.stack)}
   <ul class="consult-links">${infrastructure.sources.map(link => `<li>${anchor(link)}</li>`).join('')}</ul>
   ${actions('handoff')}`, 'purchase-brief');
@@ -85,7 +114,6 @@ const catalogFallback = `<noscript><p>Browse the editions below. Enable JavaScri
 const pages = [
   { path: 'services', body: landingBody, meta: landing },
   { path: 'services/handoff', body: handoffBody, meta: handoff },
-  { path: 'demo', body: demoBody, meta: recovery },
   { path: 'privacy', body: intro({ title: 'Privacy notice', lead: 'How I use information from project briefs and site visits.' }) +
     `<div class="svc-wrap">${policy.privacy.map(([title, copy]) => block(title, paragraph(copy))).join('')}
     <p>For questions about your inquiry, email ${anchor([`mailto:${brand.email}`, brand.email])}.</p></div>` },
@@ -107,7 +135,11 @@ for (const { path, body, meta, fragment, before = '<section class="svc-section">
   const url = new URL(`./dist/${path}/index.html`, import.meta.url);
   const original = await readFile(url, 'utf8');
   let html = original;
-  if (body) html = html.replace(/(<main id="main" tabindex="-1">)[\s\S]*?(<\/main>)/, (_, start, end) => `${start}\n${mark(body)}\n  ${end}`);
+  if (body) {
+    html = region.test(html)
+      ? html.replace(region, () => mark(body))
+      : html.replace(/(<main id="main" tabindex="-1">)[\s\S]*?(<\/main>)/, (_, start, end) => `${start}\n${mark(body)}\n  ${end}`);
+  }
   if (fragment) {
     html = region.test(html)
       ? html.replace(region, () => mark(fragment))

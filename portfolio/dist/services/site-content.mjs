@@ -8,7 +8,7 @@ export const links = {
   infrastructure: ['/services/infrastructure', 'Choose infrastructure'],
   applications: ['/services/applications', 'Browse applications'],
   handoff: ['/services/handoff', 'See what you receive'],
-  demo: ['/demo', 'Try the restore exercise'],
+  demo: ['/services#app-tour', 'Watch the application tour'],
   compare: ['/services/compare', 'Compare software'],
   calculator: ['/services/calculator', 'Compare your costs'],
   contact: ['/contact#quote', 'Prepare a project brief']
@@ -42,9 +42,40 @@ export const landing = {
   ]
 };
 
+export const dashboards = {
+  title: 'Inside my Antalos lab dashboard',
+  lead: 'I use Authentik to open the tools my account can access. In Grafana I check alerts, request rates, and latency. These screenshots show a point in time.',
+  homelable: ['https://homelab.antblu.net/', 'Open Homelable (sign-in required)'],
+  screenshots: [
+    {
+      name: 'Authentik',
+      image: '/assets/authentik-dashboard.png',
+      width: 2108,
+      height: 1773,
+      alt: 'Authentik application launcher with tiles for Grafana, Nextcloud, and other lab apps',
+      caption: 'Open an app from the launcher.'
+    },
+    {
+      name: 'Grafana',
+      image: '/assets/grafana-overview.png',
+      width: 1276,
+      height: 1026,
+      alt: 'Grafana overview with alert counts, request rates, and latency charts',
+      caption: 'Check alerts and request latency.'
+    }
+  ]
+};
+
 export const handoff = {
   title: 'What your team receives at handoff',
   lead: 'We agree on acceptance checks before I build. Your named administrator runs them during training with the accounts and documentation your business will keep.',
+  image: {
+    src: '/assets/homelab/nas-interior.webp',
+    alt: 'Open 2U NAS chassis showing the CPU cooler, power supply, and drive bays',
+    caption: 'Inside my Antalos lab’s 2U TrueNAS server',
+    width: 1125,
+    height: 1500
+  },
   checks: [
     ['Account and access inventory', 'Provider billing, domains, single sign-on, VPN, and the location of emergency access credentials.', 'Sign in as an administrator and rotate a temporary deployment credential.'],
     ['Deployment repository and architecture', 'Configuration, dependencies, network and storage diagrams, and instructions for deploying from source.', 'Find the version running in production and identify which repository controls it.'],
@@ -64,6 +95,13 @@ export const infrastructure = {
   ],
   example: {
     title: 'Sample purchase brief for a 12-person office',
+    image: {
+      src: '/assets/homelab/se350-nodes.webp',
+      alt: 'Two Lenovo ThinkSystem SE350 servers with their covers removed',
+      caption: 'The two Lenovo ThinkSystem SE350 nodes in my Antalos lab',
+      width: 1500,
+      height: 1125
+    },
     detail: 'For a files-and-CRM workload that can tolerate a single-server outage, start the assessment with one 8-core host, 32 GB RAM, two 2 TB SSDs in a mirror, a UPS with shutdown signaling, and a separate encrypted off-site backup destination. I confirm capacity from your current data and growth before you order.'
   },
   stack: 'One example pairs Nextcloud Community for files with Keycloak for identity and restic for backups. I check the supported sign-in connector on the versions we plan to deploy and test file recovery before handoff.',

@@ -23,7 +23,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..750&amp;family=JetBrains+Mono:wght@400..600&amp;family=Montserrat:wght@400..900&amp;family=Raleway:wght@400..800&amp;family=Plus+Jakarta+Sans:wght@600..750&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261121-flat-controls"><link rel="stylesheet" href="components.css?v=20261121-hero-buttons"><script type="module" src="theme.mjs"></script><script type="module" src="/services/navigation.mjs"></script><link rel="stylesheet" href="brand.css?v=20261121-hero-buttons"><link rel="stylesheet" href="homelab.css"><link rel="stylesheet" href="emiliany.css?v=20261121-flat-controls"><script src="homelab.js" defer></script><script src="app.js?v=20261121-hero-effects" defer></script><script src="stack.js" defer></script><script src="emiliany.js?v=20261121-flat-controls" type="module"></script><script src="chromatic.js" defer></script><script src="electric-logo.js" defer></script><script src="flip-cards.js" defer></script><script src="circular-carousel.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261121-flat-controls"><link rel="stylesheet" href="components.css?v=20261121-hero-buttons"><script type="module" src="theme.mjs"></script><script type="module" src="/services/navigation.mjs"></script><link rel="stylesheet" href="brand.css?v=20261121-hero-buttons"><link rel="stylesheet" href="homelab.css"><link rel="stylesheet" href="emiliany.css?v=20261121-flat-controls"><script src="homelab.js" defer></script><script src="app.js?v=20261121-hero-effects" defer></script><script src="emiliany.js?v=20261121-flat-controls" type="module"></script><script src="chromatic.js" defer></script><script src="electric-logo.js" defer></script><script src="flip-cards.js" defer></script><script src="circular-carousel.js" defer></script>
   <script src="glow-cursor.js?v=20261121-hero-effects" defer></script>
   <script src="clouds.js" defer></script>
   <script src="lightning.js" defer></script>
@@ -219,7 +219,7 @@
   </section>
   <section class="photo-surface homelab section" id="homelab" aria-labelledby="homelab-title"><div class="photo-background" aria-hidden="true"><img src="assets/canyon-falls.webp" alt="" loading="lazy" decoding="async"></div>
     <h2 class="boxed-title" id="homelab-title">Infrastructure lab</h2>
-    <p class="section-lead">I set up and operate the servers, storage, and segmented network for Antalos. I use the lab to deploy services and troubleshoot problems from the hardware through the virtual machines.</p>
+    <p class="section-lead">I set up and operate the servers, storage, and segmented network for Antalos. I use the lab to deploy services and troubleshoot problems from the hardware through the virtual machines. <a href="/services#app-tour">Watch the application tour →</a></p>
     <div class="lab-content">
       <div class="lab-overview">
         <figure class="lab-rack"><a href="assets/homelab/rack-front.webp" aria-label="View the full homelab rack photo"><img src="assets/homelab/rack-front.webp" alt="Front of my rack with patched network cables, NAS, HP Omen, and two Lenovo servers" width="1125" height="1500" loading="lazy" decoding="async"></a><figcaption>12U / 600 mm · Networking above, compute below.</figcaption></figure>
@@ -288,7 +288,7 @@
           <span class="chroma-card-glow" aria-hidden="true"></span>
         </article>
       </div>
-</div><div class="lab-panel" id="lab-panel-workloads" data-lab-panel="workloads">      <div class="lab-workloads"><div><h3>Proxmox → Talos → Antalos</h3><p>My VM plan calls for a Talos control plane node and worker on each Proxmox host. The Lenovo servers also run HAProxy and Debian workloads for testing, Jellyfin, and Immich machine learning. An Intel Arc A310 goes to the media VM.</p><p>Proxmox runs the VMs, Talos runs Kubernetes, and Antalos defines the services on top.</p><a class="bracket-link" href="#stack">EXPLORE THE APPLICATION STACK ↑</a></div></div>
+</div><div class="lab-panel" id="lab-panel-workloads" data-lab-panel="workloads">      <div class="lab-workloads"><div><h3>Proxmox → Talos → Antalos</h3><p>My VM plan calls for a Talos control plane node and worker on each Proxmox host. The Lenovo servers also run HAProxy and Debian workloads for testing, Jellyfin, and Immich machine learning. An Intel Arc A310 goes to the media VM.</p><p>Proxmox runs the VMs, Talos runs Kubernetes, and Antalos defines the services on top.</p><a class="bracket-link" href="/services#stack">EXPLORE THE APPLICATION STACK →</a></div></div>
 </div><div class="lab-panel" id="lab-panel-gallery" data-lab-panel="gallery">
       <div class="lab-heading"><h3>Rack and hardware photos</h3><p>Open a photo to see it full size.</p></div>
       <div class="lab-gallery" aria-label="Inside the homelab">
@@ -299,320 +299,6 @@
       </div>
 </div>      <p class="lab-source">I used my October 2026 hardware inventory and network and VM plans for this write-up. The photos span several stages of the build, and the VM plan may differ from the running setup.</p>
     </div>
-  </section>
-  <section class="stack-explorer section" id="stack" aria-labelledby="stack-title">
-    <div class="stack-background" aria-hidden="true">
-      <img src="assets/service-inventory-lake.webp" width="2400" height="1800" alt="" loading="lazy" decoding="async">
-      <img src="assets/service-inventory-lake.webp" width="2400" height="1800" alt="" loading="lazy" decoding="async">
-    </div>
-<h2 class="boxed-title" id="stack-title">Service inventory</h2>
-    <p class="section-lead">Browse the Antalos configuration by category, including archived templates. Each card links to its source.</p>
-    <div class="stack-toolbar"><label>Find a service<input id="stack-search" type="search" placeholder="Search applications…" aria-controls="stack-cards"></label><label>Explore by category<select id="stack-category" aria-controls="stack-cards"><option value="all">All services</option><option>Work &amp; collaboration</option><option>Business &amp; commerce</option><option>AI &amp; automation</option><option>Identity &amp; security</option><option>Platform &amp; observability</option><option>Media &amp; entertainment</option></select></label><button id="stack-reset" type="button">Reset cards ↺</button></div>
-    <p id="stack-count" class="stack-count" role="status">50 services</p>
-    <p class="stack-help" id="stack-help">Drag the card handles, or focus a handle and use arrow keys. Home returns a card. On mobile, scroll to browse.</p>
-    <div class="stack-cards" id="stack-cards" aria-describedby="stack-help">
-      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:-5deg;--card-hue:195">
-        <button class="stack-handle" type="button" aria-label="Move BentoPDF card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/bentopdf.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 01</small></div>
-        <p class="stack-category">Work &amp; collaboration</p><h3>BentoPDF</h3><p class="stack-description">PDF tools in the browser</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/bentopdf" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for BentoPDF</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:4deg;--card-hue:195">
-        <button class="stack-handle" type="button" aria-label="Move Cal.diy card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/cal-com-light.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 02</small></div>
-        <p class="stack-category">Work &amp; collaboration</p><h3>Cal.diy</h3><p class="stack-description">Self-hosted scheduling</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/cal-diy" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Cal.diy</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:-3deg;--card-hue:195">
-        <button class="stack-handle" type="button" aria-label="Move antalos Docs card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/antalos.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 03</small></div>
-        <p class="stack-category">Work &amp; collaboration</p><h3>antalos Docs</h3><p class="stack-description">Stack documentation</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/docs" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for antalos Docs</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:6deg;--card-hue:195">
-        <button class="stack-handle" type="button" aria-label="Move Forgejo card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/forgejo.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 04</small></div>
-        <p class="stack-category">Work &amp; collaboration</p><h3>Forgejo</h3><p class="stack-description">Git hosting and collaboration</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/forgejo" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Forgejo</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:-2deg;--card-hue:195">
-        <button class="stack-handle" type="button" aria-label="Move Nextcloud card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/nextcloud.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 05</small></div>
-        <p class="stack-category">Work &amp; collaboration</p><h3>Nextcloud</h3><p class="stack-description">Files, sharing, and collaboration</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/nextcloud" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Nextcloud</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:-5deg;--card-hue:195">
-        <button class="stack-handle" type="button" aria-label="Move Obsidian card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/obsidian.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 06</small></div>
-        <p class="stack-category">Work &amp; collaboration</p><h3>Obsidian</h3><p class="stack-description">Personal knowledge workspace</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/obsidian" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Obsidian</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:4deg;--card-hue:195">
-        <button class="stack-handle" type="button" aria-label="Move Stalwart card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/stalwart.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 07</small></div>
-        <p class="stack-category">Work &amp; collaboration</p><h3>Stalwart</h3><p class="stack-description">Mail and calendar services</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/stalwart" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Stalwart</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:-3deg;--card-hue:195">
-        <button class="stack-handle" type="button" aria-label="Move RustDesk card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/rustdesk.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 08</small></div>
-        <p class="stack-category">Work &amp; collaboration</p><h3>RustDesk</h3><p class="stack-description">Remote desktop access</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/rustdesk" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for RustDesk</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:6deg;--card-hue:195">
-        <button class="stack-handle" type="button" aria-label="Move UrBackup card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/urbackup.png" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 09</small></div>
-        <p class="stack-category">Work &amp; collaboration</p><h3>UrBackup</h3><p class="stack-description">Client and server backups</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/urbackup" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for UrBackup</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Business &amp; commerce" style="--card-angle:-2deg;--card-hue:219">
-        <button class="stack-handle" type="button" aria-label="Move Emiliany card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/emiliany/logo.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 10</small></div>
-        <p class="stack-category">Business &amp; commerce</p><h3>Emiliany</h3><p class="stack-description">Commerce storefront</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/emiliany" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Emiliany</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Business &amp; commerce" style="--card-angle:-5deg;--card-hue:219">
-        <button class="stack-handle" type="button" aria-label="Move Invoice Ninja card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/invoice-ninja-light.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 11</small></div>
-        <p class="stack-category">Business &amp; commerce</p><h3>Invoice Ninja</h3><p class="stack-description">Invoices and billing</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/invoiceninja" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Invoice Ninja</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Business &amp; commerce" style="--card-angle:4deg;--card-hue:219">
-        <button class="stack-handle" type="button" aria-label="Move Mautic card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/mautic.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 12</small></div>
-        <p class="stack-category">Business &amp; commerce</p><h3>Mautic</h3><p class="stack-description">Marketing automation</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/mautic" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Mautic</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Business &amp; commerce" style="--card-angle:-3deg;--card-hue:219">
-        <button class="stack-handle" type="button" aria-label="Move Medusa card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/medusa-light.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 13</small></div>
-        <p class="stack-category">Business &amp; commerce</p><h3>Medusa</h3><p class="stack-description">Commerce backend</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/medusa" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Medusa</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Business &amp; commerce" style="--card-angle:6deg;--card-hue:219">
-        <button class="stack-handle" type="button" aria-label="Move Odoo card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/odoo.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 14</small></div>
-        <p class="stack-category">Business &amp; commerce</p><h3>Odoo</h3><p class="stack-description">Business management</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/odoo" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Odoo</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Business &amp; commerce" style="--card-angle:-2deg;--card-hue:219">
-        <button class="stack-handle" type="button" aria-label="Move SuiteCRM card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/suite-crm.png" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 15</small></div>
-        <p class="stack-category">Business &amp; commerce</p><h3>SuiteCRM</h3><p class="stack-description">Customer relationship management</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/suitecrm" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for SuiteCRM</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Business &amp; commerce" style="--card-angle:-5deg;--card-hue:219">
-        <button class="stack-handle" type="button" aria-label="Move Zammad card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/zammad.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 16</small></div>
-        <p class="stack-category">Business &amp; commerce</p><h3>Zammad</h3><p class="stack-description">Customer support and ticketing</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/zammad" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Zammad</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:4deg;--card-hue:243">
-        <button class="stack-handle" type="button" aria-label="Move LiteLLM card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/litellm.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 17</small></div>
-        <p class="stack-category">AI &amp; automation</p><h3>LiteLLM</h3><p class="stack-description">Gateway for language models</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/litellm" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for LiteLLM</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:-3deg;--card-hue:243">
-        <button class="stack-handle" type="button" aria-label="Move Open WebUI card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/open-webui-light.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 18</small></div>
-        <p class="stack-category">AI &amp; automation</p><h3>Open WebUI</h3><p class="stack-description">Conversational AI workspace</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/open-webui" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Open WebUI</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:6deg;--card-hue:243">
-        <button class="stack-handle" type="button" aria-label="Move Node-RED card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/node-red.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 19</small></div>
-        <p class="stack-category">AI &amp; automation</p><h3>Node-RED</h3><p class="stack-description">Visual automation flows</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/node-red" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Node-RED</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:-2deg;--card-hue:243">
-        <button class="stack-handle" type="button" aria-label="Move Home Assistant card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/home-assistant.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 20</small></div>
-        <p class="stack-category">AI &amp; automation</p><h3>Home Assistant</h3><p class="stack-description">Home automation</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/home-assistant" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Home Assistant</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:-5deg;--card-hue:243">
-        <button class="stack-handle" type="button" aria-label="Move Renovate card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/renovate.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 21</small></div>
-        <p class="stack-category">AI &amp; automation</p><h3>Renovate</h3><p class="stack-description">Dependency update automation</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/renovate" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Renovate</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:4deg;--card-hue:243">
-        <button class="stack-handle" type="button" aria-label="Move Website image refresh card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/automation-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 22</small></div>
-        <p class="stack-category">AI &amp; automation</p><h3>Website image refresh</h3><p class="stack-description">Automated image rollout checks</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/website-image-refresh" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Website image refresh</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Identity &amp; security" style="--card-angle:-3deg;--card-hue:267">
-        <button class="stack-handle" type="button" aria-label="Move Authentik card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/authentik.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 23</small></div>
-        <p class="stack-category">Identity &amp; security</p><h3>Authentik</h3><p class="stack-description">Identity and single sign-on</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/authentik" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Authentik</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Identity &amp; security" style="--card-angle:6deg;--card-hue:267">
-        <button class="stack-handle" type="button" aria-label="Move Headscale card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/headscale.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 24</small></div>
-        <p class="stack-category">Identity &amp; security</p><h3>Headscale</h3><p class="stack-description">Private network control plane and Headplane</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/headscale" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Headscale</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Identity &amp; security" style="--card-angle:-2deg;--card-hue:267">
-        <button class="stack-handle" type="button" aria-label="Move Vaultwarden card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/vaultwarden.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 25</small></div>
-        <p class="stack-category">Identity &amp; security</p><h3>Vaultwarden</h3><p class="stack-description">Password management</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/vaultwarden" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Vaultwarden</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Identity &amp; security" style="--card-angle:-5deg;--card-hue:267">
-        <button class="stack-handle" type="button" aria-label="Move CrowdSec card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/crowdsec.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 26</small></div>
-        <p class="stack-category">Identity &amp; security</p><h3>CrowdSec</h3><p class="stack-description">Collaborative threat protection</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/crowdsec" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for CrowdSec</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Identity &amp; security" style="--card-angle:4deg;--card-hue:267">
-        <button class="stack-handle" type="button" aria-label="Move cert-manager card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/cert-manager.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 27</small></div>
-        <p class="stack-category">Identity &amp; security</p><h3>cert-manager</h3><p class="stack-description">Certificate lifecycle automation</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/cert-manager" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for cert-manager</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Identity &amp; security" style="--card-angle:-3deg;--card-hue:267">
-        <button class="stack-handle" type="button" aria-label="Move Sealed Secrets card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/security-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 28</small></div>
-        <p class="stack-category">Identity &amp; security</p><h3>Sealed Secrets</h3><p class="stack-description">Encrypted secrets for GitOps</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/sealed-secrets" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Sealed Secrets</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:6deg;--card-hue:291">
-        <button class="stack-handle" type="button" aria-label="Move Argo CD card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/argo-cd.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 29</small></div>
-        <p class="stack-category">Platform &amp; observability</p><h3>Argo CD</h3><p class="stack-description">Declarative GitOps delivery</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/argocd" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Argo CD</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:-2deg;--card-hue:291">
-        <button class="stack-handle" type="button" aria-label="Move Rancher card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/rancher.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 30</small></div>
-        <p class="stack-category">Platform &amp; observability</p><h3>Rancher</h3><p class="stack-description">Cluster management and configuration</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/rancher" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Rancher</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:-5deg;--card-hue:291">
-        <button class="stack-handle" type="button" aria-label="Move Traefik card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/traefik.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 31</small></div>
-        <p class="stack-category">Platform &amp; observability</p><h3>Traefik</h3><p class="stack-description">Ingress routing and configuration</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/traefik" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Traefik</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:4deg;--card-hue:291">
-        <button class="stack-handle" type="button" aria-label="Move Uptime Kuma card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/uptime-kuma.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 32</small></div>
-        <p class="stack-category">Platform &amp; observability</p><h3>Uptime Kuma</h3><p class="stack-description">Service availability monitoring</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/uptime-kuma" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Uptime Kuma</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:-3deg;--card-hue:291">
-        <button class="stack-handle" type="button" aria-label="Move VictoriaMetrics card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/victoriametrics-light.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 33</small></div>
-        <p class="stack-category">Platform &amp; observability</p><h3>VictoriaMetrics</h3><p class="stack-description">Metrics and observability stack</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/victoriametrics" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for VictoriaMetrics</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:6deg;--card-hue:195">
-        <button class="stack-handle" type="button" aria-label="Move GitLab card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/gitlab.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 34</small></div>
-        <p class="stack-category">Work &amp; collaboration</p><h3>GitLab</h3><p class="stack-description">Archived template · Git hosting, CI/CD, and container registry</p>
-        <a href="https://github.com/antblu/antalos/tree/main/templates/gitlab" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for GitLab</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:-5deg;--card-hue:291">
-        <button class="stack-handle" type="button" aria-label="Move MetalLB card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/metallb.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 36</small></div>
-        <p class="stack-category">Platform &amp; observability</p><h3>MetalLB</h3><p class="stack-description">Load balancing for bare metal</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/metallb" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for MetalLB</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:4deg;--card-hue:291">
-        <button class="stack-handle" type="button" aria-label="Move CloudNativePG card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/cloudnativepg.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 37</small></div>
-        <p class="stack-category">Platform &amp; observability</p><h3>CloudNativePG</h3><p class="stack-description">PostgreSQL database operator</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/cnpg-operator" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for CloudNativePG</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:-3deg;--card-hue:291">
-        <button class="stack-handle" type="button" aria-label="Move MariaDB Operator card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/mariadb.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 38</small></div>
-        <p class="stack-category">Platform &amp; observability</p><h3>MariaDB Operator</h3><p class="stack-description">Database operator and CRDs</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/mariadb-operator" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for MariaDB Operator</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:6deg;--card-hue:291">
-        <button class="stack-handle" type="button" aria-label="Move OpenEBS card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/openebs-icon-color.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 39</small></div>
-        <p class="stack-category">Platform &amp; observability</p><h3>OpenEBS</h3><p class="stack-description">Kubernetes storage</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/openebs" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for OpenEBS</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:4deg;--card-hue:195">
-        <button class="stack-handle" type="button" aria-label="Move LittleLink card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/littlelink-custom.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 42</small></div>
-        <p class="stack-category">Work &amp; collaboration</p><h3>LittleLink</h3><p class="stack-description">Personal links page</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/littlelink" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for LittleLink</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:-3deg;--card-hue:195">
-        <button class="stack-handle" type="button" aria-label="Move WriteFreely card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/writefreely-light.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 43</small></div>
-        <p class="stack-category">Work &amp; collaboration</p><h3>WriteFreely</h3><p class="stack-description">Publishing and blogging</p>
-        <a href="https://github.com/antblu/antalos/tree/main/apps/writefreely" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for WriteFreely</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:6deg;--card-hue:195">
-        <button class="stack-handle" type="button" aria-label="Move Drupal card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/drupal.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 44</small></div>
-        <p class="stack-category">Work &amp; collaboration</p><h3>Drupal</h3><p class="stack-description">Archived template · Content management and publishing</p>
-        <a href="https://github.com/antblu/antalos/tree/main/templates/drupal" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Drupal</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:-2deg;--card-hue:220">
-        <button class="stack-handle" type="button" aria-label="Move llama.cpp card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/llama-cpp.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 40</small></div>
-        <p class="stack-category">AI &amp; automation</p><h3>llama.cpp</h3><p class="stack-description">Local inference for language models</p>
-        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/rtxansible/compose" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for llama.cpp</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:-5deg;--card-hue:220">
-        <button class="stack-handle" type="button" aria-label="Move Speaches card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/speaches.png" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 46</small></div>
-        <p class="stack-category">AI &amp; automation</p><h3>Speaches</h3><p class="stack-description">Speech transcription and synthesis</p>
-        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/rtxansible/compose" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Speaches</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:4deg;--card-hue:220">
-        <button class="stack-handle" type="button" aria-label="Move Docling card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/docling.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 47</small></div>
-        <p class="stack-category">AI &amp; automation</p><h3>Docling</h3><p class="stack-description">Document conversion and processing</p>
-        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/arcansible/compose" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Docling</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-3deg;--card-hue:326">
-        <button class="stack-handle" type="button" aria-label="Move Immich card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/immich.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 48</small></div>
-        <p class="stack-category">Media &amp; entertainment</p><h3>Immich</h3><p class="stack-description">Photo and video backup and management</p>
-        <a href="https://github.com/immich-app/immich" target="_blank" rel="noopener noreferrer">Explore project ↗<span class="sr-only"> for Immich</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:6deg;--card-hue:195">
-        <button class="stack-handle" type="button" aria-label="Move Nextcloud Talk card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/nextcloud.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 49</small></div>
-        <p class="stack-category">Work &amp; collaboration</p><h3>Nextcloud Talk</h3><p class="stack-description">Chat, voice and video calls, and meeting recording</p>
-        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/arcansible/compose" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Nextcloud Talk</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:-2deg;--card-hue:291">
-        <button class="stack-handle" type="button" aria-label="Move Homelable card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/homelable.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 50</small></div>
-        <p class="stack-category">Platform &amp; observability</p><h3>Homelable</h3><p class="stack-description">Homelab inventory and dashboard</p>
-        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/arcansible/homelable" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Homelable</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:-5deg;--card-hue:291">
-        <button class="stack-handle" type="button" aria-label="Move Caddy card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/caddy.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 51</small></div>
-        <p class="stack-category">Platform &amp; observability</p><h3>Caddy</h3><p class="stack-description">Web server template copied to the Debian host</p>
-        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/leftansible/caddy" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Caddy</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:4deg;--card-hue:160">
-        <button class="stack-handle" type="button" aria-label="Move Jellyfin card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/jellyfin.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 52</small></div>
-        <p class="stack-category">Media &amp; entertainment</p><h3>Jellyfin</h3><p class="stack-description">Media streaming server</p>
-        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/arcansible/compose" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Jellyfin</span></a>
-      </article>
-      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-5deg;--card-hue:160">
-        <button class="stack-handle" type="button" aria-label="Move Storyteller card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
-        <div class="stack-art" aria-hidden="true"><img src="assets/dashboard-icons/storyteller.webp" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 56</small></div>
-        <p class="stack-category">Media &amp; entertainment</p><h3>Storyteller</h3><p class="stack-description">Reading and audiobook library</p>
-        <a href="https://github.com/antblu/antalos/tree/main/infrastructure/ansible/arcansible/compose" target="_blank" rel="noopener noreferrer">Explore configuration ↗<span class="sr-only"> for Storyteller</span></a>
-      </article>
-    </div>
-    <p class="stack-source">Inventory from Antalos Kubernetes, Debian workload, and template sources · November 14, 2026. For deployment and health, check the running cluster. <a href="https://github.com/antblu/antalos/tree/main/apps" target="_blank" rel="noopener noreferrer">Browse the stack ↗</a></p>
   </section>
 </main>
   <footer class="svc-footer">
@@ -625,7 +311,7 @@
         <a href="#portfolio">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#homelab">Homelab</a>
-        <a href="#stack">Service Inventory</a>
+        <a href="/services#stack">Service Inventory</a>
         <a href="https://blog.antblu.net">Blog</a>
         <a href="/contact">Contact</a>
       </nav>
@@ -644,7 +330,7 @@
         <a href="/services/applications">Application Catalog</a>
         <a href="/services/compare">Replacement Map</a>
         <a href="/services/calculator">Cost Calculator</a>
-        <a href="/demo">Interactive Demo</a>
+        <a href="/services#app-tour">Application Tour</a>
       </nav>
     </div>
     <div class="svc-wrap svc-footer-bottom"><p>© 2026 Anthony Bluemel</p><div><a href="#home">Back to Top</a><a href="https://github.com/antblu">GitHub</a><a href="mailto:antblu@antblu.net">Email</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div></div>

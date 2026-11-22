@@ -26,7 +26,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..750&amp;family=JetBrains+Mono:wght@400..600&amp;family=Montserrat:wght@700..900&amp;family=Plus+Jakarta+Sans:wght@600..750&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/services/services.css">
   <script type="module" src="/services/common.mjs"></script>
+  <script type="module" src="/services/tour.mjs"></script>
   <link rel="stylesheet" href="/services/consulting.css">
+  <link rel="stylesheet" href="/dashboards.css">
+  <script src="/dashboards.js" defer></script>
+  <link rel="stylesheet" href="/stack.css">
+  <script src="/stack.js" defer></script>
 </head>
 <body class="svc-body svc-landing">
   <a class="svc-skip" href="#main">Skip to content</a>
@@ -35,19 +40,26 @@
   <!-- END site-header -->
   <main id="main" tabindex="-1">
 <!-- Begin generated consulting content -->
-<section class="consult-hero">
-  <div class="svc-wrap consult-split">
-    <div><h1>I build open-source systems your team can run.</h1><p class="consult-lead">You buy the hardware or open the cloud account in your name. I deploy and secure the tools, connect them, and train your team to run them. You pay me once.</p><div class="svc-cta"><a class="svc-btn svc-btn--primary" href="/services/handoff">See what you receive</a><a class="svc-btn consult-secondary" href="/services/calculator">Compare your costs</a></div></div>
-    <figure class="consult-runbook">
-  <figcaption>Sample recovery runbook</figcaption>
-  <code>runbooks/recovery/files.md</code>
-  <h2>Restore a file from backup</h2>
-  <dl><div><dt>Operator</dt><dd>Files administrator</dd></div><div><dt>File</dt><dd><code>vendor-inventory.csv</code></dd></div></dl>
-  <ol><li>Choose a snapshot from before the deletion.</li><li>Restore the file to a separate folder with your recovery credentials.</li><li>Open the copy, check its contents, and record the snapshot and outcome.</li></ol>
-  <a href="/demo">Try the restore exercise</a>
-</figure>
+<section class="consult-hero consult-cover">
+  <div class="svc-wrap">
+    <h1>I build open&#8209;source systems your team can run.</h1><p class="consult-lead">You buy the hardware or open the cloud account in your name. I deploy and secure the tools, connect them, and train your team to run them. You pay me once.</p>
+    <div class="svc-cta"><a class="svc-btn svc-btn--primary" href="/contact#quote">Prepare a project brief</a><a class="svc-btn consult-secondary" href="#consult-evidence">See the work</a></div>
+    <figure id="app-tour" class="consult-tour">
+      <video autoplay muted loop playsinline controls preload="metadata" width="1440" height="900" poster="/assets/tour/application-tour.webp" aria-label="Safari tour of nine self-hosted applications" aria-describedby="tour-caption">
+        <source src="/assets/tour/application-tour.mp4" type="video/mp4">
+        <track kind="captions" srclang="en" label="Application names" src="/assets/tour/application-tour.vtt">
+        <a href="/assets/tour/application-tour.mp4">Watch the application tour</a>
+      </video>
+      <figcaption id="tour-caption">From the Authentik launcher to Nextcloud, Grafana, Argo CD, Odoo, SuiteCRM, Invoice Ninja, Headscale, Zammad, and Vaultwarden. The tour combines lab captures with screenshots from the application projects.</figcaption>
+    </figure>
   </div>
+  <a class="consult-scroll" href="#delivery">Scroll <span aria-hidden="true">↓</span></a>
 </section>
+<aside class="consult-proof" id="delivery" aria-label="Project examples">
+  <div class="svc-wrap"><strong>Project examples</strong>
+    <a href="/#homelab">Inspect the Antalos lab</a><a href="/#emiliany">Read the Emiliany case study</a><a href="/services#app-tour">Watch the application tour</a><a href="#stack">Browse the service inventory</a>
+  </div>
+</aside>
 <div class="svc-wrap">
   <section class="consult-section" id="why">
   <h2>From purchase brief to first restore</h2>
@@ -55,15 +67,35 @@
 </section>
   <section class="consult-section">
   <h2>What stays in your hands</h2>
-  <dl class="consult-ledger"><div><dt>Infrastructure and accounts</dt><dd>You own equipment you buy. For rented infrastructure, your business holds the provider account, billing, and administrator access.</dd></div>
+  <div class="consult-split"><dl class="consult-ledger"><div><dt>Infrastructure and accounts</dt><dd>You own equipment you buy. For rented infrastructure, your business holds the provider account, billing, and administrator access.</dd></div>
 <div><dt>Code and data</dt><dd>You keep the project code, deployment repository, data exports, and backup access. Upstream software keeps its own license.</dd></div>
-<div><dt>One project payment</dt><dd>The agreed open-source stack has $0 per-seat licensing and no recurring fee to me. Budget for your team’s time and any infrastructure or storage you buy from providers.</dd></div></dl>
+<div><dt>One project payment</dt><dd>The agreed open-source stack has $0 per-seat licensing and no recurring fee to me. Budget for your team’s time and any infrastructure or storage you buy from providers.</dd></div></dl><figure class="consult-runbook">
+  <figcaption>Sample recovery runbook</figcaption>
+  <code>runbooks/recovery/files.md</code>
+  <h2>Restore a file from backup</h2>
+  <dl><div><dt>Operator</dt><dd>Files administrator</dd></div><div><dt>File</dt><dd><code>vendor-inventory.csv</code></dd></div></dl>
+  <ol><li>Choose a snapshot from before the deletion.</li><li>Restore the file to a separate folder with your recovery credentials.</li><li>Open the copy, check its contents, and record the snapshot and outcome.</li></ol>
+  <a href="/services/handoff#restore">Try the restore exercise</a>
+</figure></div>
 </section>
   <section class="consult-section consult-split" aria-labelledby="consult-evidence">
     <div><h2 id="consult-evidence">See how I build and document systems</h2><p>In the Antalos lab inventory from November 2026, you can see where I place workloads and how I segment the network. The October 2026 Emiliany architecture notes show how I connected the storefront, order systems, and support tools.</p>
     <ul><li><a href="/#homelab">Inspect the Antalos lab</a></li><li><a href="/#emiliany">Read the Emiliany case study</a></li></ul></div>
     <figure class="consult-photo"><img src="/assets/homelab/rack-and-ups.webp" alt="Rack-mounted lab hardware above an uninterruptible power supply" decoding="async"><figcaption>My Antalos lab rack and UPS</figcaption></figure>
   </section>
+  <section class="consult-section" id="dashboard">
+  <h2>Inside my Antalos lab dashboard</h2>
+  <p>I use Authentik to open the tools my account can access. In Grafana I check alerts, request rates, and latency. These screenshots show a point in time.</p>
+    <div class="dashboard-grid"><a class="dashboard-card" href="/assets/authentik-dashboard.png" aria-label="View the Authentik screenshot">
+    <span class="dashboard-frame"><img src="/assets/authentik-dashboard.png" alt="Authentik application launcher with tiles for Grafana, Nextcloud, and other lab apps" width="2108" height="1773" loading="lazy" decoding="async"></span>
+    <span class="dashboard-caption"><span><strong>Authentik</strong><span>Open an app from the launcher.</span></span><span class="dashboard-expand" aria-hidden="true">↗</span></span>
+  </a>
+<a class="dashboard-card" href="/assets/grafana-overview.png" aria-label="View the Grafana screenshot">
+    <span class="dashboard-frame"><img src="/assets/grafana-overview.png" alt="Grafana overview with alert counts, request rates, and latency charts" width="1276" height="1026" loading="lazy" decoding="async"></span>
+    <span class="dashboard-caption"><span><strong>Grafana</strong><span>Check alerts and request latency.</span></span><span class="dashboard-expand" aria-hidden="true">↗</span></span>
+  </a></div>
+    <p class="consult-dashboard-link"><a href="https://homelab.antblu.net/">Open Homelable (sign-in required)</a></p>
+</section>
   <section class="consult-section" id="packages">
   <h2>Scope and costs</h2>
   <p>Start with one server or scope a redundant deployment around your recovery targets. I also build business sites and stores in client-owned accounts.</p>
@@ -80,6 +112,320 @@
 </section>
 </div>
 <!-- End generated consulting content -->
+  <section class="stack-explorer" id="stack" aria-labelledby="stack-title">
+    <div class="stack-background" aria-hidden="true">
+      <img src="/assets/service-inventory-lake.webp" width="2400" height="1800" alt="" loading="lazy" decoding="async">
+      <img src="/assets/service-inventory-lake.webp" width="2400" height="1800" alt="" loading="lazy" decoding="async">
+    </div>
+    <h2 id="stack-title">Service inventory</h2>
+    <p class="section-lead">Browse the tools I use in Antalos, including archived templates.</p>
+    <div class="stack-toolbar"><label>Find a service<input id="stack-search" type="search" placeholder="Search applications…" aria-controls="stack-cards"></label><label>Explore by category<select id="stack-category" aria-controls="stack-cards"><option value="all">All services</option><option>Work &amp; collaboration</option><option>Business &amp; commerce</option><option>AI &amp; automation</option><option>Identity &amp; security</option><option>Platform &amp; observability</option><option>Media &amp; entertainment</option></select></label><button id="stack-reset" type="button">Reset cards ↺</button></div>
+    <p id="stack-count" class="stack-count" role="status">50 services</p>
+    <p class="stack-help" id="stack-help">Drag the card handles, or focus a handle and use arrow keys. Home returns a card. On mobile, scroll to browse.</p>
+    <div class="stack-cards" id="stack-cards" aria-describedby="stack-help">
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:-5deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move BentoPDF card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/bentopdf.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 01</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>BentoPDF</h3><p class="stack-description">PDF tools in the browser</p>
+        <a href="https://www.bentopdf.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore BentoPDF (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:4deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move Cal.diy card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/cal-com-light.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 02</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>Cal.diy</h3><p class="stack-description">Self-hosted scheduling</p>
+        <a href="https://www.cal.diy/" target="_blank" rel="noopener noreferrer" aria-label="Explore Cal.diy (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:-3deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move antalos Docs card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/antalos.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 03</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>antalos Docs</h3><p class="stack-description">Stack documentation</p>
+        <a href="https://docs.antblu.net/" target="_blank" rel="noopener noreferrer" aria-label="Explore antalos Docs (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:6deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move Forgejo card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/forgejo.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 04</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>Forgejo</h3><p class="stack-description">Git hosting and collaboration</p>
+        <a href="https://forgejo.org/" target="_blank" rel="noopener noreferrer" aria-label="Explore Forgejo (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:-2deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move Nextcloud card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/nextcloud.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 05</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>Nextcloud</h3><p class="stack-description">Files, sharing, and collaboration</p>
+        <a href="https://nextcloud.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore Nextcloud (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:-5deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move Obsidian card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/obsidian.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 06</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>Obsidian</h3><p class="stack-description">Personal knowledge workspace</p>
+        <a href="https://obsidian.md/" target="_blank" rel="noopener noreferrer" aria-label="Explore Obsidian (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:4deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move Stalwart card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/stalwart.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 07</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>Stalwart</h3><p class="stack-description">Mail and calendar services</p>
+        <a href="https://stalw.art/" target="_blank" rel="noopener noreferrer" aria-label="Explore Stalwart (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:-3deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move RustDesk card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/rustdesk.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 08</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>RustDesk</h3><p class="stack-description">Remote desktop access</p>
+        <a href="https://rustdesk.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore RustDesk (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:6deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move UrBackup card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/urbackup.png" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 09</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>UrBackup</h3><p class="stack-description">Client and server backups</p>
+        <a href="https://www.urbackup.org/" target="_blank" rel="noopener noreferrer" aria-label="Explore UrBackup (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Business &amp; commerce" style="--card-angle:-2deg;--card-hue:219">
+        <button class="stack-handle" type="button" aria-label="Move Emiliany card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/emiliany/logo.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 10</small></div>
+        <p class="stack-category">Business &amp; commerce</p><h3>Emiliany</h3><p class="stack-description">Commerce storefront</p>
+        <a href="https://emiliany.com/en" target="_blank" rel="noopener noreferrer" aria-label="Explore Emiliany (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Business &amp; commerce" style="--card-angle:-5deg;--card-hue:219">
+        <button class="stack-handle" type="button" aria-label="Move Invoice Ninja card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/invoice-ninja-light.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 11</small></div>
+        <p class="stack-category">Business &amp; commerce</p><h3>Invoice Ninja</h3><p class="stack-description">Invoices and billing</p>
+        <a href="https://invoiceninja.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore Invoice Ninja (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Business &amp; commerce" style="--card-angle:4deg;--card-hue:219">
+        <button class="stack-handle" type="button" aria-label="Move Mautic card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/mautic.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 12</small></div>
+        <p class="stack-category">Business &amp; commerce</p><h3>Mautic</h3><p class="stack-description">Marketing automation</p>
+        <a href="https://mautic.org/" target="_blank" rel="noopener noreferrer" aria-label="Explore Mautic (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Business &amp; commerce" style="--card-angle:-3deg;--card-hue:219">
+        <button class="stack-handle" type="button" aria-label="Move Medusa card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/medusa-light.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 13</small></div>
+        <p class="stack-category">Business &amp; commerce</p><h3>Medusa</h3><p class="stack-description">Commerce backend</p>
+        <a href="https://medusajs.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore Medusa (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Business &amp; commerce" style="--card-angle:6deg;--card-hue:219">
+        <button class="stack-handle" type="button" aria-label="Move Odoo card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/odoo.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 14</small></div>
+        <p class="stack-category">Business &amp; commerce</p><h3>Odoo</h3><p class="stack-description">Business management</p>
+        <a href="https://www.odoo.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore Odoo (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Business &amp; commerce" style="--card-angle:-2deg;--card-hue:219">
+        <button class="stack-handle" type="button" aria-label="Move SuiteCRM card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/suite-crm.png" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 15</small></div>
+        <p class="stack-category">Business &amp; commerce</p><h3>SuiteCRM</h3><p class="stack-description">Customer relationship management</p>
+        <a href="https://suitecrm.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore SuiteCRM (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Business &amp; commerce" style="--card-angle:-5deg;--card-hue:219">
+        <button class="stack-handle" type="button" aria-label="Move Zammad card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/zammad.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 16</small></div>
+        <p class="stack-category">Business &amp; commerce</p><h3>Zammad</h3><p class="stack-description">Customer support and ticketing</p>
+        <a href="https://zammad.org/" target="_blank" rel="noopener noreferrer" aria-label="Explore Zammad (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:4deg;--card-hue:243">
+        <button class="stack-handle" type="button" aria-label="Move LiteLLM card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/litellm.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 17</small></div>
+        <p class="stack-category">AI &amp; automation</p><h3>LiteLLM</h3><p class="stack-description">Gateway for language models</p>
+        <a href="https://www.litellm.ai/" target="_blank" rel="noopener noreferrer" aria-label="Explore LiteLLM (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:-3deg;--card-hue:243">
+        <button class="stack-handle" type="button" aria-label="Move Open WebUI card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/open-webui-light.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 18</small></div>
+        <p class="stack-category">AI &amp; automation</p><h3>Open WebUI</h3><p class="stack-description">Conversational AI workspace</p>
+        <a href="https://openwebui.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore Open WebUI (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:6deg;--card-hue:243">
+        <button class="stack-handle" type="button" aria-label="Move Node-RED card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/node-red.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 19</small></div>
+        <p class="stack-category">AI &amp; automation</p><h3>Node-RED</h3><p class="stack-description">Visual automation flows</p>
+        <a href="https://nodered.org/" target="_blank" rel="noopener noreferrer" aria-label="Explore Node-RED (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:-2deg;--card-hue:243">
+        <button class="stack-handle" type="button" aria-label="Move Home Assistant card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/home-assistant.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 20</small></div>
+        <p class="stack-category">AI &amp; automation</p><h3>Home Assistant</h3><p class="stack-description">Home automation</p>
+        <a href="https://www.home-assistant.io/" target="_blank" rel="noopener noreferrer" aria-label="Explore Home Assistant (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:-5deg;--card-hue:243">
+        <button class="stack-handle" type="button" aria-label="Move Renovate card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/renovate.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 21</small></div>
+        <p class="stack-category">AI &amp; automation</p><h3>Renovate</h3><p class="stack-description">Dependency update automation</p>
+        <a href="https://docs.renovatebot.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore Renovate (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:4deg;--card-hue:243">
+        <button class="stack-handle" type="button" aria-label="Move Website image refresh card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/automation-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 22</small></div>
+        <p class="stack-category">AI &amp; automation</p><h3>Website image refresh</h3><p class="stack-description">Automated image rollout checks</p>
+        <a href="https://github.com/antblu/antalos/tree/main/apps/website-image-refresh" target="_blank" rel="noopener noreferrer" aria-label="Explore Website image refresh (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Identity &amp; security" style="--card-angle:-3deg;--card-hue:267">
+        <button class="stack-handle" type="button" aria-label="Move Authentik card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/authentik.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 23</small></div>
+        <p class="stack-category">Identity &amp; security</p><h3>Authentik</h3><p class="stack-description">Identity and single sign-on</p>
+        <a href="https://goauthentik.io/" target="_blank" rel="noopener noreferrer" aria-label="Explore Authentik (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Identity &amp; security" style="--card-angle:6deg;--card-hue:267">
+        <button class="stack-handle" type="button" aria-label="Move Headscale card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/headscale.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 24</small></div>
+        <p class="stack-category">Identity &amp; security</p><h3>Headscale</h3><p class="stack-description">Private network control plane and Headplane</p>
+        <a href="https://headscale.net/stable/" target="_blank" rel="noopener noreferrer" aria-label="Explore Headscale (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Identity &amp; security" style="--card-angle:-2deg;--card-hue:267">
+        <button class="stack-handle" type="button" aria-label="Move Vaultwarden card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/vaultwarden.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 25</small></div>
+        <p class="stack-category">Identity &amp; security</p><h3>Vaultwarden</h3><p class="stack-description">Password management</p>
+        <a href="https://github.com/dani-garcia/vaultwarden" target="_blank" rel="noopener noreferrer" aria-label="Explore Vaultwarden (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Identity &amp; security" style="--card-angle:-5deg;--card-hue:267">
+        <button class="stack-handle" type="button" aria-label="Move CrowdSec card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/crowdsec.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 26</small></div>
+        <p class="stack-category">Identity &amp; security</p><h3>CrowdSec</h3><p class="stack-description">Collaborative threat protection</p>
+        <a href="https://www.crowdsec.net/" target="_blank" rel="noopener noreferrer" aria-label="Explore CrowdSec (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Identity &amp; security" style="--card-angle:4deg;--card-hue:267">
+        <button class="stack-handle" type="button" aria-label="Move cert-manager card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/cert-manager.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 27</small></div>
+        <p class="stack-category">Identity &amp; security</p><h3>cert-manager</h3><p class="stack-description">Certificate lifecycle automation</p>
+        <a href="https://cert-manager.io/" target="_blank" rel="noopener noreferrer" aria-label="Explore cert-manager (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Identity &amp; security" style="--card-angle:-3deg;--card-hue:267">
+        <button class="stack-handle" type="button" aria-label="Move Sealed Secrets card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/security-fallback.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 28</small></div>
+        <p class="stack-category">Identity &amp; security</p><h3>Sealed Secrets</h3><p class="stack-description">Encrypted secrets for GitOps</p>
+        <a href="https://github.com/bitnami-labs/sealed-secrets" target="_blank" rel="noopener noreferrer" aria-label="Explore Sealed Secrets (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:6deg;--card-hue:291">
+        <button class="stack-handle" type="button" aria-label="Move Argo CD card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/argo-cd.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 29</small></div>
+        <p class="stack-category">Platform &amp; observability</p><h3>Argo CD</h3><p class="stack-description">Declarative GitOps delivery</p>
+        <a href="https://argoproj.github.io/cd/" target="_blank" rel="noopener noreferrer" aria-label="Explore Argo CD (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:-2deg;--card-hue:291">
+        <button class="stack-handle" type="button" aria-label="Move Rancher card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/rancher.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 30</small></div>
+        <p class="stack-category">Platform &amp; observability</p><h3>Rancher</h3><p class="stack-description">Cluster management and configuration</p>
+        <a href="https://www.rancher.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore Rancher (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:-5deg;--card-hue:291">
+        <button class="stack-handle" type="button" aria-label="Move Traefik card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/traefik.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 31</small></div>
+        <p class="stack-category">Platform &amp; observability</p><h3>Traefik</h3><p class="stack-description">Ingress routing and configuration</p>
+        <a href="https://traefik.io/traefik" target="_blank" rel="noopener noreferrer" aria-label="Explore Traefik (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:4deg;--card-hue:291">
+        <button class="stack-handle" type="button" aria-label="Move Uptime Kuma card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/uptime-kuma.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 32</small></div>
+        <p class="stack-category">Platform &amp; observability</p><h3>Uptime Kuma</h3><p class="stack-description">Service availability monitoring</p>
+        <a href="https://github.com/louislam/uptime-kuma" target="_blank" rel="noopener noreferrer" aria-label="Explore Uptime Kuma (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:-3deg;--card-hue:291">
+        <button class="stack-handle" type="button" aria-label="Move VictoriaMetrics card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/victoriametrics-light.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 33</small></div>
+        <p class="stack-category">Platform &amp; observability</p><h3>VictoriaMetrics</h3><p class="stack-description">Metrics and observability stack</p>
+        <a href="https://victoriametrics.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore VictoriaMetrics (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:6deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move GitLab card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/gitlab.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 34</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>GitLab</h3><p class="stack-description">Archived template · Git hosting, CI/CD, and container registry</p>
+        <a href="https://about.gitlab.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore GitLab (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:-5deg;--card-hue:291">
+        <button class="stack-handle" type="button" aria-label="Move MetalLB card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/metallb.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 36</small></div>
+        <p class="stack-category">Platform &amp; observability</p><h3>MetalLB</h3><p class="stack-description">Load balancing for bare metal</p>
+        <a href="https://metallb.io/" target="_blank" rel="noopener noreferrer" aria-label="Explore MetalLB (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:4deg;--card-hue:291">
+        <button class="stack-handle" type="button" aria-label="Move CloudNativePG card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/cloudnativepg.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 37</small></div>
+        <p class="stack-category">Platform &amp; observability</p><h3>CloudNativePG</h3><p class="stack-description">PostgreSQL database operator</p>
+        <a href="https://cloudnative-pg.io/" target="_blank" rel="noopener noreferrer" aria-label="Explore CloudNativePG (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:-3deg;--card-hue:291">
+        <button class="stack-handle" type="button" aria-label="Move MariaDB Operator card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/mariadb.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 38</small></div>
+        <p class="stack-category">Platform &amp; observability</p><h3>MariaDB Operator</h3><p class="stack-description">Database operator and CRDs</p>
+        <a href="https://github.com/mariadb-operator/mariadb-operator" target="_blank" rel="noopener noreferrer" aria-label="Explore MariaDB Operator (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:6deg;--card-hue:291">
+        <button class="stack-handle" type="button" aria-label="Move OpenEBS card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/openebs-icon-color.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 39</small></div>
+        <p class="stack-category">Platform &amp; observability</p><h3>OpenEBS</h3><p class="stack-description">Kubernetes storage</p>
+        <a href="https://openebs.io/" target="_blank" rel="noopener noreferrer" aria-label="Explore OpenEBS (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:4deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move LittleLink card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/littlelink-custom.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 42</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>LittleLink</h3><p class="stack-description">Personal links page</p>
+        <a href="https://littlelink.io/" target="_blank" rel="noopener noreferrer" aria-label="Explore LittleLink (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:-3deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move WriteFreely card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/writefreely-light.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 43</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>WriteFreely</h3><p class="stack-description">Publishing and blogging</p>
+        <a href="https://writefreely.org/" target="_blank" rel="noopener noreferrer" aria-label="Explore WriteFreely (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:6deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move Drupal card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/drupal.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 44</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>Drupal</h3><p class="stack-description">Archived template · Content management and publishing</p>
+        <a href="https://www.drupal.org/" target="_blank" rel="noopener noreferrer" aria-label="Explore Drupal (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:-2deg;--card-hue:220">
+        <button class="stack-handle" type="button" aria-label="Move llama.cpp card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/llama-cpp.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 40</small></div>
+        <p class="stack-category">AI &amp; automation</p><h3>llama.cpp</h3><p class="stack-description">Local inference for language models</p>
+        <a href="https://github.com/ggml-org/llama.cpp" target="_blank" rel="noopener noreferrer" aria-label="Explore llama.cpp (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:-5deg;--card-hue:220">
+        <button class="stack-handle" type="button" aria-label="Move Speaches card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/speaches.png" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 46</small></div>
+        <p class="stack-category">AI &amp; automation</p><h3>Speaches</h3><p class="stack-description">Speech transcription and synthesis</p>
+        <a href="https://speaches.ai/" target="_blank" rel="noopener noreferrer" aria-label="Explore Speaches (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="AI &amp; automation" style="--card-angle:4deg;--card-hue:220">
+        <button class="stack-handle" type="button" aria-label="Move Docling card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/docling.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 47</small></div>
+        <p class="stack-category">AI &amp; automation</p><h3>Docling</h3><p class="stack-description">Document conversion and processing</p>
+        <a href="https://docling-project.github.io/docling/" target="_blank" rel="noopener noreferrer" aria-label="Explore Docling (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-3deg;--card-hue:326">
+        <button class="stack-handle" type="button" aria-label="Move Immich card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/immich.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 48</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Immich</h3><p class="stack-description">Photo and video backup and management</p>
+        <a href="https://immich.app/" target="_blank" rel="noopener noreferrer" aria-label="Explore Immich (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Work &amp; collaboration" style="--card-angle:6deg;--card-hue:195">
+        <button class="stack-handle" type="button" aria-label="Move Nextcloud Talk card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/nextcloud.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 49</small></div>
+        <p class="stack-category">Work &amp; collaboration</p><h3>Nextcloud Talk</h3><p class="stack-description">Chat, voice and video calls, and meeting recording</p>
+        <a href="https://nextcloud.com/talk/" target="_blank" rel="noopener noreferrer" aria-label="Explore Nextcloud Talk (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:-2deg;--card-hue:291">
+        <button class="stack-handle" type="button" aria-label="Move Homelable card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/homelable.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 50</small></div>
+        <p class="stack-category">Platform &amp; observability</p><h3>Homelable</h3><p class="stack-description">Homelab inventory and dashboard</p>
+        <a href="https://homelab.antblu.net/" target="_blank" rel="noopener noreferrer" aria-label="Explore Homelable (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Platform &amp; observability" style="--card-angle:-5deg;--card-hue:291">
+        <button class="stack-handle" type="button" aria-label="Move Caddy card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/caddy.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 51</small></div>
+        <p class="stack-category">Platform &amp; observability</p><h3>Caddy</h3><p class="stack-description">Web server template copied to the Debian host</p>
+        <a href="https://caddyserver.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore Caddy (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:4deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Jellyfin card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/jellyfin.svg" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 52</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Jellyfin</h3><p class="stack-description">Media streaming server</p>
+        <a href="https://jellyfin.org/" target="_blank" rel="noopener noreferrer" aria-label="Explore Jellyfin (opens in a new tab)">Explore</a>
+      </article>
+      <article class="stack-card" data-stack-category="Media &amp; entertainment" style="--card-angle:-5deg;--card-hue:160">
+        <button class="stack-handle" type="button" aria-label="Move Storyteller card" title="Drag to move; arrow keys move; Home resets"><span aria-hidden="true">⠿</span> MOVE CARD</button>
+        <div class="stack-art" aria-hidden="true"><img src="/assets/dashboard-icons/storyteller.webp" alt="" width="112" height="112" loading="lazy" decoding="async" draggable="false"><i></i><small>ANTALOS / 56</small></div>
+        <p class="stack-category">Media &amp; entertainment</p><h3>Storyteller</h3><p class="stack-description">Reading and audiobook library</p>
+        <a href="https://storyteller-platform.dev/" target="_blank" rel="noopener noreferrer" aria-label="Explore Storyteller (opens in a new tab)">Explore</a>
+      </article>
+    </div>
+    <p class="stack-source">Inventory from Antalos Kubernetes, Debian workload, and template sources · November 14, 2026. For deployment and health, check the running cluster. <a href="https://github.com/antblu/antalos/tree/main/apps" target="_blank" rel="noopener noreferrer">Browse the stack ↗</a></p>
+  </section>
   </main>
 
   <footer class="svc-footer">
@@ -92,7 +438,7 @@
         <a href="/#portfolio">Projects</a>
         <a href="/#skills">Skills</a>
         <a href="/#homelab">Homelab</a>
-        <a href="/#stack">Service Inventory</a>
+        <a href="/services#stack">Service Inventory</a>
         <a href="https://blog.antblu.net">Blog</a>
         <a href="/contact">Contact</a>
       </nav>
@@ -112,7 +458,7 @@
         <a href="/services/applications">Application Catalog</a>
         <a href="/services/compare">Replacement Map</a>
         <a href="/services/calculator">Cost Calculator</a>
-        <a href="/demo">Interactive Demo</a>
+        <a href="/services#app-tour">Application Tour</a>
       </nav>
     </div>
     <div class="svc-wrap svc-footer-bottom"><p>© 2026 Anthony Bluemel</p><div><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div></div>

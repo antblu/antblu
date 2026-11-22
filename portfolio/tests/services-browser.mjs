@@ -23,7 +23,7 @@ try {
   await page.screenshot({ path: '/tmp/antblu-services-desktop.png', fullPage: true });
   await page.getByRole('link', { name: 'See what you receive' }).first().click();
   assert.equal(await page.locator('.consult-checks dt').count(), 5);
-  await page.goto(`${base}/demo/`);
+  await page.goto(`${base}/services/handoff/#restore`);
   const snapshot = page.getByLabel('Recovery point');
   await page.getByText('Read the sample AI answer').click();
   assert.match(await page.locator('.consult-exercise details').first().innerText(), /runbooks\/recovery\/files.md/);
@@ -190,7 +190,7 @@ try {
   assert.ok(await noJs.getByRole('link', { name: 'review package pricing' }).isVisible());
   const routes = ['/services/', '/services/infrastructure/', '/services/handoff/', '/services/applications/',
     '/services/compare/', '/services/calculator/', '/services/web-development/', '/services/ecommerce/',
-    '/demo/', '/contact/', '/privacy/', '/terms/'];
+    '/contact/', '/privacy/', '/terms/'];
   for (const width of [320, 1440]) {
     for (const theme of ['light', 'dark']) {
       const scan = await browser.newPage({ viewport: { width, height: 900 }, colorScheme: theme, reducedMotion: 'reduce' });

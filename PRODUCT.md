@@ -40,8 +40,8 @@ Use Anthony Bluemel for the person and antblu for the site identity. Preserve th
 ## Evidence on Hand
 
 - The [experience timeline](portfolio/dist/index.html#resume) and [plain-text résumé](portfolio/dist/assets/documents/anthony-bluemel-resume.txt) record work at Vector Digital and Emiliany alongside education and credentials.
-- The [Antalos explorer](portfolio/dist/index.html#stack) links to public configuration. The [homelab section](portfolio/dist/index.html#homelab) includes rack photos, hardware, and network topology. [Homelab source notes](portfolio/dist/assets/homelab/README.md)
-- The [Emiliany case study](portfolio/dist/index.html#emiliany) documents the storefront, deployment, and integrations, with links to the storefront and project source. The [operations demo](portfolio/dist/demo/index.html) illustrates a workflow using a scenario.
+- The [Antalos explorer](portfolio/dist/services/index.html#stack) links to service homepages and the public Antalos configuration. The [homelab section](portfolio/dist/index.html#homelab) includes rack photos, hardware, and network topology. [Homelab source notes](portfolio/dist/assets/homelab/README.md)
+- The [Emiliany case study](portfolio/dist/index.html#emiliany) documents the storefront, deployment, and integrations, with links to the storefront and project source. The [handoff exercise](portfolio/dist/services/handoff/index.html#restore) illustrates a workflow using a scenario.
 
 ## Product Principles
 

@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="/services/services.css">
   <script type="module" src="/services/common.mjs"></script>
   <link rel="stylesheet" href="/services/consulting.css">
+  <script type="module" src="/services/demo.mjs"></script>
 </head>
 <body class="svc-body">
   <a class="svc-skip" href="#main">Skip to content</a>
@@ -47,25 +48,28 @@
   <main id="main" tabindex="-1">
 <!-- Begin generated consulting content -->
 <section class="consult-hero">
-  <div class="svc-wrap">
+  <div class="svc-wrap consult-split">
     <div><h1>What your team receives at handoff</h1><p class="consult-lead">We agree on acceptance checks before I build. Your named administrator runs them during training with the accounts and documentation your business will keep.</p></div>
-
+    <figure class="consult-photo consult-server-photo">
+    <a href="/assets/homelab/nas-interior.webp" aria-label="View full-size photo. Open 2U NAS chassis showing the CPU cooler, power supply, and drive bays"><img src="/assets/homelab/nas-interior.webp" alt="Open 2U NAS chassis showing the CPU cooler, power supply, and drive bays" width="1125" height="1500" decoding="async"></a>
+    <figcaption>Inside my Antalos lab’s 2U TrueNAS server</figcaption>
+  </figure>
   </div>
 </section><div class="svc-wrap">
   <section class="consult-section">
   <h2>Deliverables and acceptance checks</h2>
   <dl class="consult-ledger consult-checks"><div><dt>Account and access inventory</dt><dd><p>Provider billing, domains, single sign-on, VPN, and the location of emergency access credentials.</p><p><strong>Acceptance check</strong> Sign in as an administrator and rotate a temporary deployment credential.</p></dd></div><div><dt>Deployment repository and architecture</dt><dd><p>Configuration, dependencies, network and storage diagrams, and instructions for deploying from source.</p><p><strong>Acceptance check</strong> Find the version running in production and identify which repository controls it.</p></dd></div><div><dt>Backups and recovery</dt><dd><p>Backup destinations, retention, recovery targets, and instructions for file and service restores.</p><p><strong>Acceptance check</strong> Restore a sample file to a separate folder, open it, and record the result.</p></dd></div><div><dt>Updates and rollback</dt><dd><p>Maintenance schedule, health checks, known failure modes, and the procedure for reverting a change.</p><p><strong>Acceptance check</strong> Rehearse an update and rollback in an agreed test environment.</p></dd></div><div><dt>Operator training and AI-assisted runbook</dt><dd><p>A troubleshooting assistant uses the approved runbooks and diagnostics for your environment. Administrators review its evidence and perform changes through their normal workflow.</p><p><strong>Acceptance check</strong> Ask the assistant about a sample incident, find the cited runbook, and verify the recommendation.</p></dd></div></dl>
 </section>
-  <section class="consult-section">
+  <section class="consult-section" id="restore">
   <h2>Practice a file restore</h2>
-  <figure class="consult-runbook">
+  <div class="consult-split"><figure class="consult-runbook" id="sample-runbook">
   <figcaption>Sample recovery runbook</figcaption>
   <code>runbooks/recovery/files.md</code>
   <h2>Restore a file from backup</h2>
   <dl><div><dt>Operator</dt><dd>Files administrator</dd></div><div><dt>File</dt><dd><code>vendor-inventory.csv</code></dd></div></dl>
   <ol><li>Choose a snapshot from before the deletion.</li><li>Restore the file to a separate folder with your recovery credentials.</li><li>Open the copy, check its contents, and record the snapshot and outcome.</li></ol>
-  <a href="/demo">Try the restore exercise</a>
-</figure><div class="svc-cta"><a class="svc-btn svc-btn--primary" href="/contact#quote">Prepare a project brief</a></div>
+
+</figure><div id="service-demo"><p>Enable JavaScript to practice the restore.</p></div></div><div class="svc-cta"><a class="svc-btn svc-btn--primary" href="/contact#quote">Prepare a project brief</a></div>
 </section>
 </div>
 <!-- End generated consulting content -->
@@ -80,7 +84,7 @@
         <a href="/#portfolio">Projects</a>
         <a href="/#skills">Skills</a>
         <a href="/#homelab">Homelab</a>
-        <a href="/#stack">Service Inventory</a>
+        <a href="/services#stack">Service Inventory</a>
         <a href="https://blog.antblu.net">Blog</a>
         <a href="/contact">Contact</a>
       </nav>
@@ -100,7 +104,7 @@
         <a href="/services/applications">Application Catalog</a>
         <a href="/services/compare">Replacement Map</a>
         <a href="/services/calculator">Cost Calculator</a>
-        <a href="/demo">Interactive Demo</a>
+        <a href="/services#app-tour">Application Tour</a>
       </nav>
     </div>
     <div class="svc-wrap svc-footer-bottom"><p>© 2026 Anthony Bluemel</p><div><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div></div>

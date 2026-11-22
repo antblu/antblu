@@ -1,5 +1,7 @@
 # Verification — 2026-10-25
 
+Services landing page (2026-11-21). Headless Chrome passed the services browser suite in light and dark themes at 320px and 1440px. Separate desktop checks covered the hero links to project evidence and examples. The local preview used the repository’s mountain photograph. Production deployment was outside these checks.
+
 Portfolio controls (2026-11-21) replace résumé badges and tags with the existing dates and descriptions, show project metadata in plain text, and use an underline for the active Emiliany journey. Chromium checked both themes at 320, 768, and 1440 pixels. Checks covered hero links and keyboard previews, project filtering and the Antalos dialog, keyboard and pointer tab selection, journey accordions, overflow, and local asset and page errors. All four journeys remained visible with JavaScript disabled and forced colors enabled at 320 pixels. The contact submit button and required-field validation passed in both themes at 320 and 1440 pixels. Reviewed screenshots of the hero, tabs, project card, and submit button. Live contact delivery and production deployment were outside these checks.
 
 Hover cards (2026-11-21) add previews to the three homepage hero links and the three main service links. Headless Chrome checked all six previews in light and dark themes at 320px and 1440px. Checks covered keyboard focus, Escape dismissal, moving the pointer onto the preview, viewport fit, reduced motion, emulated touch navigation, and link navigation with JavaScript disabled. Reviewed desktop dark screenshots for both pages. External requests were blocked during testing. Physical touch devices and production deployment were outside the check.
@@ -466,3 +468,18 @@ Emiliany project card (2026-11-21). Captured the live English homepage and saved
   and Git whitespace passed. The homepage HTML and shared assets had no edits,
   and the existing Chromium tablet hero check passed. Production deployment
   and physical devices were outside this check.
+
+## Service inventory on Services (2026-11-21)
+
+Chromium found all 50 cards at `/services#stack` and followed the homepage
+footer link to the section. At 1440px in both themes, 390px in dark mode, and
+320px in light mode, it checked local images, search and category filtering,
+and opening Nextcloud by clicking the card artwork or pressing Enter on
+Explore. Desktop pointer and keyboard movement and the reset control passed.
+The cards and links also rendered with JavaScript disabled. No page errors,
+missing local assets, or horizontal overflow occurred in the inventory checks.
+The consulting browser suite, billing and cost tests, JavaScript syntax,
+generated HTML freshness, and Git whitespace checks passed.
+Direct HTTP checks reached 47 card destinations. The Mautic,
+VictoriaMetrics, and WriteFreely homepage requests did not complete from the
+local host.
