@@ -45,12 +45,16 @@
     <h1>I build open&#8209;source systems your team can run.</h1><p class="consult-lead">You buy the hardware or open the cloud account in your name. I deploy and secure the tools, connect them, and train your team to run them. You pay me once.</p>
     <div class="svc-cta"><a class="svc-btn svc-btn--primary" href="/contact#quote">Prepare a project brief</a><a class="svc-btn consult-secondary" href="#consult-evidence">See the work</a></div>
     <figure id="app-tour" class="consult-tour">
-      <video autoplay muted loop playsinline disablepictureinpicture preload="metadata" width="1356" height="786" poster="/assets/tour/application-tour.webp" aria-label="Safari tour of nine self-hosted applications" aria-describedby="tour-caption">
+      <video controls autoplay muted loop playsinline disablepictureinpicture preload="metadata" width="1414" height="920" poster="/assets/tour/application-tour.webp" aria-label="Authentik sign-in and application tour" aria-describedby="tour-caption">
         <source src="/assets/tour/application-tour.mp4" type="video/mp4">
         <track kind="captions" srclang="en" label="Application names" src="/assets/tour/application-tour.vtt">
         <a href="/assets/tour/application-tour.mp4">Watch the application tour</a>
       </video>
-      <figcaption id="tour-caption">Featuing authentik, Nextcloud, Grafana, Argo CD, Odoo, SuiteCRM, Invoice Ninja, Headscale, Zammad, and Vaultwarden.</figcaption>
+      <div class="tour-playback" hidden>
+        <button type="button" aria-label="Play tour"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="currentColor"><path class="tour-play-icon" d="M5 3.5v13l11-6.5z"/><g class="tour-pause-icon"><rect x="4" y="3" width="4" height="14" rx="1"/><rect x="12" y="3" width="4" height="14" rx="1"/></g></svg></button>
+        <input type="range" min="0" value="0" step="0.1" aria-label="Tour position">
+      </div>
+      <figcaption id="tour-caption">Explore the shared workspace, sales and support tools, and the infrastructure that runs them.</figcaption>
     </figure>
   </div>
   <a class="consult-scroll" href="#delivery">Scroll <span aria-hidden="true">↓</span></a>

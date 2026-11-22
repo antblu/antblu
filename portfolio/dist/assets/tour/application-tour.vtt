@@ -1,64 +1,118 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:02.000
-Authentik application dashboard
+00:00:00.000 --> 00:00:01.500
+Authentik · Username
 
-00:00:02.000 --> 00:00:03.000
-Open Nextcloud from Authentik
+00:00:01.500 --> 00:00:03.000
+Authentik · Password
 
-00:00:03.000 --> 00:00:07.000
-Nextcloud · Dashboard
+00:00:03.000 --> 00:00:04.500
+Authentik · Verification method
 
-00:00:07.000 --> 00:00:12.000
-Nextcloud · Calendar
+00:00:04.500 --> 00:00:06.000
+Authentik · Verify sign-in
 
-00:00:12.000 --> 00:00:17.000
-Nextcloud · Talk
+00:00:06.000 --> 00:00:07.500
+Authentik
 
-00:00:17.000 --> 00:00:18.000
-Open Grafana from Authentik
+00:00:07.500 --> 00:00:09.000
+Nextcloud Dashboard
 
-00:00:18.000 --> 00:00:22.000
-Grafana
+00:00:09.000 --> 00:00:10.500
+Nextcloud Files
 
-00:00:22.000 --> 00:00:23.000
-Open Argo CD from Authentik
+00:00:10.500 --> 00:00:12.000
+Nextcloud Deck
 
-00:00:23.000 --> 00:00:27.000
-Argo CD
+00:00:12.000 --> 00:00:13.500
+Nextcloud Calendar
 
-00:00:27.000 --> 00:00:28.000
-Open Odoo from Authentik
+00:00:13.500 --> 00:00:15.000
+Nextcloud Mail
 
-00:00:28.000 --> 00:00:32.000
-Odoo
-
-00:00:32.000 --> 00:00:33.000
-Open SuiteCRM from Authentik
-
-00:00:33.000 --> 00:00:37.000
+00:00:15.000 --> 00:00:16.500
 SuiteCRM
 
-00:00:37.000 --> 00:00:38.000
-Open Invoice Ninja from Authentik
-
-00:00:38.000 --> 00:00:42.000
+00:00:16.500 --> 00:00:18.000
 Invoice Ninja
 
-00:00:42.000 --> 00:00:43.000
-Open Headscale from Authentik
-
-00:00:43.000 --> 00:00:47.000
-Headscale · Headplane
-
-00:00:47.000 --> 00:00:48.000
-Open Zammad from Authentik
-
-00:00:48.000 --> 00:00:52.000
+00:00:18.000 --> 00:00:19.500
 Zammad
 
-00:00:52.000 --> 00:00:53.000
-Open Vaultwarden from Authentik
+00:00:19.500 --> 00:00:21.000
+Odoo Contacts
 
-00:00:53.000 --> 00:00:57.000
+00:00:21.000 --> 00:00:22.500
+Odoo Calendar
+
+00:00:22.500 --> 00:00:24.000
+Odoo Discuss
+
+00:00:24.000 --> 00:00:25.500
+Cal.diy
+
+00:00:25.500 --> 00:00:27.000
+Medusa
+
+00:00:27.000 --> 00:00:28.500
+Mautic
+
+00:00:28.500 --> 00:00:30.000
+Open WebUI
+
+00:00:30.000 --> 00:00:31.500
+Node-RED
+
+00:00:31.500 --> 00:00:33.000
+BentoPDF
+
+00:00:33.000 --> 00:00:34.500
+WriteFreely
+
+00:00:34.500 --> 00:00:36.000
 Vaultwarden
+
+00:00:36.000 --> 00:00:37.500
+UrBackup
+
+00:00:37.500 --> 00:00:39.000
+Uptime Kuma
+
+00:00:39.000 --> 00:00:40.500
+Grafana · Talos VMs
+
+00:00:40.500 --> 00:00:42.000
+TrueNAS
+
+00:00:42.000 --> 00:00:43.500
+Proxmox VE
+
+00:00:43.500 --> 00:00:45.000
+Headscale
+
+00:00:45.000 --> 00:00:46.500
+Argo CD
+
+00:00:46.500 --> 00:00:48.000
+Forgejo
+
+00:00:48.000 --> 00:00:49.500
+Rancher
+
+00:00:49.500 --> 00:00:51.000
+LiteLLM
+
+00:00:51.000 --> 00:00:52.500
+Stalwart
+
+00:00:52.500 --> 00:00:54.000
+Traefik
+
+00:00:54.000 --> 00:00:55.500
+VictoriaLogs
+
+00:00:55.500 --> 00:00:57.000
+Spreadsheet · Network inventory
+
+00:00:57.000 --> 00:00:58.500
+CouchDB · Obsidian LiveSync

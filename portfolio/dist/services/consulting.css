@@ -128,3 +128,10 @@
 .consult-tour figcaption { max-width: 76ch; margin: .8rem auto 0; color: white; font-size: .88rem; }
 
 .consult-cover > .svc-wrap { justify-self: center; }
+.tour-playback:not([hidden]) { display: flex; align-items: center; gap: .65rem; padding: 0 .75rem; margin-top: .25rem; border-radius: 8px; background: #132338; color: white; }
+.tour-playback button { min-width: 44px; min-height: 44px; border: 0; background: transparent; color: inherit; font-size: 1rem; cursor: pointer; }
+.consult-tour .tour-playback input { flex: 1; min-width: 0; height: 44px; margin: 0; padding: 0; accent-color: #9dceff; cursor: pointer; }
+.tour-playback button { display: grid; place-items: center; border-radius: 6px; }
+.tour-playback button:hover { background: #ffffff18; }
+.tour-playback button:not(.is-playing) .tour-pause-icon,
+.tour-playback button.is-playing .tour-play-icon { display: none; }
