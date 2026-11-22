@@ -135,3 +135,32 @@
 .tour-playback button:hover { background: #ffffff18; }
 .tour-playback button:not(.is-playing) .tour-pause-icon,
 .tour-playback button.is-playing .tour-play-icon { display: none; }
+
+.consult-chat-form, .consult-chat-history { max-width: 45rem; }
+.consult-chat-form[hidden], .consult-chat-history:empty, #services-chat-status:empty { display: none; }
+.consult-chat-history {
+  display: grid;
+  gap: .75rem;
+  list-style: none;
+  padding: 0;
+  max-height: 26rem;
+  overflow: auto;
+}
+.consult-chat-history > li {
+  padding: .85rem 1rem;
+  border: 1px solid var(--svc-line);
+  border-radius: .75rem;
+  overflow-wrap: anywhere;
+}
+.consult-chat-history p { margin-block: .25rem 0; white-space: pre-wrap; }
+.consult-chat-form textarea { width: 100%; }
+.consult-chat-form .svc-muted { margin-block: .25rem; }
+.consult-chat-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem 1rem;
+  list-style: none;
+  padding: 0;
+  margin-block-start: .5rem;
+}
+.consult-chat-sources a { text-decoration: underline; }
