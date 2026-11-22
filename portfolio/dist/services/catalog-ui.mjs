@@ -1,4 +1,5 @@
 import { applications } from './applications.mjs';
+import { operatorTasks } from './site-content.mjs';
 import { pricing } from './pricing.mjs';
 import { siteConfig } from './site-config.mjs';
 import { escapeHtml, publicHttps, range, readSession, writeSession } from './common.mjs';
@@ -70,7 +71,8 @@ cards.addEventListener('click', event => {
     <h2 id="application-title">${app.name}</h2><p>${app.description}</p>
     <dl>${[
       ['Capabilities', app.capabilities], ['Database', app.database], ['Typical hosting', app.hosting],
-      ['Integration candidates', app.integrations], ['Edition and license', app.edition], ['One-time implementation', range(pricing[app.price])]
+      ['Integration candidates', app.integrations], ['Edition and license', app.edition],
+      ['Operator responsibilities', operatorTasks[app.category] || operatorTasks.default], ['One-time implementation', range(pricing[app.price])]
     ].map(([title, value]) => `<dt>${title}</dt><dd>${escapeHtml(value)}</dd>`).join('')}</dl>
     <p>${app.qualification}</p><div class="svc-cta">
       <a href="${app.url}">Official website</a><a href="${app.licenseUrl}">Upstream license</a>

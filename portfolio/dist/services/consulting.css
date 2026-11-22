@@ -1,0 +1,75 @@
+/* Loaded only by consulting pages. */
+.consult-hero {
+  background: var(--svc-hero-bg);
+  border-bottom: 1px solid var(--svc-line);
+  padding-block: clamp(2.6rem, 7vw, 6rem);
+}
+.svc-body .consult-hero h1 {
+  font-size: clamp(2.15rem, 5.3vw, 4.5rem);
+  letter-spacing: -.035em;
+  line-height: 1.08;
+  max-width: 19ch;
+  text-wrap: balance;
+}
+.consult-lead { color: var(--svc-muted); font-size: clamp(1rem, 1.9vw, 1.2rem); max-width: 62ch; }
+.consult-split { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; align-items: start; }
+.consult-section { padding-block: clamp(3rem, 6vw, 4.5rem); border-bottom: 1px solid var(--svc-line); }
+.consult-section p { max-width: 70ch; }
+.consult-section:last-child { border-bottom: 0; }
+.consult-runbook {
+  margin: 0;
+  padding: clamp(1.15rem, 3vw, 2rem);
+  background: var(--svc-surface);
+  border: 1px solid var(--svc-line);
+  border-radius: 13px;
+  box-shadow: 0 10px 24px #06172912;
+  min-width: 0;
+  max-width: 46rem;
+}
+.consult-runbook figcaption { font-weight: 700; }
+.consult-runbook > code { display: block; color: var(--svc-muted); margin: .25rem 0 1.25rem; }
+.consult-runbook code, .consult-exercise code, .consult-exercise pre { font-family: var(--svc-mono); }
+.svc-body .consult-runbook h2 { font-size: clamp(1.35rem, 2.8vw, 2rem); }
+.consult-runbook dl { margin: 0; }
+.consult-runbook dl div { display: flex; flex-wrap: wrap; gap: .25rem .75rem; border-top: 1px solid var(--svc-line); padding-block: .35rem; }
+.consult-runbook dt { color: var(--svc-muted); }
+.consult-runbook dd, .consult-ledger dd { margin: 0; }
+.consult-runbook ol { padding-inline-start: 1.2rem; }
+.consult-runbook li + li { margin-top: .45rem; }
+.consult-stages {
+  display: grid;
+  margin: 1.5rem 0 0;
+  list-style: none;
+  counter-reset: stages;
+  padding: 0;
+  gap: 1.4rem;
+}
+.consult-stages > li { padding-top: 1rem; border-top: 1px solid var(--svc-line); counter-increment: stages; }
+.consult-stages > li::before { content: counter(stages, decimal-leading-zero); color: var(--svc-link); font: .875rem var(--svc-mono); display: block; margin-bottom: .5rem; }
+.consult-ledger { margin: 1.5rem 0 0; }
+.consult-ledger > div { display: grid; gap: .35rem 1rem; border-top: 1px solid var(--svc-line); padding-block: 1rem; }
+.consult-ledger dt { font-weight: 750; }
+.consult-ledger dd { color: var(--svc-muted); }
+.consult-checks strong { color: var(--svc-ink); }
+.consult-photo { margin: 0; }
+.consult-photo img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 13px; }
+.consult-photo figcaption { margin-top: .5rem; color: var(--svc-muted); }
+.consult-links { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; padding: 0; list-style: none; }
+.consult-faq details { border-top: 1px solid var(--svc-line); padding-block: 1rem; }
+.consult-faq details:last-child { border-bottom: 1px solid var(--svc-line); }
+.consult-exercise pre { white-space: pre-wrap; overflow-wrap: anywhere; padding: .75rem; background: var(--svc-soft); }
+.consult-draft { width: 100%; min-height: 10rem; }
+.consult-exercise [role="status"] { margin-block: .75rem; }
+@media (min-width: 720px) {
+  .consult-split { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 5rem); }
+  .consult-hero .consult-split { align-items: center; }
+  .consult-ledger > div { grid-template-columns: minmax(10rem, 1fr) minmax(0, 2.5fr); }
+  .consult-stages { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 660px) {
+  .svc-body .svc-comparison-table { min-width: 0; display: block; }
+  .svc-comparison-table :is(thead, tbody, tr, th, td, caption) { display: block; }
+  .svc-comparison-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .svc-comparison-table tbody tr { border-top: 2px solid var(--svc-line); }
+  .svc-comparison-table td::before { content: attr(data-label); display: block; font-weight: 700; margin-bottom: .25rem; }
+}

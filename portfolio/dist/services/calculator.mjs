@@ -62,11 +62,11 @@ root.innerHTML = `<div class="svc-calc">
         ${checkbox('databaseHa', 'Budget for database HA separately')}
         ${fields(countField('backupGb', 'Offsite backup storage (GB)', 100), numberField('backupRate', 'Backup / GB / month ($)', 0.02, '0.0001'),
           numberField('controlPlaneMonthly', 'Control plane / month ($)', 0), numberField('networkMonthly', 'Network and load balancing / month ($)', 10),
-          numberField('supportMonthly', 'Optional support / month ($)', 0), numberField('administratorAnnual', 'Total administrator labor / year ($)', 2400),
+          numberField('administratorAnnual', 'Total administrator labor / year ($)', 2400),
           numberField('selfHostedMonthlyExtras', 'Other monthly costs ($)', 0))}
         <p class="svc-muted">Enter database costs that fall outside the server, storage, and network budget. Include labor for all administrators.</p>
         ${disclosure('Optional setup and replacement costs', `
-          ${checkbox('aiSetup', `AI operations assistant (one-time ${range(pricing.ai)})`)}
+          ${checkbox('aiSetup', `Expanded AI operations assistant (one-time ${range(pricing.ai)})`)}
           ${checkbox('extraTraining', `Additional training (one-time ${range(pricing.training)})`)}
           ${fields(numberField('renewalAmount', 'Replacement or renewal cost ($)', 0), countField('renewalIntervalYears', 'Repeat every N years (0 disables)', 0))}
           <p class="svc-muted">Implementation includes standard handoff and training. The estimate adds renewals on anniversaries within the term.</p>`)}`)}
@@ -256,7 +256,7 @@ function update() {
   }
   const names = ['years', 'commercialInitial', 'commercialMonthlyServices', 'infrastructureInitial', 'modulesInitial', 'migrationInitial', 'hardwareInitial', 'serverCount',
     'serverMonthly', 'storageGb', 'storageRate', 'databaseCount', 'databaseMonthly', 'databaseHaMonthly', 'backupGb', 'backupRate', 'controlPlaneMonthly', 'networkMonthly',
-    'supportMonthly', 'administratorAnnual', 'selfHostedMonthlyExtras', 'renewalAmount', 'renewalIntervalYears'];
+    'administratorAnnual', 'selfHostedMonthlyExtras', 'renewalAmount', 'renewalIntervalYears'];
   const inputs = Object.fromEntries(names.map(name => [name, value(name)]));
   inputs.subscriptions = readSubscriptions();
   inputs.databaseHa = field('databaseHa').checked;
@@ -274,12 +274,12 @@ function update() {
   const comparison = `${difference} over ${years} ${years === 1 ? 'year' : 'years'}.`;
   const resultMessage = comparable ? comparison : 'Confirm in Application scope that both setups cover the same needs to see the cost difference.';
   if (status.textContent !== resultMessage) status.textContent = resultMessage;
-  const breakEven = result.breakEvenMonth === null ? 'No sustained break-even within the term.' :
+  const breakEven = result.breakEvenMonth === null ? '' :
     result.breakEvenMonth === 0 ? 'Self-hosted starts at or below commercial cost and stays there.' :
       `Self-hosted reaches sustained break-even at month ${result.breakEvenMonth}.`;
   costResults.innerHTML = `<table class="svc-table svc-results-table"><caption>${years}-year estimate in US dollars</caption><thead><tr><th scope="col">Cost</th><th scope="col">Commercial</th><th scope="col">Self-hosted</th></tr></thead><tbody>
     ${[['Recurring / mo.', 'monthly'], ['Initial', 'initial'], ['Term total', 'total']].map(([label, key]) => `<tr><th scope="row">${label}</th><td>${money(result.commercial[key])}</td><td>${money(result.selfHosted[key])}</td></tr>`).join('')}
-    </tbody></table><p class="svc-muted">Monthly equivalent includes annual subscriptions and administrator labor spread over 12 months. Setup and scheduled replacements are included in the term total, not the monthly figure.</p>${comparable ? `<p class="svc-muted">${breakEven}</p>` : ''}`;
+    </tbody></table><p class="svc-muted">Monthly equivalent includes annual subscriptions and administrator labor spread over 12 months. Setup and scheduled replacements are included in the term total, not the monthly figure.</p>${comparable && breakEven ? `<p class="svc-muted">${breakEven}</p>` : ''}`;
   if (comparable) chart(result, years);
   else root.querySelector('#cost-chart').replaceChildren();
   const appNames = selectedApps().map(app => app.name + (isBundled(app) ? ' (bundled in baseline)' : ''));
@@ -289,7 +289,7 @@ function update() {
     '',
     `Commercial: ${money(commercial.initial)} initial · ${money(commercial.monthly)} monthly · ${money(commercial.total)} total.`,
     `Self-hosted: ${money(selfHosted.initial)} initial · ${money(selfHosted.monthly)} monthly · ${money(selfHosted.total)} total.`,
-    ...(comparable ? [comparison, breakEven] : ['Application scope is unconfirmed.']),
+    ...(comparable ? [comparison, breakEven].filter(Boolean) : ['Application scope is unconfirmed.']),
     '',
     Object.keys(groups).map(key => `${groupLabels[key]}: ${value(key)}`).join(' · '),
     'Commercial subscriptions:',
@@ -300,7 +300,7 @@ function update() {
     `Compute: ${inputs.serverCount} × ${money(inputs.serverMonthly)}/month; ${value('vcpu')} vCPU and ${value('ram')} GiB RAM per server.`,
     `Storage: ${inputs.storageGb} GB × ${rateFormat.format(inputs.storageRate)}/GB/month. Backups: ${inputs.backupGb} GB × ${rateFormat.format(inputs.backupRate)}/GB/month.`,
     `Databases: ${inputs.databaseCount} × ${money(inputs.databaseMonthly)}/month${inputs.databaseHa ? ` plus ${money(inputs.databaseHaMonthly)} extra per database for HA` : ''}.`,
-    `Control plane: ${money(inputs.controlPlaneMonthly)}/month. Network: ${money(inputs.networkMonthly)}/month. Support: ${money(inputs.supportMonthly)}/month. Extras: ${money(inputs.selfHostedMonthlyExtras)}/month. Administration: ${money(inputs.administratorAnnual)}/year.`,
+    `Control plane: ${money(inputs.controlPlaneMonthly)}/month. Network: ${money(inputs.networkMonthly)}/month. Extras: ${money(inputs.selfHostedMonthlyExtras)}/month. Administration: ${money(inputs.administratorAnnual)}/year.`,
     `Scheduled replacement: ${inputs.renewalIntervalYears && inputs.renewalAmount ? `${money(inputs.renewalAmount)} every ${inputs.renewalIntervalYears} year(s) within the term` : 'none'}.`,
     '',
     scopeNote.textContent,

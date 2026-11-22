@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Interactive Infrastructure Demo | Anthony Bluemel</title>
-  <meta name="description" content="Use a sample workspace to investigate an alert and approve a simulated GitOps change as an administrator.">
+  <title>Restore a file from backup | Anthony Bluemel</title>
+  <meta name="description" content="Try a simulated restore for a shared files workspace. The snapshots, runbook, file contents, and AI response are examples.">
   <meta name="theme-color" content="#f3f7fb">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Anthony Bluemel">
-  <meta property="og:title" content="Interactive Infrastructure Demo | Anthony Bluemel">
-  <meta property="og:description" content="Use a sample workspace to investigate an alert and approve a simulated GitOps change as an administrator.">
+  <meta property="og:title" content="Restore a file from backup | Anthony Bluemel">
+  <meta property="og:description" content="Try a simulated restore for a shared files workspace. The snapshots, runbook, file contents, and AI response are examples.">
   <meta property="og:url" content="https://antblu.net/demo">
   <meta property="og:image" content="https://antblu.net/assets/antblu-logo.png">
   <link rel="canonical" href="https://antblu.net/demo">
@@ -27,12 +27,13 @@
   <link rel="stylesheet" href="/services/services.css">
   <script type="module" src="/services/common.mjs"></script>
   <script type="module" src="/services/demo.mjs"></script>
+  <link rel="stylesheet" href="/services/consulting.css">
 </head>
 <body class="svc-body">
   <a class="svc-skip" href="#main">Skip to content</a>
   <header class="svc-header">
     <div class="svc-wrap">
-      <a class="svc-brand" href="/"><img src="../assets/logoantbluenhanced.png" alt="Anthony Bluemel" width="2172" height="724"></a>
+      <a class="svc-brand" href="/"><img src="/assets/logoantbluenhanced.png" alt="Anthony Bluemel" width="2172" height="724"></a>
       <button class="svc-btn svc-menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>Menu</button>
       <nav id="site-nav" class="svc-nav" aria-label="Main navigation">
         <a href="/#resume">Experience</a>
@@ -45,16 +46,34 @@
     </div>
   </header>
   <main id="main" tabindex="-1">
-    <section class="svc-hero svc-hero--compact">
-      <div class="svc-wrap"><div><h1>Infrastructure incident simulation</h1><p class="svc-lead">Use a sample workspace to investigate an alert and approve a simulated GitOps change as an administrator.</p><div class="svc-cta"><a class="svc-btn" href="/services/applications">Browse Applications</a><a class="svc-btn" href="/contact?service=infrastructure#quote">Discuss Your Setup</a></div></div></div>
-    </section>
-    <div class="svc-wrap">
-      <section class="svc-section" aria-label="Demo workspace"><p class="svc-note">The demo uses fictional metrics and events and scripted AI responses. It sends no production commands.</p><div id="service-demo"><p>Loading the demo…</p></div><noscript><p>The simulation requires JavaScript.</p></noscript></section>
-    </div>
+<!-- Begin generated consulting content -->
+<section class="consult-hero">
+  <div class="svc-wrap">
+    <div><h1>Restore a file from backup</h1><p class="consult-lead">Try a simulated restore for a shared files workspace. The snapshots, runbook, file contents, and AI response are examples.</p></div>
+
+  </div>
+</section><div class="svc-wrap">
+  <section class="consult-section consult-split" aria-label="Recovery exercise">
+    <figure class="consult-runbook" id="sample-runbook">
+  <figcaption>Sample recovery runbook</figcaption>
+  <code>runbooks/recovery/files.md</code>
+  <h2>Restore a file from backup</h2>
+  <dl><div><dt>Operator</dt><dd>Files administrator</dd></div><div><dt>File</dt><dd><code>vendor-inventory.csv</code></dd></div></dl>
+  <ol><li>Choose a snapshot from before the deletion.</li><li>Restore the file to a separate folder with your recovery credentials.</li><li>Open the copy, check its contents, and record the snapshot and outcome.</li></ol>
+
+</figure>
+    <div id="service-demo"><p>Enable JavaScript to work through the simulation.</p></div>
+  </section>
+  <section class="consult-section">
+  <h2>Plan your own handoff</h2>
+  <div class="svc-cta"><a class="svc-btn svc-btn--primary" href="/services/handoff">See what you receive</a><a class="svc-btn consult-secondary" href="/contact#quote">Prepare a project brief</a></div>
+</section>
+</div>
+<!-- End generated consulting content -->
   </main>
   <footer class="svc-footer">
     <div class="svc-wrap">
-      <div class="svc-footer-intro"><a class="svc-brand" href="/">Anthony Bluemel<span aria-hidden="true">.</span></a><p>Independent infrastructure engineering, web development, and e-commerce.</p></div>
+      <div class="svc-footer-intro"><a class="svc-brand" href="/">Anthony Bluemel<span aria-hidden="true">.</span></a><p>Independent infrastructure engineering and open-source implementation.</p></div>
       <nav aria-labelledby="footer-portfolio">
         <strong id="footer-portfolio">Portfolio</strong>
         <a href="/#about">About</a>
@@ -70,11 +89,12 @@
         <strong id="footer-services">Services</strong>
         <a href="/services">Services Overview</a>
         <a href="/services/infrastructure">Infrastructure</a>
+        <a href="/services/handoff">Ownership and Handoff</a>
         <a href="/services/web-development">Website Development</a>
         <a href="/services/ecommerce">E-commerce</a>
         <a href="/services#packages">Infrastructure Packages</a>
-        <a href="/services#booking">Book a Consultation</a>
-        <a href="/contact#quote">Request a Quote</a>
+        <a href="/contact#quote">Prepare a project brief</a>
+        <a href="/contact#quote">Prepare a project brief</a>
       </nav>
       <nav aria-labelledby="footer-tools">
         <strong id="footer-tools">Consulting Tools</strong>

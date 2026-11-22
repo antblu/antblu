@@ -7,7 +7,7 @@ const entries = [
   ['eurooffice', 'EuroOffice', 'Collaboration', 'Browser-based editing of documents, spreadsheets and presentations.',
     'Collaborative office editing and Microsoft Office format compatibility', 'PostgreSQL for the office server', 'Office server, persistent document storage and a Nextcloud integration',
     'Nextcloud integration and compatible office document formats', 'Euro-Office · AGPLv3', 'intermediate',
-    'https://euro-office.github.io/documentation/', 'https://github.com/Euro-Office/DocumentServer/blob/main/LICENSE', 'Confirm the current release and production support requirements during discovery.', 'https://nextcloud.com/blog/euro-office-building-momentum/', 'https://nextcloud.com/c/uploads/2026/04/officeeu-logo-864x576.png'],
+    'https://euro-office.github.io/documentation/', 'https://github.com/Euro-Office/DocumentServer/blob/main/LICENSE', 'Confirm the current release and production support requirements during discovery.', 'https://nextcloud.com/blog/euro-office-building-momentum/'],
   ['nextcloud-talk', 'Nextcloud Talk', 'Collaboration', 'Team messaging, voice and video calls, and meeting recording.',
     'Chats, calls, screen sharing and meeting recording', 'Nextcloud database plus NATS for the high-performance backend', 'Nextcloud, signaling service, media bridge and optional recording service',
     'Nextcloud identity, high-performance backend and TURN', 'Nextcloud Talk · AGPLv3', 'complex',

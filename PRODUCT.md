@@ -18,20 +18,20 @@ Anthony uses the site to show how he supports systems for clients and builds inf
 
 ## Positioning
 
-Anthony draws on systems work in an MSP environment and on Antalos, his self-hosted infrastructure. Visitors can trace his approach from infrastructure provisioning to monitoring and recovery. The Emiliany case study extends that evidence to a bilingual storefront. Consulting clients keep control of their accounts and data. Anthony documents the deployment and trains their team, with ongoing support available by arrangement.
+Anthony draws on systems work in an MSP environment and on Antalos, his self-hosted infrastructure. Visitors can trace his approach from infrastructure provisioning to monitoring and recovery. The Emiliany case study extends that evidence to a bilingual storefront. Consulting clients keep control of their accounts and data. Anthony scopes a one-time implementation, documents the deployment, and trains the client’s operators to verify and run it.
 
 ## Operating Context
 
 - Employers can review the experience timeline, technical skills, and selected projects, then inspect public source and architecture material.
-- Consulting clients can review service scopes, browse application and subscription comparisons, and estimate ownership costs over one, three, or five years. The incident walkthrough uses fictional data and scripted responses. Visitors can request a consultation, use the scheduling link, or email Anthony.
+- Consulting clients can review service scopes, browse application and subscription comparisons, and estimate ownership costs over one, three, or five years. The incident walkthrough uses fictional data and scripted responses. Visitors can prepare a project brief in the browser and send it to Anthony from their email app.
 - The Blog link leads to Anthony’s separate Drupal journal.
 
 ## Capabilities and Constraints
 
 - Serve the site from `portfolio/dist/` without a build step. Keep credentials out of browser assets. The local preview command is `python3 -m http.server 4173 --directory portfolio/dist`.
-- Ticket submission depends on the deployment’s Zammad form channel. Keep an email path available so visitors can contact Anthony from a static preview or during a ticket service outage.
+- Keep the project brief, restore exercise, and cost calculator usable without API calls. The contact page offers an email draft, copy action, and direct email address.
 - Treat the homelab and Antalos inventory as snapshots of hardware and source configuration. Date the evidence, label archived templates, and verify deployment or health claims against the running system.
-- Treat calculator outputs as estimates based on visitor inputs and stated assumptions. Keep implementation, hosting, subscriptions, and ongoing support visible as separate costs. Check upstream sources and verification dates before quoting prices or license terms.
+- Treat calculator outputs as estimates based on visitor inputs and stated assumptions. Keep implementation, hosting, subscriptions, and administrator labor visible as separate costs. Check upstream sources and verification dates before quoting prices or license terms.
 
 ## Brand Commitments
 

@@ -12,7 +12,6 @@ The homepage is organized for prospective employers: role and evidence summary â
 - Figma assets are downloaded locally to `dist/assets/`.
 - Portrait: Anthonyâ€™s supplied IMG_4275.HEIC (JPEG-encoded), stored as dist/assets/anthony-bluemel.jpg. The displayed portrait is a transparent cutout at dist/assets/anthony-bluemel-cutout.png; the original is retained separately.
 - Branding: Antalos blue/cyan/navy palette in dist/brand.css; user-supplied antblu logo in dist/assets/antblu-logo.png.
-- The contact form submits to the built-in Zammad form channel through same-origin `/api/v1/form_config` and `/api/v1/form_submit` proxies and displays the returned ticket number. Name, email, message, and optional phone are included. No API credentials are shipped to the browser. The container reads `CONTACT_UPSTREAM` from deployment configuration; its default is intentionally unavailable for static previews. The form channel must be enabled; keep its honeypot and rate limits enabled. A configured CAPTCHA requires adding its challenge UI before submissions can resume. The visible email address remains a fallback option.
 - Original GitHub project links were verified as public during implementation. The original cards use decorative artwork from the reference; the Emiliany feature uses assets from its source project and links to its storefront, source, documentation, and deployment configuration.
 - The Sites deployment starts owner-private. This does not publish changes to the existing GitHub repository.
 
@@ -45,8 +44,8 @@ their canonical URLs directly and supplies the JavaScript MIME type for modules.
 The Python preview redirects directory URLs to their trailing-slash equivalents.
 
 - `dist/services/pricing.mjs` owns implementation ranges, hosting cost examples,
-  and editable provider allowances. Use the matching static price fallback in
-  any affected HTML page when updating a range.
+  and editable provider allowances. Rerender consulting HTML after updating a
+  range to refresh the static price fallbacks.
 - `dist/services/applications.mjs` lists catalog modules, deployment requirements,
   edition qualifications, and upstream license links.
 - `dist/services/comparisons.mjs` lists US commercial plans, sources, verification
@@ -57,17 +56,16 @@ The Python preview redirects directory URLs to their trailing-slash equivalents.
   It normalizes annual expenses to monthly accrual and records replacements at
   anniversaries inside the selected term. Run `node --test portfolio/tests/tco.test.mjs`
   from the repository root.
-- `dist/services/site-config.mjs` sets the public scheduling URL and optional
-  public sandbox URLs. The incident walkthrough works with synthetic data and
-  scripted AI output. There is no live model or production cluster connection.
-- `CONTACT_UPSTREAM` points Nginx at Zammad's built-in public form channel.
-  Keep server-side honeypot and rate limits enabled. The clients support the
-  deployed token/honeypot configuration. If CAPTCHA is enabled, add the
-  provider's supported challenge flow before using the ticket form. Without
-  an upstream the static preview supports email drafts and the direct email link.
-- `dist/privacy/index.html` and `dist/terms/index.html` contain initial site
-  notices. Review the privacy notice against actual retention and third-party
-  practices, and have the privacy and terms copy reviewed before commercial use.
+- `dist/services/site-content.mjs` holds consulting copy, handoff checks, and
+  the sample restore scenario. Run `node portfolio/render-consulting.mjs`
+  from the repository root to refresh the HTML served to visitors.
+  Pass `--check` to verify generated markup without writing files.
+- `dist/services/site-config.mjs` lists optional public sandboxes. The restore
+  exercise uses sample snapshots, file contents, and a scripted response.
+- The contact forms prepare an email draft or copy a complete message in the
+  browser. Calculator summaries transfer within the same browser tab.
+- The privacy and terms pages describe the local draft flow and one-time
+  implementation estimates.
 
 From the repository root:
 

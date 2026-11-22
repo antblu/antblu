@@ -448,3 +448,21 @@ and required-field checks at 320px and 1440px in both themes.
 - JavaScript syntax checks and the Git whitespace check passed. Physical devices, live booking, and ticket delivery remain unverified.
 
 Emiliany project card (2026-11-21). Captured the live English homepage and saved it as a local WebP. In Chrome, selected Infrastructure and advanced to Emiliany at 320px and 1440px in both themes. The screenshot decoded without page errors or horizontal overflow. Reviewed the mobile dark and desktop light card captures. Production deployment was outside this check.
+
+### One-time consulting and ownership handoff (2026-11-21)
+
+- Chromium passed the 12 consulting routes at 320px and 1440px in light and
+  dark themes. The checks found no page overflow, uncaught errors, or failed
+  local assets. Local link and fragment targets also passed.
+- The browser suite exercised the native FAQ, keyboard menu and dialog
+  controls, catalog filters and selection transfer, one-, three-, and
+  five-year estimates, and the calculator-to-brief transfer. It checked both
+  restore outcomes and verified the restored sample file.
+- The contact checks covered required fields, clipboard success and denial,
+  the long-brief fallback, and short email draft initiation. The tested
+  consulting interactions made zero fetch or XHR requests. Actual email
+  delivery and opening a desktop email client remain unverified.
+- Billing and cost model tests, JavaScript syntax, generated HTML freshness,
+  and Git whitespace passed. The homepage HTML and shared assets had no edits,
+  and the existing Chromium tablet hero check passed. Production deployment
+  and physical devices were outside this check.

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>What your team receives at handoff | Anthony Bluemel</title>
+  <meta name="description" content="We agree on acceptance checks before I build. Your named administrator runs them during training with the accounts and documentation your business will keep.">
+  <meta name="theme-color" content="#f3f7fb">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Anthony Bluemel">
+  <meta property="og:title" content="What your team receives at handoff | Anthony Bluemel">
+  <meta property="og:description" content="We agree on acceptance checks before I build. Your named administrator runs them during training with the accounts and documentation your business will keep.">
+  <meta property="og:url" content="https://antblu.net/services/handoff">
+  <meta property="og:image" content="https://antblu.net/assets/antblu-logo.png">
+  <link rel="canonical" href="https://antblu.net/services/handoff">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script>
+    (() => {
+      let theme;
+      try { theme = localStorage.getItem('antblu-theme'); } catch {}
+      document.documentElement.dataset.theme = theme === 'dark' || (theme !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..750&amp;family=JetBrains+Mono:wght@400..600&amp;family=Montserrat:wght@700..900&amp;family=Plus+Jakarta+Sans:wght@600..750&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/services/services.css">
+  <script type="module" src="/services/common.mjs"></script>
+  <link rel="stylesheet" href="/services/consulting.css">
+</head>
+<body class="svc-body">
+  <a class="svc-skip" href="#main">Skip to content</a>
+  <header class="svc-header">
+    <div class="svc-wrap">
+      <a class="svc-brand" href="/"><img src="/assets/logoantbluenhanced.png" alt="Anthony Bluemel" width="2172" height="724"></a>
+      <button class="svc-btn svc-menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>Menu</button>
+      <nav id="site-nav" class="svc-nav" aria-label="Main navigation">
+        <a href="/#resume">Experience</a>
+        <a href="/#portfolio">Projects</a>
+        <a href="/services">Services</a>
+        <a href="https://blog.antblu.net">Blog</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <button type="button" class="svc-btn svc-theme" data-svc-theme aria-label="Dark mode" aria-pressed="false" hidden><svg class="theme-icon theme-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="5"/><path d="M11 1h2v3h-2zm0 19h2v3h-2zM1 11h3v2H1zm19 0h3v2h-3zM3.51 4.93l1.42-1.42 2.12 2.13-1.41 1.41zm13.44 13.43 1.41-1.41 2.13 2.12-1.42 1.42zM3.51 19.07l2.13-2.12 1.41 1.41-2.12 2.13zM16.95 5.64l2.12-2.13 1.42 1.42-2.13 2.12z"/></svg><svg class="theme-icon theme-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.9 13.4A9 9 0 0 1 10.6 3.1a.8.8 0 0 0-1.1-.9A10.2 10.2 0 1 0 21.8 14.5a.8.8 0 0 0-.9-1.1Z"/></svg></button>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+<!-- Begin generated consulting content -->
+<section class="consult-hero">
+  <div class="svc-wrap">
+    <div><h1>What your team receives at handoff</h1><p class="consult-lead">We agree on acceptance checks before I build. Your named administrator runs them during training with the accounts and documentation your business will keep.</p></div>
+
+  </div>
+</section><div class="svc-wrap">
+  <section class="consult-section">
+  <h2>Deliverables and acceptance checks</h2>
+  <dl class="consult-ledger consult-checks"><div><dt>Account and access inventory</dt><dd><p>Provider billing, domains, single sign-on, VPN, and the location of emergency access credentials.</p><p><strong>Acceptance check</strong> Sign in as an administrator and rotate a temporary deployment credential.</p></dd></div><div><dt>Deployment repository and architecture</dt><dd><p>Configuration, dependencies, network and storage diagrams, and instructions for deploying from source.</p><p><strong>Acceptance check</strong> Find the version running in production and identify which repository controls it.</p></dd></div><div><dt>Backups and recovery</dt><dd><p>Backup destinations, retention, recovery targets, and instructions for file and service restores.</p><p><strong>Acceptance check</strong> Restore a sample file to a separate folder, open it, and record the result.</p></dd></div><div><dt>Updates and rollback</dt><dd><p>Maintenance schedule, health checks, known failure modes, and the procedure for reverting a change.</p><p><strong>Acceptance check</strong> Rehearse an update and rollback in an agreed test environment.</p></dd></div><div><dt>Operator training and AI-assisted runbook</dt><dd><p>A troubleshooting assistant uses the approved runbooks and diagnostics for your environment. Administrators review its evidence and perform changes through their normal workflow.</p><p><strong>Acceptance check</strong> Ask the assistant about a sample incident, find the cited runbook, and verify the recommendation.</p></dd></div></dl>
+</section>
+  <section class="consult-section">
+  <h2>Practice a file restore</h2>
+  <figure class="consult-runbook">
+  <figcaption>Sample recovery runbook</figcaption>
+  <code>runbooks/recovery/files.md</code>
+  <h2>Restore a file from backup</h2>
+  <dl><div><dt>Operator</dt><dd>Files administrator</dd></div><div><dt>File</dt><dd><code>vendor-inventory.csv</code></dd></div></dl>
+  <ol><li>Choose a snapshot from before the deletion.</li><li>Restore the file to a separate folder with your recovery credentials.</li><li>Open the copy, check its contents, and record the snapshot and outcome.</li></ol>
+  <a href="/demo">Try the restore exercise</a>
+</figure><div class="svc-cta"><a class="svc-btn svc-btn--primary" href="/contact#quote">Prepare a project brief</a></div>
+</section>
+</div>
+<!-- End generated consulting content -->
+  </main>
+  <footer class="svc-footer">
+    <div class="svc-wrap">
+      <div class="svc-footer-intro"><a class="svc-brand" href="/">Anthony Bluemel<span aria-hidden="true">.</span></a><p>Independent infrastructure engineering and open-source implementation.</p></div>
+      <nav aria-labelledby="footer-portfolio">
+        <strong id="footer-portfolio">Portfolio</strong>
+        <a href="/#about">About</a>
+        <a href="/#resume">Experience</a>
+        <a href="/#portfolio">Projects</a>
+        <a href="/#skills">Skills</a>
+        <a href="/#homelab">Homelab</a>
+        <a href="/#stack">Service Inventory</a>
+        <a href="https://blog.antblu.net">Blog</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <nav aria-labelledby="footer-services">
+        <strong id="footer-services">Services</strong>
+        <a href="/services">Services Overview</a>
+        <a href="/services/infrastructure">Infrastructure</a>
+        <a href="/services/handoff">Ownership and Handoff</a>
+        <a href="/services/web-development">Website Development</a>
+        <a href="/services/ecommerce">E-commerce</a>
+        <a href="/services#packages">Infrastructure Packages</a>
+        <a href="/contact#quote">Prepare a project brief</a>
+        <a href="/contact#quote">Prepare a project brief</a>
+      </nav>
+      <nav aria-labelledby="footer-tools">
+        <strong id="footer-tools">Consulting Tools</strong>
+        <a href="/services/applications">Application Catalog</a>
+        <a href="/services/compare">Replacement Map</a>
+        <a href="/services/calculator">Cost Calculator</a>
+        <a href="/demo">Interactive Demo</a>
+      </nav>
+    </div>
+    <div class="svc-wrap svc-footer-bottom"><p>© 2026 Anthony Bluemel</p><div><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div></div>
+  </footer>
+</body>
+</html>

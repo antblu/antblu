@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Infrastructure, Web &amp; E-commerce Services | Anthony Bluemel</title>
-  <meta name="description" content="I set up open-source infrastructure, business websites, and online stores. You keep the accounts, code, and data. I document the setup and train your team to run it.">
+  <title>I build open-source systems your team can run. | Anthony Bluemel</title>
+  <meta name="description" content="You buy the hardware or open the cloud account in your name. I deploy and secure the tools, connect them, and train your team to run them. You pay me once.">
   <meta name="theme-color" content="#f3f7fb">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Anthony Bluemel">
-  <meta property="og:title" content="Infrastructure, Web &amp; E-commerce Services | Anthony Bluemel">
-  <meta property="og:description" content="I set up open-source infrastructure, business websites, and online stores. You keep the accounts, code, and data. I document the setup and train your team to run it.">
+  <meta property="og:title" content="I build open-source systems your team can run. | Anthony Bluemel">
+  <meta property="og:description" content="You buy the hardware or open the cloud account in your name. I deploy and secure the tools, connect them, and train your team to run them. You pay me once.">
   <meta property="og:url" content="https://antblu.net/services">
   <meta property="og:image" content="https://antblu.net/assets/antblu-logo.png">
   <link rel="canonical" href="https://antblu.net/services">
@@ -26,15 +26,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..750&amp;family=JetBrains+Mono:wght@400..600&amp;family=Montserrat:wght@700..900&amp;family=Plus+Jakarta+Sans:wght@600..750&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/services/services.css">
   <script type="module" src="/services/common.mjs"></script>
-  <script type="module" src="/services/booking.mjs"></script>
-  <link rel="stylesheet" href="/components.css">
-  <link rel="stylesheet" href="/services/landing.css">
-  <script type="module" src="/services/landing.mjs"></script>
-  <link rel="stylesheet" href="/dashboards.css">
-  <script src="/dashboards.js" defer></script>
-  <link rel="stylesheet" href="/editorial.css">
-  <link rel="stylesheet" href="/hover-card.css">
-  <script src="/hover-card.js" defer></script>
+  <link rel="stylesheet" href="/services/consulting.css">
 </head>
 <body class="svc-body svc-landing">
   <a class="svc-skip" href="#main">Skip to content</a>
@@ -42,219 +34,57 @@
   <link rel="preload" as="image" href="/assets/logoantbluenhanced.png"/><header class="svc-header"><div class="svc-wrap"><a class="svc-brand" href="/" aria-label="antblu home"><img src="/assets/logoantbluenhanced.png" alt="Anthony Bluemel" width="2172" height="724"/></a><button class="svc-btn svc-menu-toggle" type="button" hidden="" aria-expanded="false" aria-controls="site-nav">Menu</button><nav id="site-nav" class="svc-nav" aria-label="Main navigation"><a href="/#resume">Experience</a><a href="/#portfolio">Projects</a><a href="/services" aria-current="page">Services</a><a href="https://blog.antblu.net">Blog</a><a href="/contact">Contact</a></nav><button class="svc-btn svc-theme" type="button" hidden="" data-svc-theme="" aria-label="Dark mode" aria-pressed="false"><svg class="theme-icon theme-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><path d="M11 1h2v3h-2zm0 19h2v3h-2zM1 11h3v2H1zm19 0h3v2h-3zM3.51 4.93l1.42-1.42 2.12 2.13-1.41 1.41zm13.44 13.43 1.41-1.41 2.13 2.12-1.42 1.42zM3.51 19.07l2.13-2.12 1.41 1.41-2.12 2.13zM16.95 5.64l2.12-2.13 1.42 1.42-2.13 2.12z"></path></svg><svg class="theme-icon theme-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.9 13.4A9 9 0 0 1 10.6 3.1a.8.8 0 0 0-1.1-.9A10.2 10.2 0 1 0 21.8 14.5a.8.8 0 0 0-.9-1.1Z"></path></svg></button></div></header>
   <!-- END site-header -->
   <main id="main" tabindex="-1">
-    <section id="services" class="svc-banner svc-landing-hero hero-copy" aria-labelledby="landing-title">
-      <div class="svc-wrap svc-hero-layout">
-        <div>
-          <h1 id="landing-title">Self-hosted business systems</h1>
-          <p class="svc-banner-lead">I deploy applications, websites, and online stores in your accounts. I document the setup and train your team to monitor, back up, and maintain it.</p>
-          <div class="svc-cta">
-            <a class="svc-btn svc-btn--primary svc-gold" href="#booking">Book a free consultation</a>
-            <a class="svc-hero-secondary" href="#why">Explore services</a>
-          </div>
-        </div>
-        <a class="svc-hero-dashboard" href="/assets/authentik-dashboard.png" aria-label="View the Authentik screenshot">
-          <img src="/assets/authentik-dashboard.png" alt="Authentik application launcher with tiles for Grafana, Nextcloud, and other lab apps" width="2108" height="1773" decoding="async">
-        </a>
-      </div>
-    </section>
-
-    <section class="svc-landing-section svc-landing-offerings" id="why" tabindex="-1" aria-labelledby="why-title">
-      <div class="svc-wrap">
-        <header class="svc-landing-intro">
-          <h2 id="why-title">Choose a deployment service</h2>
-          <p>Choose the tools your team needs. At handoff, you keep the accounts, data, and configuration.</p>
-        </header>
-        <div class="svc-grid svc-offerings">
-          <article class="svc-card svc-offering">
-            <img src="/assets/homelab/rack-and-ups.webp" alt="" loading="lazy" decoding="async" width="352" height="140">
-            <h3>Open-Source Infrastructure</h3>
-            <p>Deploy business applications with monitoring, offsite backups, and a recovery plan sized for your workload.</p>
-            <a data-hover-title="Open-source infrastructure" data-hover-description="Compare single-server and high-availability setups, hosting options, and recovery plans." href="/services/infrastructure">Explore Infrastructure</a>
-          </article>
-          <article class="svc-card svc-offering">
-            <img src="/assets/portfolio-homepage.webp" alt="Anthony Bluemel’s portfolio homepage" loading="lazy" decoding="async" width="768" height="432">
-            <h3>Website Development</h3>
-            <p>I build a responsive site and set up publishing, deployment, and access so your team can manage it.</p>
-            <a data-hover-title="Website development" data-hover-description="Compare a single landing page with a multi-page business site your team can edit." href="/services/web-development">Explore Web Development</a>
-          </article>
-          <article class="svc-card svc-offering">
-            <img src="/assets/emiliany/live-hero.jpg" alt="" loading="lazy" decoding="async" width="352" height="140">
-            <h3>E-commerce Development</h3>
-            <p>I build the storefront and connect it to your payment, inventory, and order systems.</p>
-            <a data-hover-title="E-commerce development" data-hover-description="Compare a storefront with catalog and checkout to a custom build with fulfillment and CRM integrations." href="/services/ecommerce">Explore E-commerce</a>
-          </article>
-        </div>
-        <div class="svc-grid svc-feature-grid svc-service-resources">
-          <article class="svc-card">
-            <h3>Setup and operating costs</h3>
-            <p>Budget implementation separately from hosting, backups, support, and your team's time.</p>
-            <a data-tooltip="Compare costs over 1, 3, or 5 years." href="/services/calculator">Model Your Costs <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="svc-card">
-            <h3>Modular applications</h3>
-            <p>Start with the tools you need. Confirm integrations and edition requirements before committing to a migration.</p>
-            <a href="/services/applications">Browse Applications <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="svc-card">
-            <h3>Administrator training</h3>
-            <p>Practice maintenance and recovery with runbooks, hands-on training, and optional AI-assisted diagnostics.</p>
-            <a href="/demo">Try the Operations Demo <span aria-hidden="true">→</span></a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="svc-landing-pillars" aria-label="What customers control">
-      <div class="svc-wrap svc-pillar-grid">
-        <article><h2>Your deployment</h2><p>Use your hardware or an account with a cloud provider.</p></article>
-        <article><h2>Your data</h2><p>Choose where it lives and who can access it.</p></article>
-        <article><h2>Your documentation</h2><p>Keep the configuration, runbooks, and recovery procedures.</p></article>
-        <article><h2>Your support options</h2><p>Run the system in-house or request help as needed.</p></article>
-      </div>
-    </section>
-
-    <section class="svc-landing-section" aria-labelledby="map-title">
-      <div class="svc-wrap">
-        <header class="svc-landing-intro">
-          <h2 id="map-title">Self-hosted alternatives to business software</h2>
-          <p>Compare open-source options with your current subscriptions. Check the features you need, the work to connect your tools, and the cost to run them.</p>
-        </header>
-        <div class="svc-map-controls" role="group" aria-label="Browse software comparisons" hidden>
-          <button type="button" class="svc-btn" aria-label="Previous comparison" aria-controls="software-comparisons" aria-disabled="true" data-map-prev data-tooltip>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7 7-7-7 7-7"/></svg>
-          </button>
-          <button type="button" class="svc-btn" aria-label="Next comparison" aria-controls="software-comparisons" data-map-next data-tooltip>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
-          </button>
-        </div>
-        <div class="svc-grid svc-map-grid" id="software-comparisons">
-          <a class="svc-card svc-map-card" href="/services/compare?q=Business+Basic">
-            <h3>Office productivity</h3><p><span>Microsoft 365</span><span aria-hidden="true">→</span><strong class="svc-map-services"><span><img class="svc-map-logo" src="/assets/dashboard-icons/nextcloud.svg" alt="">Nextcloud</span><span><img class="svc-map-logo" src="https://nextcloud.com/c/uploads/2026/04/officeeu-logo-864x576.png" alt="">EuroOffice</span></strong></p>
-            <small>Compare Business Basic with Teams</small>
-          </a>
-          <a class="svc-card svc-map-card" href="/services/compare?q=Dropbox">
-            <h3>File storage</h3><p><span>Dropbox</span><span aria-hidden="true">→</span><strong>Nextcloud</strong></p>
-            <small>Compare Dropbox Advanced</small>
-          </a>
-          <a class="svc-card svc-map-card" href="/services/compare?q=Slack">
-            <h3>Team communication</h3><p><span>Slack</span><span aria-hidden="true">→</span><strong class="svc-map-services"><span><img class="svc-map-logo" src="/assets/dashboard-icons/nextcloud.svg" alt="">Nextcloud Talk</span></strong></p>
-            <small>Compare Slack Pro</small>
-          </a>
-          <a class="svc-card svc-map-card" href="/services/compare?q=Starter+Suite">
-            <h3>CRM</h3><p><span>Salesforce</span><span aria-hidden="true">→</span><strong class="svc-map-services"><span><img class="svc-map-logo" src="/assets/dashboard-icons/odoo.svg" alt="">Odoo</span><span><img class="svc-map-logo" src="/assets/dashboard-icons/suite-crm.png" alt="">SuiteCRM</span></strong></p>
-            <small>Compare Salesforce Starter Suite</small>
-          </a>
-          <a class="svc-card svc-map-card" href="/services/compare?q=Zendesk">
-            <h3>Helpdesk</h3><p><span>Zendesk</span><span aria-hidden="true">→</span><strong>Zammad</strong></p>
-            <small>Compare Zendesk Support Team</small>
-          </a>
-          <a class="svc-card svc-map-card" href="/services/compare?q=Shopify+Basic">
-            <h3>E-commerce</h3><p><span>Shopify</span><span aria-hidden="true">→</span><strong class="svc-map-services"><span><img class="svc-map-logo" src="/assets/dashboard-icons/medusa-light.svg" alt="">Medusa</span></strong></p>
-            <small>Compare Shopify Basic</small>
-          </a>
-        </div>
-        <div class="svc-cta svc-landing-center"><a class="svc-btn svc-btn--primary" href="/services/compare">View Full Replacement Map <span aria-hidden="true">→</span></a></div>
-      </div>
-    </section>
-
-    <section class="dashboard-story" aria-labelledby="dashboard-heading">
-      <div class="svc-wrap">
-        <header>
-          <h2 id="dashboard-heading">One sign-in for your team’s apps</h2>
-          <p>With single sign-on (SSO), you sign in to Authentik once. From there, you can open connected apps your account has permission to use. In my lab, that includes Grafana, where I check how the services are running.</p>
-        </header>
-        <div class="dashboard-grid">
-          <a class="dashboard-card" href="/assets/authentik-dashboard.png" aria-label="View the Authentik screenshot">
-            <span class="dashboard-frame"><img src="/assets/authentik-dashboard.png" alt="Authentik application launcher with tiles for Grafana, Nextcloud, and other lab apps" width="2108" height="1773" loading="lazy" decoding="async"></span>
-            <span class="dashboard-caption"><span><strong>Authentik</strong><span>Open an app from the launcher.</span></span><span class="dashboard-expand" aria-hidden="true">↗</span></span>
-          </a>
-          <a class="dashboard-card" href="/assets/grafana-overview.png" aria-label="View the Grafana screenshot">
-            <span class="dashboard-frame"><img src="/assets/grafana-overview.png" alt="Grafana overview showing alert counts, request rates, and latency over six hours" width="1276" height="1026" loading="lazy" decoding="async"></span>
-            <span class="dashboard-caption"><span><strong>Grafana</strong><span>Check alerts and request latency.</span></span><span class="dashboard-expand" aria-hidden="true">↗</span></span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="svc-landing-section svc-landing-packages" id="packages" tabindex="-1" aria-labelledby="packages-title">
-      <div class="svc-wrap">
-        <header class="svc-landing-intro">
-          <h2 id="packages-title">Two infrastructure packages</h2>
-          <p>Both packages include deployment, monitoring, offsite backups, and administrator training. I quote application modules, migration, and hosting as separate items.</p>
-        </header>
-        <div class="svc-grid svc-grid--two svc-package-grid">
-          <article class="svc-card svc-package">
-            <h3>Standard · Non-HA</h3>
-            <p>For workloads that can tolerate occasional downtime.</p>
-            <div class="svc-package-price"><span class="svc-price" data-price="standard">$3,000–$6,000</span><span>One-time estimate · USD</span></div>
-            <ul class="svc-checks">
-              <li>Physical host or VPS</li>
-              <li>Docker Compose by default</li>
-              <li>Monitoring, TLS, and offsite backups</li>
-              <li>Documented recovery and administrator handoff</li>
-            </ul>
-            <a class="svc-btn" href="/contact?service=infrastructure&amp;tier=standard#quote">Request a Standard Quote</a>
-          </article>
-          <article class="svc-card svc-package svc-package--ha">
-            <h3>High Availability · HA</h3>
-            <p>For business-critical workloads with defined recovery goals.</p>
-            <div class="svc-package-price"><span class="svc-price" data-price="ha">$8,000–$15,000+</span><span>One-time estimate · USD</span></div>
-            <ul class="svc-checks">
-              <li>Managed Kubernetes or custom self-managed HA</li>
-              <li>Replicated workloads where supported</li>
-              <li>Database, storage, and ingress design per workload</li>
-              <li>GitOps, restoration tests, and incident runbooks</li>
-            </ul>
-            <a class="svc-btn svc-btn--primary" href="/contact?service=infrastructure&amp;tier=ha#quote">Request an HA Quote</a>
-          </article>
-        </div>
-        <div class="svc-cta svc-landing-center"><a href="/services/infrastructure">Review architecture and hosting estimates <span aria-hidden="true">→</span></a></div>
-        <details class="svc-fold svc-landing-process">
-          <summary>How an infrastructure project works</summary>
-          <div data-service-process>
-            <h2>Project steps</h2>
-            <p>Review the catalog and book a consultation. We’ll agree on the scope and tests before I deploy the system and hand it over.</p>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <section class="svc-landing-section svc-landing-faq" aria-labelledby="faq-title">
-      <div class="svc-wrap">
-        <header class="svc-landing-intro"><h2 id="faq-title">Pricing, availability, and examples</h2></header>
-        <div class="svc-faq" data-react-faq>
-          <details name="services-faq" open><summary>What does the package price include?</summary><p>The infrastructure range covers deployment, monitoring, backup configuration, documentation, and administrator training. I quote application modules, migration, hardware, hosting, and optional support as separate items. The final quote confirms the deliverables and recurring costs.</p></details>
-          <details name="services-faq"><summary>Will self-hosting cost less than my subscriptions?</summary><p>It depends on your workload and the time needed to operate it. The calculator includes setup, hosting, backups, labor, and scheduled replacements. Select the applications you need and enter your own bills. The sample subscriptions show how the calculator works. You still need to define your replacement setup.</p></details>
-          <details name="services-faq"><summary>Does the HA package guarantee no downtime?</summary><p>No. High availability requires compatible applications, redundant databases and storage, and tested failover across independent failure domains. We agree on recovery goals and acceptance tests before implementation.</p></details>
-          <details name="services-faq"><summary>Can I see an example before requesting a quote?</summary><p>The portfolio includes the Antalos infrastructure and Emiliany commerce case studies. The operations demo runs in a simulation with no access to live customer systems.</p></details>
-        </div>
-        <div class="svc-cta svc-landing-center"><a href="/#homelab">Explore Antalos</a><a href="/#emiliany">Read the Emiliany case study</a><a href="/demo">Try the simulation</a></div>
-      </div>
-    </section>
-
-    <section class="svc-section" id="booking" aria-labelledby="booking-title" tabindex="-1">
-      <div class="svc-wrap">
-        <h2 id="booking-title">Book a free consultation</h2>
-        <div id="my-cal-inline-30min"></div>
-        <p><a href="https://cal.antblu.net/anthony-bluemel/30min">Open the booking calendar directly</a></p>
-      </div>
-    </section>
-
-    <section class="svc-banner svc-landing-close" aria-labelledby="close-title">
-      <div class="svc-wrap">
-        <h2 id="close-title">Plan your <span>self-hosted setup</span></h2>
-        <p class="svc-banner-lead">Use the calculator to estimate running costs. In a free consultation, we can review your current tools, decide which ones to keep, and identify what your team would operate.</p>
-        <div class="svc-cta">
-          <a class="svc-btn svc-btn--primary" href="/services/calculator">Calculate your costs</a>
-          <a class="svc-btn svc-banner-secondary" href="#booking">Book a free consultation <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </section>
+<!-- Begin generated consulting content -->
+<section class="consult-hero">
+  <div class="svc-wrap consult-split">
+    <div><h1>I build open-source systems your team can run.</h1><p class="consult-lead">You buy the hardware or open the cloud account in your name. I deploy and secure the tools, connect them, and train your team to run them. You pay me once.</p><div class="svc-cta"><a class="svc-btn svc-btn--primary" href="/services/handoff">See what you receive</a><a class="svc-btn consult-secondary" href="/services/calculator">Compare your costs</a></div></div>
+    <figure class="consult-runbook">
+  <figcaption>Sample recovery runbook</figcaption>
+  <code>runbooks/recovery/files.md</code>
+  <h2>Restore a file from backup</h2>
+  <dl><div><dt>Operator</dt><dd>Files administrator</dd></div><div><dt>File</dt><dd><code>vendor-inventory.csv</code></dd></div></dl>
+  <ol><li>Choose a snapshot from before the deletion.</li><li>Restore the file to a separate folder with your recovery credentials.</li><li>Open the copy, check its contents, and record the snapshot and outcome.</li></ol>
+  <a href="/demo">Try the restore exercise</a>
+</figure>
+  </div>
+</section>
+<div class="svc-wrap">
+  <section class="consult-section" id="why">
+  <h2>From purchase brief to first restore</h2>
+  <ol class="consult-stages"><li><h3>Choose where it runs</h3><p>I size the workload and give you a purchase brief. You place the order and control billing.</p><a href="/services/infrastructure">Choose infrastructure</a></li><li><h3>Build and connect the stack</h3><p>I configure your CRM, file storage, VPN, and single sign-on. We agree on who needs access, what to back up, and how to test recovery.</p><a href="/services/applications">Browse applications</a></li><li><h3>Train the people who will run it</h3><p>Your administrator practices a restore with their own credentials. I hand over the configuration, runbooks, and an AI troubleshooting assistant connected to approved sources in your environment.</p><a href="/services/handoff">See what you receive</a></li></ol>
+</section>
+  <section class="consult-section">
+  <h2>What stays in your hands</h2>
+  <dl class="consult-ledger"><div><dt>Infrastructure and accounts</dt><dd>You own equipment you buy. For rented infrastructure, your business holds the provider account, billing, and administrator access.</dd></div>
+<div><dt>Code and data</dt><dd>You keep the project code, deployment repository, data exports, and backup access. Upstream software keeps its own license.</dd></div>
+<div><dt>One project payment</dt><dd>The agreed open-source stack has $0 per-seat licensing and no recurring fee to me. Budget for your team’s time and any infrastructure or storage you buy from providers.</dd></div></dl>
+</section>
+  <section class="consult-section consult-split" aria-labelledby="consult-evidence">
+    <div><h2 id="consult-evidence">See how I build and document systems</h2><p>In the Antalos lab inventory from November 2026, you can see where I place workloads and how I segment the network. The October 2026 Emiliany architecture notes show how I connected the storefront, order systems, and support tools.</p>
+    <ul><li><a href="/#homelab">Inspect the Antalos lab</a></li><li><a href="/#emiliany">Read the Emiliany case study</a></li></ul></div>
+    <figure class="consult-photo"><img src="/assets/homelab/rack-and-ups.webp" alt="Rack-mounted lab hardware above an uninterruptible power supply" decoding="async"><figcaption>My Antalos lab rack and UPS</figcaption></figure>
+  </section>
+  <section class="consult-section" id="packages">
+  <h2>Scope and costs</h2>
+  <p>Start with one server or scope a redundant deployment around your recovery targets. I also build business sites and stores in client-owned accounts.</p>
+    <ul class="consult-links"><li><a href="/services/infrastructure">Infrastructure packages</a></li><li><a href="/services/web-development">Business websites</a></li><li><a href="/services/ecommerce">Online stores</a></li><li><a href="/services/compare">Compare software</a></li></ul>
+    <div class="consult-cta-row"><div class="svc-cta"><a class="svc-btn svc-btn--primary" href="/services/calculator">Compare your costs</a><a class="svc-btn consult-secondary" href="/contact#quote">Prepare a project brief</a></div></div>
+</section>
+  <section class="consult-section">
+  <h2>Questions before you start</h2>
+  <div class="consult-faq"><details name="consult-faq" open><summary>What does the one-time payment cover?</summary><p>We agree on the deployment, integrations, migration, recovery checks, and training before I quote one implementation fee. You buy infrastructure and any third-party services in your name.</p></details><details name="consult-faq"><summary>Will self-hosting cost less?</summary><p>It depends on your current bills, the hardware or provider you choose, and who maintains the stack. Run the comparison with your own costs over one, three, or five years.</p></details><details name="consult-faq"><summary>Who runs the system after handoff?</summary><p>Your designated administrator handles updates, alerts, and recovery. We practice these tasks during handoff.</p></details><details name="consult-faq"><summary>Can you build a website or store in my accounts?</summary><p>Yes. I can deploy a website or store in your accounts, document its integrations, and train your team to edit and operate it.</p></details></div>
+</section>
+  <section class="consult-section" id="booking">
+  <h2>Tell me what you want to build or replace</h2>
+  <p>Include the tools you use today and who will run the system after handoff.</p><div class="svc-cta"><a class="svc-btn svc-btn--primary" href="/contact#quote">Prepare a project brief</a></div>
+</section>
+</div>
+<!-- End generated consulting content -->
   </main>
 
   <footer class="svc-footer">
     <div class="svc-wrap">
-      <div class="svc-footer-intro"><a class="svc-brand" href="/">Anthony Bluemel<span aria-hidden="true">.</span></a><p>Independent infrastructure engineering, web development, and e-commerce.</p></div>
+      <div class="svc-footer-intro"><a class="svc-brand" href="/">Anthony Bluemel<span aria-hidden="true">.</span></a><p>Independent infrastructure engineering and open-source implementation.</p></div>
       <nav aria-labelledby="footer-portfolio">
         <strong id="footer-portfolio">Portfolio</strong>
         <a href="/#about">About</a>
@@ -270,11 +100,12 @@
         <strong id="footer-services">Services</strong>
         <a href="/services">Services Overview</a>
         <a href="/services/infrastructure">Infrastructure</a>
+        <a href="/services/handoff">Ownership and Handoff</a>
         <a href="/services/web-development">Website Development</a>
         <a href="/services/ecommerce">E-commerce</a>
         <a href="#packages">Infrastructure Packages</a>
-        <a href="#booking">Book a Consultation</a>
-        <a href="/contact#quote">Request a Quote</a>
+        <a href="/contact#quote">Prepare a project brief</a>
+        <a href="/contact#quote">Prepare a project brief</a>
       </nav>
       <nav aria-labelledby="footer-tools">
         <strong id="footer-tools">Consulting Tools</strong>

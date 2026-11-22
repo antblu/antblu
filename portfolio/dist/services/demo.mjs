@@ -1,78 +1,58 @@
-import { applications } from './applications.mjs';
-import { siteConfig } from './site-config.mjs';
-import { escapeHtml, publicHttps } from './common.mjs';
+import { recovery } from './site-content.mjs';
+import { escapeHtml as escape } from './common.mjs';
 
 const root = document.querySelector('#service-demo');
-const appIds = ['nextcloud', 'keycloak', 'zammad', 'grafana', 'argocd', 'forgejo'];
-const apps = appIds.map(id => applications.find(app => app.id === id));
-const names = ['Files workspace', 'Unified sign-in', 'Helpdesk queue', 'Metrics dashboard', 'GitOps deployments', 'Source repository'];
-const flow = [
-  { title: 'Normal operations', message: 'All sample services are up. Start the incident to view the alert.' },
-  { title: 'Alert received', message: 'The files workspace returned errors on 12% of sampled requests. The API p95 rose to 2.1 seconds shortly after a release.' },
-  { title: 'Recommendation ready', message: 'Example AI recommendation: Worker memory limits were lowered in the latest deployment. Event history shows repeated out-of-memory restarts. Review the change, compare it with the last stable revision, and restore the previously tested resource setting with a rollback plan.' },
-  { title: 'Administrator approved the proposed change', message: 'The administrator checked the evidence and signed off on the resource change in the change request. The deployment service can apply that revision.' },
-  { title: 'Approved Git revision synced', message: 'The simulated GitOps controller reconciled the manifest. The deployment passes readiness checks. Watch request latency and restart counts before closing the incident.' },
-  { title: 'Recovery verified', message: 'Request latency returned to its baseline and restart counts held steady through the observation window. The administrator added the evidence and change revision to the incident record.' }
-];
-const nextActions = ['Simulate an alert', 'Review AI recommendation', 'Approve as administrator', 'Sync approved revision', 'Verify recovery'];
-let stage = 0;
-
-root.innerHTML = `<div class="svc-grid svc-grid--two">
-  <section class="svc-panel"><h2>Example workspace</h2><p class="svc-muted">Choose an application to see how it fits the environment.</p>
-    <label class="svc-field">Application<select id="demo-application">${apps.map((app, index) => `<option value="${app.id}">${names[index]} · ${app.name}</option>`).join('')}</select></label>
-    <div class="svc-demo-app" id="demo-app-preview" aria-live="polite"></div>
-  </section>
-  <section class="svc-panel"><h2>Infrastructure dashboard</h2>
-    <dl class="svc-demo-metrics">
-      <div><dt>Files workspace</dt><dd id="demo-files"></dd></div>
-      <div><dt>p95 latency</dt><dd id="demo-latency"></dd></div>
-      <div><dt>Identity service</dt><dd>Available · 3 replicas</dd></div>
-      <div><dt>GitOps revision</dt><dd id="demo-revision"></dd></div>
-    </dl>
-  </section>
-</div>
-<section class="svc-panel svc-incident">
-  <h2>Service incident</h2>
-  <ol class="svc-steps" id="demo-incident-steps"></ol>
-  <div class="svc-note" role="status"><strong id="demo-incident-heading"></strong><p id="demo-incident-message"></p></div>
-  <div class="svc-cta"><button class="svc-btn svc-btn--primary" type="button" id="demo-next"></button><button class="svc-btn" type="button" id="demo-reset">Reset scenario</button></div>
+root.innerHTML = `<section class="svc-panel consult-exercise" aria-labelledby="exercise-title">
+  <h2 id="exercise-title">Recovery exercise</h2>
+  <p>${escape(recovery.prompt)}</p>
+  <details class="svc-fold">
+    <summary>Read the sample AI answer</summary>
+    <p>${escape(recovery.answer)}</p>
+    <p>Source <a href="#sample-runbook"><code>${escape(recovery.path)}</code></a></p>
+  </details>
+  <label class="svc-field" for="recovery-point">Recovery point
+    <select id="recovery-point">
+      <option value="">Choose a snapshot</option>
+      ${recovery.snapshots.map(snapshot => `<option value="${escape(snapshot.id)}">${escape(snapshot.label)}</option>`).join('')}
+    </select>
+  </label>
+  <div class="svc-cta">
+    <button type="button" class="svc-btn svc-btn--primary" id="restore-file" disabled>Restore to recovery folder</button>
+    <button type="button" class="svc-btn" id="reset-restore">Reset exercise</button>
+  </div>
+  <p id="restore-status" role="status"></p>
+  <details class="svc-fold" id="restored-file" hidden>
+    <summary>Open restored file</summary>
+    <pre>${escape(recovery.contents)}</pre>
+    <button type="button" class="svc-btn" id="verify-restore">Verify file contents</button>
+  </details>
 </section>`;
 
-const appSelector = root.querySelector('#demo-application');
-const next = root.querySelector('#demo-next');
-const reset = root.querySelector('#demo-reset');
+const select = root.querySelector('#recovery-point');
+const restore = root.querySelector('#restore-file');
+const file = root.querySelector('#restored-file');
+const verify = root.querySelector('#verify-restore');
+const status = root.querySelector('#restore-status');
 
-function showApplication() {
-  const app = apps.find(item => item.id === appSelector.value);
-  const sandbox = publicHttps(siteConfig.sandboxUrls[app.id]);
-  root.querySelector('#demo-app-preview').innerHTML = `<h3>${app.name}</h3><p>${app.description}</p>
-    <p><strong>Typical integrations</strong> · ${escapeHtml(app.integrations)}</p>
-    ${sandbox ? `<a class="svc-btn" href="${escapeHtml(sandbox)}">Open public sandbox</a>` : ''}`;
+function clearResult() {
+  file.open = false;
+  file.hidden = true;
+  status.textContent = '';
+  restore.disabled = !select.value;
 }
 
-function showStage() {
-  const affected = stage > 0 && stage < 4;
-  root.querySelector('#demo-files').textContent = affected ? 'Degraded · 1/3 ready' : 'Available · 3/3 ready';
-  root.querySelector('#demo-files').classList.toggle('svc-demo-warn', affected);
-  root.querySelector('#demo-latency').textContent = affected ? '2.1 seconds' : '190 milliseconds';
-  root.querySelector('#demo-revision').textContent = stage >= 4 ? 'f3d2b10 · synced' : 'ac41eb2 · synced';
-  root.querySelector('#demo-incident-heading').textContent = flow[stage].title;
-  root.querySelector('#demo-incident-message').textContent = flow[stage].message;
-  root.querySelector('#demo-incident-steps').innerHTML = flow.map(({ title }, index) =>
-    `<li${index === stage ? ' aria-current="step"' : ''}>${title}</li>`).join('');
-  next.disabled = stage === flow.length - 1;
-  next.textContent = nextActions[stage] || 'Scenario complete';
-}
-appSelector.addEventListener('change', showApplication);
-next.addEventListener('click', () => {
-  stage += 1;
-  showStage();
-  if (next.disabled) reset.focus();
+select.addEventListener('change', clearResult);
+restore.addEventListener('click', () => {
+  clearResult();
+  const snapshot = recovery.snapshots.find(item => item.id === select.value);
+  if (!snapshot) return;
+  file.hidden = !snapshot.recoverable;
+  status.textContent = snapshot.recoverable ? recovery.restored : recovery.afterDeletion;
 });
-reset.addEventListener('click', () => {
-  stage = 0;
-  showStage();
-  next.focus();
+verify.addEventListener('click', () => { status.textContent = recovery.verified; });
+root.querySelector('#reset-restore').addEventListener('click', () => {
+  select.value = '';
+  root.querySelector('details').open = false;
+  clearResult();
+  select.focus();
 });
-showApplication();
-showStage();
