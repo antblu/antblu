@@ -32,6 +32,8 @@
   <link rel="stylesheet" href="dashboards.css">
   <script src="dashboards.js" defer></script>
   <link rel="stylesheet" href="/editorial.css">
+  <link rel="stylesheet" href="antalos-map.css">
+  <script src="antalos-map.js" defer></script>
 </head>
 <body class="portfolio-page">
 <svg class="squiggly-filters" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false">
@@ -76,6 +78,95 @@
     </figure>
     <div class="progressive-blur" aria-hidden="true"><span style="--blur:0.5px;--start:0%"></span><span style="--blur:1px;--start:10%"></span><span style="--blur:2px;--start:20%"></span><span style="--blur:4px;--start:30%"></span><span style="--blur:8px;--start:40%"></span><span style="--blur:16px;--start:50%"></span><span style="--blur:32px;--start:60%"></span><span style="--blur:64px;--start:70%"></span></div>
   </section>
+  <div class="home-statement">
+    <p>I build <strong>infrastructure from code.</strong> In my Antalos homelab, I define virtual machines in Git and use Argo&nbsp;CD to <strong>deploy applications to Kubernetes.</strong></p>
+  </div>
+  <section class="antalos-map" id="antalos-map" aria-labelledby="antalos-map-title">
+    <div class="antalos-map-wrap">
+      <div class="antalos-map-intro">
+        <h2 id="antalos-map-title">How I run <span>Antalos.</span></h2>
+        <p>I use this homelab to test how I provision machines, deploy applications, and monitor the services they run.</p>
+      </div>
+      <fieldset class="antalos-map-flow">
+        <legend class="antalos-map-visually-hidden">Antalos workflow</legend>
+        <div class="antalos-map-switch">
+          <label><input type="radio" name="antalos-flow" value="provision" aria-describedby="antalos-provision" checked><span>Provision</span></label>
+          <label><input type="radio" name="antalos-flow" value="deploy" aria-describedby="antalos-deploy"><span>Deploy</span></label>
+          <label><input type="radio" name="antalos-flow" value="operate" aria-describedby="antalos-operate"><span>Operate</span></label>
+        </div>
+        <div class="antalos-map-scene">
+          <svg class="antalos-map-wires" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <path id="antalos-wire-provision" pathLength="100" d="M340 0C340 82 480 43 480 146Q480 180 430 180H140"/>
+              <path id="antalos-wire-deploy" pathLength="100" d="M500 0V345"/>
+              <path id="antalos-wire-operate" pathLength="100" d="M660 0C660 82 520 43 520 146Q520 180 570 180H860"/>
+            </defs>
+            <g class="antalos-map-traces">
+              <use href="#antalos-wire-provision"/><use href="#antalos-wire-deploy"/><use href="#antalos-wire-operate"/>
+            </g>
+            <g class="antalos-map-signals">
+              <use href="#antalos-wire-provision" data-flow="provision"/>
+              <use href="#antalos-wire-deploy" data-flow="deploy"/>
+              <use href="#antalos-wire-operate" data-flow="operate"/>
+            </g>
+          </svg>
+          <svg class="antalos-map-wires antalos-map-wires-mobile" viewBox="0 0 1000 428" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <path id="antalos-mobile-provision" pathLength="100" d="M167 0C167 40 500 6 500 65S245 110 245 171"/>
+              <path id="antalos-mobile-deploy" pathLength="100" d="M500 0V333"/>
+              <path id="antalos-mobile-operate" pathLength="100" d="M833 0C833 40 500 6 500 65S755 110 755 171"/>
+            </defs>
+            <g class="antalos-map-traces">
+              <use href="#antalos-mobile-provision"/><use href="#antalos-mobile-deploy"/><use href="#antalos-mobile-operate"/>
+            </g>
+            <g class="antalos-map-signals">
+              <use href="#antalos-mobile-provision" data-flow="provision"/>
+              <use href="#antalos-mobile-deploy" data-flow="deploy"/>
+              <use href="#antalos-mobile-operate" data-flow="operate"/>
+            </g>
+          </svg>
+          <div class="antalos-map-hub" aria-hidden="true">
+            <span class="antalos-map-orbits"></span>
+            <img src="assets/antalos.svg" alt="" width="86" height="57" loading="lazy">
+            <span>Antalos</span>
+          </div>
+          <div class="antalos-map-tools" data-flow="provision">
+            <h3>Build machines</h3>
+            <ul>
+              <li><img src="assets/dashboard-icons/opentofu.svg" alt="" width="22" height="22" loading="lazy">OpenTofu</li>
+              <li><img src="assets/dashboard-icons/proxmox.svg" alt="" width="22" height="22" loading="lazy">Proxmox</li>
+              <li><img src="assets/dashboard-icons/ansible.svg" alt="" width="22" height="22" loading="lazy">Ansible</li>
+            </ul>
+          </div>
+          <div class="antalos-map-tools antalos-map-tools-wide" data-flow="deploy">
+            <h3>Ship applications</h3>
+            <ul>
+              <li><img src="assets/dashboard-icons/gitlab.svg" alt="" width="22" height="22" loading="lazy">GitLab</li>
+              <li><img src="assets/dashboard-icons/argo-cd.svg" alt="" width="22" height="22" loading="lazy">Argo CD</li>
+              <li><img src="assets/dashboard-icons/kubernetes.svg" alt="" width="22" height="22" loading="lazy">Kubernetes</li>
+            </ul>
+          </div>
+          <div class="antalos-map-tools" data-flow="operate">
+            <h3>Run and monitor</h3>
+            <ul>
+              <li><img src="assets/dashboard-icons/talos.svg" alt="" width="22" height="22" loading="lazy">Talos Linux</li>
+              <li><img src="assets/dashboard-icons/debian.svg" alt="" width="22" height="22" loading="lazy">Debian</li>
+              <li><img class="antalos-map-icon-invert" src="assets/dashboard-icons/victoriametrics-light.svg" alt="" width="22" height="22" loading="lazy">VictoriaMetrics</li>
+            </ul>
+          </div>
+        </div>
+        <div class="antalos-map-detail">
+          <p id="antalos-provision" data-flow="provision">I define Proxmox virtual machines in OpenTofu and configure Debian guests with Ansible.</p>
+          <p id="antalos-deploy" data-flow="deploy">I keep application manifests in Git. Argo CD applies them to the Kubernetes cluster.</p>
+          <p id="antalos-operate" data-flow="operate">I run Kubernetes on Talos Linux and standalone services on Debian. I use VictoriaMetrics to collect metrics.</p>
+        </div>
+      </fieldset>
+      <div class="antalos-map-actions">
+        <a href="#homelab">See the homelab <span aria-hidden="true">↓</span></a>
+        <button type="button" class="antalos-map-play" hidden>Pause animation</button>
+      </div>
+    </div>
+  </section>
   <section class="photo-surface about section" id="about" aria-labelledby="about-title"><div class="photo-background" aria-hidden="true" data-chromatic><img src="assets/mountain-lake.webp" alt="" loading="lazy" decoding="async"></div><h2 class="boxed-title" id="about-title">About me</h2><p class="section-lead">I like tracing problems from the application through the network to the server. I learn by building systems and writing down the setup and fixes so I can repeat them.</p><div class="about-shortcuts"><a class="bracket-link" href="#resume">VIEW RESUME</a><a class="bracket-link" href="#skills">EXPLORE SKILLS</a></div>
     <div class="services"><article><h3>Current employer</h3><p>Vector Digital · Since July 2025</p></article><article><h3>Homelab</h3><p>3 Proxmox hosts · 5 Kubernetes nodes · NAS · OPNsense router</p></article><article><h3>Degree in progress</h3><p>BAS in IT – System Administration</p></article></div>
   </section>
@@ -102,12 +193,36 @@
       <article class="project" data-carousel-slide data-category="applications"><div class="project-media"><img class="project-art-logo" src="assets/dashboard-icons/cal-com-light.svg" alt="Cal.com logo — upstream scheduling project" loading="lazy" decoding="async"></div><div class="project-copy"><div class="project-heading"><h3>cal.diy-OIDC.</h3><span class="project-category">Self-hosted applications</span></div><p>My copy of Cal.diy includes the source and setup instructions for self-hosted scheduling.</p><div class="project-actions"><button class="project-primary" data-project="cal">PROJECT DETAILS</button><a class="project-source" href="https://github.com/antblu/cal.diy-OIDC" target="_blank" rel="noopener noreferrer">GITHUB ↗</a></div></div></article>
     </div><div class="carousel-controls" hidden><div class="button-group" role="group" aria-label="Browse projects"><button type="button" data-carousel="prev" data-tooltip aria-label="Previous project">←</button><span class="carousel-position" aria-live="off"></span><button type="button" data-carousel="next" data-tooltip aria-label="Next project">→</button></div><button type="button" data-carousel="pause" aria-pressed="false">Pause rotation</button></div><p id="filter-status" class="sr-only" role="status" aria-live="polite"></p><p class="portfolio-footer"><a href="https://github.com/antblu?tab=repositories" target="_blank" rel="noopener noreferrer">More on GitHub <span aria-hidden="true">↗</span></a></p>
   </section>
+  <section id="three-doors" class="svc-home" aria-labelledby="three-doors-title">
+    <div class="svc-wrap">
+      <p>Three doors</p>
+      <h2 id="three-doors-title">Which of these is your problem?</h2>
+      <p class="svc-lead">Every engagement starts with one of three conditions. Pick the sentence that sounds like your business.</p>
+      <div class="svc-grid">
+        <article class="svc-card">
+          <h3>The system no longer fits.</h3>
+          <p>FileMaker, Access, the internal app nobody dares touch. I replace it with software you own, without losing the workflow your staff depend on. Proof: 28,062 invoices migrated with zero operational downtime.</p>
+          <strong>Legacy System Replacement</strong>
+        </article>
+        <article class="svc-card">
+          <h3>The cart can't close your sales.</h3>
+          <p>Wires, deposits, quotes, staged settlement: transactions hosted carts cannot model. I build commerce platforms that close them. Proof: six-figure monthly Google Shopping revenue on an owned platform.</p>
+          <strong>High-Ticket Commerce Platforms</strong>
+        </article>
+        <article class="svc-card">
+          <h3>The work shouldn't still be manual.</h3>
+          <p>And you are not giving a chatbot the keys. I build governed AI agents inside your AWS account, with human approval on every consequential action. Proof: three production agents, used daily by a non-technical operator.</p>
+          <strong>Production AI Agents</strong>
+        </article>
+      </div>
+    </div>
+  </section>
   <section id="consulting-services" class="svc-home photo-surface" aria-labelledby="consulting-title">
     <div class="photo-background" aria-hidden="true"><img src="assets/consulting-mountain-valley.webp" alt="" loading="lazy" decoding="async"></div>
     <div class="svc-wrap"><h2 id="consulting-title">Infrastructure and web development services</h2>
-    <p class="svc-lead">I design and deploy open-source infrastructure, business websites, and online stores. I document the setup and train your team to run it. You can arrange support as needed.</p>
+    <p class="svc-lead">I build open-source infrastructure, business websites, and online stores in accounts you control. You keep administrator access, the project code, and your data. You pay no software license fees for the agreed open-source stack, and I train one person to run it with AI and runbooks.</p>
     <div class="svc-grid"><article class="svc-card"><h3>Open-Source Infrastructure</h3>
-    <p>I set up access controls, monitoring, and backups for open-source deployments. You can reduce software licensing costs and run the system in your own accounts.</p><a class="svc-btn" href="/services/infrastructure">Explore Infrastructure</a></article><article class="svc-card"><h3>Website Development</h3>
+    <p>I configure access, monitoring, and backups in accounts you control.</p><a class="svc-btn" href="/services/infrastructure">Explore Infrastructure</a></article><article class="svc-card"><h3>Website Development</h3>
     <p>I build responsive business sites and check their performance before launch. You keep control of the content and can review the estimate before work starts.</p><a class="svc-btn" href="/services/web-development">Explore Web Development</a></article><article class="svc-card"><h3>E-commerce Development</h3>
     <p>I build online stores that connect your catalog, payments, and inventory. I plan capacity around the size of your catalog and order volume.</p><a class="svc-btn" href="/services/ecommerce">Explore E-commerce</a></article></div>
     <section class="svc-app-handoff svc-panel" id="app-setup" aria-labelledby="app-setup-title">
@@ -126,15 +241,15 @@
         </li>
         <li class="svc-app-chat-client">
           <span class="svc-app-chat-speaker">You</span>
-          <p>Can my team handle updates after you hand it over?</p>
+          <p>Can I handle updates without an IT team?</p>
         </li>
         <li>
           <span class="svc-app-chat-speaker">Anthony</span>
-          <p>I’ll document your setup and walk your team through an update. We’ll practice using AI with your notes to check what to back up, investigate errors, and verify its suggestions before making changes.</p>
+          <p>Yes. I’ll walk you through an update and show you how to use AI with your runbooks. We’ll check what to back up, investigate errors, and verify AI suggestions before making changes.</p>
         </li>
       </ol>
     </section>
-    <ul class="svc-benefits"><li>Customer-controlled accounts and data</li><li>Open-source components</li><li>Optional support</li><li>AI-assisted maintenance</li><li>Itemized estimates</li></ul>
+    <ul class="svc-benefits"><li>You own the equipment you buy</li><li>No dedicated IT team needed</li><li>Optional support</li><li>Itemized estimates</li></ul>
     <div class="svc-cta"><a class="svc-btn svc-btn--primary" href="/services">Explore All Services</a><a class="svc-btn" href="/services/calculator">Calculate Your Costs</a><a class="svc-btn" href="/services#booking">Book a Free Consultation</a></div>
     </div>
   </section>
@@ -319,6 +434,7 @@
         <strong id="footer-services">Services</strong>
         <a href="/services">Services Overview</a>
         <a href="/services/infrastructure">Infrastructure</a>
+        <a href="/services/handoff#ownership-standard">Client Ownership Standard</a>
         <a href="/services/web-development">Website Development</a>
         <a href="/services/ecommerce">E-commerce</a>
         <a href="/services#packages">Infrastructure Packages</a>

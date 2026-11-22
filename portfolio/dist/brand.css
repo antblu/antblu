@@ -470,6 +470,9 @@ body{font-size:16px}
 
 /* Employer reading path: experience, selected work, then technical detail. */
 .hero-summary{max-width:480px;margin-top:18px;color:var(--muted);font-size:17px;line-height:1.7}
+.home-statement{padding:clamp(3.5rem,8vw,8rem) 1rem;background:var(--svc-surface);color:var(--svc-muted);text-align:center}
+.home-statement p{max-inline-size:46rem;margin:0 auto;font:400 clamp(1.25rem,3vw,2.25rem)/1.35 var(--svc-body-font);letter-spacing:-.025em;text-wrap:balance}
+.home-statement strong{color:var(--svc-accent);font-weight:600}
 .hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px 20px;margin-top:22px}
 .hero-actions .gradient-pill{margin-top:0;min-height:46px}
 .hero-actions .animated-gradient-text,.hero-text-link>span:first-child{min-inline-size:0;overflow-wrap:anywhere}

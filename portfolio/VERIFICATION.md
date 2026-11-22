@@ -483,3 +483,42 @@ generated HTML freshness, and Git whitespace checks passed.
 Direct HTTP checks reached 47 card destinations. The Mautic,
 VictoriaMetrics, and WriteFreely homepage requests did not complete from the
 local host.
+
+## Homepage Three doors section (2026-11-22)
+
+Chromium showed all three cards above the existing consulting services in both
+themes at 320, 768, and 1440px. The cards stacked at 320px and used three
+columns at the wider sizes. No horizontal overflow, uncaught page errors, or
+failed local asset responses occurred. Desktop light and mobile dark screenshots
+were reviewed. Git whitespace checks passed. Physical devices, unrelated site
+interactions, and production deployment remain unverified.
+
+## Homepage statement (2026-11-22)
+
+Chromium checked the paragraph between the hero and About me in both themes at
+320, 390, 768, and 1440px. The text wrapped without horizontal overflow, and both
+the blue phrases and the surrounding text met 4.5:1 contrast. No console errors
+or failed local asset requests occurred. Reviewed both themes at 320 and 1440px
+and confirmed the paragraph renders with JavaScript disabled.
+
+The homepage navigation, project filters, and Antalos dialog passed at 320 and
+1440px. The consulting browser suite passed, including contact validation,
+email draft preparation, and clipboard fallback. Git whitespace checks passed.
+Physical devices, live email delivery, and production deployment were outside
+these checks.
+
+## Antalos workflow map (2026-11-22)
+
+Chromium checked the desktop and mobile diagrams from 320 to 1440px in light
+and dark themes. Tool labels and descriptions fit without clipping or horizontal
+overflow. All nine tool icons decoded. No console errors or failed local asset
+requests occurred. Checked pointer selection, arrow-key navigation, forced
+colors, the homelab link, and manual selection with JavaScript disabled.
+
+Verified automatic cycling, pause and resume controls, offscreen suspension,
+and the reduced-motion preference. Sampled the desktop Provision to Deploy
+transition in both motion modes. Selector labels met 4.5:1 contrast against both
+the track and moving highlight. Homepage navigation, project filters, and the
+Antalos dialog passed at 320 and 1440px. JavaScript syntax and Git whitespace
+checks passed. Physical devices, frame rate, and production were outside these
+checks.

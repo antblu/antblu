@@ -15,17 +15,18 @@ export const links = {
 };
 
 export const landing = {
-  title: 'I build open-source systems your team can run.',
-  lead: 'You buy the hardware or open the cloud account in your name. I deploy and secure the tools, connect them, and train your team to run them. You pay me once.',
+  title: 'Open-source systems you own',
+  lead: 'You control the hosting accounts, administrator access, code, and data. You pay no software license fees for the agreed open-source stack. I train one person to handle routine maintenance with AI and runbooks, so you can run it without a dedicated IT team.',
   steps: [
     ['Choose where it runs', 'I size the workload and give you a purchase brief. You place the order and control billing.', 'infrastructure'],
     ['Build and connect the stack', 'I configure your CRM, file storage, VPN, and single sign-on. We agree on who needs access, what to back up, and how to test recovery.', 'applications'],
-    ['Train the people who will run it', 'Your administrator practices a restore with their own credentials. I hand over the configuration, runbooks, and an AI troubleshooting assistant connected to approved sources in your environment.', 'handoff']
+    ['Train your designated operator', 'You or a colleague practice a restore using your own credentials. I hand over the configuration and runbooks, and show you how to use the AI assistant with approved sources from your setup.', 'handoff']
   ],
   ownership: [
-    ['Infrastructure and accounts', 'You own equipment you buy. For rented infrastructure, your business holds the provider account, billing, and administrator access.'],
-    ['Code and data', 'You keep the project code, deployment repository, data exports, and backup access. Upstream software keeps its own license.'],
-    ['One project payment', 'The agreed open-source stack has $0 per-seat licensing and no recurring fee to me. Budget for your team’s time and any infrastructure or storage you buy from providers.']
+    ['Infrastructure and accounts', 'Your business owns the equipment you buy and holds the accounts for hosting and domains. You control billing and decide who has administrator access.'],
+    ['Code and configuration', 'You keep the project code, deployment repository, and runbooks. You can use them to move the system or bring in another provider. Upstream software keeps its own license.'],
+    ['Data and backups', 'You control your data, exports, and backup storage. We test a restore using your credentials before handoff.'],
+    ['One project payment', 'You pay me once for implementation. Budget for hardware or hosting, backup storage, and the time you spend running the system.']
   ],
   evidence: {
     title: 'See how I build and document systems',
@@ -37,7 +38,7 @@ export const landing = {
   faq: [
     ['What does the one-time payment cover?', 'We agree on the deployment, integrations, migration, recovery checks, and training before I quote one implementation fee. You buy infrastructure and any third-party services in your name.'],
     ['Will self-hosting cost less?', 'It depends on your current bills, the hardware or provider you choose, and who maintains the stack. Run the comparison with your own costs over one, three, or five years.'],
-    ['Who runs the system after handoff?', 'Your designated administrator handles updates, alerts, and recovery. We practice these tasks during handoff.'],
+    ['Who runs the system after handoff?', 'You or one person you choose can handle routine maintenance. During handoff, we practice using AI to consult the runbooks and troubleshoot errors. The person running the system checks suggestions before making changes.'],
     ['Can you build a website or store in my accounts?', 'Yes. I can deploy a website or store in your accounts, document its integrations, and train your team to edit and operate it.']
   ]
 };
@@ -67,8 +68,8 @@ export const dashboards = {
 };
 
 export const handoff = {
-  title: 'What your team receives at handoff',
-  lead: 'We agree on acceptance checks before I build. Your named administrator runs them during training with the accounts and documentation your business will keep.',
+  title: 'What you receive at handoff',
+  lead: 'You keep the accounts, administrator access, deployment code, data, and runbooks. Before handoff, you or your chosen operator sign in as an administrator and restore a sample file using your own credentials.',
   image: {
     src: '/assets/homelab/nas-interior.webp',
     alt: 'Open 2U NAS chassis showing the CPU cooler, power supply, and drive bays',

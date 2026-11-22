@@ -74,7 +74,8 @@ const landingBody = `<section class="consult-hero consult-cover">
 <div class="svc-wrap">
   ${block('From purchase brief to first restore', `<ol class="consult-stages">${landing.steps.map(([title, text, link]) =>
     `<li><h3>${escape(title)}</h3>${paragraph(text)}${anchor(links[link])}</li>`).join('')}</ol>`, 'why')}
-  ${block('What stays in your hands', `<div class="consult-split"><dl class="consult-ledger">${entries(landing.ownership)}</dl>${runbook()}</div>`)}
+  ${block('What you own and control', `<div class="consult-split"><dl class="consult-ledger">${entries(landing.ownership)}</dl>${runbook()}</div>
+    <p><a href="/services/handoff#ownership-standard">Client Ownership Standard</a></p>`)}
   <section class="consult-section consult-split" aria-labelledby="consult-evidence">
     <div><h2 id="consult-evidence">${escape(landing.evidence.title)}</h2>${paragraph(landing.evidence.text)}
     <ul>${landing.evidence.links.map(link => `<li>${anchor(link)}</li>`).join('')}</ul></div>
@@ -91,7 +92,13 @@ const landingBody = `<section class="consult-hero consult-cover">
   ${block('Tell me what you want to build or replace', `<p>Include the tools you use today and who will run the system after handoff.</p>${actions('contact')}`, 'booking')}
 </div>`;
 
+const ownershipPdf = '/assets/antblu-client-ownership-standard-v1.0.pdf';
+
 const handoffBody = `${intro(handoff, serverPhoto(handoff.image))}<div class="svc-wrap">
+  ${block('Client Ownership Standard', `<div class="svc-cta">
+    <a class="svc-btn" href="${ownershipPdf}">Read the PDF</a>
+    <a class="svc-btn svc-btn--primary" href="${ownershipPdf}" download>Download the PDF</a>
+  </div>`, 'ownership-standard')}
   ${block('Deliverables and acceptance checks', `<dl class="consult-ledger consult-checks">${handoff.checks.map(([title, deliverable, check]) =>
     `<div><dt>${escape(title)}</dt><dd>${paragraph(deliverable)}<p><strong>Acceptance check</strong> ${escape(check)}</p></dd></div>`).join('')}</dl>`)}
   ${block('Practice a file restore', `<div class="consult-split">${runbook(true)}<div id="service-demo"><p>Enable JavaScript to practice the restore.</p></div></div>${actions('contact')}`, 'restore')}
