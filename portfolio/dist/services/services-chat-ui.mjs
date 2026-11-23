@@ -70,8 +70,9 @@ function PendingReply() {
 
 const CHAT_URL = '/api/services-chat';
 
-async function chatRequest(body) {
-  const options = { signal: AbortSignal.timeout(body?.question ? 95000 : 15000) };
+async function chatRequest(body, signal) {
+  const timeout = AbortSignal.timeout(body?.question ? 95000 : 15000);
+  const options = { signal: signal ? AbortSignal.any([signal, timeout]) : timeout };
   if (body) {
     options.method = 'POST';
     options.headers = { 'Content-Type': 'application/json' };
@@ -183,49 +184,47 @@ async function readAnswer(response, onAnswer) {
   }
 }
 
+// Standalone composer layout adapted from https://www.assistant-ui.com/elements/composer.
 function ServicesChat() {
   const [turns, setTurns] = useState([]);
+  const [draft, setDraft] = useState('');
   const [busy, setBusy] = useState(false);
   const [streaming, setStreaming] = useState(false);
+  const [announcement, setAnnouncement] = useState('');
   const [config, setConfig] = useState(null);
-  const [configError, setConfigError] = useState(false);
+  const [configStatus, setConfigStatus] = useState('idle');
   const [token, setToken] = useState('');
   const [challenge, setChallenge] = useState(0);
-  const pending = useRef(false);
+  const pending = useRef(null);
   const input = useRef(null);
   const submit = useRef(null);
+  const needsVerification = config && !config.verified;
+  const canSend = config && (!needsVerification || token) && !!draft.trim() && !busy;
 
   async function loadConfig() {
-    setConfigError(false);
+    setConfigStatus('loading');
     try {
       const response = await chatRequest();
       if (!response.ok) throw await chatError(response);
       const data = await response.json();
       if (typeof data.siteKey !== 'string' || !data.siteKey) throw new Error('Missing site key');
       setConfig(data);
+      setConfigStatus('ready');
     } catch {
-      setConfigError(true);
+      setConfigStatus('error');
     }
   }
 
-  useEffect(() => {
-    void loadConfig();
-  }, []);
-
   async function ask(event) {
     event.preventDefault();
-    const question = input.current.value.trim();
-    if (pending.current || !config || (!config.verified && !token)) return;
-    if (!question) {
-      input.current.setCustomValidity('Enter a question.');
-      input.current.reportValidity();
-      return;
-    }
+    if (pending.current || !canSend) return;
 
+    const question = draft.trim();
     const id = turns.length;
-    pending.current = true;
+    const controller = new AbortController();
+    pending.current = controller;
     setBusy(true);
-    input.current.value = '';
+    setDraft('');
     if (document.activeElement === submit.current) input.current.focus({ preventScroll: true });
     setTurns(current => [...current, { id, question }]);
     const updateReply = reply => setTurns(current =>
@@ -234,13 +233,13 @@ function ServicesChat() {
     let partial = '';
     try {
       if (!config.verified) {
-        const verification = await chatRequest({ token });
+        const verification = await chatRequest({ token }, controller.signal);
         if (!verification.ok) throw await chatError(verification);
         setConfig(current => ({ ...current, verified: true }));
         setToken('');
       }
 
-      const response = await chatRequest({ question });
+      const response = await chatRequest({ question }, controller.signal);
       if (response.status === 401) {
         setConfig(current => ({ ...current, verified: false }));
       }
@@ -250,16 +249,23 @@ function ServicesChat() {
         setStreaming(true);
         updateReply({ answer, streaming: true });
       }));
+      setAnnouncement('Answer ready.');
     } catch (error) {
-      if (!input.current.value) input.current.value = question;
-      setToken('');
-      setChallenge(current => current + 1);
-      const message = error.constructor === Error ? error.message : 'Chat is unavailable. Try again or send a project brief.';
-      updateReply({ answer: partial, error: message });
+      setDraft(current => current || question);
+      if (controller.signal.aborted) {
+        updateReply({ answer: partial, stopped: true });
+        setAnnouncement('Answer stopped.');
+      } else {
+        setToken('');
+        setChallenge(current => current + 1);
+        const message = error.constructor === Error ? error.message : 'Chat is unavailable. Try again or send a project brief.';
+        updateReply({ answer: partial, error: message });
+        setAnnouncement('');
+      }
     } finally {
       setBusy(false);
       setStreaming(false);
-      pending.current = false;
+      pending.current = null;
     }
   }
 
@@ -271,46 +277,67 @@ function ServicesChat() {
       key: 'reply-' + id, messageId: 'reply-' + id, className: 'consult-chat-answer'
     },
     h('strong', null, 'Services assistant'),
-    !reply.streaming && h(Trace, { sources: reply.sources || [], error: reply.error }),
+    reply.stopped
+      ? h('p', null, 'Answer stopped.')
+      : !reply.streaming && h(Trace, { sources: reply.sources || [], error: reply.error }),
     reply.answer && h('p', null, reply.answer),
     reply.error && h('p', { role: 'status' }, reply.error),
     reply.error && h('a', { href: '/contact#quote' }, 'Prepare a project brief'))
   ]);
 
   return h('div', { className: 'consult-chat-body' },
-    h(MessageScroller.Provider, { autoScroll: true, scrollPreviousItemPeek: 24 },
+    turns.length > 0 && h(MessageScroller.Provider, { autoScroll: true, scrollPreviousItemPeek: 24 },
       h(MessageScroller.Root, { className: 'consult-chat-scroller' },
         h(MessageScroller.Viewport, { className: 'consult-chat-viewport', 'aria-label': 'Conversation' },
           h(MessageScroller.Content, {
             id: 'services-chat-history', className: 'consult-chat-history',
             'aria-label': 'Chat messages', 'aria-busy': busy
-          },
-          h('p', { className: 'consult-chat-intro' }, 'Ask the AI assistant about packages, costs, or what your team receives at handoff.'),
-          messages)),
+          }, messages)),
         h(MessageScroller.Button, { behavior: 'auto', className: 'consult-chat-latest' }, 'Jump to latest'))),
     busy && !streaming && h(PendingReply),
-    h('p', { className: 'svc-sr-only', role: 'status' }, busy ? (streaming ? 'Receiving an answer.' : 'Preparing an answer.') : ''),
-    configError && h('p', { role: 'status' },
+    h('p', { className: 'svc-sr-only', role: 'status' },
+      busy ? (streaming ? 'Receiving an answer.' : 'Preparing an answer.') : announcement),
+    h('form', { id: 'services-chat-form', className: 'composer-bar', 'data-slot': 'composer-bar', onSubmit: ask },
+      h('label', { className: 'svc-sr-only', htmlFor: 'services-chat-question' }, 'Ask AI about my services'),
+      h('textarea', {
+        id: 'services-chat-question', name: 'question', className: 'composer-input', 'data-slot': 'composer-input',
+        placeholder: 'Ask AI about my services…', rows: 1, maxLength: 1200,
+        'aria-describedby': 'services-chat-privacy', ref: input, value: draft,
+        onFocus: () => {
+          if (configStatus === 'idle') void loadConfig();
+        },
+        onChange: event => setDraft(event.currentTarget.value),
+        onKeyDown: event => {
+          if (event.key !== 'Enter' || event.shiftKey || event.nativeEvent.isComposing || event.keyCode === 229 || !canSend) return;
+          event.preventDefault();
+          event.currentTarget.form.requestSubmit();
+        }
+      }),
+      h('div', { className: 'composer-toolbar', 'data-slot': 'composer-toolbar' },
+        h('button', {
+          className: 'composer-send', 'data-slot': 'composer-send', type: busy ? 'button' : 'submit',
+          'aria-label': busy ? 'Stop generating' : 'Send message', disabled: !busy && !canSend, ref: submit,
+          onClick: busy ? event => {
+            event.preventDefault();
+            pending.current?.abort();
+            input.current.focus({ preventScroll: true });
+          } : undefined
+        }, h('svg', {
+          viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2,
+          strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true
+        }, busy ? h('rect', { x: 6, y: 6, width: 12, height: 12, rx: 2, fill: 'currentColor' })
+          : h('path', { d: 'M12 19V5m-6 6 6-6 6 6' }))))),
+    configStatus === 'loading' && h('p', { className: 'composer-note', role: 'status' }, 'Connecting to chat…'),
+    configStatus === 'error' && h('p', { className: 'composer-note', role: 'status' },
       'Chat is unavailable. ', h('a', { href: '/contact#quote' }, 'Prepare a project brief'), ' or ',
       h('button', { className: 'consult-chat-send', type: 'button', onClick: loadConfig }, 'Retry chat')),
-    h('form', { id: 'services-chat-form', className: 'consult-chat-form', onSubmit: ask },
-      h('label', { htmlFor: 'services-chat-question' }, 'Your question'),
-      h('textarea', {
-        id: 'services-chat-question', name: 'question', rows: 2, maxLength: 1200, required: true,
-        'aria-describedby': 'services-chat-privacy', ref: input, onInput: event => event.currentTarget.setCustomValidity('')
-      }),
-      config && !config.verified && !token && h('p', { role: 'status' }, 'Verify your browser to start chatting.'),
-      config && !config.verified && h(Verification, {
-        key: challenge, siteKey: config.siteKey, onToken: setToken
-      }),
-      h('div', { className: 'consult-chat-actions' },
-        h('p', { id: 'services-chat-privacy' }, 'Keep contact details, passwords, and private project information out of chat.'),
-        h('button', {
-          className: 'consult-chat-send', type: 'submit', disabled: busy || !config || (!config.verified && !token), ref: submit
-        }, 'Send'))));
+    needsVerification && !token && h('p', { className: 'composer-note', role: 'status' }, 'Verify your browser to start chatting.'),
+    needsVerification && h(Verification, {
+      key: challenge, siteKey: config.siteKey, onToken: setToken
+    }),
+    h('p', { id: 'services-chat-privacy', className: 'composer-note' },
+      'Keep contact details, passwords, and private project information out of chat.'));
 }
 
-
-export function mountServicesChat(panel) {
-  createRoot(panel).render(h(ServicesChat));
-}
+const composer = document.querySelector('#services-chat');
+if (composer) createRoot(composer).render(h(ServicesChat));

@@ -1,5 +1,12 @@
 # Verification — 2026-10-25
 
+Homepage AI composer (2026-11-23). Chromium checks with a mocked chat API and
+Turnstile passed in both themes at 320px and 1440px. Checked prompt entry,
+Shift+Enter, streaming, source links, cancellation without resubmission, retry,
+draft recovery, and the contact link with JavaScript disabled. The Services
+browser suite, Node tests, and generated markup checks passed. The live API
+returned HTTP 405 for its configuration request, so live chat remains unverified.
+
 Services chat (2026-11-22). Chromium checked the collapsed launcher, keyboard activation, retained conversation, pending progress, source disclosure, and jumps to the latest message in both themes at 320px and 1440px. Mocked replies covered source filtering, throttling, and service errors. The project brief link worked with JavaScript disabled. The Services browser suite, Node tests, and generated markup checks passed. Production API and physical device checks are pending.
 
 Services landing page (2026-11-21). Headless Chrome passed the services browser suite in light and dark themes at 320px and 1440px. Separate desktop checks covered the hero links to project evidence and examples. The local preview used the repository’s mountain photograph. Production deployment was outside these checks.
