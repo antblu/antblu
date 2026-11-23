@@ -524,3 +524,11 @@ the track and moving highlight. Homepage navigation, project filters, and the
 Antalos dialog passed at 320 and 1440px. JavaScript syntax and Git whitespace
 checks passed. Physical devices, frame rate, and production were outside these
 checks.
+
+## Services chat streaming (2026-11-23)
+
+Chromium with a mocked API and Turnstile widget showed partial replies before
+completion at 320px in dark mode and 1440px in light mode. Verified citation
+display, session reuse after reload, re-verification after expiration, input
+recovery after rate limiting or a stream interruption, and the project brief
+fallback. Live Turnstile, Redis, and the production upstreams remain unverified.
