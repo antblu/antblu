@@ -1,5 +1,12 @@
 # Verification — 2026-10-25
 
+Services hero layout (2026-11-23). Checked both themes in Chromium from 320px
+to 1440px wide. At 1280 × 720, 1366 × 720, 1366 × 768, and 1440 × 900, the
+Scroll label and down arrow fit below the demo on first load. The video kept
+its original dimensions at each tested width. Checked multiline entry, keyboard
+submission with a mocked reply, and the scroll link and contact fallback with
+JavaScript disabled. Live chat and production deployment remain unverified.
+
 Transparent Services chat (2026-11-23). Chromium checked the React launcher, transparent composer, and translucent transcript at 320px and 1440px in both themes. A simulated stream verified Progress before and during the reply, conversation retention on collapse, and the source disclosure. The project brief link worked with JavaScript disabled.
 
 Services landing page (2026-11-23). Chromium checked the composer and

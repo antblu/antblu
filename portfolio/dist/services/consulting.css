@@ -88,19 +88,20 @@
 /* Services overview */
 .svc-landing .svc-header { background: color-mix(in srgb, var(--svc-bg) 92%, transparent); backdrop-filter: blur(16px); }
 .consult-cover {
-  position: relative; display: grid; align-items: center; text-align: center;
-  min-height: calc(100svh - var(--svc-header-height)); padding: 5rem 0 6rem;
+  display: grid; text-align: center;
+  min-height: calc(100svh - var(--svc-header-height)); padding: clamp(.75rem, calc(100svh - 45rem), 3rem) 0 .5rem;
   background: linear-gradient(180deg, #05142170, #07182a8f 52%, #031321cc),
     url('../assets/consulting-mountain-valley.webp') center 54% / cover, #182f40;
 }
 .svc-landing .consult-cover h1 { margin: 0 auto .35em; color: white; max-width: 18ch; font-weight: 750; }
 .consult-cover .consult-lead { color: #f4f7fc; max-width: 55ch; margin: 0 auto; font-size: clamp(1.05rem, 1.7vw, 1.4rem); line-height: 1.55; text-wrap: pretty; }
-.consult-cover .svc-cta { justify-content: center; margin-top: 2rem; gap: .85rem; }
+.consult-cover .svc-cta { justify-content: center; margin-top: 1rem; gap: .85rem; }
 .consult-cover .svc-btn { border: 1px solid #ffffff99; border-radius: .5rem; padding: .75rem 1.4rem; }
 .consult-cover .svc-btn--primary, .consult-cover .svc-btn:hover { background: white; color: #152338; }
+.consult-cover .svc-btn--primary { --svc-action-ink: #152338; }
 .consult-cover .consult-secondary { --svc-link: white; background: #101e3080; color: white; }
 .consult-cover .consult-secondary:hover { --svc-link: #152338; }
-.svc-landing .consult-scroll { position: absolute; bottom: 1rem; justify-self: center; color: white; text-decoration: none; padding: .5rem; font-size: .85rem; }
+.svc-landing .consult-scroll { display: grid; place-content: center; justify-self: center; min-height: 44px; color: white; text-decoration: none; padding-inline: .5rem; font-size: .85rem; line-height: 1.2; }
 .consult-scroll span { display: block; }
 .consult-proof { border-bottom: 1px solid var(--svc-line); background: var(--svc-surface); }
 .consult-proof .svc-wrap { padding-block: 1.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: .85rem 1.5rem; align-items: baseline; }
@@ -122,11 +123,20 @@
 .svc-landing #booking p { margin-inline: auto; }
 .svc-landing #booking .svc-cta { justify-content: center; }
 
-.consult-tour { width: 100%; max-width: 55ch; font-size: clamp(1.05rem, 1.7vw, 1.4rem); margin: 2.5rem auto 0; scroll-margin-top: calc(var(--svc-header-height) + 12px); }
+.consult-tour { width: 100%; max-width: 55ch; font-size: clamp(1.05rem, 1.7vw, 1.4rem); margin: 1.25rem auto 0; scroll-margin-top: calc(var(--svc-header-height) + 12px); }
 .consult-tour video { display: block; width: 100%; height: auto; border: 1px solid #ffffff65; border-radius: 12px; background: #182f40; box-shadow: 0 12px 38px #03132155; }
 .consult-tour figcaption { max-width: 76ch; margin: .8rem auto 0; color: white; font-size: .88rem; }
 
-.consult-cover > .svc-wrap { justify-self: center; }
+.consult-cover > .svc-wrap { display: grid; grid-template-rows: 1fr auto; align-items: center; row-gap: .25rem; }
+@media (min-width: 60rem) {
+  .consult-cover > .svc-wrap { grid-template-columns: minmax(0, 1fr) auto; column-gap: 1.5rem; }
+  .consult-cover-copy { text-align: start; }
+  .svc-landing .consult-cover h1 { font-size: clamp(2.25rem, 3vw, 2.625rem); margin-inline: 0; }
+  .consult-cover .consult-lead { font-size: 1.05rem; }
+  .consult-cover .svc-cta { justify-content: flex-start; }
+  .consult-cover .consult-tour { width: 55ch; margin: 0; }
+  .svc-landing .consult-scroll { grid-column: 2; }
+}
 .tour-playback:not([hidden]) { display: flex; align-items: center; gap: .65rem; padding: 0 .75rem; margin-top: .25rem; border-radius: 8px; background: #132338; color: white; }
 .tour-playback button { min-width: 44px; min-height: 44px; border: 0; background: transparent; color: inherit; font-size: 1rem; cursor: pointer; }
 .consult-tour .tour-playback input { flex: 1; min-width: 0; height: 44px; margin: 0; padding: 0; accent-color: #9dceff; cursor: pointer; }

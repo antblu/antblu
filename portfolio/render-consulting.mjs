@@ -139,10 +139,12 @@ const infrastructureWorkflow = `<section class="infrastructure-workflow" id="inf
 
 const landingBody = `<section class="consult-hero consult-cover">
   <div class="svc-wrap">
-    <h1>${escape(landing.title).replace('open-source', 'open&#8209;source')}</h1><p class="consult-lead">${escape(landing.lead)}</p>
-    <div class="svc-cta">${anchor(links.contact, 'svc-btn--primary')}${anchor(['#consult-evidence', 'See the work'], 'consult-secondary')}</div>
-    <div id="services-chat" class="services-composer">
-      <noscript><p><a href="/contact#quote">Send a project question to Anthony</a></p></noscript>
+    <div class="consult-cover-copy">
+      <h1>${escape(landing.title).replace('open-source', 'open&#8209;source')}</h1><p class="consult-lead">${escape(landing.lead)}</p>
+      <div class="svc-cta">${anchor(links.contact, 'svc-btn--primary')}${anchor(['#consult-evidence', 'See the work'], 'consult-secondary')}</div>
+      <div id="services-chat" class="services-composer">
+        <noscript><p><a href="/contact#quote">Send a project question to Anthony</a></p></noscript>
+      </div>
     </div>
     <figure id="app-tour" class="consult-tour">
       <video controls autoplay muted loop playsinline disablepictureinpicture preload="metadata" width="1414" height="920" poster="/assets/tour/application-tour.webp" aria-label="Authentik sign-in and application tour" aria-describedby="tour-caption">
@@ -156,8 +158,8 @@ const landingBody = `<section class="consult-hero consult-cover">
       </div>
       <figcaption id="tour-caption">Explore the shared workspace, sales and support tools, and the infrastructure that runs them.</figcaption>
     </figure>
+    <a class="consult-scroll" href="#delivery">Scroll <span aria-hidden="true">↓</span></a>
   </div>
-  <a class="consult-scroll" href="#delivery">Scroll <span aria-hidden="true">↓</span></a>
 </section>
 <aside class="consult-proof" id="delivery" aria-label="Project examples">
   <div class="svc-wrap"><strong>Project examples</strong>
