@@ -127,16 +127,7 @@
 .consult-tour video { display: block; width: 100%; height: auto; border: 1px solid #ffffff65; border-radius: 12px; background: #182f40; box-shadow: 0 12px 38px #03132155; }
 .consult-tour figcaption { max-width: 76ch; margin: .8rem auto 0; color: white; font-size: .88rem; }
 
-.consult-cover > .svc-wrap { display: grid; grid-template-rows: 1fr auto; align-items: center; row-gap: .25rem; }
-@media (min-width: 60rem) {
-  .consult-cover > .svc-wrap { grid-template-columns: minmax(0, 1fr) auto; column-gap: 1.5rem; }
-  .consult-cover-copy { text-align: start; }
-  .svc-landing .consult-cover h1 { font-size: clamp(2.25rem, 3vw, 2.625rem); margin-inline: 0; }
-  .consult-cover .consult-lead { font-size: 1.05rem; }
-  .consult-cover .svc-cta { justify-content: flex-start; }
-  .consult-cover .consult-tour { width: 55ch; margin: 0; }
-  .svc-landing .consult-scroll { grid-column: 2; }
-}
+.consult-cover > .svc-wrap { display: grid; grid-template-columns: minmax(0, 1fr); align-content: center; row-gap: .25rem; }
 .tour-playback:not([hidden]) { display: flex; align-items: center; gap: .65rem; padding: 0 .75rem; margin-top: .25rem; border-radius: 8px; background: #132338; color: white; }
 .tour-playback button { min-width: 44px; min-height: 44px; border: 0; background: transparent; color: inherit; font-size: 1rem; cursor: pointer; }
 .consult-tour .tour-playback input { flex: 1; min-width: 0; height: 44px; margin: 0; padding: 0; accent-color: #9dceff; cursor: pointer; }

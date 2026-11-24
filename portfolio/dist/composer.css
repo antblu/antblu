@@ -16,7 +16,29 @@
   font: 400 1rem/1.5 var(--svc-body-font);
   overflow-wrap: anywhere;
 }
-.consult-chat-body { display: grid; gap: .75rem; }
+#services-chat .consult-chat-body {
+  position: static; width: 100%; max-width: none; max-height: none; margin: 0; padding: 0;
+  border: 0; background: transparent; color: inherit; overflow: visible;
+}
+.consult-chat-body[open] { display: grid; grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+#services-chat .consult-chat-body:modal {
+  position: fixed; display: flex; flex-direction: column;
+  width: min(56rem, calc(100% - 1.5rem)); height: min(46rem, calc(100dvh - 1.5rem));
+  margin: auto; padding: clamp(.75rem, 2.5vw, 1.5rem); overflow: auto;
+  border: 1px solid var(--svc-line); border-radius: 16px;
+  background: #102442; box-shadow: 0 18px 64px #06162966;
+}
+.consult-chat-body:modal::backdrop { background: #061223b8; }
+html:has(.consult-chat-body:modal) { overflow: hidden; }
+.consult-chat-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .375rem; font-size: .9375rem; }
+.consult-chat-resize.svc-btn {
+  width: 44px; margin-inline-start: auto; padding: 0;
+  border-color: transparent; background: transparent;
+}
+.consult-chat-resize.svc-btn:hover { background: #28496f; }
+.consult-chat-body:modal .consult-chat-scroller { flex: 1 1 0; min-height: 5.5rem; }
+.consult-chat-body:modal .consult-chat-viewport { height: 100%; max-height: none; }
+#services-chat .consult-chat-body:modal .composer-input { max-height: min(10rem, 30dvh); }
 .composer-bar {
   display: grid; grid-template-columns: minmax(0, 1fr) auto;
   gap: .25rem; align-items: end; padding: .375rem;

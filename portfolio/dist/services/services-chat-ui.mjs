@@ -129,10 +129,25 @@ function ServicesChat() {
   const [streaming, setStreaming] = useState(false);
   const [announcement, setAnnouncement] = useState('');
   const [configStatus, setConfigStatus] = useState('idle');
+  const [expanded, setExpanded] = useState(false);
+  const chat = useRef(null);
+  const resizeButton = useRef(null);
   const pending = useRef(null);
   const input = useRef(null);
   const submit = useRef(null);
   const canSend = configStatus === 'ready' && !!draft.trim() && !busy;
+
+  function resizeChat() {
+    const dialog = chat.current;
+    const container = dialog.parentElement;
+    container.style.minHeight = expanded ? '' : dialog.offsetHeight + 'px';
+    // Switch dialog modes in place so the transcript and composer stay mounted.
+    dialog.close();
+    if (expanded) dialog.show();
+    else dialog.showModal();
+    setExpanded(!expanded);
+    resizeButton.current.focus({ preventScroll: true });
+  }
 
   async function loadConfig() {
     setConfigStatus('loading');
@@ -205,7 +220,23 @@ function ServicesChat() {
     reply.error && h('a', { href: '/contact#quote' }, 'Prepare a project brief'))
   ]);
 
-  return h('div', { className: 'consult-chat-body' },
+  return h('dialog', {
+    className: 'consult-chat-body', open: true, ref: chat, 'aria-label': 'Services assistant',
+    onCancel: event => {
+      event.preventDefault();
+      resizeChat();
+    }
+  },
+    turns.length > 0 && h('div', { className: 'consult-chat-header' },
+      expanded && h('strong', null, 'Services assistant'),
+      h('button', {
+        className: 'svc-btn consult-chat-resize', type: 'button', ref: resizeButton, onClick: resizeChat,
+        'aria-label': 'Expand chat', 'aria-pressed': expanded,
+        title: expanded ? 'Exit expanded chat' : 'Expand chat'
+      }, h('svg', {
+        width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2,
+        strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true
+      }, h('path', { d: 'M16 3h5v5m0-5-7 7M8 21H3v-5m0 5 7-7' })))),
     turns.length > 0 && h(MessageScroller.Provider, { autoScroll: true, scrollPreviousItemPeek: 24 },
       h(MessageScroller.Root, { className: 'consult-chat-scroller' },
         h(MessageScroller.Viewport, { className: 'consult-chat-viewport', 'aria-label': 'Conversation' },

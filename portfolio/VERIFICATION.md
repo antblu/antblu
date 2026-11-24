@@ -1,5 +1,12 @@
 # Verification — 2026-10-25
 
+Centered Services hero and chat expansion (2026-11-23). Checked the stacked
+layout at 320px and 1366px in both themes. The demo kept its width, and the
+scroll cue followed it below the first viewport. Used a mock reply to verify
+that the icon toggles the larger conversation view during streaming and keeps
+the draft. Checked keyboard focus, Escape, and the no-script contact link.
+The Services browser suite passed. Live chat and deployment remain unverified.
+
 Services hero layout (2026-11-23). Checked both themes in Chromium from 320px
 to 1440px wide. At 1280 × 720, 1366 × 720, 1366 × 768, and 1440 × 900, the
 Scroll label and down arrow fit below the demo on first load. The video kept
