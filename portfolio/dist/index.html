@@ -32,10 +32,6 @@
   <link rel="stylesheet" href="dashboards.css">
   <script src="dashboards.js" defer></script>
   <link rel="stylesheet" href="/editorial.css">
-  <link rel="stylesheet" href="antalos-map.css">
-  <link rel="stylesheet" href="composer.css">
-  <script type="module" src="services/services-chat-ui.mjs"></script>
-  <script src="antalos-map.js" defer></script>
 </head>
 <body class="portfolio-page">
 <svg class="squiggly-filters" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false">
@@ -80,98 +76,9 @@
     </figure>
     <div class="progressive-blur" aria-hidden="true"><span style="--blur:0.5px;--start:0%"></span><span style="--blur:1px;--start:10%"></span><span style="--blur:2px;--start:20%"></span><span style="--blur:4px;--start:30%"></span><span style="--blur:8px;--start:40%"></span><span style="--blur:16px;--start:50%"></span><span style="--blur:32px;--start:60%"></span><span style="--blur:64px;--start:70%"></span></div>
   </section>
-  <div id="services-chat" class="home-composer">
-    <noscript><p><a href="/contact#quote">Send a project question to Anthony</a></p></noscript>
-  </div>
   <div class="home-statement">
     <p>I build <strong>infrastructure from code.</strong> In my Antalos homelab, I define virtual machines in Git and use Argo&nbsp;CD to <strong>deploy applications to Kubernetes.</strong></p>
   </div>
-  <section class="antalos-map" id="antalos-map" aria-labelledby="antalos-map-title">
-    <div class="antalos-map-wrap">
-      <div class="antalos-map-intro">
-        <h2 id="antalos-map-title">How I run <span>Antalos.</span></h2>
-        <p>I use this homelab to test how I provision machines, deploy applications, and monitor the services they run.</p>
-      </div>
-      <fieldset class="antalos-map-flow">
-        <legend class="antalos-map-visually-hidden">Antalos workflow</legend>
-        <div class="antalos-map-switch">
-          <label><input type="radio" name="antalos-flow" value="provision" aria-describedby="antalos-provision" checked><span>Provision</span></label>
-          <label><input type="radio" name="antalos-flow" value="deploy" aria-describedby="antalos-deploy"><span>Deploy</span></label>
-          <label><input type="radio" name="antalos-flow" value="operate" aria-describedby="antalos-operate"><span>Operate</span></label>
-        </div>
-        <div class="antalos-map-scene">
-          <svg class="antalos-map-wires" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              <path id="antalos-wire-provision" pathLength="100" d="M340 0C340 82 480 43 480 146Q480 180 430 180H140"/>
-              <path id="antalos-wire-deploy" pathLength="100" d="M500 0V345"/>
-              <path id="antalos-wire-operate" pathLength="100" d="M660 0C660 82 520 43 520 146Q520 180 570 180H860"/>
-            </defs>
-            <g class="antalos-map-traces">
-              <use href="#antalos-wire-provision"/><use href="#antalos-wire-deploy"/><use href="#antalos-wire-operate"/>
-            </g>
-            <g class="antalos-map-signals">
-              <use href="#antalos-wire-provision" data-flow="provision"/>
-              <use href="#antalos-wire-deploy" data-flow="deploy"/>
-              <use href="#antalos-wire-operate" data-flow="operate"/>
-            </g>
-          </svg>
-          <svg class="antalos-map-wires antalos-map-wires-mobile" viewBox="0 0 1000 428" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              <path id="antalos-mobile-provision" pathLength="100" d="M167 0C167 40 500 6 500 65S245 110 245 171"/>
-              <path id="antalos-mobile-deploy" pathLength="100" d="M500 0V333"/>
-              <path id="antalos-mobile-operate" pathLength="100" d="M833 0C833 40 500 6 500 65S755 110 755 171"/>
-            </defs>
-            <g class="antalos-map-traces">
-              <use href="#antalos-mobile-provision"/><use href="#antalos-mobile-deploy"/><use href="#antalos-mobile-operate"/>
-            </g>
-            <g class="antalos-map-signals">
-              <use href="#antalos-mobile-provision" data-flow="provision"/>
-              <use href="#antalos-mobile-deploy" data-flow="deploy"/>
-              <use href="#antalos-mobile-operate" data-flow="operate"/>
-            </g>
-          </svg>
-          <div class="antalos-map-hub" aria-hidden="true">
-            <span class="antalos-map-orbits"></span>
-            <img src="assets/antalos.svg" alt="" width="86" height="57" loading="lazy">
-            <span>Antalos</span>
-          </div>
-          <div class="antalos-map-tools" data-flow="provision">
-            <h3>Build machines</h3>
-            <ul>
-              <li><img src="assets/dashboard-icons/opentofu.svg" alt="" width="22" height="22" loading="lazy">OpenTofu</li>
-              <li><img src="assets/dashboard-icons/proxmox.svg" alt="" width="22" height="22" loading="lazy">Proxmox</li>
-              <li><img src="assets/dashboard-icons/ansible.svg" alt="" width="22" height="22" loading="lazy">Ansible</li>
-            </ul>
-          </div>
-          <div class="antalos-map-tools antalos-map-tools-wide" data-flow="deploy">
-            <h3>Ship applications</h3>
-            <ul>
-              <li><img src="assets/dashboard-icons/gitlab.svg" alt="" width="22" height="22" loading="lazy">GitLab</li>
-              <li><img src="assets/dashboard-icons/argo-cd.svg" alt="" width="22" height="22" loading="lazy">Argo CD</li>
-              <li><img src="assets/dashboard-icons/kubernetes.svg" alt="" width="22" height="22" loading="lazy">Kubernetes</li>
-            </ul>
-          </div>
-          <div class="antalos-map-tools" data-flow="operate">
-            <h3>Run and monitor</h3>
-            <ul>
-              <li><img src="assets/dashboard-icons/talos.svg" alt="" width="22" height="22" loading="lazy">Talos Linux</li>
-              <li><img src="assets/dashboard-icons/debian.svg" alt="" width="22" height="22" loading="lazy">Debian</li>
-              <li><img class="antalos-map-icon-invert" src="assets/dashboard-icons/victoriametrics-light.svg" alt="" width="22" height="22" loading="lazy">VictoriaMetrics</li>
-            </ul>
-          </div>
-        </div>
-        <div class="antalos-map-detail">
-          <p id="antalos-provision" data-flow="provision">I define Proxmox virtual machines in OpenTofu and configure Debian guests with Ansible.</p>
-          <p id="antalos-deploy" data-flow="deploy">I keep application manifests in Git. Argo CD applies them to the Kubernetes cluster.</p>
-          <p id="antalos-operate" data-flow="operate">I run Kubernetes on Talos Linux and standalone services on Debian. I use VictoriaMetrics to collect metrics.</p>
-        </div>
-      </fieldset>
-      <div class="antalos-map-actions">
-        <a href="#homelab">See the homelab <span aria-hidden="true">↓</span></a>
-        <button type="button" class="antalos-map-play" hidden>Pause animation</button>
-      </div>
-    </div>
-  </section>
   <section class="photo-surface about section" id="about" aria-labelledby="about-title"><div class="photo-background" aria-hidden="true" data-chromatic><img src="assets/mountain-lake.webp" alt="" loading="lazy" decoding="async"></div><h2 class="boxed-title" id="about-title">About me</h2><p class="section-lead">I like tracing problems from the application through the network to the server. I learn by building systems and writing down the setup and fixes so I can repeat them.</p><div class="about-shortcuts"><a class="bracket-link" href="#resume">VIEW RESUME</a><a class="bracket-link" href="#skills">EXPLORE SKILLS</a></div>
     <div class="services"><article><h3>Current employer</h3><p>Vector Digital · Since July 2025</p></article><article><h3>Homelab</h3><p>3 Proxmox hosts · 5 Kubernetes nodes · NAS · OPNsense router</p></article><article><h3>Degree in progress</h3><p>BAS in IT – System Administration</p></article></div>
   </section>

@@ -1,5 +1,12 @@
 # Verification — 2026-10-25
 
+Services landing page (2026-11-23). Chromium checked the composer and
+infrastructure walkthrough in both themes at 320px and 1440px. The composer
+passed mocked chat checks for streaming, cancellation, and draft recovery.
+The walkthrough passed keyboard navigation, pause and resume, and manual
+selection with JavaScript disabled. The Services browser suite and generated
+markup checks passed. Production deployment and live chat were outside this pass.
+
 Homepage AI composer (2026-11-23). Chromium checks with a mocked chat API and
 Turnstile passed in both themes at 320px and 1440px. Checked prompt entry,
 Shift+Enter, streaming, source links, cancellation without resubmission, retry,

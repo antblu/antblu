@@ -47,10 +47,103 @@ const dashboardCards = dashboards.screenshots.map(({ name, image, width, height,
     <span class="dashboard-caption"><span><strong>${escape(name)}</strong><span>${escape(caption)}</span></span><span class="dashboard-expand" aria-hidden="true">↗</span></span>
   </a>`).join('\n');
 
+const infrastructureWorkflow = `<section class="infrastructure-workflow" id="infrastructure-workflow" aria-labelledby="infrastructure-workflow-title">
+  <div class="infrastructure-workflow-wrap">
+    <div class="infrastructure-workflow-intro">
+      <h2 id="infrastructure-workflow-title">How I build infrastructure</h2>
+      <p>I use my homelab to test how I provision machines, deploy applications, and monitor services.</p>
+    </div>
+    <fieldset class="infrastructure-workflow-flow">
+      <legend class="infrastructure-workflow-visually-hidden">Infrastructure workflow</legend>
+      <div class="infrastructure-workflow-switch">
+        <label><input type="radio" name="infrastructure-stage" value="provision" aria-describedby="workflow-provision" checked><span>Provision</span></label>
+        <label><input type="radio" name="infrastructure-stage" value="deploy" aria-describedby="workflow-deploy"><span>Deploy</span></label>
+        <label><input type="radio" name="infrastructure-stage" value="operate" aria-describedby="workflow-operate"><span>Operate</span></label>
+      </div>
+      <div class="infrastructure-workflow-scene">
+        <svg class="infrastructure-workflow-wires" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <path id="workflow-wire-provision" pathLength="100" d="M340 0C340 82 480 43 480 146Q480 180 430 180H140"/>
+            <path id="workflow-wire-deploy" pathLength="100" d="M500 0V345"/>
+            <path id="workflow-wire-operate" pathLength="100" d="M660 0C660 82 520 43 520 146Q520 180 570 180H860"/>
+          </defs>
+          <g class="infrastructure-workflow-traces">
+            <use href="#workflow-wire-provision"/><use href="#workflow-wire-deploy"/><use href="#workflow-wire-operate"/>
+          </g>
+          <g class="infrastructure-workflow-signals">
+            <use href="#workflow-wire-provision" data-flow="provision"/>
+            <use href="#workflow-wire-deploy" data-flow="deploy"/>
+            <use href="#workflow-wire-operate" data-flow="operate"/>
+          </g>
+        </svg>
+        <svg class="infrastructure-workflow-wires infrastructure-workflow-wires-mobile" viewBox="0 0 1000 428" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <path id="workflow-mobile-provision" pathLength="100" d="M167 0C167 40 500 6 500 65S245 110 245 171"/>
+            <path id="workflow-mobile-deploy" pathLength="100" d="M500 0V333"/>
+            <path id="workflow-mobile-operate" pathLength="100" d="M833 0C833 40 500 6 500 65S755 110 755 171"/>
+          </defs>
+          <g class="infrastructure-workflow-traces">
+            <use href="#workflow-mobile-provision"/><use href="#workflow-mobile-deploy"/><use href="#workflow-mobile-operate"/>
+          </g>
+          <g class="infrastructure-workflow-signals">
+            <use href="#workflow-mobile-provision" data-flow="provision"/>
+            <use href="#workflow-mobile-deploy" data-flow="deploy"/>
+            <use href="#workflow-mobile-operate" data-flow="operate"/>
+          </g>
+        </svg>
+        <div class="infrastructure-workflow-hub" aria-hidden="true">
+          <span class="infrastructure-workflow-orbits"></span>
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/>
+            <path d="M7 6.5h.01M7 17.5h.01M13 6.5h4M13 17.5h4"/>
+          </svg>
+          <span>Stack</span>
+        </div>
+        <div class="infrastructure-workflow-tools" data-flow="provision">
+          <h3>Build machines</h3>
+          <ul>
+            <li><img src="/assets/dashboard-icons/opentofu.svg" alt="" width="22" height="22" loading="lazy">OpenTofu</li>
+            <li><img src="/assets/dashboard-icons/proxmox.svg" alt="" width="22" height="22" loading="lazy">Proxmox</li>
+            <li><img src="/assets/dashboard-icons/ansible.svg" alt="" width="22" height="22" loading="lazy">Ansible</li>
+          </ul>
+        </div>
+        <div class="infrastructure-workflow-tools infrastructure-workflow-tools-wide" data-flow="deploy">
+          <h3>Ship applications</h3>
+          <ul>
+            <li><img src="/assets/dashboard-icons/gitlab.svg" alt="" width="22" height="22" loading="lazy">GitLab</li>
+            <li><img src="/assets/dashboard-icons/argo-cd.svg" alt="" width="22" height="22" loading="lazy">Argo CD</li>
+            <li><img src="/assets/dashboard-icons/kubernetes.svg" alt="" width="22" height="22" loading="lazy">Kubernetes</li>
+          </ul>
+        </div>
+        <div class="infrastructure-workflow-tools" data-flow="operate">
+          <h3>Run and monitor</h3>
+          <ul>
+            <li><img src="/assets/dashboard-icons/talos.svg" alt="" width="22" height="22" loading="lazy">Talos Linux</li>
+            <li><img src="/assets/dashboard-icons/debian.svg" alt="" width="22" height="22" loading="lazy">Debian</li>
+            <li><img class="infrastructure-workflow-icon-invert" src="/assets/dashboard-icons/victoriametrics-light.svg" alt="" width="22" height="22" loading="lazy">VictoriaMetrics</li>
+          </ul>
+        </div>
+      </div>
+      <div class="infrastructure-workflow-detail">
+        <p id="workflow-provision" data-flow="provision">I define Proxmox virtual machines in OpenTofu and configure Debian guests with Ansible.</p>
+        <p id="workflow-deploy" data-flow="deploy">I keep application manifests in Git. Argo CD applies them to the Kubernetes cluster.</p>
+        <p id="workflow-operate" data-flow="operate">I run Kubernetes on Talos Linux and standalone services on Debian. I use VictoriaMetrics to collect metrics.</p>
+      </div>
+    </fieldset>
+    <div class="infrastructure-workflow-actions">
+      <a href="/#homelab">See the homelab</a>
+      <button type="button" class="infrastructure-workflow-play" hidden>Pause cycle</button>
+    </div>
+  </div>
+</section>`;
+
 const landingBody = `<section class="consult-hero consult-cover">
   <div class="svc-wrap">
     <h1>${escape(landing.title).replace('open-source', 'open&#8209;source')}</h1><p class="consult-lead">${escape(landing.lead)}</p>
     <div class="svc-cta">${anchor(links.contact, 'svc-btn--primary')}${anchor(['#consult-evidence', 'See the work'], 'consult-secondary')}</div>
+    <div id="services-chat" class="services-composer">
+      <noscript><p><a href="/contact#quote">Send a project question to Anthony</a></p></noscript>
+    </div>
     <figure id="app-tour" class="consult-tour">
       <video controls autoplay muted loop playsinline disablepictureinpicture preload="metadata" width="1414" height="920" poster="/assets/tour/application-tour.webp" aria-label="Authentik sign-in and application tour" aria-describedby="tour-caption">
         <source src="/assets/tour/application-tour.mp4" type="video/mp4">
@@ -71,6 +164,7 @@ const landingBody = `<section class="consult-hero consult-cover">
     ${[...landing.evidence.links, links.demo, ['#stack', 'Browse the service inventory']].map(link => anchor(link)).join('')}
   </div>
 </aside>
+${infrastructureWorkflow}
 <div class="svc-wrap">
   ${block('From purchase brief to first restore', `<ol class="consult-stages">${landing.steps.map(([title, text, link]) =>
     `<li><h3>${escape(title)}</h3>${paragraph(text)}${anchor(links[link])}</li>`).join('')}</ol>`, 'why')}

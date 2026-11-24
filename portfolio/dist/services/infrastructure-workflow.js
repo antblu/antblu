@@ -1,10 +1,10 @@
 (() => {
-  const map = document.querySelector('#antalos-map');
+  const map = document.querySelector('#infrastructure-workflow');
   if (!map || !('IntersectionObserver' in window)) return;
 
-  const controls = map.querySelector('.antalos-map-switch');
+  const controls = map.querySelector('.infrastructure-workflow-switch');
   const radios = [...controls.querySelectorAll('input')];
-  const playback = map.querySelector('.antalos-map-play');
+  const playback = map.querySelector('.infrastructure-workflow-play');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   let inView = false;
   let cycling = true;
@@ -42,7 +42,7 @@
   new IntersectionObserver(([entry]) => {
     inView = entry.isIntersecting;
     syncPlayback();
-  }, { threshold: .1 }).observe(map.querySelector('.antalos-map-scene'));
+  }, { threshold: .1 }).observe(map.querySelector('.infrastructure-workflow-scene'));
 
   syncPlayback();
 })();

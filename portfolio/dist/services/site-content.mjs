@@ -30,10 +30,10 @@ export const landing = {
   ],
   evidence: {
     title: 'See how I build and document systems',
-    text: 'In the Antalos lab inventory from November 2026, you can see where I place workloads and how I segment the network. The October 2026 Emiliany architecture notes show how I connected the storefront, order systems, and support tools.',
-    links: [['/#homelab', 'Inspect the Antalos lab'], ['/#emiliany', 'Read the Emiliany case study']],
+    text: 'In my November 2026 homelab inventory, you can see where I place workloads and how I segment the network. The October 2026 Emiliany architecture notes show how I connected the storefront, order systems, and support tools.',
+    links: [['/#homelab', 'Explore the homelab'], ['/#emiliany', 'Read the Emiliany case study']],
     image: '/assets/homelab/rack-and-ups.webp',
-    caption: 'My Antalos lab rack and UPS'
+    caption: 'My homelab rack and UPS'
   },
   faq: [
     ['What does the one-time payment cover?', 'We agree on the deployment, integrations, migration, recovery checks, and training before I quote one implementation fee. You buy infrastructure and any third-party services in your name.'],
@@ -44,7 +44,7 @@ export const landing = {
 };
 
 export const dashboards = {
-  title: 'Inside my Antalos lab dashboard',
+  title: 'Inside my homelab dashboards',
   lead: 'I use Authentik to open the tools my account can access. In Grafana I check alerts, request rates, and latency. These screenshots show a point in time.',
   homelable: ['https://homelab.antblu.net/', 'Open Homelable (sign-in required)'],
   screenshots: [

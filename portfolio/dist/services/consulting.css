@@ -88,7 +88,6 @@
 /* Services overview */
 .svc-landing .svc-header { background: color-mix(in srgb, var(--svc-bg) 92%, transparent); backdrop-filter: blur(16px); }
 .consult-cover {
-  --svc-action-ink: #152338;
   position: relative; display: grid; align-items: center; text-align: center;
   min-height: calc(100svh - var(--svc-header-height)); padding: 5rem 0 6rem;
   background: linear-gradient(180deg, #05142170, #07182a8f 52%, #031321cc),
