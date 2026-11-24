@@ -176,6 +176,49 @@ try {
   await page.getByRole('searchbox').fill('no-matching-comparison');
   assert.match(await page.locator('#compare-count').innerText(), /No matching comparisons/);
   assert.deepEqual(apiRequests, []);
+  let submitResponse = { errors: { email: 'invalid' } };
+  const submissions = [];
+  let fingerprint;
+  await page.route('**/api/v1/form_config', route => {
+    assert.equal(route.request().method(), 'POST');
+    fingerprint = new URLSearchParams(route.request().postData()).get('fingerprint');
+    assert.match(fingerprint, /^[0-9a-f-]{36}$/);
+    return route.fulfill({ json: { enabled: true, token: 'mock-token', spam_protection: { honeypot: { field: 'zammad_form_url' } } } });
+  });
+  await page.route('**/api/v1/form_submit', route => {
+    assert.equal(route.request().method(), 'POST');
+    const payload = route.request().postData();
+    assert.match(payload, new RegExp(fingerprint));
+    assert.match(payload, /mock-token/);
+    assert.match(payload, /name="zammad_form_url"/);
+    submissions.push(payload);
+    return route.fulfill({ json: submitResponse });
+  });
+
+  await page.goto(`${base}/contact/?service=infrastructure#contact`);
+  const message = page.locator('#contact-form');
+  await message.locator('[name=name]').fill('Sample Client');
+  await message.locator('[name=email]').fill('client@example.com');
+  await message.locator('[name=phone]').fill('555-0100');
+  await message.locator('[name=message]').fill('Testing the contact form.');
+  const sendMessage = message.getByRole('button', { name: 'Send message' });
+  await sendMessage.click();
+  await message.getByText('Please enter a valid email address that can receive replies.').waitFor();
+  assert.equal(await message.locator('[name=message]').inputValue(), 'Testing the contact form.');
+  submitResponse = { ticket: { number: '10101' } };
+  await sendMessage.click();
+  await message.getByText(/Your ticket number is #10101/).waitFor();
+  assert.equal(await message.locator('[name=message]').inputValue(), '');
+  assert.match(submissions.at(-1), /Phone: 555-0100/);
+
+  await form.locator('[name=name]').fill('Sample Client');
+  await form.locator('[name=email]').fill('client@example.com');
+  await form.locator('[name=message]').fill('Testing the project brief.');
+  submitResponse = { ticket: { number: '10102' } };
+  await form.getByRole('button', { name: 'Send project brief' }).click();
+  await form.getByText(/Your ticket number is #10102/).waitFor();
+  assert.match(submissions.at(-1), /Source: antblu.net consultation form/);
+  assert.equal(submissions.length, 3);
   const fallbackFonts = await browser.newPage({ viewport: { width: 768, height: 940 } });
   await fallbackFonts.route('https://fonts.googleapis.com/**', route => route.abort());
   await fallbackFonts.goto(`${base}/services/`);

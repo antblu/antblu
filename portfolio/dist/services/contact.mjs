@@ -1,3 +1,4 @@
+import { bindContactTicket } from './contact-api.mjs';
 import { bindEmailBrief } from './email-brief.mjs';
 
 const form = document.querySelector('#contact-form');
@@ -5,7 +6,7 @@ const status = document.querySelector('#form-status');
 const fields = ['name', 'message'].map(name => form.elements.namedItem(name));
 for (const field of fields) field.addEventListener('input', () => field.setCustomValidity(''));
 
-bindEmailBrief({
+const contact = {
   form,
   status,
   validate() {
@@ -18,8 +19,13 @@ bindEmailBrief({
     const email = data.get('email').trim();
     const phone = data.get('phone').trim();
     return {
+      name,
+      email,
       title: `antblu.net inquiry from ${name}`,
-      body: `${data.get('message').trim()}\n\nFrom: ${name}\nEmail: ${email}${phone ? `\nPhone: ${phone}` : ''}`
+      body: `${data.get('message').trim()}\n\nFrom: ${name}\nEmail: ${email}${phone ? `\nPhone: ${phone}` : ''}\nSource: antblu.net contact form`
     };
   }
-});
+};
+
+bindEmailBrief(contact);
+bindContactTicket({ ...contact, sending: 'Sending your message…', confirmation: 'Message sent.' });

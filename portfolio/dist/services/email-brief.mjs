@@ -1,11 +1,11 @@
 import { brand } from './site-content.mjs';
 
 export function bindEmailBrief({ form, status, validate, compose }) {
-  const open = form.querySelector('[type="submit"]');
+  const open = form.querySelector('[data-email-draft]');
   const copy = form.querySelector('[data-copy-brief]');
   const fallback = form.querySelector('.consult-draft');
   const fallbackLabel = form.querySelector('[data-draft-label]');
-  open.disabled = false;
+  open.hidden = false;
   copy.hidden = false;
 
   function selectBrief(body, message) {
@@ -25,8 +25,7 @@ export function bindEmailBrief({ form, status, validate, compose }) {
     status.textContent = '';
   });
 
-  form.addEventListener('submit', event => {
-    event.preventDefault();
+  open.addEventListener('click', () => {
     if (!validate()) return;
     const { title, body } = compose();
     const href = `mailto:${brand.email}?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(body.replaceAll('\n', '\r\n'))}`;

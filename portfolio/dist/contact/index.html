@@ -55,8 +55,9 @@
         <div class="svc-split svc-contact-layout">
           <section class="svc-panel" id="quote" aria-labelledby="quote-title">
             <h2 id="quote-title">Prepare a project brief</h2>
-            <p>Describe your current tools, what you want to change, and who will run the system. You can email the brief to <a href="mailto:antblu@antblu.net">antblu@antblu.net</a>.</p>
+            <p>Describe your current tools, what you want to change, and who will run the system.</p>
             <form id="consultation-form" class="svc-form" aria-labelledby="quote-title">
+              <input type="text" name="zammad_form_url" tabindex="-1" autocomplete="off" hidden>
               <fieldset data-slot="field-set">
                 <legend data-slot="field-legend">Your details</legend>
                 <div data-slot="field-group">
@@ -113,8 +114,8 @@
                   </details>
                 </div>
               </fieldset>
-              <p class="svc-muted">Your browser prepares the brief. Send it from your email app when it is ready. <a href="/privacy">Privacy notice</a></p>
-              <div class="svc-cta"><button class="svc-btn svc-btn--primary" type="submit" disabled>Open email draft</button><button class="svc-btn" type="button" data-copy-brief hidden>Copy brief</button></div>
+              <p class="svc-muted">You will get a support ticket number when you send your brief. <a href="/privacy">Privacy notice</a></p>
+              <div class="svc-cta"><button class="svc-btn svc-btn--primary" type="submit" disabled>Send project brief</button><button class="svc-btn" type="button" data-email-draft hidden>Open email draft</button><button class="svc-btn" type="button" data-copy-brief hidden>Copy brief</button></div>
               <label data-draft-label for="consultation-draft" hidden>Project brief</label>
               <textarea class="consult-draft" id="consultation-draft" readonly hidden></textarea>
               <p id="consultation-status" role="status" tabindex="-1"></p>
@@ -127,15 +128,17 @@
               <p>Hiring for systems administration or infrastructure work? I’d be glad to discuss my experience and learn about your team.</p>
               <p><a href="mailto:antblu@antblu.net">antblu@antblu.net</a></p>
               <form id="contact-form" class="svc-form" aria-labelledby="message-title">
+                <input type="text" name="zammad_form_url" tabindex="-1" autocomplete="off" hidden>
                 <label>Name<input name="name" autocomplete="name" required maxlength="120"></label>
                 <label>Email<input type="email" name="email" autocomplete="email" required maxlength="254"></label>
                 <label>Phone number (optional)<input type="tel" name="phone" autocomplete="tel" maxlength="50"></label>
                 <label>Message<textarea name="message" required maxlength="5000" rows="5"></textarea></label>
-                <button class="svc-btn svc-btn--primary" type="submit" disabled>Open email draft</button>
+                <button class="svc-btn svc-btn--primary" type="submit" disabled>Send message</button>
+                <button class="svc-btn" type="button" data-email-draft hidden>Open email draft</button>
                 <button class="svc-btn" type="button" data-copy-brief hidden>Copy message</button>
                 <label data-draft-label for="message-draft" hidden>Message to copy</label>
                 <textarea class="consult-draft" id="message-draft" readonly hidden></textarea>
-                <p class="form-note">Send the draft from your email app.</p>
+                <p class="form-note">You will get a support ticket number when you send your message.</p>
                 <noscript><p>Please <a class="email-address" href="mailto:antblu@antblu.net">email antblu@antblu.net</a> to get in touch. Sending this form requires JavaScript.</p></noscript>
                 <p id="form-status" role="status" aria-live="polite"></p>
               </form>

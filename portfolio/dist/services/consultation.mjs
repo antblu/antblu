@@ -1,12 +1,14 @@
 import { applications } from './applications.mjs';
 import { range, readSession } from './common.mjs';
 import { pricing, tiers } from './pricing.mjs';
+import { bindContactTicket } from './contact-api.mjs';
 import { bindEmailBrief } from './email-brief.mjs';
 
 const form = document.querySelector('#consultation-form');
 const status = document.querySelector('#consultation-status');
 const details = form.querySelector('[data-quote-details]');
 const detailsTitle = details.querySelector('summary');
+const defaultDetailsTitle = detailsTitle.textContent;
 const query = new URLSearchParams(location.search);
 const get = name => form.elements.namedItem(name);
 const quote = query.get('configuration') === 'calculator' ? readSession('antblu-quote') : null;
@@ -78,7 +80,7 @@ function inquiry() {
     get('configuration').value.trim() ? `Configuration:\n${get('configuration').value.trim()}` : '',
     'Source: antblu.net consultation form'
   ].filter(Boolean).join('\n\n');
-  return { title, body };
+  return { name, email, title, body };
 }
 
 form.noValidate = true;
@@ -90,4 +92,16 @@ for (const field of requiredFields) {
     if (field.hasAttribute('aria-invalid')) validateField(field);
   });
 }
-bindEmailBrief({ form, status, validate: valid, compose: inquiry });
+const contact = { form, status, validate: valid, compose: inquiry };
+bindEmailBrief(contact);
+bindContactTicket({
+  ...contact,
+  sending: 'Sending your project brief…',
+  confirmation: 'Project brief sent.',
+  onSent() {
+    for (const field of requiredFields) showFieldError(field, '');
+    detailsTitle.textContent = defaultDetailsTitle;
+    try { if (quote) sessionStorage.removeItem('antblu-quote'); } catch {}
+    status.focus();
+  }
+});

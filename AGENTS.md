@@ -47,4 +47,4 @@ No automated test harness or coverage threshold is configured. Follow `portfolio
 
 ## Commit & Pull Request Guidelines
 
-History uses concise imperative subjects, such as `Publish portfolio as a containerized static website`; follow that style. Keep commits focused. PRs should explain behavior changes, link relevant issues, list verification, and include screenshots for visual edits. Preserve asset attribution and original portraits. Keep credentials out of browser assets; the contact form opens an email draft locally.
+History uses concise imperative subjects, such as `Publish portfolio as a containerized static website`; follow that style. Keep commits focused. PRs should explain behavior changes, link relevant issues, list verification, and include screenshots for visual edits. Preserve asset attribution and original portraits. Keep credentials out of browser assets. The contact forms use Zammad's public form endpoints through the website proxy.

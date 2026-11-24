@@ -139,7 +139,7 @@ export const recovery = {
 
 export const policy = {
   privacy: [
-    ['Project briefs and messages', 'The forms compose your message in your browser. You choose whether to copy it or open a draft in your email app. If you send it, I use the information to respond and assess your project. The host may log basic connection details for site operation.'],
+    ['Project briefs and messages', 'When you send a project brief or message through this site, I receive your contact details and message in Zammad. I use them to reply and assess your project. You can also copy your message or open an email draft. The host may log basic connection details for site operation.'],
     ['Services chat', 'My servers use your question and up to three earlier questions to look up public Services information and write a reply. I keep those recent questions in the chat session for up to one hour and use a session cookie to recognize your chat and limit requests. Keep contact details, credentials, and private project information out of the chat. Use the project brief to discuss your project with me.'],
     ['Browser storage and external links', 'The calculator can keep a summary in your current tab for the project brief. The site can remember your theme preference across visits and loads typefaces from Google Fonts. External websites and email providers have their own privacy terms.']
   ],

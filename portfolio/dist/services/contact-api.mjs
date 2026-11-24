@@ -1,6 +1,6 @@
 // Zammad's public form channel validates email and its fingerprint-bound token,
 // and enforces server-side spam controls configured on the support service.
-export async function submitContactTicket({ supportUrl = '', name, email, title, body, honeypot = '' }) {
+async function submitContactTicket({ supportUrl = '', name, email, title, body, honeypot = '' }) {
   if (honeypot) return { state: 'rejected' };
   let submitted = false;
   try {
@@ -28,9 +28,47 @@ export async function submitContactTicket({ supportUrl = '', name, email, title,
   }
 }
 
-export const ticketMessages = {
+const ticketMessages = {
   'invalid-email': 'Please enter a valid email address that can receive replies.',
   'rejected': 'The form could not accept this request. You can email antblu@antblu.net.',
   'unavailable': 'The contact service is unavailable. Your message is still here. Please try later or email antblu@antblu.net.',
   'uncertain': 'Delivery could not be confirmed. Please avoid resending immediately. If you need help, email antblu@antblu.net.'
 };
+
+export function bindContactTicket({ form, status, validate, compose, sending, confirmation, onSent }) {
+  const submit = form.querySelector('[type="submit"]');
+  const fallbackButtons = form.querySelectorAll('[data-email-draft], [data-copy-brief]');
+  const honeypot = form.elements.namedItem('zammad_form_url');
+  submit.disabled = false;
+
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (submit.disabled || !validate()) return;
+
+    submit.disabled = true;
+    for (const button of fallbackButtons) button.disabled = true;
+    form.setAttribute('aria-busy', 'true');
+    status.classList.remove('motion-success');
+    status.textContent = sending;
+
+    try {
+      const result = await submitContactTicket({ ...compose(), honeypot: honeypot.value });
+      if (result.state === 'sent') {
+        form.reset();
+        const draft = form.querySelector('.consult-draft');
+        draft.value = '';
+        draft.hidden = true;
+        form.querySelector('[data-draft-label]').hidden = true;
+        status.classList.add('motion-success');
+        status.textContent = `${confirmation} Your ticket number is #${result.number}.`;
+        onSent?.();
+      } else {
+        status.textContent = ticketMessages[result.state];
+      }
+    } finally {
+      form.removeAttribute('aria-busy');
+      submit.disabled = false;
+      for (const button of fallbackButtons) button.disabled = false;
+    }
+  });
+}

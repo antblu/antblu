@@ -23,7 +23,7 @@ Anthony draws on systems work in an MSP environment and on Antalos, his self-hos
 ## Operating Context
 
 - Employers can review the experience timeline, technical skills, and selected projects, then inspect public source and architecture material.
-- Consulting clients can review service scopes, browse application and subscription comparisons, and estimate ownership costs over one, three, or five years. The incident walkthrough uses fictional data and scripted responses. Visitors can prepare a project brief in the browser and send it to Anthony from their email app.
+- Consulting clients can review service scopes, browse application and subscription comparisons, and estimate ownership costs over one, three, or five years. The incident walkthrough uses fictional data and scripted responses. Visitors can send a project brief or message to Anthony through Zammad.
 - The Blog link leads to Anthony’s separate Drupal journal.
 
 ## Capabilities and Constraints

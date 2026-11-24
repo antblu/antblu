@@ -62,9 +62,10 @@ The Python preview redirects directory URLs to their trailing-slash equivalents.
   Pass `--check` to verify generated markup without writing files.
 - `dist/services/site-config.mjs` lists optional public sandboxes. The restore
   exercise uses sample snapshots, file contents, and a scripted response.
-- The contact forms prepare an email draft or copy a complete message in the
-  browser. Calculator summaries transfer within the same browser tab.
-- The privacy and terms pages describe the local draft flow and one-time
+- Both contact forms submit to Zammad through the website proxy. Visitors can
+  also open an email draft or copy the message. Calculator summaries transfer
+  within the same browser tab.
+- The privacy and terms pages describe contact submissions and one-time
   implementation estimates.
 
 From the repository root:
