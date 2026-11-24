@@ -77,9 +77,6 @@
 }
 .consult-chat-viewport:focus-visible { outline-offset: 2px; }
 .consult-chat-history { display: grid; gap: .65rem; padding: .65rem; }
-.svc-body .consult-chat-history .consult-chat-intro {
-  margin: 0; padding: .35rem .4rem; color: var(--svc-muted);
-}
 .consult-chat-history > [data-message-id] {
   min-width: 0; padding: .65rem .75rem; border-radius: 9px; overflow-wrap: anywhere;
 }

@@ -221,13 +221,13 @@ function ServicesChat() {
     'Ask AI about my services',
     h('span', { className: 'consult-chat-chevron', 'aria-hidden': true })),
   h('div', { className: 'consult-chat-body' },
-    h(MessageScroller.Provider, { autoScroll: true, scrollPreviousItemPeek: 24 },
+    turns.length > 0 && h(MessageScroller.Provider, { autoScroll: true, scrollPreviousItemPeek: 24 },
       h(MessageScroller.Root, { className: 'consult-chat-scroller' },
         h(MessageScroller.Viewport, { className: 'consult-chat-viewport', 'aria-label': 'Conversation' },
           h(MessageScroller.Content, {
             id: 'services-chat-history', className: 'consult-chat-history',
             'aria-label': 'Chat messages', 'aria-busy': busy
-          }, h('p', { className: 'consult-chat-intro' }, 'Ask about packages, costs, or what your team receives at handoff.'), messages)),
+          }, messages)),
         h(MessageScroller.Button, { behavior: 'auto', className: 'consult-chat-latest' }, 'Jump to latest'))),
     busy && h(PendingReply, { streaming }),
     h('p', { className: 'svc-sr-only', role: 'status' },
@@ -237,7 +237,7 @@ function ServicesChat() {
       h('textarea', {
         id: 'services-chat-question', name: 'question', className: 'composer-input', 'data-slot': 'composer-input',
         placeholder: 'Ask AI about my services…', rows: 1, maxLength: 1200,
-        'aria-describedby': 'services-chat-privacy', ref: input, value: draft,
+        ref: input, value: draft,
         onFocus: () => {
           if (configStatus === 'idle') void loadConfig();
         },
@@ -262,12 +262,10 @@ function ServicesChat() {
           strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true
         }, busy ? h('rect', { x: 6, y: 6, width: 12, height: 12, rx: 2, fill: 'currentColor' })
           : h('path', { d: 'M12 19V5m-6 6 6-6 6 6' }))))),
-    configStatus === 'loading' && h('p', { className: 'composer-note', role: 'status' }, 'Connecting to chat…'),
+    configStatus === 'loading' && h('p', { className: 'svc-sr-only', role: 'status' }, 'Connecting to chat…'),
     configStatus === 'error' && h('p', { className: 'composer-note', role: 'status' },
       'Chat is unavailable. ', h('a', { href: '/contact#quote' }, 'Prepare a project brief'), ' or ',
-      h('button', { className: 'consult-chat-send', type: 'button', onClick: loadConfig }, 'Retry chat')),
-    h('p', { id: 'services-chat-privacy', className: 'composer-note' },
-      'Keep contact details, passwords, and private project information out of chat.')));
+      h('button', { className: 'consult-chat-send', type: 'button', onClick: loadConfig }, 'Retry chat'))));
 }
 
 const composer = document.querySelector('#services-chat');
