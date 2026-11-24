@@ -58,10 +58,10 @@ function publicSources(sources) {
   return [...links.values()];
 }
 
-function PendingReply() {
+function PendingReply({ streaming }) {
   return h('div', { className: 'consult-chat-pending' },
     h('div', { 'data-slot': 'trace' }, h(TraceLine, {
-      title: 'Preparing an answer…',
+      title: streaming ? 'Receiving an answer…' : 'Preparing an answer…',
       status: 'running',
       icon: 'M12 6v6l4 2 M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z'
     })),
@@ -285,16 +285,31 @@ function ServicesChat() {
     reply.error && h('a', { href: '/contact#quote' }, 'Prepare a project brief'))
   ]);
 
-  return h('div', { className: 'consult-chat-body' },
-    turns.length > 0 && h(MessageScroller.Provider, { autoScroll: true, scrollPreviousItemPeek: 24 },
+  return h('details', {
+    className: 'consult-chat',
+    onToggle: ({ currentTarget: chat }) => {
+      if (chat.open && chat.getBoundingClientRect().top > window.innerHeight / 3) {
+        chat.scrollIntoView({ block: 'start' });
+      }
+    }
+  },
+  h('summary', { className: 'consult-chat-launcher' },
+    h('svg', {
+      viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.7,
+      strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true
+    }, h('path', { d: 'M20 11.5a7.5 7.5 0 0 1-7.5 7.5H5l1.7-3.4A7.5 7.5 0 1 1 20 11.5ZM9 11.5h7m-7 3h4' })),
+    'Ask AI about my services',
+    h('span', { className: 'consult-chat-chevron', 'aria-hidden': true })),
+  h('div', { className: 'consult-chat-body' },
+    h(MessageScroller.Provider, { autoScroll: true, scrollPreviousItemPeek: 24 },
       h(MessageScroller.Root, { className: 'consult-chat-scroller' },
         h(MessageScroller.Viewport, { className: 'consult-chat-viewport', 'aria-label': 'Conversation' },
           h(MessageScroller.Content, {
             id: 'services-chat-history', className: 'consult-chat-history',
             'aria-label': 'Chat messages', 'aria-busy': busy
-          }, messages)),
+          }, h('p', { className: 'consult-chat-intro' }, 'Ask about packages, costs, or what your team receives at handoff.'), messages)),
         h(MessageScroller.Button, { behavior: 'auto', className: 'consult-chat-latest' }, 'Jump to latest'))),
-    busy && !streaming && h(PendingReply),
+    busy && h(PendingReply, { streaming }),
     h('p', { className: 'svc-sr-only', role: 'status' },
       busy ? (streaming ? 'Receiving an answer.' : 'Preparing an answer.') : announcement),
     h('form', { id: 'services-chat-form', className: 'composer-bar', 'data-slot': 'composer-bar', onSubmit: ask },
@@ -336,7 +351,7 @@ function ServicesChat() {
       key: challenge, siteKey: config.siteKey, onToken: setToken
     }),
     h('p', { id: 'services-chat-privacy', className: 'composer-note' },
-      'Keep contact details, passwords, and private project information out of chat.'));
+      'Keep contact details, passwords, and private project information out of chat.')));
 }
 
 const composer = document.querySelector('#services-chat');

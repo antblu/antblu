@@ -1,5 +1,7 @@
 # Verification — 2026-10-25
 
+Transparent Services chat (2026-11-23). Chromium checked the React launcher, transparent composer, and translucent transcript at 320px and 1440px in both themes. A simulated stream verified Progress before and during the reply, conversation retention on collapse, and the source disclosure. The project brief link worked with JavaScript disabled.
+
 Services landing page (2026-11-23). Chromium checked the composer and
 infrastructure walkthrough in both themes at 320px and 1440px. The composer
 passed mocked chat checks for streaming, cancellation, and draft recovery.
