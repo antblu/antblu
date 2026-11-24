@@ -1,4 +1,4 @@
-import { createElement as h, useEffect, Component, createRoot, Tabs, Accordion } from './assets/vendor/emiliany-vendor.js';
+import { createElement as h, useEffect, useState, Component, createRoot, Tabs, Accordion } from './assets/vendor/emiliany-vendor.js';
 
 // Bounce Cards adaptation: https://reactbits.dev/c/components/bounce-cards
 // Upstream attribution: assets/react-bits-LICENSE.md. Text replaces image faces.
@@ -73,11 +73,19 @@ if (fallback && mount) {
   }
 
   function JourneyExplorer() {
+    const [selection, setSelection] = useState({ index: 0, direction: 0 });
     useEffect(() => {
       fallback.hidden = true;
       return () => { fallback.hidden = false; };
     }, []);
-    return h(Tabs.Root, { defaultValue: 'shop', className: 'em-tabs' },
+    return h(Tabs.Root, {
+      value: journeys[selection.index].id, className: 'em-tabs',
+      style: { '--journey-enter-x': `${selection.direction * 12}px` },
+      onValueChange: value => {
+        const index = journeys.findIndex(journey => journey.id === value);
+        setSelection(previous => ({ index, direction: Math.sign(index - previous.index) }));
+      }
+    },
       h(Tabs.List, { className: 'em-tab-list', 'aria-label': 'Customer journeys' },
         journeys.map(journey => h(Tabs.Tab, { key: journey.id, value: journey.id, className: 'em-tab' }, journey.label)),
         h(Tabs.Indicator, { className: 'em-tab-indicator' })),

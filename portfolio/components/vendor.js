@@ -5,3 +5,4 @@ export { Accordion } from '@base-ui/react/accordion';
 export { Collapsible } from '@base-ui/react/collapsible';
 export { Progress } from '@base-ui/react/progress';
 export { MessageScroller } from '@shadcn/react/message-scroller';
+export { ThinkingOrb } from 'thinking-orbs';

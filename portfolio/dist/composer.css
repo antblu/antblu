@@ -71,7 +71,12 @@ html:has(.consult-chat-body:modal) { overflow: hidden; }
 .composer-send:disabled {
   color: var(--svc-muted); background: var(--svc-soft); border-color: var(--svc-line); cursor: default;
 }
-.composer-send svg { width: 20px; height: 20px; }
+.consult-chat-control-icon { display: block; width: 20px; height: 20px; }
+@media (forced-colors: active) {
+  .consult-chat-control-icon { forced-color-adjust: none; border-radius: 4px; }
+  .composer-send .consult-chat-control-icon { background: #d8ebff; }
+  .consult-chat-resize .consult-chat-control-icon { background: #102442; }
+}
 #services-chat .composer-note { margin: 0 .75rem; color: #f4f7fc; font-size: .875rem; }
 .services-composer a { color: var(--svc-link); text-decoration: underline; }
 .services-composer :is(.composer-note, noscript) a { color: #f4f7fc; }
@@ -113,6 +118,8 @@ html:has(.consult-chat-body:modal) { overflow: hidden; }
 .services-composer [data-slot="trace-line"][data-status="error"] { color: var(--svc-warn); }
 .services-composer .consult-chat-pending [data-slot="trace-line"] { color: #f4f7fc; }
 .services-composer [data-slot="trace-icon"] { display: inline-flex; width: 1rem; height: 1rem; flex: none; }
+.services-composer .consult-chat-pending [data-slot="trace-icon"] { width: 20px; height: 20px; padding: 2px; }
+.services-composer .consult-chat-pending canvas { display: block; margin: -2px; }
 .services-composer [data-slot="trace-collapsible-trigger"] {
   display: inline-flex; align-items: center; gap: .45rem; min-height: 44px; margin-block: -.1rem;
   padding: 0 .35rem; border: 0; border-radius: 6px; background: transparent; color: var(--svc-link); font: inherit; cursor: pointer;

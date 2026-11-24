@@ -1,5 +1,21 @@
 # Verification — 2026-10-25
 
+Portfolio interactions and Antalos teaser (2026-11-23). Chromium checked both
+themes at 320px and 1440px. Mocked chat requests covered configuration retry,
+fast replies, waits over two seconds, streaming, Stop, and request retry. The
+orb cleared at the first streamed text and stayed hidden with reduced motion.
+Expanding and collapsing chat preserved the transcript and a new draft.
+
+Checked both directions of the Emiliany panel transition, keyboard selection,
+carousel drag and re-grab, filtering, and the Antalos inventory's edge settle,
+keyboard movement, search, and reset. Emulated touch checked horizontal swipe
+and vertical scroll. With JavaScript disabled, the projects and journeys
+remained readable and the teaser disclosure opened. Chromium played the
+13.5-second teaser with captions available and confirmed that the MP4 loaded
+on playback. Node tests, JavaScript syntax, generated markup, and whitespace
+checks passed. Live chat, physical touch devices, and deployment remain
+unverified.
+
 Centered Services hero and chat expansion (2026-11-23). Checked the stacked
 layout at 320px and 1366px in both themes. The demo kept its width, and the
 scroll cue followed it below the first viewport. Used a mock reply to verify

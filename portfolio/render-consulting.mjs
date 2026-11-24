@@ -156,7 +156,18 @@ const landingBody = `<section class="consult-hero consult-cover">
         <button type="button" aria-label="Play tour"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="currentColor"><path class="tour-play-icon" d="M5 3.5v13l11-6.5z"/><g class="tour-pause-icon"><rect x="4" y="3" width="4" height="14" rx="1"/><rect x="12" y="3" width="4" height="14" rx="1"/></g></svg></button>
         <input type="range" min="0" value="0" step="0.1" aria-label="Tour position">
       </div>
-      <figcaption id="tour-caption">Explore the shared workspace, sales and support tools, and the infrastructure that runs them.</figcaption>
+      <figcaption>
+        <span id="tour-caption">Explore the shared workspace, sales and support tools, and the infrastructure that runs them.</span>
+        <details class="consult-tour-teaser">
+          <summary>Watch the Antalos teaser</summary>
+          <video controls playsinline preload="none" width="960" height="540" poster="/assets/tour/antalos-teaser.webp" aria-label="Antalos teaser" aria-describedby="teaser-caption">
+            <source src="/assets/tour/antalos-teaser.mp4" type="video/mp4">
+            <track kind="captions" srclang="en" label="English" src="/assets/tour/antalos-teaser.vtt">
+            <a href="/assets/tour/antalos-teaser.mp4">Open the Antalos teaser</a>
+          </video>
+          <p id="teaser-caption">See Authentik sign-in, the Nextcloud workspace, and UrBackup status.</p>
+        </details>
+      </figcaption>
     </figure>
     <a class="consult-scroll" href="#delivery">Scroll <span aria-hidden="true">↓</span></a>
   </div>
@@ -166,6 +177,30 @@ const landingBody = `<section class="consult-hero consult-cover">
     ${[...landing.evidence.links, links.demo, ['#stack', 'Browse the service inventory']].map(link => anchor(link)).join('')}
   </div>
 </aside>
+<section id="three-doors" class="svc-home" aria-labelledby="three-doors-title">
+  <div class="svc-wrap">
+    <p>Three doors</p>
+    <h2 id="three-doors-title">Which of these is your problem?</h2>
+    <p class="svc-lead">Every engagement starts with one of three conditions. Pick the sentence that sounds like your business.</p>
+    <div class="svc-grid">
+      <article class="svc-card">
+        <h3>The system no longer fits.</h3>
+        <p>FileMaker, Access, the internal app nobody dares touch. I replace it with software you own, without losing the workflow your staff depend on. Proof: 28,062 invoices migrated with zero operational downtime.</p>
+        <strong>Legacy System Replacement</strong>
+      </article>
+      <article class="svc-card">
+        <h3>The cart can't close your sales.</h3>
+        <p>Wires, deposits, quotes, staged settlement: transactions hosted carts cannot model. I build commerce platforms that close them. Proof: six-figure monthly Google Shopping revenue on an owned platform.</p>
+        <strong>High-Ticket Commerce Platforms</strong>
+      </article>
+      <article class="svc-card">
+        <h3>The work shouldn't still be manual.</h3>
+        <p>And you are not giving a chatbot the keys. I build governed AI agents inside your AWS account, with human approval on every consequential action. Proof: three production agents, used daily by a non-technical operator.</p>
+        <strong>Production AI Agents</strong>
+      </article>
+    </div>
+  </div>
+</section>
 ${infrastructureWorkflow}
 <div class="svc-wrap">
   ${block('From purchase brief to first restore', `<ol class="consult-stages">${landing.steps.map(([title, text, link]) =>

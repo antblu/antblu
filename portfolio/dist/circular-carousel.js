@@ -7,7 +7,7 @@ document.querySelectorAll('[data-circular-carousel]').forEach(stage => {
   const buttons = controls.querySelectorAll('[data-carousel="prev"], [data-carousel="next"]');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let visible = cards, angle = 0, target = null, velocity = 0, drag = null;
-  let hovered = false, paused = false, last = 0, moved = false;
+  let hovered = false, paused = false, last = 0, suppressClick = false;
   let inView = false, frameId = 0;
   let radius = 0;
   stage.classList.add('circular-carousel');
@@ -36,6 +36,7 @@ document.querySelectorAll('[data-circular-carousel]').forEach(stage => {
   }
   function move(direction) {
     if (visible.length < 2) return;
+    clearDrag();
     const step = 360 / visible.length;
     target = (Math.round(-(target ?? angle) / step) + direction) * -step;
     velocity = 0;
@@ -63,47 +64,87 @@ document.querySelectorAll('[data-circular-carousel]').forEach(stage => {
     region.addEventListener('focusout', () => queueMicrotask(syncAnimation));
   }
   stage.addEventListener('pointerenter', () => { hovered = true; syncAnimation(); });
-  stage.addEventListener('pointerleave', () => { hovered = false; syncAnimation(); });
+  stage.addEventListener('dragstart', event => {
+    if (drag) event.preventDefault();
+  });
+  stage.addEventListener('pointerleave', event => {
+    hovered = false;
+    if (!drag?.active) endDrag(event);
+    syncAnimation();
+  });
   stage.addEventListener('pointerdown', event => {
-    moved = false;
-    if (event.button !== 0 || event.target.closest('a, button')) return;
-    drag = { x: event.clientX, angle, id: event.pointerId };
+    if (!event.isPrimary || event.button !== 0 || drag) return;
+    suppressClick = false;
+    if (visible.length < 2 || event.target.closest('a, button')) return;
+    const step = 360 / visible.length;
+    drag = {
+      x: event.clientX, y: event.clientY, angle, id: event.pointerId,
+      scale: step / Math.min(300, stage.clientWidth * .7),
+      time: event.timeStamp, speed: 0, active: false, interruptedTarget: target
+    };
     target = null; velocity = 0;
     syncAnimation();
   });
   stage.addEventListener('pointermove', event => {
     if (!drag || event.pointerId !== drag.id) return;
-    const delta = event.clientX - drag.x;
-    if (!moved && Math.abs(delta) > 5) {
-      moved = true;
+    const dx = event.clientX - drag.x;
+    if (!drag.active) {
+      const dy = event.clientY - drag.y;
+      if (Math.max(Math.abs(dx), Math.abs(dy)) < 6) return;
+      if (Math.abs(dy) >= Math.abs(dx)) {
+        endDrag(event);
+        return;
+      }
+      drag.active = true;
+      stage.classList.add('is-swiping');
       stage.setPointerCapture(drag.id);
     }
-    if (!moved) return;
-    const next = drag.angle + delta * .3;
-    velocity = (next - angle) * .6;
-    angle = next; render();
+    const next = drag.angle + dx * drag.scale;
+    const elapsed = Math.max((event.timeStamp - drag.time) / 1000, .008);
+    const speed = (next - angle) / elapsed;
+    drag.speed += (speed - drag.speed) * (1 - Math.exp(-elapsed * 35));
+    drag.time = event.timeStamp;
+    angle = next;
+    render();
   });
-  function release(event) {
-    if (!drag || event.pointerId !== drag.id) return;
-    const start = drag.angle;
+  function clearDrag() {
+    const id = drag?.id;
     drag = null;
+    stage.classList.remove('is-swiping');
+    if (id !== undefined && stage.hasPointerCapture(id)) stage.releasePointerCapture(id);
+  }
+  function endDrag(event) {
+    if (!drag || event.pointerId !== drag.id) return;
+    const { active, speed, time, interruptedTarget } = drag;
+    clearDrag();
+    const released = event.type === 'pointerup';
+    suppressClick = active && released;
     const step = 360 / visible.length;
-    target = Math.round((angle + velocity * 8) / step) * step;
-    if (!pause && moved && Math.abs(angle - start) >= 14 && target === Math.round(start / step) * step) {
-      target += Math.sign(angle - start) * step;
+    if (active) {
+      velocity = released && event.timeStamp - time < 80
+        ? Math.max(-step * 8, Math.min(step * 8, speed)) : 0;
+      target = Math.round((angle + velocity * .12) / step) * step;
+    } else {
+      target = interruptedTarget;
     }
-    if (reduced.matches) { angle = target; target = null; render(); }
+    if (reduced.matches && target !== null) { angle = target; target = null; render(); }
     syncAnimation();
   }
-  stage.addEventListener('pointerup', release);
-  stage.addEventListener('pointercancel', release);
+  stage.addEventListener('pointerup', endDrag);
+  stage.addEventListener('pointercancel', endDrag);
   stage.addEventListener('lostpointercapture', event => {
-    if (event.target === stage) release(event);
+    if (event.target === stage) endDrag(event);
   });
   stage.addEventListener('click', event => {
-    if (moved) { event.preventDefault(); event.stopPropagation(); moved = false; }
+    if (suppressClick && event.detail) {
+      event.preventDefault();
+      event.stopPropagation();
+      suppressClick = false;
+    }
   }, true);
   stage.closest('section')?.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
+    clearDrag();
+    suppressClick = false;
     visible = cards.filter(card => !card.hidden);
     cards.forEach(card => { card.inert = card.hidden; });
     angle = 0; target = null; velocity = 0; render();
@@ -135,8 +176,15 @@ document.querySelectorAll('[data-circular-carousel]').forEach(stage => {
     const dt = last ? Math.min((time - last) / 1000, .05) : 0;
     last = time;
     if (target !== null) {
-      angle += (target - angle) * Math.min(1, dt * 9);
-      if (Math.abs(target - angle) < .05) { angle = target; target = null; }
+      const offset = angle - target;
+      const impulse = velocity + 18 * offset;
+      const decay = Math.exp(-18 * dt);
+      angle = target + (offset + impulse * dt) * decay;
+      velocity = (velocity - 18 * impulse * dt) * decay;
+      if (Math.abs(target - angle) < .05 && Math.abs(velocity) < 1) {
+        angle = target;
+        target = null;
+      }
     } else {
       angle -= 14 * dt;
     }

@@ -1,4 +1,6 @@
-const video = document.querySelector('#app-tour video');
+const video = document.querySelector('#app-tour > video');
+const teaser = document.querySelector('.consult-tour-teaser');
+const teaserVideo = teaser?.querySelector('video');
 const motion = matchMedia('(prefers-reduced-motion: reduce)');
 
 function applyMotionPreference() {
@@ -31,6 +33,12 @@ toggle.addEventListener('click', () => {
   else video.pause();
 });
 position.addEventListener('input', () => { video.currentTime = Number(position.value); });
+teaser?.addEventListener('toggle', () => {
+  if (teaser.open) video.pause();
+  else teaserVideo.pause();
+});
+video.addEventListener('play', () => teaserVideo?.pause());
+teaserVideo?.addEventListener('play', () => video.pause());
 video.addEventListener('play', syncPlayback);
 video.addEventListener('pause', syncPlayback);
 video.addEventListener('durationchange', syncPosition);

@@ -13,6 +13,11 @@
 .em-tab[data-active]{border-bottom-color:var(--em-accent)}
 .em-tab:focus-visible{position:relative;z-index:1;outline-offset:-4px}
 .em-tab-indicator{position:absolute;top:0;left:0;width:var(--active-tab-width);height:2px;transform:translate(var(--active-tab-left),calc(var(--active-tab-top) + var(--active-tab-height) - 2px));background:var(--em-accent);pointer-events:none;transition:transform .2s,width .2s}
+.em-tabs>.em-journey[inert]{display:none}
+@media(prefers-reduced-motion:no-preference){
+  .em-tabs>.em-journey{transition:translate 180ms ease-out}
+  .em-tabs>.em-journey[data-starting-style]{translate:var(--journey-enter-x) 0}
+}
 
 .em-journey{border:1px solid var(--em-line);border-radius:18px;padding:34px;background:var(--em-panel)}.em-journey[hidden],.em-fallback[hidden]{display:none}.em-fallback .em-journey+.em-journey{margin-top:16px}.em-journey-intro h4{font:400 28px/1.3 Georgia,serif;margin:0 0 10px}.em-journey-intro p{font-size:13px;color:var(--em-muted);line-height:1.8}.em-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;gap:32px;padding:0;margin:30px 0}.em-steps li{position:relative;border-top:1px solid var(--em-line);padding-top:18px}.em-step-number{font:500 11px var(--heading);color:var(--em-accent)}.em-steps li:not(:last-child)::after{content:'→';position:absolute;top:-13px;right:-24px;color:var(--em-muted);font-size:18px}.em-steps h5{font:600 15px/1.5 var(--heading);margin:12px 0 8px}.em-steps p{font-size:13px;line-height:1.8;color:var(--em-muted)}
 .em-accordion,.em-explanation{border-top:1px solid var(--em-line)}.em-accordion-trigger,.em-explanation summary{display:flex;justify-content:space-between;align-items:center;gap:20px;width:100%;min-height:54px;padding:18px 0 0;background:transparent;color:var(--em-ink);border:0;text-align:left;font:600 12px/1.7 var(--body);cursor:pointer}.em-accordion-trigger>span{font-size:24px;font-weight:400;transition:transform .2s}.em-accordion-trigger[data-panel-open]>span{transform:rotate(45deg)}.em-accordion-panel p,.em-explanation>p{max-width:900px;padding-top:16px;font-size:13px;line-height:1.9;color:var(--em-muted)}

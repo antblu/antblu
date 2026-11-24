@@ -380,7 +380,8 @@ dialog{background:#f5f9ff;border-top:5px solid #3488ff}dialog::backdrop{backgrou
 .projects .project-art-logo{object-fit:contain;background:#f5f5ed;padding:24px 24px 200px;transform:none}
 .projects .project:has(.project-art-logo):after{background:linear-gradient(transparent 12%,#070d16 48%)}
 .projects .project:has(.project-art-logo) .project-copy{align-self:flex-end}
-.projects.circular-carousel{display:block;position:relative;height:560px;overflow:hidden;perspective:2500px;touch-action:pan-y;cursor:grab;isolation:isolate}
+.projects.circular-carousel{display:block;position:relative;height:560px;overflow:hidden;perspective:2500px;touch-action:pan-y pinch-zoom;cursor:grab;isolation:isolate}
+.projects.circular-carousel.is-swiping{cursor:grabbing;user-select:none}
 .circular-carousel .project{position:absolute;left:50%;top:48%;translate:-50% -50%;width:min(340px,78vw);height:370px;aspect-ratio:auto;border-radius:12px;background:#070d16;box-shadow:0 18px 50px #0005;backface-visibility:hidden;will-change:transform;animation:carousel-rise 1.4s both}
 .circular-carousel .project-copy{width:100%;padding:24px 16px}
 .circular-carousel .project h3{font-size:23px;letter-spacing:1px}

@@ -9,7 +9,7 @@
 #stack .stack-count{font:600 13px var(--svc-heading);margin:26px 0 10px;color:var(--svc-link)}
 #stack :is(.stack-help,.stack-source){font:12px/1.8 var(--svc-body-font);color:var(--svc-muted);max-width:760px;margin:0 auto 24px}
 .stack-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px 22px;padding:36px 22px;max-width:1260px;margin:auto;position:relative;isolation:isolate;min-height:100px}
-.stack-card{--card-x:0px;--card-y:0px;position:relative;min-width:0;border:1px solid #435a7144;border-radius:12px;padding:12px;text-align:left;background:#f5f9ff;color:#0a1420;box-shadow:0 10px 24px #070d1620;transform:translate(var(--card-x),var(--card-y)) rotate(var(--card-angle));transform-origin:center;transition:box-shadow .2s}
+.stack-card{position:relative;min-width:0;border:1px solid #435a7144;border-radius:12px;padding:12px;text-align:left;background:#f5f9ff;color:#0a1420;box-shadow:0 10px 24px #070d1620;transform:rotate(var(--card-angle));transform-origin:center;transition:box-shadow .2s}
 .stack-card[hidden]{display:none}
 .stack-card:focus-within{z-index:50!important;outline:2px solid var(--svc-link);outline-offset:3px}
 .stack-card.is-dragging{box-shadow:0 22px 36px #070d1640;transition:none}

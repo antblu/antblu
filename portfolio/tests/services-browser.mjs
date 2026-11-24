@@ -225,6 +225,8 @@ try {
   assert.ok(await fallbackFonts.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   const noJs = await browser.newPage({ javaScriptEnabled: false, viewport: { width: 320, height: 800 } });
   await noJs.goto(`${base}/services/`);
+  await noJs.getByText('Watch the Antalos teaser', { exact: true }).click();
+  assert.ok(await noJs.locator('.consult-tour-teaser video').isVisible());
   assert.ok(await noJs.locator('.consult-faq p').first().isVisible());
   await noJs.locator('.consult-faq summary').nth(1).click();
   assert.ok(await noJs.locator('.consult-faq p').nth(1).isVisible());
@@ -264,6 +266,45 @@ try {
       await scan.close();
     }
   }
+  const chat = await browser.newPage();
+  chat.on('pageerror', error => errors.push(error.message));
+  await chat.addInitScript(() => {
+    const network = window.fetch;
+    window.fetch = (url, options) => {
+      if (url !== '/api/services-chat') return network(url, options);
+      if (!options.body) return Promise.resolve(Response.json({ status: 'ok' }));
+      const body = new ReadableStream({
+        start(controller) {
+          window.startReply = () => controller.enqueue(new TextEncoder().encode(
+            'event: delta\ndata: {"text":"Partial answer."}\n\n'));
+          options.signal.addEventListener('abort', () => controller.error(options.signal.reason), { once: true });
+        }
+      });
+      return Promise.resolve(new Response(body, { headers: { 'Content-Type': 'text/event-stream' } }));
+    };
+  });
+  await chat.goto(`${base}/services/`);
+  const composer = chat.locator('#services-chat');
+  const question = composer.getByRole('textbox');
+  await question.fill('What do you build?');
+  await chat.waitForFunction(() => document.querySelector('.composer-send:enabled'));
+  await question.press('Enter');
+  const pending = composer.locator('.consult-chat-pending');
+  await pending.getByText('Preparing an answer…').waitFor();
+  const orb = pending.locator('canvas');
+  await orb.waitFor();
+  await chat.evaluate(() => window.startReply());
+  await pending.getByText('Receiving an answer…').waitFor();
+  await orb.waitFor({ state: 'detached' });
+  await composer.getByRole('button', { name: 'Expand chat' }).click();
+  await question.fill('Follow-up draft');
+  await chat.keyboard.press('Escape');
+  await composer.getByRole('button', { name: 'Stop generating' }).click();
+  await composer.locator('.consult-chat-history').getByText('Answer stopped.').waitFor();
+  assert.equal(await question.inputValue(), 'Follow-up draft');
+  assert.equal(await composer.getByText('Partial answer.').count(), 1);
+  await chat.close();
+
   await page.setViewportSize({ width: 1024, height: 850 });
   await page.goto(`${base}/`);
   const role = page.locator('.hero .role');
@@ -272,7 +313,7 @@ try {
   const experience = await page.getByRole('link', { name: 'View my experience' }).boundingBox();
   assert.ok(experience && experience.y + experience.height <= 850);
   assert.deepEqual(errors, []);
-  console.log('Passed consulting route layouts, handoff, restore, draft fallback, FAQ, calculator, and portfolio tablet hero checks.');
+  console.log('Passed consulting layouts, assistant, handoff, restore, draft fallback, FAQ, calculator, and portfolio tablet hero checks.');
 } finally {
   await browser.close();
 }

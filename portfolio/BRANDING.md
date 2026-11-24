@@ -4,6 +4,10 @@ Palette: Antalos blue #3488ff, bright blue #62a5ff, cyan #57d8ff, navy #070d16, 
 
 Logo: dist/assets/antblu-logo.png, copied unchanged from the user-supplied Antblu Blue Ant Logo.png. This replaces the generated logo.
 
+The Services assistant uses four Kubai Duotone SVGs. Send and Stop pair
+`#204e84` with `#5a7da3`. Expand and Collapse pair `#3488ff` with `#b8d7ff`.
+The MIT notice is in `dist/assets/chat-icons/LICENSE.txt`.
+
 Portrait: dist/assets/anthony-bluemel-cutout.png, background removed using the built-in image-generation tool. Original retained at dist/assets/anthony-bluemel.jpg.
 
 ## Original cutout prompt

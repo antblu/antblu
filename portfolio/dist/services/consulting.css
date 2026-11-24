@@ -126,6 +126,12 @@
 .consult-tour { width: 100%; max-width: 55ch; font-size: clamp(1.05rem, 1.7vw, 1.4rem); margin: 1.25rem auto 0; scroll-margin-top: calc(var(--svc-header-height) + 12px); }
 .consult-tour video { display: block; width: 100%; height: auto; border: 1px solid #ffffff65; border-radius: 12px; background: #182f40; box-shadow: 0 12px 38px #03132155; }
 .consult-tour figcaption { max-width: 76ch; margin: .8rem auto 0; color: white; font-size: .88rem; }
+.consult-tour-teaser summary {
+  width: fit-content; min-height: 44px; margin-inline: auto; padding: .65rem .25rem;
+  cursor: pointer; text-decoration: underline; text-underline-offset: .2em;
+}
+.consult-tour-teaser[open] video { margin-top: .35rem; }
+.svc-body .consult-tour-teaser p { margin: .65rem 0 0; }
 
 .consult-cover > .svc-wrap { display: grid; grid-template-columns: minmax(0, 1fr); align-content: center; row-gap: .25rem; }
 .tour-playback:not([hidden]) { display: flex; align-items: center; gap: .65rem; padding: 0 .75rem; margin-top: .25rem; border-radius: 8px; background: #132338; color: white; }

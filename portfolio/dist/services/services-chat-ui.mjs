@@ -1,6 +1,6 @@
 import {
-  Collapsible, MessageScroller, Progress as ProgressPrimitive,
-  createElement as h, createRoot, useRef, useState
+  Collapsible, MessageScroller, Progress as ProgressPrimitive, ThinkingOrb,
+  createElement as h, createRoot, useEffect, useRef, useState
 } from '../assets/vendor/emiliany-vendor.js';
 
 function Progress() {
@@ -11,11 +11,12 @@ function Progress() {
 }
 
 // The shadcn Trace slots use local styles and Base UI's Collapsible.
-function TraceLine({ title, status, icon }) {
+function TraceLine({ title, status, icon, showOrb }) {
   return h('span', { 'data-slot': 'trace-line', 'data-status': status },
     h('span', { 'data-slot': 'trace-icon', 'aria-hidden': true },
-      h('svg', { viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.7, strokeLinecap: 'round', strokeLinejoin: 'round' },
-        h('path', { d: icon }))),
+      showOrb ? h(ThinkingOrb, { state: 'working', size: 20, theme: 'dark' })
+        : h('svg', { viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.7, strokeLinecap: 'round', strokeLinejoin: 'round' },
+          h('path', { d: icon }))),
     h('span', { 'data-slot': 'trace-title' }, title));
 }
 
@@ -59,16 +60,41 @@ function publicSources(sources) {
 }
 
 function PendingReply({ streaming }) {
+  const [showOrb, setShowOrb] = useState(false);
+  useEffect(() => {
+    if (streaming) return;
+    const motion = matchMedia('(prefers-reduced-motion: no-preference) and (forced-colors: none)');
+    let timer;
+    function schedule() {
+      clearTimeout(timer);
+      setShowOrb(false);
+      if (motion.matches) timer = setTimeout(() => setShowOrb(true), 2000);
+    }
+    schedule();
+    motion.addEventListener('change', schedule);
+    return () => {
+      clearTimeout(timer);
+      motion.removeEventListener('change', schedule);
+    };
+  }, [streaming]);
   return h('div', { className: 'consult-chat-pending' },
     h('div', { 'data-slot': 'trace' }, h(TraceLine, {
       title: streaming ? 'Receiving an answer…' : 'Preparing an answer…',
       status: 'running',
+      showOrb: !streaming && showOrb,
       icon: 'M12 6v6l4 2 M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z'
     })),
     h(Progress));
 }
 
 const CHAT_URL = '/api/services-chat';
+
+function controlIcon(name) {
+  return h('img', {
+    className: 'consult-chat-control-icon', src: new URL(`../assets/chat-icons/${name}.svg`, import.meta.url).href,
+    width: 20, height: 20, alt: ''
+  });
+}
 
 async function chatRequest(body, signal) {
   const timeout = AbortSignal.timeout(body?.question ? 95000 : 15000);
@@ -106,7 +132,7 @@ async function readAnswer(response, onAnswer) {
         const payload = JSON.parse(data.slice('data: '.length));
         if (event === 'event: delta') {
           answer += payload.text;
-          onAnswer(answer);
+          if (answer.trim()) onAnswer(answer);
         } else if (event === 'event: done' && answer.trim()) {
           return { answer: answer.trim(), sources: publicSources(payload.sources) };
         } else if (event === 'event: error') {
@@ -125,9 +151,8 @@ async function readAnswer(response, onAnswer) {
 function ServicesChat() {
   const [turns, setTurns] = useState([]);
   const [draft, setDraft] = useState('');
-  const [busy, setBusy] = useState(false);
-  const [streaming, setStreaming] = useState(false);
-  const [announcement, setAnnouncement] = useState('');
+  // Each request waits, may stream, then completes, stops, or fails.
+  const [requestPhase, setRequestPhase] = useState('idle');
   const [configStatus, setConfigStatus] = useState('idle');
   const [expanded, setExpanded] = useState(false);
   const chat = useRef(null);
@@ -135,6 +160,8 @@ function ServicesChat() {
   const pending = useRef(null);
   const input = useRef(null);
   const submit = useRef(null);
+  const streaming = requestPhase === 'streaming';
+  const busy = requestPhase === 'waiting' || streaming;
   const canSend = configStatus === 'ready' && !!draft.trim() && !busy;
 
   function resizeChat() {
@@ -170,7 +197,7 @@ function ServicesChat() {
     const id = turns.length;
     const controller = new AbortController();
     pending.current = controller;
-    setBusy(true);
+    setRequestPhase('waiting');
     setDraft('');
     if (document.activeElement === submit.current) input.current.focus({ preventScroll: true });
     setTurns(current => [...current, { id, question }]);
@@ -181,25 +208,26 @@ function ServicesChat() {
     try {
       const response = await chatRequest({ question }, controller.signal);
       if (!response.ok) throw await chatError(response);
-      updateReply(await readAnswer(response, answer => {
+      const reply = await readAnswer(response, answer => {
+        controller.signal.throwIfAborted();
         partial = answer;
-        setStreaming(true);
+        setRequestPhase('streaming');
         updateReply({ answer, streaming: true });
-      }));
-      setAnnouncement('Answer ready.');
+      });
+      controller.signal.throwIfAborted();
+      updateReply(reply);
+      setRequestPhase('complete');
     } catch (error) {
       setDraft(current => current || question);
       if (controller.signal.aborted) {
         updateReply({ answer: partial, stopped: true });
-        setAnnouncement('Answer stopped.');
+        setRequestPhase('stopped');
       } else {
         const message = error.constructor === Error ? error.message : 'Chat is unavailable. Try again or send a project brief.';
         updateReply({ answer: partial, error: message });
-        setAnnouncement('');
+        setRequestPhase('failed');
       }
     } finally {
-      setBusy(false);
-      setStreaming(false);
       pending.current = null;
     }
   }
@@ -219,6 +247,12 @@ function ServicesChat() {
     reply.error && h('p', { role: 'status' }, reply.error),
     reply.error && h('a', { href: '/contact#quote' }, 'Prepare a project brief'))
   ]);
+  const announcement = {
+    waiting: 'Preparing an answer.',
+    streaming: 'Receiving an answer.',
+    complete: 'Answer ready.',
+    stopped: 'Answer stopped.'
+  }[requestPhase];
 
   return h('dialog', {
     className: 'consult-chat-body', open: true, ref: chat, 'aria-label': 'Services assistant',
@@ -232,11 +266,8 @@ function ServicesChat() {
       h('button', {
         className: 'svc-btn consult-chat-resize', type: 'button', ref: resizeButton, onClick: resizeChat,
         'aria-label': 'Expand chat', 'aria-pressed': expanded,
-        title: expanded ? 'Exit expanded chat' : 'Expand chat'
-      }, h('svg', {
-        width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2,
-        strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true
-      }, h('path', { d: 'M16 3h5v5m0-5-7 7M8 21H3v-5m0 5 7-7' })))),
+        title: expanded ? 'Collapse chat' : 'Expand chat'
+      }, controlIcon(expanded ? 'minimize' : 'maximize'))),
     turns.length > 0 && h(MessageScroller.Provider, { autoScroll: true, scrollPreviousItemPeek: 24 },
       h(MessageScroller.Root, { className: 'consult-chat-scroller' },
         h(MessageScroller.Viewport, { className: 'consult-chat-viewport', 'aria-label': 'Conversation' },
@@ -246,8 +277,7 @@ function ServicesChat() {
           }, messages)),
         h(MessageScroller.Button, { behavior: 'auto', className: 'consult-chat-latest' }, 'Jump to latest'))),
     busy && h(PendingReply, { streaming }),
-    h('p', { className: 'svc-sr-only', role: 'status' },
-      busy ? (streaming ? 'Receiving an answer.' : 'Preparing an answer.') : announcement),
+    h('p', { className: 'svc-sr-only', role: 'status' }, announcement),
     h('form', { id: 'services-chat-form', className: 'composer-bar', 'data-slot': 'composer-bar', onSubmit: ask },
       h('label', { className: 'svc-sr-only', htmlFor: 'services-chat-question' }, 'Ask AI about my services'),
       h('textarea', {
@@ -273,11 +303,7 @@ function ServicesChat() {
             pending.current?.abort();
             input.current.focus({ preventScroll: true });
           } : undefined
-        }, h('svg', {
-          viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2,
-          strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true
-        }, busy ? h('rect', { x: 6, y: 6, width: 12, height: 12, rx: 2, fill: 'currentColor' })
-          : h('path', { d: 'M12 19V5m-6 6 6-6 6 6' }))))),
+        }, controlIcon(busy ? 'stop' : 'send')))),
     configStatus === 'loading' && h('p', { className: 'svc-sr-only', role: 'status' }, 'Connecting to chat…'),
     configStatus === 'error' && h('p', { className: 'composer-note', role: 'status' },
       'Chat is unavailable. ', h('a', { href: '/contact#quote' }, 'Prepare a project brief'), ' or ',
