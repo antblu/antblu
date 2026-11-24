@@ -205,22 +205,7 @@ function ServicesChat() {
     reply.error && h('a', { href: '/contact#quote' }, 'Prepare a project brief'))
   ]);
 
-  return h('details', {
-    className: 'consult-chat',
-    onToggle: ({ currentTarget: chat }) => {
-      if (chat.open && chat.getBoundingClientRect().top > window.innerHeight / 3) {
-        chat.scrollIntoView({ block: 'start' });
-      }
-    }
-  },
-  h('summary', { className: 'consult-chat-launcher' },
-    h('svg', {
-      viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.7,
-      strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true
-    }, h('path', { d: 'M20 11.5a7.5 7.5 0 0 1-7.5 7.5H5l1.7-3.4A7.5 7.5 0 1 1 20 11.5ZM9 11.5h7m-7 3h4' })),
-    'Ask AI about my services',
-    h('span', { className: 'consult-chat-chevron', 'aria-hidden': true })),
-  h('div', { className: 'consult-chat-body' },
+  return h('div', { className: 'consult-chat-body' },
     turns.length > 0 && h(MessageScroller.Provider, { autoScroll: true, scrollPreviousItemPeek: 24 },
       h(MessageScroller.Root, { className: 'consult-chat-scroller' },
         h(MessageScroller.Viewport, { className: 'consult-chat-viewport', 'aria-label': 'Conversation' },
@@ -265,7 +250,7 @@ function ServicesChat() {
     configStatus === 'loading' && h('p', { className: 'svc-sr-only', role: 'status' }, 'Connecting to chat…'),
     configStatus === 'error' && h('p', { className: 'composer-note', role: 'status' },
       'Chat is unavailable. ', h('a', { href: '/contact#quote' }, 'Prepare a project brief'), ' or ',
-      h('button', { className: 'consult-chat-send', type: 'button', onClick: loadConfig }, 'Retry chat'))));
+      h('button', { className: 'consult-chat-send', type: 'button', onClick: loadConfig }, 'Retry chat')));
 }
 
 const composer = document.querySelector('#services-chat');
