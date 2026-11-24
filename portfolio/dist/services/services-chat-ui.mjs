@@ -1,6 +1,6 @@
 import {
   Collapsible, MessageScroller, Progress as ProgressPrimitive,
-  createElement as h, createRoot, useEffect, useRef, useState
+  createElement as h, createRoot, useRef, useState
 } from '../assets/vendor/emiliany-vendor.js';
 
 function Progress() {
@@ -86,69 +86,6 @@ async function chatError(response) {
   return new Error(data.error);
 }
 
-function loadTurnstile() {
-  if (window.turnstile) return Promise.resolve(window.turnstile);
-  return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
-    script.async = true;
-    script.onload = () => window.turnstile ? resolve(window.turnstile) : reject(new Error('Turnstile unavailable'));
-    script.onerror = () => {
-      script.remove();
-      reject(new Error('Turnstile unavailable'));
-    };
-    document.head.append(script);
-  });
-}
-
-function Verification({ siteKey, onToken }) {
-  const container = useRef(null);
-  const [attempt, setAttempt] = useState(0);
-  const [failed, setFailed] = useState(false);
-
-  useEffect(() => {
-    let active = true;
-    let turnstile;
-    let widget;
-    loadTurnstile().then(api => {
-      if (!active) return;
-      turnstile = api;
-      widget = api.render(container.current, {
-        sitekey: siteKey,
-        action: 'services_chat',
-        appearance: 'interaction-only',
-        size: 'compact',
-        'response-field': false,
-        callback: token => {
-          setFailed(false);
-          onToken(token);
-        },
-        'expired-callback': () => onToken(''),
-        'error-callback': () => {
-          onToken('');
-          setFailed(true);
-        }
-      });
-    }).catch(() => {
-      if (active) setFailed(true);
-    });
-    return () => {
-      active = false;
-      if (widget !== undefined) turnstile.remove(widget);
-    };
-  }, [siteKey, onToken, attempt]);
-
-  return h('div', null,
-    h('div', { ref: container }),
-    failed && h('button', {
-      className: 'consult-chat-send', type: 'button', onClick: () => {
-        onToken('');
-        setFailed(false);
-        setAttempt(current => current + 1);
-      }
-    }, 'Retry verification'));
-}
-
 async function readAnswer(response, onAnswer) {
   if (!response.headers.get('Content-Type')?.startsWith('text/event-stream') || !response.body) {
     throw new Error('Chat is unavailable. Try again or send a project brief.');
@@ -191,24 +128,19 @@ function ServicesChat() {
   const [busy, setBusy] = useState(false);
   const [streaming, setStreaming] = useState(false);
   const [announcement, setAnnouncement] = useState('');
-  const [config, setConfig] = useState(null);
   const [configStatus, setConfigStatus] = useState('idle');
-  const [token, setToken] = useState('');
-  const [challenge, setChallenge] = useState(0);
   const pending = useRef(null);
   const input = useRef(null);
   const submit = useRef(null);
-  const needsVerification = config && !config.verified;
-  const canSend = config && (!needsVerification || token) && !!draft.trim() && !busy;
+  const canSend = configStatus === 'ready' && !!draft.trim() && !busy;
 
   async function loadConfig() {
     setConfigStatus('loading');
     try {
       const response = await chatRequest();
-      if (!response.ok) throw await chatError(response);
-      const data = await response.json();
-      if (typeof data.siteKey !== 'string' || !data.siteKey) throw new Error('Missing site key');
-      setConfig(data);
+      if (!response.ok || (await response.json()).status !== 'ok') {
+        throw new Error('Chat is unavailable');
+      }
       setConfigStatus('ready');
     } catch {
       setConfigStatus('error');
@@ -232,17 +164,7 @@ function ServicesChat() {
 
     let partial = '';
     try {
-      if (!config.verified) {
-        const verification = await chatRequest({ token }, controller.signal);
-        if (!verification.ok) throw await chatError(verification);
-        setConfig(current => ({ ...current, verified: true }));
-        setToken('');
-      }
-
       const response = await chatRequest({ question }, controller.signal);
-      if (response.status === 401) {
-        setConfig(current => ({ ...current, verified: false }));
-      }
       if (!response.ok) throw await chatError(response);
       updateReply(await readAnswer(response, answer => {
         partial = answer;
@@ -256,8 +178,6 @@ function ServicesChat() {
         updateReply({ answer: partial, stopped: true });
         setAnnouncement('Answer stopped.');
       } else {
-        setToken('');
-        setChallenge(current => current + 1);
         const message = error.constructor === Error ? error.message : 'Chat is unavailable. Try again or send a project brief.';
         updateReply({ answer: partial, error: message });
         setAnnouncement('');
@@ -346,10 +266,6 @@ function ServicesChat() {
     configStatus === 'error' && h('p', { className: 'composer-note', role: 'status' },
       'Chat is unavailable. ', h('a', { href: '/contact#quote' }, 'Prepare a project brief'), ' or ',
       h('button', { className: 'consult-chat-send', type: 'button', onClick: loadConfig }, 'Retry chat')),
-    needsVerification && !token && h('p', { className: 'composer-note', role: 'status' }, 'Verify your browser to start chatting.'),
-    needsVerification && h(Verification, {
-      key: challenge, siteKey: config.siteKey, onToken: setToken
-    }),
     h('p', { id: 'services-chat-privacy', className: 'composer-note' },
       'Keep contact details, passwords, and private project information out of chat.')));
 }
