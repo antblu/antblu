@@ -1,14 +1,14 @@
 export const pricing = {
-  standard: { low: 3000, high: 6000 },
+  standard: { low: 2000, high: 3750 },
   ha: { low: 8000, high: 15000, plus: true },
   simple: { low: 500, high: 1500 },
   intermediate: { low: 1500, high: 3000 },
   complex: { low: 3000, high: 10000, plus: true },
   ai: { low: 1500, high: 4000 },
   training: { low: 750, high: 2000 },
-  landing: { low: 900 },
+  landing: { low: 625 },
   website: { low: 2500 },
-  store: { low: 5000 },
+  store: { low: 2500 },
   commerce: { low: 10000 }
 };
 

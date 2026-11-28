@@ -216,7 +216,12 @@ ${infrastructureWorkflow}
     <div class="dashboard-grid">${dashboardCards}</div>
     <p class="consult-dashboard-link">${anchor(dashboards.homelable)}</p>`, 'dashboard')}
   ${block('Scope and costs', `<p>Start with one server or scope a redundant deployment around your recovery targets. I also build business sites and stores in client-owned accounts.</p>
-    <ul class="consult-links">${[[links.infrastructure[0], 'Infrastructure packages'], ['/services/web-development', 'Business websites'], ['/services/ecommerce', 'Online stores'], links.compare].map(link => `<li>${anchor(link)}</li>`).join('')}</ul>
+    <ul class="consult-links">${[
+      [links.infrastructure[0], 'Standard infrastructure', 'standard'],
+      ['/services/web-development', 'Landing pages', 'landing'],
+      ['/services/ecommerce', 'Standard online stores', 'store'],
+      ['/services/applications', 'Simple application setup', 'simple']
+    ].map(([href, label, key]) => `<li>${anchor([href, label])} · From ${money.format(pricing[key].low)}</li>`).join('')}<li>${anchor(links.compare)}</li></ul>
     <div class="consult-cta-row">${actions('calculator', 'contact')}</div>`, 'packages')}
   ${block('Questions before you start', `<div class="consult-faq">${landing.faq.map(([question, answer], index) =>
     `<details name="consult-faq"${index === 0 ? ' open' : ''}><summary>${escape(question)}</summary>${paragraph(answer)}</details>`).join('')}</div>`)}
